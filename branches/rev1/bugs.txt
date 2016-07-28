@@ -1,0 +1,6 @@
+1) on postlist.aspx - via mobile, changing sort is not detected, (maybe no postback?)
+			- looks like it posts back on the device, but the sort does not work.
+			
+2) in postlist, when using search, the 'function' call uses full word, when it should only 
+use the first letter
+

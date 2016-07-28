@@ -1,0 +1,7 @@
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\bin\Debug\NSWDAT.dll
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\bin\Debug\NSWDAT.pdb
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\bin\Debug\NSWINF.dll
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\bin\Debug\NSWINF.pdb
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\obj\Debug\NSW_Data.csprojResolveAssemblyReference.cache
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\obj\Debug\NSWDAT.dll
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\obj\Debug\NSWDAT.pdb

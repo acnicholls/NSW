@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace NSW.Posts
+{
+    public partial class AddPost : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "AddPost.Page_Load", "Starting...", LogEnum.Debug);
+            LoadLabelValues();
+            LoadDropDownList();
+        }
+
+        private void LoadDropDownList()
+        {
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "AddPost.LoadDropDownList", "Starting...", LogEnum.Debug);
+
+        }
+
+        private void LoadLabelValues()
+        {
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "AddPost.LoadLabelValues", "Starting...", LogEnum.Debug);
+            this.AddPostPageTitle.Text = NSW.Data.LabelText.Text("AddPost.AddPostPageTitle");
+            this.AddPostInstructions.Text = NSW.Data.LabelText.Text("AddPost.AddPostInstructions");
+            // now the wizard controls
+            (this.AddPostWizardStep0.FindControl("PostCategoryPickerLabel") as Label).Text = NSW.Data.LabelText.Text("AddPost.PostCategoryPickerLabel");
+            (this.AddPostWizardStep0.FindControl("PostCategoryRequired") as RequiredFieldValidator).ErrorMessage = NSW.Data.LabelText.Text("AddPost.PostCategoryRequired");
+
+            (this.AddPostWizardStep0.FindControl("PostTitleLabel") as Label).Text = NSW.Data.LabelText.Text("AddPost.PostTitleLabel");
+            (this.AddPostWizardStep0.FindControl("PostTitleRequired") as RequiredFieldValidator).ErrorMessage = NSW.Data.LabelText.Text("AddPost.PostTitleRequired");
+            (this.AddPostWizardStep0.FindControl("PostDescriptionLabel") as Label).Text = NSW.Data.LabelText.Text("AddPost.PostDescriptionLabel");
+            (this.AddPostWizardStep0.FindControl("PostDescriptionRequired") as RequiredFieldValidator).ErrorMessage = NSW.Data.LabelText.Text("AddPost.PostDescriptionRequired");
+            (this.AddPostWizardStep0.FindControl("PostPriceLabel") as Label).Text = NSW.Data.LabelText.Text("AddPost.PostPriceLabel");
+            (this.AddPostWizardStep0.FindControl("PostPriceRequired") as RequiredFieldValidator).ErrorMessage = NSW.Data.LabelText.Text("AddPost.PostPriceRequired");
+            (this.AddPostWizardStep0.FindControl("PostPhotoTitle") as Label).Text = NSW.Data.LabelText.Text("AddPost.PostPhotoTitle");
+
+
+            (Global.GetControlFromWizard(this.AddPostWizard, WizardNavigationTempContainer.FinishNavigationTemplateContainerID, "FinishButton") as Button).Text = NSW.Data.LabelText.Text("AddPost.FinishButton");
+        }
+
+        protected void FinishClick(object sender, WizardNavigationEventArgs e)
+        {
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "AddPost.FinishClick", "Starting...", LogEnum.Debug);
+
+        }
+    }
+}

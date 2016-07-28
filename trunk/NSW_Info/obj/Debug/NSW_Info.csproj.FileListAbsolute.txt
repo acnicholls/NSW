@@ -1,0 +1,4 @@
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Info\bin\Debug\NSWINF.dll
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Info\bin\Debug\NSWINF.pdb
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Info\obj\Debug\NSWINF.dll
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Info\obj\Debug\NSWINF.pdb

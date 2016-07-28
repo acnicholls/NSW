@@ -1,0 +1,17 @@
+/*  
+
+1  change or add some text on the front page to say 'buy and sell in nagano'
+
+2  add paypal account for the  website to pay for advertising.
+		- facebook
+		- google
+
+3  make it pretty?? - css themes...research the css required for this.
+
+
+4 if the screen (viewport) is smaller than the width of the objects that need to go on the screen.  change the CSS to Mobile.
+
+
+
+
+*/

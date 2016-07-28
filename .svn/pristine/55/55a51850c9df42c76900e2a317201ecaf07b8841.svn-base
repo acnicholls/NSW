@@ -1,0 +1,54 @@
+﻿<?xml version="1.0"?>
+<configuration>
+
+  <location path="AddPost.aspx">
+    <system.web>
+      <authorization>
+        <deny users="?"/>
+      </authorization>
+    </system.web>
+  </location>
+  <location path="EditPost.aspx">
+    <system.web>
+      <authorization>
+        <deny users="?"/>
+      </authorization>
+    </system.web>
+  </location>
+  <location path="AddPostSuccess.aspx">
+    <system.web>
+      <authorization>
+        <deny users="?"/>
+      </authorization>
+    </system.web>
+  </location>
+  <location path="EditPostSuccess.aspx">
+    <system.web>
+      <authorization>
+        <deny users="?"/>
+      </authorization>
+    </system.web>
+  </location>
+  
+  <location path="CaptchaImage.axd">
+    <system.web>
+      <authorization>
+        <allow users="*"/>
+      </authorization>
+    </system.web>
+  </location>
+  
+  <system.web>
+    <httpRuntime maxRequestLength="13631488" />
+    <httpHandlers>
+      <add verb="GET" path="CaptchaImage.axd" type="MSCaptcha.CaptchaImageHandler, MSCaptcha" />
+    </httpHandlers>      
+  </system.web>
+  
+  <system.web>
+    <authorization>
+      <allow users="*"/>
+    </authorization>
+  </system.web>
+
+</configuration>

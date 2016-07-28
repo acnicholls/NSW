@@ -1,0 +1,23 @@
+﻿using System;
+
+namespace NSW
+{
+    public class PageBase : System.Web.UI.Page
+    {
+        protected override void OnPreInit(EventArgs e)
+        {
+            bool devTypeBool = Request.Browser.IsMobileDevice;
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PageBase.OnPreInit", "Device Type (IsMobile) : " + devTypeBool.ToString(), LogEnum.Debug);
+            if (devTypeBool)
+                MasterPageFile = "~/Mobile.Master";
+        }
+
+        public bool MobileDevice
+        {
+            get
+            {
+                return Request.Browser.IsMobileDevice;
+            }
+        }
+    }
+}

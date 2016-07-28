@@ -1,0 +1,12 @@
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Portal\bin\NSW.dll
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Portal\bin\NSW.pdb
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Portal\bin\NSWDAT.dll
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Portal\bin\NSWINF.dll
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Portal\bin\NSWDAT.pdb
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Portal\bin\NSWINF.pdb
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Portal\obj\Debug\NSW.csprojResolveAssemblyReference.cache
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Portal\obj\Debug\NSW.dll
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Portal\obj\Debug\NSW.pdb
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Portal\bin\FiftyOne.Foundation.dll
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Portal\bin\Microsoft.Web.Infrastructure.dll
+D:\Project Folders\~!projectsWeb\NSW\trunk\NSW_Portal\bin\MSCaptcha.dll

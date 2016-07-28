@@ -1,0 +1,69 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LabelText.aspx.cs" Inherits="NSW.Admin.LabelText" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <asp:Wizard ID="LabelTextWizard" runat="server" DisplayCancelButton="true" DisplaySideBar="false"
+        OnCancelButtonClick="CancelClick" OnFinishButtonClick="FinishClick">
+        <LayoutTemplate>
+            <asp:PlaceHolder ID="wizardStepPlaceholder" runat="server"></asp:PlaceHolder>
+            <asp:PlaceHolder ID="navigationPlaceholder" runat="server"></asp:PlaceHolder>
+        </LayoutTemplate>
+        <WizardSteps>    
+            <asp:WizardStep ID="LabelTextStep" runat="server" Title="Label Language Text Entry">
+                    <span class="failureNotification">
+                        <asp:Literal ID="LabelTextErrorMessage" runat="server"></asp:Literal>
+                    </span>
+                    <asp:ValidationSummary ID="LabelTextValidationSummary" runat="server" CssClass="failureNotification" 
+                         ValidationGroup="LabelTextValidationGroup"/>
+
+                    <div class="labelInfo">
+                        <fieldset class="labelText">
+                            <legend>Label Information</legend>
+                            <p>
+                                <asp:Label ID="lbl_ddlLabelID" runat="server" AssociatedControlID="ddlLabelID" 
+                                    Text="Label ID:" CssClass="lbl_ddlLabelID"></asp:Label>
+                                <asp:DropDownList ID="ddlLabelID" runat="server" 
+                                    ToolTip="The name of the label you are entering text for" 
+                                    CssClass="ddlLabelID" Height="16px" Width="203px" OnSelectedIndexChanged="ddlLabelID_SelectedIndexChanged" 
+                                    ValidationGroup="LabelTextValidationGroup" AutoPostBack="True"></asp:DropDownList>
+                            </p>
+                            <p>                 
+                                <asp:Label ID="lbl_txtEnglish" runat="server" Text="English Text :" 
+                                    AssociatedControlID="txtEnglish" CssClass="lbl_txtEnglish"></asp:Label>
+                                <asp:TextBox ID="txtEnglish" runat="server" TabIndex="1" TextMode="MultiLine" 
+                                    ToolTip="The English text for the associated label" CssClass="txtEnglish"
+                                    Height="184px" Width="584px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtEnglish" 
+                                     CssClass="failureNotification" ErrorMessage="English text is required." ToolTip="English text is required." 
+                                     ValidationGroup="LabelTextValidationGroup">*</asp:RequiredFieldValidator>
+                            </p>
+                            <p>
+                                <asp:Label ID="lbl_txtJapanese" runat="server" Text="Japanese Text :" 
+                                    CssClass="lbl_txtJapanese" AssociatedControlID="txtJapanese"></asp:Label>
+                                <asp:TextBox ID="txtJapanese" runat="server" 
+                                    TabIndex="2" TextMode="MultiLine" 
+                                    ToolTip="Japanese text for the associated label" CssClass="txtJapanese" 
+                                    Height="184px" Width="584px"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtJapanese" 
+                                     CssClass="failureNotification" ErrorMessage="Japanese text is required." ToolTip="Japanese text is required." 
+                                     ValidationGroup="LabelTextValidationGroup">*</asp:RequiredFieldValidator>
+                            </p>
+
+                    </fieldset>
+                </div>
+            </asp:WizardStep>
+        </WizardSteps>
+        <StartNavigationTemplate>
+            <asp:Button ID="StartNextButton" runat="server" ValidationGroup="LabelTextValidationGroup" CommandName="MoveNext" Text="Next" />
+        </StartNavigationTemplate>
+        <StepNavigationTemplate>
+            <asp:Button ID="StepPreviousButton" runat="server" CausesValidation="False" CommandName="MovePrevious" Text="Previous" />
+            <asp:Button ID="StepNextButton" runat="server" ValidationGroup="LabelTextValidationGroup" CommandName="MoveNext" Text="Next" />
+        </StepNavigationTemplate>
+        <FinishNavigationTemplate>
+            <asp:Button ID="CancelButton" runat="server" CausesValidation="false" CommandName="Cancel" Text="Cancel" />
+            <asp:Button ID="FinishPreviousButton" runat="server" CausesValidation="False" CommandName="MovePrevious" Text="Previous" />
+            <asp:Button ID="FinishButton" runat="server" ValidationGroup="LabelTextValidationGroup" CommandName="MoveComplete" Text="Finish" />
+        </FinishNavigationTemplate>
+</asp:Wizard>
+</asp:Content>

@@ -1,0 +1,10 @@
+﻿User-agent: *
+Disallow: /App_Data/
+Disallow: /bin/
+Disallow: /web.config
+Disallow: /Search.aspx
+Disallow: /Styles
+Disallow: /Scripts
+Disallow: /images
+Disallow: /Admin
+Disallow: /Account

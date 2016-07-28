@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+  <Ad>
+    <ImageUrl>D:\Viv_B-Practice\AdRotator_VT\www.asp.net.gif</ImageUrl>
+    <NavigateUrl>http://www.asp.net</NavigateUrl>
+    <AlternateText>ASP.NET Logo</AlternateText>
+    <Keyword>A</Keyword>
+    <Impressions>Technology</Impressions>
+    <Caption>This is the caption for Ad#1</Caption>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>D:\Viv_B-Practice\AdRotator_VT\www.sulekha.com.gif</ImageUrl>
+    <NavigateUrl>http://www.sulekha.net</NavigateUrl>
+    <AlternateText>www.Sulekha.net</AlternateText>
+    <Keyword>S</Keyword>
+    <Impressions>Web Site</Impressions>
+    <Caption>This is the caption for Ad#2</Caption>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>D:\Viv_B-Practice\AdRotator_VT\FlashFile.swf</ImageUrl>
+    <NavigateUrl>
+      AdRotator.aspx?ad=Widgets
+      &target=http://msdn.microsoft.com/widgets/
+    </NavigateUrl>
+    <AlternateText>www.neostream.net</AlternateText>
+    <Keyword>S</Keyword>
+    <Impressions>Flash Site</Impressions>
+    <Caption>This is the caption for Ad#2</Caption>
+  </Ad>
+</Advertisements>

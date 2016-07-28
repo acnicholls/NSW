@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  
+  <connectionStrings>
+    <add name="ApplicationServices" connectionString="Data Source=184.168.47.10;User Id=NSW;Password='Y^8jkhfJHlkjf()O5ytw4';" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  
+  <system.web>
+  
+    <customErrors mode="Off" />
+    
+    <compilation defaultLanguage="c#" debug="true" />
+    
+    <authentication mode="Forms">
+      <forms name="NSW" loginUrl="~/Account/Login.aspx" timeout="2880" />
+    </authentication>
+
+    <membership defaultProvider="MembershipProvider">
+      <providers>
+        <clear />
+        <add name="MembershipProvider" type="NSW.Data.Security.MembershipProvider" connectionStringName="ApplicationServices" enablePasswordRetrieval="false" enablePasswordReset="true" requiresQuestionAndAnswer="false" requiresUniqueEmail="true" maxInvalidPasswordAttempts="5" minRequiredPasswordLength="6" minRequiredNonalphanumericCharacters="0" passwordAttemptWindow="10" applicationName="NSW" />
+      </providers>
+    </membership>
+
+    <profile>
+      <providers>
+        <clear />
+        <add name="AspNetSqlProfileProvider" type="System.Web.Profile.SqlProfileProvider" connectionStringName="ApplicationServices" applicationName="/" />
+      </providers>
+    </profile>
+
+    <roleManager enabled="true" defaultProvider="RoleProvider">
+      <providers>
+        <clear />
+        <add name="RoleProvider" type="NSW.Data.Security.RoleProvider" connectionStringName="ApplicationServices" applicationName="NSW" />
+      </providers>
+    </roleManager>
+    
+    <machineKey decryption="AES" decryptionKey="84E2D388645441527C40824030EED40858295F704C5F3EF840A2B1AF4C868208" validation="HMACSHA256" validationKey="044EE860CEF8DE9A9A7BDD3E95AABE7653F2FFF0163F651743778722C5510F511C12513A3E28BC986D6F9C5F2CF1B1139EB407C332B1092826CBD33DBC15BBE4" />
+  
+  </system.web>
+
+  <location path="Admin">
+    <system.web>
+      <authorization>
+        <allow roles="Admin" />
+        <deny users="*" />
+      </authorization>
+    </system.web>
+  </location>
+
+  <system.webServer>
+    <validation validateIntegratedModeConfiguration="false" />
+    <modules runAllManagedModulesForAllRequests="true" />
+    <handlers>
+      <add name="MSCaptcha" verb="GET" path="CaptchaImage.axd" type="MSCaptcha.CaptchaImageHandler, MSCaptcha" />
+    </handlers>
+  </system.webServer>
+
+
+  <appSettings>
+    <!-- database connection string -->
+    <add key="ConnectionString" value="Data Source=184.168.47.10;User Id=NSW;Password='Y^8jkhfJHlkjf()O5ytw4';" />
+    <!-- logging keys -->
+    <add key="LogSproc" value="insertSiteLog" />
+    <add key="LogType" value="database" />
+    <!-- used to show where the file log should be -->
+    <add key="LogLocation" value="App_Data/Log" />
+    <!-- the following key is used to show the application where it is on the internet -->
+    <add key="webServer" value="mikechi.com" />
+    <!-- the following keys are used for sending emails -->
+    <add key="AdminEmails" value="ac.nicholls@gmail.com,natsuko.thai@gmail.com"/>
+    <add key="MailServer" value="relay-hosting.secureserver.net"/>
+    <add key="MailPort" value="25"/>
+    <add key="MailRequireSSL" value ="false" />  <!-- true or false, no caps, no integers-->
+    <add key="MailRequireSecurity" value="false"/>  <!-- true or false, no caps, no integers-->
+    <add key="MailUser" value="xxx"/>  <!-- put a value here anyway so there's no error -->
+    <add key="MailPassword" value="xxx"/>  <!-- put a value here anyway so there's no error -->
+    <add key="MailFrom" value="do-not-reply@mikechi.com"/>
+    <add key="MailMaxAttachmentLength" value="5242880"/>
+  </appSettings>
+</configuration>

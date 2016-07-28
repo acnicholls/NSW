@@ -1,0 +1,275 @@
+﻿using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
+using System.Web.UI.WebControls;
+
+namespace NSW.Posts
+{
+    public partial class PostList : System.Web.UI.Page
+    {
+        string[] keyPairs;
+        string function = "";
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            keyPairs = Global.GrabKeyPairs(Request.QueryString.ToString());
+            if (!IsPostBack)
+            {
+                LoadDropDownValues();
+                LoadLabelValues();
+                Session["PageNum"] = 1;
+                GrabDataSet();
+            }
+            SetNavButtons();
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostList.GrabDataSet", Session["PageNum"].ToString(), LogEnum.Debug);
+        }
+
+        private void SetNavButtons()
+        {
+            if (Convert.ToInt32(Session["PageNum"]) == 1)
+                this.btnPrev.Visible = false;
+            else
+                this.btnPrev.Visible = true;
+            if (this.CheckDataSetLength() <= (Convert.ToInt32(this.ddlItemsPerPage.SelectedItem.Value) * Convert.ToInt32(Session["PageNum"])))
+                this.btnNext.Visible = false;
+            else
+                this.btnNext.Visible = true;
+        }
+                                                                             
+        private void LoadDropDownValues()
+        {
+            ListItem item = new ListItem("10", "10");
+            this.ddlItemsPerPage.Items.Add(item);
+            item.Selected = true;
+            item = new ListItem("25", "25");
+            this.ddlItemsPerPage.Items.Add(item);
+            item = new ListItem("50", "50");
+            this.ddlItemsPerPage.Items.Add(item);
+            // newest to oldest
+            item = new ListItem(NSW.Data.LabelText.Text("PostList.newToOld"), "fldPost_IntakeDate DESC");
+            this.ddlSortOptions.Items.Add(item);
+            item.Selected = true;
+            // oldest to newest
+            item = new ListItem(NSW.Data.LabelText.Text("PostList.oldToNew"), "fldPost_IntakeDate ASC");
+            this.ddlSortOptions.Items.Add(item);
+            // least to most
+            item = new ListItem(NSW.Data.LabelText.Text("PostList.cheapToExp"), "fldPost_Price ASC");
+            this.ddlSortOptions.Items.Add(item);
+            // most to least
+            item = new ListItem(NSW.Data.LabelText.Text("PostList.expToCheap"), "fldPost_Price DESC");
+            this.ddlSortOptions.Items.Add(item);
+        }
+
+        private void LoadLabelValues()
+        {
+            this.ItemsPerPageLabel.Text = NSW.Data.LabelText.Text("PostList.ItemsPerPageLabel");
+            this.SortOptionsLabel.Text = NSW.Data.LabelText.Text("PostList.SortOptionsLabel");
+            this.btnNext.Text = NSW.Data.LabelText.Text("PostList.btnNext");
+            this.btnPrev.Text = NSW.Data.LabelText.Text("PostList.btnPrev");
+            if(Global.KeyPairValue(keyPairs, "func") == "list")
+                this.CategoryName.Text = NSW.Data.PostCategory.Title(Convert.ToInt32(Request.QueryString["catID"]));
+            if(Global.KeyPairValue(keyPairs, "func") == "search")
+                this.CategoryName.Text = NSW.Data.LabelText.Text("Search.SearchResults");
+            this.emptyListLabel.Text = NSW.Data.LabelText.Text("PostList.EmptyList");
+        }
+                                                                      
+        private string GrabSQL(bool truncate)
+        {
+            // check the url for request variables...userID
+            string strSQL = "Select * from (SELECT ROW_NUMBER() OVER (ORDER BY fldPost_id";
+            strSQL += ") as RowNum, * from tblPosts";
+            // include request variable
+            string limiter = "";
+            function = Global.KeyPairValue(keyPairs, "func");
+            switch (function)
+            {
+                case "list":
+                    {
+                        if (Global.KeyPairContains(keyPairs, "catID"))
+                        {
+                            limiter = Global.KeyPairValue(keyPairs, "catID");
+                            strSQL += " WHERE fldPost_CategoryID=" + limiter.Trim();
+                        }
+                        if (Global.KeyPairContains(keyPairs, "userID"))
+                        {
+                            limiter = Global.KeyPairValue(keyPairs, "userID");
+                            strSQL += " WHERE fldPost_UserID=" + limiter.Trim();
+                        }
+                        strSQL += " and fldPost_Status not in ( 'SOLD', 'EXPIRED' ) ";
+                        break;
+                    }
+                case "search":
+                    {
+                        string strCats = "";
+                        string strTitle = "";
+                        string strDesc = "";
+                        bool cat = false;
+                        bool tit = false;
+                        bool desc = false;
+                        strSQL += " WHERE ";
+                        string catIDs = (string)NSW.Data.Cache.Get("SearchCategories");
+                        string title = (string)NSW.Data.Cache.Get("SearchTitle");
+                        string descr = (string)NSW.Data.Cache.Get("SearchDescription");
+                        if (catIDs != null)
+                        {
+                            strCats = "fldPost_CategoryID in (" + catIDs + ")";
+                            cat = true;
+                        }
+                        if (title != null)
+                        {
+                            strTitle = "fldPost_Title like '%" + title + "%'";
+                            tit = true;
+                        }
+                        if (descr != null)
+                        {
+                            strDesc = "fldPost_Description like '%" + descr + "%'";
+                            desc = true;
+                        }
+                        if (cat & !tit & !desc)
+                            strSQL += strCats;
+                        if (!cat & tit & !desc)
+                            strSQL += strTitle;
+                        if (!cat & !tit & desc)
+                            strSQL += strDesc;
+                        if (cat & tit & !desc)
+                            strSQL += strCats + " AND " + strTitle;
+                        if (cat & !tit & desc)
+                            strSQL += strCats + " AND " + strDesc;
+                        if (!cat & tit & desc)
+                            strSQL += strTitle + " AND " + strDesc;
+                        if (cat & tit & desc)
+                            strSQL += strCats + " AND " + strTitle + " AND " + strDesc;
+                        break;
+                    }
+            }
+            strSQL += ") as Results";
+            if (truncate)
+                return strSQL;
+            strSQL += " WHERE RowNum >= ";
+            ListItem numPerPage = this.ddlItemsPerPage.SelectedItem;
+            int first = 0;
+            if (Convert.ToInt32(Session["PageNum"]) == 1)
+                first = 1;
+            else
+                first = (Convert.ToInt32(numPerPage.Text) * (Convert.ToInt32(Session["PageNum"]) - 1)) + 1;
+            strSQL += first.ToString();
+            strSQL += " and RowNum < " + (first + Convert.ToInt32(numPerPage.Text));
+            strSQL += " ORDER BY ";
+            ListItem sort = this.ddlSortOptions.SelectedItem;
+            strSQL += sort.Value;
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostList.GrabSQL", strSQL, LogEnum.Debug);
+            return strSQL;
+        }
+
+        private void GrabDataSet()
+        {
+            try
+            {
+                SqlConnection postConn = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
+                SqlCommand postComm = postConn.CreateCommand();
+                postComm.CommandType = CommandType.Text;
+                postComm.CommandText = GrabSQL(false);
+                SqlDataAdapter adap = new SqlDataAdapter(postComm);
+                DataSet ds = new DataSet();
+                postConn.Open();
+                adap.Fill(ds);
+                postConn.Close();
+                if (function == "search" && ds.Tables[0].Rows.Count == 0)
+                {
+                    this.rptPostList.Visible = false;
+                    this.emptyListLabel.Visible = true;
+                }
+
+                this.rptPostList.DataSource = ds.Tables[0];
+                this.rptPostList.DataBind();
+                foreach (RepeaterItem item in rptPostList.Items)
+                {
+                    int postID = Convert.ToInt32(ds.Tables[0].Rows[item.ItemIndex]["fldPost_id"]);
+                    // find the controls and place the data in them
+                    Image pic = (Image)item.FindControl("PostImage");
+                    pic.ImageUrl = GetPostPhoto(postID);
+                    HyperLink link = (HyperLink)item.FindControl("PostTitleButton");
+                    link.NavigateUrl = "~/Posts/ViewPost.aspx?postID=" + postID.ToString();
+                    link.Text = ds.Tables[0].Rows[item.ItemIndex]["fldPost_Title"].ToString();
+                    Label price = (Label)item.FindControl("PostPrice");
+                    price.Text = Convert.ToDecimal(ds.Tables[0].Rows[item.ItemIndex]["fldPost_Price"]).ToString("C");
+                    Label desc = (Label)item.FindControl("PostDescription");
+                    string description = ds.Tables[0].Rows[item.ItemIndex]["fldPost_Description"].ToString();
+                    if (description.Length > 300)
+                        desc.Text = description.Substring(0, 300) + "..... " + NSW.Data.LabelText.Text("ClickForMore");
+                    else
+                        desc.Text = description;
+                }
+            }
+            catch (Exception x)
+            {
+                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostList.GrabDataSet", x, LogEnum.Critical);
+            }
+        }
+
+        private string GetPostPhoto(int ID)
+        {
+            DirectoryInfo PhotoFolder = new DirectoryInfo(Server.MapPath("~/Posts/Photos/" + ID.ToString()));
+            if (PhotoFolder.Exists)
+            {
+                FileInfo[] pics = PhotoFolder.GetFiles();
+                if (pics.Length > 0)
+                    return "Photos/" + ID.ToString() + "/" + pics[0].Name;
+                else
+                    return "~/images/noPic.JPG";
+            }
+            else
+                return "~/images/noPic.JPG";
+        }
+
+        protected void btnPrev_Click(object sender, EventArgs e)
+        {
+            int PageNum = Convert.ToInt32(Session["PageNum"]);
+            Session["PageNum"] = PageNum - 1;
+            GrabDataSet();
+            SetNavButtons();
+        }
+
+        protected void btnNext_Click(object sender, EventArgs e)
+        {
+            int PageNum = Convert.ToInt32(Session["PageNum"]);
+            Session["PageNum"] = PageNum + 1;
+            GrabDataSet();
+            SetNavButtons();
+        }
+
+        protected void ddlItemsPerPage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GrabDataSet();
+        }
+
+        protected void ddlSortOptions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GrabDataSet();
+        }
+
+        private int CheckDataSetLength()
+        {
+            try
+            {
+                SqlConnection postConn = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
+                SqlCommand postComm = postConn.CreateCommand();
+                postComm.CommandType = CommandType.Text;
+                postComm.CommandText = GrabSQL(true);
+                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostList.CheckDataSetLength", postComm.CommandText, LogEnum.Debug);
+                SqlDataAdapter adap = new SqlDataAdapter(postComm);
+                DataSet ds = new DataSet();
+                postConn.Open();
+                adap.Fill(ds);
+                postConn.Close();
+                return ds.Tables[0].Rows.Count;
+            }
+            catch (Exception x)
+            {
+                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostList.CheckDataSetLength", x, LogEnum.Critical);
+            }
+            return 0;
+        }
+    }
+}

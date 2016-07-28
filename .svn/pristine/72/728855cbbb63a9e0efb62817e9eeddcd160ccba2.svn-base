@@ -1,0 +1,16 @@
+﻿<%@ Page Title="Natsuko's Sharing Website" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+    CodeBehind="Default.aspx.cs" Inherits="NSW._Default" %>
+
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <h2>
+        Welcome to Natsuko's Sharing Website!
+    </h2>
+    <p>
+        To enter an ad, please <a href="Account/Login.aspx">Log In</a>.
+    </p>
+    <p>
+        You can also find what you're looking for with <a href="">Search</a>.
+    </p>
+</asp:Content>

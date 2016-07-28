@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace NSW.Posts
+{
+    public partial class ContactPostUser : System.Web.UI.Page
+    {
+        string[] keyPairs;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            keyPairs = Global.GrabKeyPairs(Request.QueryString.ToString());
+            LoadLabelValues();
+        }
+
+        private void LoadLabelValues()
+        {
+            this.ContactUserTitle.Text = NSW.Data.LabelText.Text("ContactUser.ContactUserTitle");
+            this.ContactUserInstructions.Text = NSW.Data.LabelText.Text("ContactUser.ContactUserInstructions");
+
+            (this.ContactUserWizardStep0.FindControl("ContactUserEmailLabel") as Label).Text = NSW.Data.LabelText.Text("ContactUser.ContactUserEmailLabel");
+            (this.ContactUserWizardStep0.FindControl("ContactBodyLabel") as Label).Text = NSW.Data.LabelText.Text("ContactUser.ContactBodyLabel");
+            (this.ContactUserWizardStep0.FindControl("ContactEmailRequired") as RequiredFieldValidator).ErrorMessage = NSW.Data.LabelText.Text("ContactUser.ContactEmailRequired");
+            (this.ContactUserWizardStep0.FindControl("ContactBodyRequired") as RequiredFieldValidator).ErrorMessage = NSW.Data.LabelText.Text("ContactUser.ContactBodyRequired");
+            (this.ContactUserWizardStep0.FindControl("IsEmail") as RegularExpressionValidator).ErrorMessage = NSW.Data.LabelText.Text("ContactUser.IsEmail");
+            (this.ContactUserWizardStep0.FindControl("ContactCaptchaRequired") as RequiredFieldValidator).ErrorMessage = NSW.Data.LabelText.Text("ContactUser.ContactCaptchaRequired");
+            (Global.GetControlFromWizard(this.ContactUserWizard, WizardNavigationTempContainer.FinishNavigationTemplateContainerID, "FinishButton") as Button).Text = NSW.Data.LabelText.Text("ContactUser.FinishButton");
+        
+        }                  
+
+        protected void FinishClick(object sender, WizardNavigationEventArgs e)
+        {
+            this.Captcha1.ValidateCaptcha(this.ContactCaptcha.Text.Trim());
+            if (Captcha1.UserValidated)
+            {
+                try
+                {
+                    NSW.Data.EmailMessage email = new Data.EmailMessage();
+                    email.Body = this.ContactBody.Text.Trim();
+                    email.From = new System.Net.Mail.MailAddress(this.ContactEmail.Text.Trim());
+                    email.Subject = "Email from Mikechi.com regarding your post.";
+                    int userID = Convert.ToInt32(Global.KeyPairValue(keyPairs, "userID"));
+                    NSW.Data.User postUser = new Data.User(userID);
+                    email.To.Add(postUser.Email);
+                    email.Send();
+                    Response.Redirect("ContactPostUserSuccess.aspx", true);
+                }
+                catch (Exception x)
+                {
+                    Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "ContactPostUser.FinishClick", x, LogEnum.Critical);
+                }
+            }
+        }
+    }
+}

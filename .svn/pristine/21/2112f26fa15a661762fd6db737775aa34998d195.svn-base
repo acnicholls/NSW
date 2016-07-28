@@ -1,0 +1,51 @@
+﻿using System;
+using System.Web.UI;
+using System.Text;
+using System.IO;
+
+
+namespace NSW
+{
+    public class PageBase : System.Web.UI.Page
+    {
+        protected override void OnPreInit(EventArgs e)
+        {
+            bool devTypeBool = Request.Browser.IsMobileDevice;
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PageBase.OnPreInit", "Device Type (IsMobile) : " + devTypeBool.ToString(), LogEnum.Debug);
+            if (devTypeBool)
+                MasterPageFile = "~/Mobile.Master";
+        }
+
+        public bool MobileDevice
+        {
+            get
+            {
+                return Request.Browser.IsMobileDevice;
+            }
+        }
+#if DEBUG
+        /// <summary>
+        /// Overridden to log the output for debugging
+        /// </summary>
+        /// <param name="writer"></param>
+        protected override void Render(HtmlTextWriter writer)
+        {
+            // *** Write the HTML into this string builder
+            StringBuilder sb = new StringBuilder();
+            StringWriter sw = new StringWriter(sb);
+
+            HtmlTextWriter hWriter = new HtmlTextWriter(sw);
+            base.Render(hWriter);
+
+            // *** store to a string
+            string PageResult = sb.ToString();
+
+            // Log the resulting string
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Page.Render", sb.ToString().Replace(" ", string.Empty), LogEnum.Debug);
+
+            // *** Write it back to the server
+            writer.Write(PageResult);
+        }
+#endif
+    }
+}

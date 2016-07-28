@@ -1,0 +1,22 @@
+﻿<?xml version="1.0"?>
+<configuration>
+
+  <location path="AddPost.aspx">
+    <system.web>
+      <authorization>
+        <deny users="?"/>
+      </authorization>
+    </system.web>
+  </location>
+
+    <system.web>
+      <httpRuntime maxRequestLength="13631488" />
+    </system.web>
+  
+  <system.web>
+    <authorization>
+      <allow users="*"/>
+    </authorization>
+  </system.web>
+
+</configuration>

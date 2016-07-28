@@ -1,0 +1,121 @@
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<title>Report for mikechi.com: Errors</title>
+<link rel="stylesheet" href="Report.css" type="text/css">
+</head>
+<body bgcolor="#FFFFFF" text="#000000" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
+<center>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr valign="top">
+<td rowspan="2" width="65"><img src="logo.gif" width="65" height="52"></td>
+<td align="center">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td background="head_back.gif"><img src="TreeBlank.gif" width="47" height="45"></td>
+<td width="100%" align="center" valign="middle" background="head_back.gif" nowrap>
+<span class="ReportTitle">Report for mikechi.com: </span>
+<span class="CategoryTitle">Errors</span>
+</td>
+<td width="112"><a href="http://www.weblogexpert.com/" target="_blank"><img src="powered.gif" width="112" height="45" border="0" alt="Web log analyzer"></a></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="7">
+<tr><td width="100%" height="7" background="top_line.gif"></td></tr>
+</table>
+</td>
+</tr>
+</table>
+<table width="90%" border=0 cellpadding=1 cellspacing=1>
+<tr>
+<td valign="middle" align="left">
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td valign="middle">Time range: 2014-08-08 17:01:44 - 2015-04-10 07:24:32</td>
+<td valign="middle"></td>
+</tr>
+</table>
+</td>
+<td valign="middle" align="right">Generated on Sat Apr 11, 2015 - 22:52:37</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td height="7"></td></tr>
+<tr><td width="100%" height="7" background="top_line.gif"></td></tr>
+</table>
+<br>
+<a name="Types"></a>
+<table cellpadding="0" border="0" cellspacing="0" width="90%">
+<tr>
+<td width="10"><img src="section_left.gif" width="10" height="20" border="0"></td>
+<td class="SectionTitle" nowrap>Types</td>
+<td width="10"><img src="section_right.gif" width="10" height="20" border="0"></td>
+</tr>
+</table>
+<p><span class="ChartTitle">Daily Error Types</span><br>
+<img src="Daily_Error_Types.png" width="600" height="300" border="0"></p><br>
+<p><span class="ChartTitle">Error Types</span><br>
+<img src="Error_Types.png" width="600" height="300" border="0"></p><br>
+<p></p>
+<span class="TableTitle">Error Types</span><br>
+<table border=0 cellspacing=0 cellpadding=0 height=6><tr><td></td></tr></table>
+<table border=0 bgcolor="#555555" cellspacing=0 cellpadding=0 width="90%">
+<tr>
+<td>
+<table border=0 cellspacing=1 cellpadding=2 width="100%">
+<tr class="TableTitleRow">
+<td width="0%" class="TableCell"></td>
+<td width="100%" class="TableCell">Error</td>
+<td width="0%" class="TableCell">Hits</td>
+
+</tr>
+<tr class="TableRow1">
+<td class="TableCell">1</td>
+<td class="TableCell">404 Not Found</td>
+<td class="TableCell">1,320</td>
+
+</tr>
+<tr class="TableRow2">
+<td class="TableCell">2</td>
+<td class="TableCell">500 Internal Server Error</td>
+<td class="TableCell">122</td>
+
+</tr>
+<tr class="TableRow1">
+<td class="TableCell">3</td>
+<td class="TableCell">403 Forbidden</td>
+<td class="TableCell">21</td>
+
+</tr>
+<tr class="TableRow2">
+<td class="TableCell">4</td>
+<td class="TableCell">400 Bad Request</td>
+<td class="TableCell">15</td>
+
+</tr>
+<tr class="TableRow1">
+<td class="TableCell">5</td>
+<td class="TableCell">401 Unauthorized</td>
+<td class="TableCell">1</td>
+
+</tr>
+<tr class="TableSummaryRow">
+<td class="TableCell"></td>
+<td class="TableCell">Total</td>
+<td class="TableCell">1,479</td>
+
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<p>
+<br>
+<p>&nbsp;</p>
+</center>
+</body>
+</html>

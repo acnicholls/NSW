@@ -1,0 +1,109 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+using System.Web.Security;
+
+namespace NSW
+{
+    public partial class SiteMaster : System.Web.UI.MasterPage
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            decideLanguage();
+            setText();
+        }
+
+        private void decideLanguage()
+        {
+            // set the session variale according to user input
+            if (chkJanapese.Checked)
+                Session["DisplayLanguage"] = "Japanese";
+            if (chkEnglish.Checked)
+                Session["DisplayLanguage"] = "English";
+            // For the default session where nothing is checked, set the check
+            // depending on session variable declared at the beginning of session
+            switch (Session["DisplayLanguage"].ToString())
+            {
+                case "English":
+                    {
+                        if (!this.chkEnglish.Checked)
+                            this.chkEnglish.Checked = true;
+                        break;
+                    }
+                case "Japanese":
+                    {
+                        if (!this.chkJanapese.Checked)
+                            this.chkJanapese.Checked = true;
+                        break;
+                    }
+            }
+        }
+
+        private void setText()
+        {
+            // now set all the label text
+            // title of the page
+            lblTitle.Text = NSW.Data.LabelText.Text("lblTitle");
+            // Welcome text
+            Label newLabel = (Label)this.HeadLoginView.FindControl("lblWelcome");
+            if (newLabel != null)
+                newLabel.Text = NSW.Data.LabelText.Text("lblWelcome");
+            // Title bar button "Login"
+            newLabel = (Label)this.HeadLoginView.FindControl("lblLogin");
+            if (newLabel != null)
+                newLabel.Text = NSW.Data.LabelText.Text("lblLogin");
+            // logout button
+            if (Page.User.Identity.IsAuthenticated)
+            {
+                LoginStatus newStatus = (LoginStatus)this.HeadLoginView.FindControl("HeadLoginStatus");
+                if (newStatus != null)
+                    newStatus.LogoutText = NSW.Data.LabelText.Text("lblLogout");
+            }
+            // Menu bar
+            MenuItem searchItem = new MenuItem(NSW.Data.LabelText.Text("btnSearch"), null, null, "~/Search.aspx");
+            MenuItem homeItem = new MenuItem(NSW.Data.LabelText.Text("btnHome"), null, null, "~/Default.aspx");
+            this.NavigationMenu.Items.Clear();
+            this.NavigationMenu.Items.Add(homeItem);
+            this.NavigationMenu.Items.Add(searchItem);
+            if (Page.User.Identity.IsAuthenticated)
+            {
+                NSW.Data.User cacheUser = new Data.User(Page.User.Identity.Name);
+                if (cacheUser.ID > 0)
+                {
+                    // admin menu
+                    if (cacheUser.UserRole == Role.Admin)
+                    {
+                        MenuItem adminItem = new MenuItem(NSW.Data.LabelText.Text("btnAdmin"), null, null, null);
+                        MenuItem labelItem = new MenuItem( NSW.Data.LabelText.Text("btnLabel"), null, null, "~/Admin/LabelText.aspx");
+                        adminItem.ChildItems.Add(labelItem);
+                        this.NavigationMenu.Items.Add(adminItem);
+                    }
+                    // member menu
+                    if (cacheUser.UserRole == Role.Member | cacheUser.UserRole == Role.Admin)
+                    {
+                        MenuItem memberItem = new MenuItem(NSW.Data.LabelText.Text("btnMember"), null, null, null);
+                        MenuItem passwordItem = new MenuItem(NSW.Data.LabelText.Text("btnPassword"), null, null, "~/Account/ChangePassword.aspx");
+                        MenuItem accountItem = new MenuItem( NSW.Data.LabelText.Text("btnProfile"), null, null, "~/Account/Profile.aspx");
+                        memberItem.ChildItems.Add(passwordItem);
+                        memberItem.ChildItems.Add(accountItem);
+                        this.NavigationMenu.Items.Add(memberItem);
+                    }
+                }
+            }
+            // language chooser
+            this.lblDisplayLanguage.Text = NSW.Data.LabelText.Text("lblDisplayLanguage");
+            this.chkEnglish.Text = NSW.Data.LabelText.Text("chkEnglish");
+            this.chkJanapese.Text = NSW.Data.LabelText.Text("chkJanapese");
+            // footer
+            this.lblFooter.Text = NSW.Data.LabelText.Text("lblFooter");
+            // force all children to refresh
+            //this.MainContent
+            Control MainControl = this.FindControl("MainContent");
+                
+        }
+    }
+}

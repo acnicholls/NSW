@@ -1,0 +1,8 @@
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DBUpdater\bin\Release\NSW_DBUpdater.exe.config
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DBUpdater\bin\Release\NSW_DBUpdater.exe
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DBUpdater\bin\Release\NSW_DBUpdater.pdb
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DBUpdater\bin\Release\NSWINF.dll
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DBUpdater\bin\Release\NSWINF.pdb
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DBUpdater\obj\Release\NSW_DBUpdater.csprojResolveAssemblyReference.cache
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DBUpdater\obj\Release\NSW_DBUpdater.exe
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DBUpdater\obj\Release\NSW_DBUpdater.pdb

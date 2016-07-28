@@ -1,0 +1,154 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace NSW.Account
+{
+    public partial class Register : System.Web.UI.Page
+    {
+        NSW.Data.User newUser;
+        NSW.Data.Security.MembershipProvider Membership = new Data.Security.MembershipProvider();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Register.Page_Load", "Here", LogEnum.Debug);
+            if (!IsPostBack)
+            {
+                // initialize the newUser object
+                newUser = new Data.User();
+                // add postal codes to the drop down
+                SqlConnection regConn = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
+                SqlCommand regComm = regConn.CreateCommand();
+                regComm.CommandType = CommandType.Text;
+                regComm.CommandText = "Select fldPostal_Code from tblPostalCodes";
+                DataSet ds = new DataSet();
+                SqlDataAdapter adap = new SqlDataAdapter(regComm);
+                regConn.Open();
+                adap.Fill(ds);
+                regConn.Close();
+                this.PostalCode.Items.Clear();
+                this.PostalCode.Items.Add("Select One...");
+                foreach(DataRow dr in ds.Tables[0].Rows)
+                {
+                    this.PostalCode.Items.Add(dr["fldPostal_Code"].ToString());
+                }
+            }
+            else
+            {
+                NSW.Data.User cacheUser = (NSW.Data.User)NSW.Data.Cache.Get("User");
+                if (cacheUser != null)
+                    newUser = cacheUser;
+                else
+                    newUser = new Data.User();
+            }
+        }
+
+        protected void RegisterUser_CreatedUser(object sender, EventArgs e)
+        {
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Register.RegisterUser_CreatedUser", "Here", LogEnum.Debug);
+            // now log the user in
+            FormsAuthentication.SetAuthCookie(newUser.Name, false /* createPersistentCookie */);
+            string continueUrl = Request.QueryString["ReturnUrl"];
+            if (String.IsNullOrEmpty(continueUrl))
+            {
+                continueUrl = "~/";
+            }
+            Response.Redirect(continueUrl);
+        }
+
+        protected void PreviousClick(object sender, WizardNavigationEventArgs e)  
+        {
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Register.PreviousClick", "Here", LogEnum.Debug);
+            // go back one screen.
+        }
+
+        protected void FinishClick(object sender, WizardNavigationEventArgs e)  
+        {
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Register.FinishClick", "Here", LogEnum.Debug);
+            string errorMessage = "";
+            bool valid = true;
+            // grab screen values
+            TextBox phone = (TextBox)RegisterUser.ActiveStep.FindControl("PhoneNumber");
+            DropDownList postal = (DropDownList)RegisterUser.ActiveStep.FindControl("PostalCode");
+            // test screen values
+            string phoneNumber = phone.Text;
+            phoneNumber = phoneNumber.Replace(" ", string.Empty);
+            if (phoneNumber.Length > 0)
+            {
+                if (phoneNumber.Length == 10 | phoneNumber.Length == 11)
+                {   }
+                else
+                {
+                    errorMessage += "Please enter a valid phone number/r/n";  // grab from database, english or japanese
+                    valid = false;
+                }
+            }
+            if (postal.SelectedItem.Text == "Select One...")
+            {
+                errorMessage += "Please select a valid postal code.";     // grab from database english or japanese
+                valid = false;
+            }
+            if (valid)
+            {
+                // add the values to the cahced user and save to db
+                newUser.Phone = phone.Text.Trim();
+                newUser.PostalCode = postal.SelectedItem.Text.Trim();
+                NSW.Data.Cache.Add("User", newUser);
+                newUser.insertUser();
+                RegisterUser_CreatedUser(sender, EventArgs.Empty);
+            }
+            else
+            {
+                this.Step1ErrorMessage.Text = errorMessage;
+                e.Cancel = true;
+            }
+        }
+
+        protected void NextClick(object sender, WizardNavigationEventArgs e)    
+        {
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Register.NextClick", "Here", LogEnum.Debug);
+            string errorMessage = "";
+            bool valid = true;
+            // grab screen values
+            TextBox username = (TextBox)RegisterUser.ActiveStep.FindControl("UserName");
+            TextBox password = (TextBox)RegisterUser.ActiveStep.FindControl("Password");
+            TextBox email = (TextBox)RegisterUser.ActiveStep.FindControl("Email");
+            // test the values
+            if (NSW.Data.User.Exists(email.Text))
+            {
+                errorMessage += "The email you entered is already in use. Try recovering the password.\r\n";
+                valid = false;
+            }
+            if (password.Text.Length < Membership.MinRequiredPasswordLength)
+            {
+                errorMessage += "Password must be at least " + Membership.MinRequiredPasswordLength.ToString() + " characters.";
+                valid = false;
+            }
+            if (valid)
+            {
+                // add the values to the user object and cache it
+                newUser.Name = username.Text.Trim();
+                newUser.Password = password.Text.Trim();
+                newUser.Email = email.Text.Trim();
+                NSW.Data.Cache.Add("User", newUser);
+            }
+            else
+            {
+                this.Step1ErrorMessage.Text = errorMessage;
+                e.Cancel = true;
+            }
+        }
+
+        private void LoadLabelValues()
+        {
+            // declare all text values for all labels
+
+        }
+    }
+}

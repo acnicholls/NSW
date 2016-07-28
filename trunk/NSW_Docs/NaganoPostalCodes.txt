@@ -1,0 +1,1682 @@
+3810000 nagano When there is no description in below. 
+3800918 nagano ARCS 
+3812247 nagano aokijima 
+3812242 nagano aokijimamachiaokijima 
+3812241 nagano aokijimamachiaokijimaotsu(956banchiigai) 
+3812205 nagano aokijimamachiotsuka 
+3812206 nagano aokijimamachitsunashima 
+3810001 nagano akanuma 
+3800838 nagano agatamachi 
+3800888 nagano ageya 
+3810054 nagano asakawa 
+3810056 nagano asakawaoshida 
+3810072 nagano asakawakiyomizu 
+3810057 nagano asakawanishijo 
+3810066 nagano asakawanishihira 
+3810073 nagano asakawahatayama 
+3810064 nagano asakawahigashijo 
+3810062 nagano asakawafukuoka 
+3800846 nagano asahimachi 
+3800941 nagano amori 
+3800945 nagano amorikyokadai 
+3800961 nagano amorikoichi 
+3800956 nagano amorikoji 
+3800944 nagano amorikomemura 
+3800953 nagano amorisaihoku 
+3800954 nagano amorisaihokudanchi 
+3800943 nagano amorisashide 
+3800957 nagano amoridaimon 
+3800955 nagano amorinishigawara 
+3800804 nagano araya 
+3810015 nagano ishiwata 
+3800883 nagano izumidaira 
+3800854 nagano isemachi 
+3800958 nagano isemiya 
+3812202 nagano ichiba 
+3812243 nagano inasato 
+3812211 nagano inasatomachishimohigano 
+3812214 nagano inasatomachitamaki 
+3812217 nagano inasatomachichuo 
+3812215 nagano inasatomachinakahigano 
+3810042 nagano inada 
+3800911 nagano inaba 
+3800915 nagano inabakamisenda 
+3800916 nagano inabanakasenda 
+3800912 nagano inabahizume 
+3800917 nagano inabaminamimata 
+3800914 nagano inabamotai 
+3800901 nagano imachi 
+3800887 nagano iriyama 
+3800802 nagano uematsu 
+3810085 nagano uwano 
+3800867 nagano oshoji 
+3812703 nagano ookaotsu 
+3812704 nagano ookako 
+3812701 nagano ookanakamaki 
+3812705 nagano ookahirosaki 
+3812702 nagano ookahei 
+3812207 nagano ohashiminami 
+3810004 nagano omachi 
+3800936 nagano okadamachi 
+3812212 nagano oshimadamachi 
+3810053 nagano kagurabashi 
+3810023 nagano kazama 
+3888008 nagano kassemba 
+3800881 nagano kadosawa 
+3812222 nagano kanaida 
+3810007 nagano kanebako 
+3810082 nagano kamikomazawa 
+3800821 nagano kamichitosemachi 
+3800858 nagano kaminishinomoncho 
+3800913 nagano kawaishinden 
+3812232 nagano kawanakajimachowakabacho 
+3812226 nagano kawanakajimamachiimai 
+3812227 nagano kawanakajimamachiimaihara 
+3812234 nagano kawanakajimamachiimazato 
+3812233 nagano kawanakajimamachikamihigano 
+3812224 nagano kawanakajimamachihara 
+3812221 nagano kawanakajimamachimikuriya 
+3812231 nagano kawanakajimamachiyotsuya 
+3800855 nagano ganzekicho 
+3800826 nagano kitaishidocho 
+3810014 nagano kitaowaribe 
+3810075 nagano kitago 
+3810035 nagano kitajomachi 
+3810025 nagano kitanagaike 
+3810005 nagano kitahori 
+3800866 nagano kitsuneike 
+3814301 nagano kinasa 
+3814303 nagano kinasakusagano 
+3814302 nagano kinasahikage 
+3810045 nagano kirihara 
+3800921 nagano kurita 
+3800927 nagano kuritakitanaka 
+3800942 nagano koshibami 
+3810017 nagano kojima 
+3800875 nagano konabe 
+3800833 nagano gondocho 
+3800863 nagano sakaecho 
+3810061 nagano sakanaka 
+3800885 nagano sakura 
+3800862 nagano sakuraecho 
+3810013 nagano sakurashinmachi 
+3800948 nagano sashideminami 
+3812223 nagano satojima 
+3800812 nagano sanaecho 
+3810081 nagano sansai 
+3812244 nagano sambonyanaginishi 
+3812245 nagano sambonyanagihigashi 
+3888004 nagano shinonoiai 
+3888015 nagano shinonoiishikawa 
+3888016 nagano shinonoiutabi 
+3812225 nagano shinonoiokada 
+3888006 nagano shinonoiombegawa 
+3888019 nagano shinonoikinebuchi 
+3812235 nagano shinonoikomatsubara 
+3888003 nagano shinonoikomori 
+3888014 nagano shinonoishiozaki 
+3888002 nagano shinonoitofukuji 
+3888018 nagano shinonoinishiderao 
+3888011 nagano shinonoifusegomyo 
+3888007 nagano shinonoifusetakada 
+3888012 nagano shinonoifutatsuyanagi 
+3888017 nagano shinonoiyamabuse 
+3888005 nagano shinonoiyokota 
+3810008 nagano shimokomazawa 
+3812216 nagano shimohigano 
+3810063 nagano shari 
+3800877 nagano shobu 
+3810065 nagano shinkoji 
+3812352 nagano shinkomachiakada 
+3812344 nagano shinkomachiageo 
+3812358 nagano shinkomachiimaizumi 
+3812343 nagano shinkomachisakurai 
+3812359 nagano shinkomachisamizu 
+3812341 nagano shinkomachishimodaira 
+3812355 nagano shinkomachitakano 
+3812354 nagano shinkomachitazawa 
+3812353 nagano shinkomachitanokuchi 
+3812357 nagano shinkomachihaibara 
+3812351 nagano shinkomachihinota 
+3812347 nagano shinkomachifurufuji 
+3812342 nagano shinkomachimiyadaira 
+3812346 nagano shinkomachiyasuniwa 
+3812356 nagano shinkomachiyoshiwara 
+3812345 nagano shinkomachiwakuike 
+3812404 nagano shinshushinmachikamijo 
+3812401 nagano shinshushinmachikoedo 
+3812406 nagano shinshushinmachisatohokari 
+3812413 nagano shinshushinmachishimoichiba 
+3812405 nagano shinshushinmachishinmachi 
+3812424 nagano shinshushinmachiso 
+3812411 nagano shinshushinmachitakebusa 
+3812415 nagano shinshushinmachinakamaki 
+3812421 nagano shinshushinmachinobushina 
+3812423 nagano shinshushinmachihiharanishi 
+3812422 nagano shinshushinmachihiharahigashi 
+3812416 nagano shinshushinmachihirosaki 
+3812414 nagano shinshushinmachimakidanaka 
+3812412 nagano shinshushinmachimakinoshima 
+3812403 nagano shinshushinmachiminochi 
+3812402 nagano shinshushinmachiyamakamijo 
+3812407 nagano shinshushinmachiyamahokari 
+3800873 nagano shinsuwa 
+3800873 nagano shinsuwacho 
+3800835 nagano shindencho 
+3800853 nagano shinmachi 
+3888020 nagano shinmei 
+3800825 nagano suehirocho 
+3800844 nagano suwacho 
+3810071 nagano daigakubo 
+3800841 nagano daimoncho 
+3810034 nagano takada 
+3810087 nagano tako 
+3800884 nagano tatara 
+3800864 nagano tatsumachi 
+3810086 nagano tanaka 
+3800815 nagano tamachi 
+3812246 nagano tambajima 
+3810002 nagano tsuno 
+3800872 nagano tsumashina 
+3800901 nagano tsuruga(imachi) 
+3800821 nagano tsuruga(kamichitosemachi) 
+3800833 nagano tsuruga(gondocho) 
+3800812 nagano tsuruga(sanaecho) 
+3800815 nagano tsuruga(tamachi) 
+3800834 nagano tsuruga(toigoshomachi) 
+3800902 nagano tsuruga(nakazeki) 
+3800906 nagano tsuruga(nanase) 
+3800904 nagano tsuruga(nanasenakamachi) 
+3800905 nagano tsuruga(nanasenambu) 
+3800814 nagano tsuruga(nishitsurugamachi) 
+3800811 nagano tsuruga(higashitsurugamachi) 
+3800813 nagano tsuruga(midoricho) 
+3800822 nagano tsuruga(minamichitosemachi) 
+3800903 nagano tsuruga(minemura) 
+3800834 nagano toigoshomachi 
+3814101 nagano togakushi 
+3814103 nagano togakushisoyama 
+3814104 nagano togakushitochiwara 
+3814102 nagano togakushitoyoka 
+3810041 nagano tokuma 
+3800882 nagano tomida 
+3810006 nagano tomitake 
+3891104 nagano toyonomachiasano 
+3891106 nagano toyonomachiishi 
+3891102 nagano toyonomachiokura 
+3891103 nagano toyonomachikanisawa 
+3891101 nagano toyonomachikawatani 
+3891105 nagano toyonomachitoyono 
+3891107 nagano toyonomachiminamigo 
+3810044 nagano nakagoe 
+3800935 nagano nakagosho 
+3800934 nagano nakagoshomachi 
+3813203 nagano nakajo 
+3813202 nagano nakajokusagano 
+3813205 nagano nakajosumeragi 
+3813201 nagano nakajohidaka 
+3813204 nagano nakajomiyamasa 
+3810074 nagano nakazone 
+3800843 nagano nagatocho 
+3800906 nagano nanase 
+3800904 nagano nanasenakamachi 
+3800905 nagano nanasenambu 
+3813164 nagano naniaiotsu 
+3813163 nagano naniaiki 
+3813165 nagano naniaiko 
+3813161 nagano naniaitei 
+3813166 nagano naniaihei 
+3813162 nagano naniaibo 
+3810031 nagano nishiowaribe 
+3800845 nagano nishigocho 
+3810083 nagano nishisansai 
+3800814 nagano nishitsurugamachi 
+3800871 nagano nishinaganocho 
+3800857 nagano nishinomoncho 
+3800842 nagano nishimachi 
+3810037 nagano nishiwada 
+3800801 nagano hakoshimizu 
+3800865 nagano hanasakicho 
+3800832 nagano higashigocho 
+3888001 nagano higashisainami 
+3800811 nagano higashitsurugamachi 
+3800852 nagano higashinomoncho 
+3800831 nagano higashimachi 
+3810038 nagano higashiwada 
+3800947 nagano hirashiba 
+3800946 nagano hirashibadai 
+3810036 nagano hirabayashi 
+3800886 nagano hirose 
+3812213 nagano hirota 
+3810003 nagano hoyasu 
+3812203 nagano mashimamachikawai 
+3812204 nagano mashimamachimashima 
+3810026 nagano matsuoka 
+3811226 nagano matsushironsen 
+3811234 nagano matsushiromachiiwano 
+3811211 nagano matsushiromachiomuro 
+3811213 nagano matsushiromachioshimada 
+3811233 nagano matsushiromachikiyono 
+3811214 nagano matsushiromachishiba 
+3811224 nagano matsushiromachijoto 
+3811235 nagano matsushiromachijohoku 
+3811222 nagano matsushiromachitoyosaka 
+3811232 nagano matsushiromachinishijo 
+3811215 nagano matsushiromachinishiterao 
+3811221 nagano matsushiromachihigashijo 
+3811225 nagano matsushiromachihigashiterao 
+3811212 nagano matsushiromachimakishima 
+3811231 nagano matsushiromachimatsushiro 
+3810022 nagano mamejima 
+3810052 nagano mayumida 
+3888013 nagano mikotogawa 
+3810076 nagano mitsude 
+3800813 nagano midoricho 
+3811223 nagano minakamidai 
+3800836 nagano minamiagatamachi 
+3800824 nagano minamiishidocho 
+3810033 nagano minamitakada 
+3800823 nagano minamichitose 
+3800822 nagano minamichitosemachi 
+3810024 nagano minaminagaike 
+3800837 nagano minaminagano(habashita) 
+3810016 nagano minamihori 
+3800952 nagano miyaoki 
+3800803 nagano miwa 
+3800816 nagano miwatamachi 
+3810011 nagano murayama 
+3800874 nagano mosuge 
+3800851 nagano motoyoshicho 
+3810055 nagano yashikida 
+3810021 nagano yashima 
+3810012 nagano yanagihara 
+3800805 nagano yanagimachi 
+3800876 nagano yamadanaka 
+3800861 nagano yokosawacho 
+3800856 nagano yokomachi 
+3800807 nagano yokoyama 
+3810088 nagano yoshi 
+3810043 nagano yoshida 
+3800806 nagano yodogabashi 
+3800928 nagano wakasato 
+3810084 nagano wakatsukihigashijo 
+3810051 nagano wakatsukidanchi 
+3810089 nagano wakatsukinishijo 
+3810103 nagano wakahokawada 
+3810102 nagano wakahohoshina 
+3810101 nagano wakahowatauchi 
+3812201 nagano wakahoshijima(1298-1835banchi) 
+3810104 nagano wakahoshijima[sonota] 
+3800847 nagano wakamatsucho 
+3810032 nagano wakamiya 
+3990000 matsumoto When there is no description in below. 
+3997402 matsumoto aida 
+3900812 matsumoto agata 
+3997415 matsumoto akanuta 
+3900802 matsumoto asahi 
+3900303 matsumoto asamaonsen 
+3901702 matsumoto azusagawaazusa 
+3901703 matsumoto azusagawaueno 
+3901701 matsumoto azusagawayamato 
+3901504 matsumoto azumi(inekoki) 
+3901501 matsumoto azumi(onota) 
+3901516 matsumoto azumi(kamikochi) 
+3901514 matsumoto azumi(sawando) 
+3901502 matsumoto azumi(shimashima) 
+3901515 matsumoto azumi(shirahone) 
+3901513 matsumoto azumi(suzuran) 
+3901511 matsumoto azumi(sengokudaira) 
+3901512 matsumoto azumi(naranoki) 
+3901503 matsumoto azumi(hashiba) 
+3901506 matsumoto azumi(bandokoro) 
+3901507 matsumoto azumi(miyanohara) 
+3901520 matsumoto azumi[sonota] 
+3997403 matsumoto anazawa 
+3900861 matsumoto arigasaki 
+3900867 matsumoto arigasakidai 
+3900831 matsumoto igawajo 
+3900845 matsumoto ishishiba(1,2chome) 
+3990007 matsumoto ishishiba(3,4chome) 
+3997405 matsumoto itaba 
+3990004 matsumoto ichiba 
+3900827 matsumoto idegawa 
+3900826 matsumoto idegawamachi 
+3901131 matsumoto imai 
+3900222 matsumoto iriyamabe 
+3900813 matsumoto uzuhashi 
+3990023 matsumoto uchida 
+3900874 matsumoto ote 
+3900304 matsumoto omura 
+3900314 matsumoto okadaibuka 
+3900313 matsumoto okadashimokada 
+3900315 matsumoto okadamachi 
+3900312 matsumoto okadamatsuoka 
+3900876 matsumoto kaichi 
+3997413 matsumoto kanayamamachi 
+3900837 matsumoto kamada 
+3997417 matsumoto kariyaharamachi 
+3900822 matsumoto kanda 
+3901243 matsumoto kambayashi 
+3900872 matsumoto kitafukashi 
+3900871 matsumoto kiri 
+3901132 matsumoto kuukohigashi 
+3997401 matsumoto gojo 
+3990024 matsumoto kotobukikoaka 
+3990012 matsumoto kotobukishirasebuchi 
+3990025 matsumoto kotobukidai 
+3990021 matsumoto kotobukitoyoka 
+3990011 matsumoto kotobukikita 
+3990026 matsumoto kotobukinaka 
+3990027 matsumoto kotobukiminami 
+3990039 matsumoto koyakita 
+3990038 matsumoto koyaminami 
+3990033 matsumoto sasaga 
+3900847 matsumoto sasabe 
+3900221 matsumoto satoyamabe 
+3900877 matsumoto sawamura 
+3900301 matsumoto shinagura 
+3998251 matsumoto shimauchi(9820,9821,9823-9830,9864banchi-ijo) 
+3900851 matsumoto shimauchi[sonota] 
+3900852 matsumoto shimadachi 
+3900805 matsumoto shimizu 
+3900875 matsumoto josei 
+3900807 matsumoto joto 
+3900828 matsumoto shonai 
+3900866 matsumoto joyama 
+3900863 matsumoto shiraita 
+3900865 matsumoto shimbashi 
+3900305 matsumoto soza 
+3900842 matsumoto soyano 
+3997418 matsumoto sorimachi 
+3900834 matsumoto takamiyanaka 
+3900835 matsumoto takamiyahigashi 
+3900844 matsumoto takamiyanishi 
+3900843 matsumoto takamiyaminami 
+3900836 matsumoto takamiyakita 
+3900811 matsumoto chuo 
+3900821 matsumoto tsukama 
+3997414 matsumoto tononoiri 
+3997404 matsumoto toriide 
+3997411 matsumoto nakagawa 
+3900816 matsumoto nakajo 
+3900823 matsumoto nakayama 
+3900824 matsumoto nakayamadai 
+3901611 matsumoto nagawa 
+3900841 matsumoto nagisa 
+3997416 matsumoto nanaarashi 
+3900825 matsumoto namiyanagi 
+3901241 matsumoto niimura 
+3990006 matsumoto nomizonishi 
+3990034 matsumoto nomizohigashi 
+3990005 matsumoto nomizomokko 
+3901401 matsumoto hata 
+3900817 matsumoto habaue 
+3900316 matsumoto hara 
+3990014 matsumoto hiratahigashi 
+3990015 matsumoto hiratanishi 
+3900815 matsumoto fukashi 
+3900833 matsumoto futaba 
+3997412 matsumoto hofukujimachi 
+3900317 matsumoto hora 
+3900814 matsumoto honjo 
+3990022 matsumoto matsubara 
+3900873 matsumoto marunouchi 
+3900302 matsumoto misayama 
+3900801 matsumoto misuzu 
+3900311 matsumoto mizukuma 
+3900306 matsumoto minamiasama 
+3900846 matsumoto minamihara 
+3900832 matsumoto minamimatsumoto 
+3990001 matsumoto miyata 
+3900862 matsumoto miyabuchi 
+3900864 matsumoto miyabuchihonmura 
+3990035 matsumoto muraimachikita 
+3990037 matsumoto muraimachinishi 
+3990036 matsumoto muraimachiminami 
+3900806 matsumoto metoba 
+3900803 matsumoto motomachi 
+3900804 matsumoto yokota 
+3990002 matsumoto yoshino 
+3900848 matsumoto ryoshima 
+3901242 matsumoto wada 
+3860000 ueda When there is no description in below. 
+3860155 ueda aokubo 
+3860041 ueda akiwa 
+3860411 ueda ikuta 
+3860153 ueda iwashita 
+3860001 ueda ueda 
+3861102 ueda uedahara 
+3860003 ueda ueno 
+3861546 ueda urano 
+3860006 ueda urushido 
+3860024 ueda ote 
+3860152 ueda oya 
+3861543 ueda oka 
+3860323 ueda kakeyuonsen 
+3861103 ueda kabatake 
+3861108 ueda kabatakeotsu 
+3860042 ueda kamishiojiri 
+3860508 ueda kamitakeshi 
+3860404 ueda kamimaruko 
+3861541 ueda kamimuroga 
+3861213 ueda koaso 
+3861106 ueda koizumi 
+3861545 ueda kodo 
+3861324 ueda goka 
+3860016 ueda kokubu 
+3860005 ueda kosato 
+3860403 ueda koshigoe 
+3861322 ueda kojima 
+3860033 ueda gosho 
+3860031 ueda komaki 
+3860014 ueda zaimokucho 
+3862201 ueda sanadamachiosa 
+3862203 ueda sanadamachisoehi 
+3862202 ueda sanadamachimotohara 
+3860401 ueda shiokawa 
+3860043 ueda shimoshiojiri 
+3860503 ueda shimotakeshi 
+3861211 ueda shimonogo 
+3861214 ueda shimonogootsu 
+3861101 ueda shimonojo 
+3860406 ueda shimomaruko 
+3861542 ueda shimomuroga 
+3861435 ueda junin 
+3861434 ueda shinmachi 
+3862204 ueda sugadairakogen 
+3860002 ueda sumiyoshi 
+3860032 ueda suwagata 
+3860502 ueda takeshioki 
+3860504 ueda takeshiozawane 
+3860507 ueda takeshikamihoniri 
+3860506 ueda takeshishimohoniri 
+3860501 ueda takeshitoya 
+3860505 ueda takeshiyori 
+3860012 ueda chuo 
+3860013 ueda chuohigashi 
+3860023 ueda chuonishi 
+3860011 ueda chuokita 
+3861107 ueda tsuiji 
+3861433 ueda tezuka 
+3860025 ueda tenjin 
+3860015 ueda tokiiri 
+3860018 ueda tokida 
+3860027 ueda tokiwagi 
+3860004 ueda tonoshiro 
+3860407 ueda nagase 
+3861325 ueda nakano 
+3860034 ueda nakanojo 
+3860405 ueda nakamaruko 
+3861544 ueda nikoda 
+3860322 ueda nishiuchi 
+3860026 ueda ninomaru 
+3861437 ueda nogura 
+3860156 ueda hayashinogo 
+3860413 ueda higashiuchi 
+3860321 ueda hirai 
+3861104 ueda fukuta 
+3861212 ueda fujiyama 
+3860402 ueda fujiwarada 
+3860017 ueda fumiiri 
+3861431 ueda besshoonsen 
+3861321 ueda hoya 
+3861323 ueda hongo 
+3861326 ueda maita 
+3861436 ueda maeyama 
+3860412 ueda mitakedo 
+3860022 ueda midorigaoka 
+3860408 ueda motonno 
+3861327 ueda yagisawa 
+3861432 ueda yamada 
+3860151 ueda yoshida 
+3861105 ueda yoshida 
+3940000 okaya When there is no description in below. 
+3940091 okaya okayashinotsuginibanchigakurubaai 
+3940002 okaya akahane 
+3940053 okaya ashinosawa 
+3940001 okaya imai 
+3940055 okaya uchiyama 
+3940051 okaya enrei 
+3940043 okaya okuracho 
+3940011 okaya osachi 
+3940089 okaya osachiizuhaya 
+3940084 okaya osachikatamacho 
+3940082 okaya osachigosho 
+3940085 okaya osachikohagi 
+3940081 okaya osachigongencho 
+3940087 okaya osachishizume 
+3940083 okaya osachishibamiya 
+3940088 okaya osachinashikubo 
+3940086 okaya osachiminamoto 
+3940003 okaya kamocho 
+3940048 okaya kawagishikami 
+3940047 okaya kawagishinaka 
+3940045 okaya kawagishihigashi 
+3940046 okaya kawagishinishi 
+3940022 okaya ginza 
+3940021 okaya goda 
+3940034 okaya kohan 
+3940029 okaya saiwaicho 
+3940004 okaya shinmeicho 
+3940025 okaya daieicho 
+3940031 okaya tanakacho 
+3940027 okaya chuocho 
+3940026 okaya tsukamacho 
+3940035 okaya tenryucho 
+3940042 okaya narutacho 
+3940033 okaya nangu 
+3940052 okaya nishibayashi 
+3940054 okaya hannoki 
+3940023 okaya higashiginza 
+3940056 okaya hizawa 
+3940024 okaya horinouchi 
+3940028 okaya honcho 
+3940044 okaya minato 
+3940005 okaya yamashitacho 
+3940041 okaya yamatecho 
+3940053 okaya yogitogisawa 
+3940032 okaya wakamiya 
+3950000 iida When there is no description in below. 
+3950072 iida akebonocho 
+3950055 iida asahimachi 
+3950085 iida azumacho 
+3950036 iida atagocho 
+3950152 iida ikuracho 
+3992434 iida izuki 
+3950071 iida imamiyacho 
+3950023 iida edohamacho 
+3950015 iida edomachi 
+3950046 iida ogimachi 
+3950034 iida otemachi 
+3950053 iida okubocho 
+3950157 iida osegi 
+3950056 iida odori 
+3950068 iida oyasumi 
+3950028 iida osahimecho 
+3950805 iida kanaeisshiki 
+3950808 iida kanaekamichaya 
+3950802 iida kanaeshimochaya 
+3950806 iida kanaekamiyama 
+3950803 iida kanaeshimoyama 
+3950807 iida kanaekiriishi 
+3950801 iida kanaenakadaira 
+3950804 iida kanaenagokuma 
+3950817 iida kanaehigashikanae 
+3950026 iida kanaenishikanae 
+3992564 iida kamikawaji 
+3950002 iida kamisatoiinuma 
+3950003 iida kamisatobeppu 
+3950004 iida kamisatokuroda 
+3950153 iida kamitonooka 
+3992611 iida kamihisakata 
+3992612 iida kamihisakatabo 
+3991403 iida kamimura 
+3992431 iida kawaji 
+3950151 iida kitagata 
+3992565 iida kiribayashi 
+3950031 iida ginza 
+3950241 iida kume 
+3950813 iida kega 
+3950013 iida kodenmacho 
+3950014 iida sakuramachi 
+3950001 iida zakoji 
+3992566 iida shima 
+3992432 iida shimoze 
+3950154 iida shimotonooka 
+3992606 iida shimohisakatainaba 
+3992604 iida shimohisakatakakinosawa 
+3992605 iida shimohisakatakobayashi 
+3992602 iida shimohisakatashimotoraiwa 
+3992603 iida shimohisakatachikudaira 
+3992607 iida shimohisakataminabara 
+3950061 iida shoeicho 
+3950084 iida suzukacho 
+3950062 iida sunaharaicho 
+3950018 iida suwacho 
+3950012 iida daioji 
+3950011 iida daimoncho 
+3950051 iida takahacho 
+3950048 iida takinosawa 
+3950242 iida takesa 
+3992561 iida dashina 
+3992221 iida tatsue 
+3992433 iida tateishi 
+3950032 iida chikaramachi 
+3950045 iida chikumachi 
+3992223 iida chihae 
+3950041 iida chuodori 
+3992222 iida chiyo 
+3950016 iida tenmacho 
+3950024 iida toeicho 
+3950017 iida toshincho 
+3950086 iida towacho 
+3950043 iida torimachi 
+3992563 iida tokimata 
+3950033 iida tokiwamachi 
+3992601 iida toraiwa 
+3950021 iida nakanocho 
+3950156 iida nakamura 
+3992562 iida naganohara 
+3950083 iida nishikicho 
+3950029 iida nihonmatsu 
+3950076 iida hakusancho 
+3950075 iida hakusandori 
+3950243 iida hakogawa 
+3950066 iida habaakasaka 
+3950065 iida habakamigawara 
+3950067 iida habagongen 
+3950073 iida habazakacho 
+3950063 iida habacho 
+3950064 iida habanakahata 
+3950027 iida babancho 
+3950022 iida hamaicho 
+3950025 iida higashichuodori 
+3950044 iida honmachi 
+3950811 iida matsuoagemizo 
+3950821 iida matsuoarai 
+3950824 iida matsuoshimizu 
+3950812 iida matsuoshiroda 
+3950825 iida matsuojo 
+3950822 iida matsuoteradoko 
+3950815 iida matsuotokiwadai 
+3950816 iida matsuohisai 
+3950042 iida matsuomachi 
+3950826 iida matsuomisajiro 
+3950823 iida matsuomyo 
+3950074 iida matsukawacho 
+3950077 iida maruyamacho 
+3950035 iida mizunotecho 
+3950155 iida mikkaichiba 
+3991401 iida minamishinanokizawa 
+3991221 iida minamishinanominamiwada(mango) 
+3991313 iida minamishinanominamiwada[sonota] 
+3991312 iida minamishinanoyaegochi 
+3991311 iida minamishinanowada 
+3950037 iida minamitokiwamachi 
+3950054 iida minozecho 
+3950081 iida miyanoue 
+3950082 iida miyanomae 
+3950052 iida motomachi 
+3950244 iida yamamoto 
+3950245 iida yamamotofutatsuyamadanchi 
+3950814 iida yawatamachi 
+3920000 suwa When there is no description in below. 
+3920011 suwa akahane 
+3920026 suwa ote 
+3920005 suwa okamura 
+3920013 suwa okitamachi 
+3920001 suwa owa 
+3920021 suwa kamigawa 
+3920003 suwa kamisuwa 
+3920008 suwa kirigamine 
+3920027 suwa kogandori 
+3920131 suwa konami 
+3920024 suwa kowata 
+3920023 suwa kowataminami 
+3920012 suwa shiga 
+3920010 suwa shibusaki 
+3920007 suwa shimizu 
+3920017 suwa jonan 
+3920025 suwa suehiro 
+3920009 suwa suginaike 
+3920004 suwa suwa 
+3920022 suwa takashima 
+3920016 suwa toyoda 
+3920015 suwa nakasu 
+3920014 suwa minamimachi 
+3920006 suwa motomachi 
+3920002 suwa yunowaki 
+3820000 suzaka When there is no description in below. 
+3820065 suzaka ainoshima 
+3820003 suzaka asahigaoka 
+3820045 suzaka inoue 
+3820017 suzaka omorimachi 
+3820012 suzaka oyamachi 
+3820071 suzaka ogawaracho 
+3820025 suzaka obinatamachi 
+3820083 suzaka kaminakamachi 
+3820044 suzaka kamihatcho 
+3820033 suzaka kamekuracho 
+3820028 suzaka garyu 
+3820084 suzaka kanmachi 
+3820061 suzaka kitaainoshimacho 
+3820002 suzaka kitaasahigaokacho 
+3820092 suzaka kitaharacho 
+3820077 suzaka kitayokomachi 
+3820048 suzaka kutandamachi 
+3820047 suzaka kotakamachi 
+3820053 suzaka gokanmachi 
+3820085 suzaka kokumachi 
+3820062 suzaka kojimamachi 
+3820026 suzaka sakadamachi 
+3820052 suzaka shiogawamachi 
+3820024 suzaka shionomachi 
+3820043 suzaka shimohatcho 
+3820005 suzaka shindencho 
+3820014 suzaka shinmachi 
+3820075 suzaka suzakahairandomachi 
+3820099 suzaka sumisaka 
+3820098 suzaka sumisakaminami 
+3820015 suzaka taishimachi 
+3820054 suzaka takanashimachi 
+3820016 suzaka takahashimachi 
+3820004 suzaka takabatamachi 
+3820091 suzaka tatsumachi 
+3820073 suzaka tanokamimachi 
+3820013 suzaka tokiwacho 
+3820022 suzaka toyokakamimachi 
+3820021 suzaka toyokamachi 
+3820066 suzaka toyoshimamachi 
+3820055 suzaka nakajimamachi 
+3820082 suzaka nakamachi 
+3820032 suzaka natsubatacho 
+3820063 suzaka nishimachi 
+3820046 suzaka nibokumachi 
+3862211 suzaka nireimachi(3153-1-3153-1100) 
+3820034 suzaka nireimachi(etc.) 
+3820064 suzaka numamemachi 
+3820037 suzaka nobemachi 
+3820076 suzaka babacho 
+3820074 suzaka harukimachi 
+3820006 suzaka hikarigaoka Newtown 
+3820087 suzaka higashiyokomachi 
+3820056 suzaka fukujimamachi 
+3820042 suzaka bogakudai 
+3820086 suzaka honkanmachi 
+3820011 suzaka hongomachi 
+3820001 suzaka matsukawamachi 
+3820072 suzaka minamiogawaramachi 
+3820027 suzaka minamiharamachi 
+3820097 suzaka minamiyokomachi 
+3820036 suzaka myotokumachi 
+3820031 suzaka muraishimachi 
+3820057 suzaka murayamamachi 
+3820051 suzaka yaemorimachi 
+3820094 suzaka yabumachi 
+3820081 suzaka yokomachi 
+3820023 suzaka yonakomachi 
+3820041 suzaka yonamochimachi 
+3840000 komoro When there is no description in below. 
+3840025 komoro aioicho 
+3840011 komoro akasaka 
+3840021 komoro amaike 
+3840062 komoro arahori 
+3840014 komoro aramachi 
+3840096 komoro ikenomae 
+3840047 komoro iko 
+3840054 komoro ishitoge 
+3840083 komoro ichi 
+3840033 komoro ichimachi 
+3840075 komoro uenodaira 
+3840042 komoro ushirodaira 
+3840077 komoro okui 
+3840071 komoro okubo 
+3840031 komoro ote 
+3840037 komoro oshidashi 
+3840802 komoro otsu 
+3840004 komoro otome 
+3840055 komoro kashiwagi 
+3840061 komoro kamasu 
+3840002 komoro karamatsu 
+3840805 komoro ki 
+3840076 komoro kubo 
+3840024 komoro kumanodo 
+3840801 komoro ko 
+3840032 komoro kojo 
+3840001 komoro kobara 
+3840015 komoro konyamachi 
+3840018 komoro sakanoue 
+3840806 komoro shiono 
+3840809 komoro shigenoko 
+3840023 komoro shinonome 
+3840046 komoro shibota 
+3840034 komoro shinmachi 
+3840082 komoro suwayama 
+3840045 komoro takibara 
+3840028 komoro tamachi 
+3840007 komoro tsurumaki 
+3840804 komoro tei 
+3840072 komoro tokikubo 
+3840038 komoro tochigi 
+3840074 komoro nishiura 
+3840044 komoro nishibara 
+3840048 komoro nukachi 
+3840064 komoro norise 
+3840051 komoro hachiman 
+3840016 komoro hachimancho 
+3840052 komoro higashiku 
+3840008 komoro higashikomoro 
+3840003 komoro higashiyama 
+3840041 komoro hishidaira 
+3840094 komoro hitotsuya 
+3840065 komoro hibarigaoka 
+3840092 komoro hirahara 
+3840053 komoro fujitsuka 
+3840036 komoro fujimidaira 
+3840803 komoro hei 
+3840026 komoro honmachi 
+3840022 komoro matsui 
+3840091 komoro mikage 
+3840808 komoro mikageshinden 
+3840017 komoro mitsuwa 
+3840013 komoro midorigaoka 
+3840063 komoro minamigahara 
+3840012 komoro minamicho 
+3840081 komoro mimakigahara 
+3840084 komoro mimitori 
+3840078 komoro miyazawa 
+3840005 komoro miyukicho 
+3840085 komoro moriyama 
+3840043 komoro moro 
+3840095 komoro yachihara 
+3840807 komoro yamaura 
+3840056 komoro yotsuya 
+3840006 komoro yoramachi 
+3840035 komoro ryojin 
+3840027 komoro rokku 
+3840093 komoro wada 
+3960000 ina When there is no description in below. 
+3960025 ina arai 
+3960028 ina araiuchinokaya 
+3960021 ina ina 
+3960011 ina inabe 
+3960008 ina uenohara 
+3960032 ina ozawa 
+3960012 ina kamishinden 
+3960006 ina kamimaki 
+3960014 ina kitsunejima 
+3960033 ina koshirokubo 
+3960010 ina sakai 
+3960024 ina sakashita 
+3960013 ina shimoshinden 
+3960114 ina senmi 
+3960212 ina takatomachiosafuji(1-658banchi) 
+3960305 ina takatomachiosafuji[sonota] 
+3960215 ina takatomachiobara 
+3960214 ina takatomachikatsuma 
+3960217 ina takatomachikamiyamada 
+3960302 ina takatomachishibira 
+3960216 ina takatomachishimoyamada 
+3960211 ina takatomachinishitakato 
+3960303 ina takatomachibaraguchi 
+3960213 ina takatomachihigashitakato 
+3960301 ina takatomachifujisawa 
+3960304 ina takatomachiyamamuro 
+3960015 ina chuo 
+3960002 ina terasawaoka 
+3960004 ina teranakatsubo 
+3960003 ina teranoguchi 
+3960621 ina tomigata 
+3960031 ina nakanohara 
+3994431 ina nishiharuchika 
+3960026 ina nishimachi 
+3994501 ina nishiminowa 
+3960005 ina nosoko 
+3960405 ina haseichinose 
+3960407 ina haseura 
+3960403 ina hasekurogochi 
+3960406 ina hasesugishima 
+3960404 ina hasenakao 
+3960401 ina hasehiji 
+3960402 ina hasemizokuchi 
+3960009 ina hikage 
+3994432 ina higashiharuchika 
+3960030 ina hirasawa 
+3960001 ina fukujima 
+3960112 ina maehara 
+3960027 ina masumigaoka 
+3960111 ina misuzu 
+3960022 ina misono 
+3960113 ina mihara 
+3960023 ina yamadera 
+3960029 ina yokoyama 
+3960007 ina wakamiya 
+3994100 komagane When there is no description in below. 
+3994113 komagane akazumachi 
+3994105 komagane akazuhigashi 
+3994117 komagane akaho 
+3994102 komagane iizaka 
+3994115 komagane uwabusakaemachi 
+3994114 komagane uwabuminami 
+3994116 komagane uwabukita 
+3994111 komagane kitamachi 
+3994104 komagane kyozuka 
+3994108 komagane shimoichiba 
+3994232 komagane shimodaira(2070-2119,2309-2311,2419,2421-2426,2433-2450) 
+3994101 komagane shimodaira[sonota] 
+3994112 komagane chuo 
+3994231 komagane nakazawa 
+3994103 komagane nashinoki 
+3994321 komagane higashiina 
+3994106 komagane higashimachi 
+3994107 komagane minamida 
+3830000 nakano When there is no description in below. 
+3830004 nakano akaiwa 
+3830066 nakano akkai 
+3892103 nakano anada 
+3830064 nakano arai 
+3830052 nakano angenji 
+3830012 nakano ippongi 
+3830001 nakano iwai 
+3830041 nakano iwafune 
+3830055 nakano ushiide 
+3830045 nakano ebe 
+3830057 nakano omata 
+3830023 nakano otate 
+3830062 nakano kasahara 
+3830046 nakano katashio 
+3830008 nakano kanai 
+3892102 nakano kamiimai 
+3830053 nakano kusama 
+3830056 nakano kuribayashi 
+3830005 nakano koshi 
+3830037 nakano kodanaka 
+3830044 nakano sakurasawa 
+3830032 nakano sarashina 
+3830035 nakano shinoi 
+3830034 nakano shinno 
+3830036 nakano shimbo 
+3830014 nakano suwacho 
+3892371 nakano tagami(1300-2511banchi) 
+3830002 nakano tagami[sonota] 
+3830007 nakano takehara 
+3830054 nakano tategahana 
+3830065 nakano tamugi 
+3830022 nakano chuo 
+3892101 nakano toyotsu 
+3892104 nakano nagae 
+3830013 nakano nakano 
+3830051 nakano nanase 
+3830031 nakano nangu 
+3830021 nakano nishi 
+3830042 nakano nishijo 
+3830024 nakano higashiyama 
+3830006 nakano fukasawa 
+3830061 nakano hekida 
+3830063 nakano managase 
+3830033 nakano mayama 
+3830043 nakano mitsuwa 
+3830025 nakano miyoshicho 
+3830003 nakano yanagisawa 
+3830015 nakano yoshida 
+3830011 nakano wakamiya 
+3980000 omachi When there is no description in below. 
+3980002 omachi omachi 
+3980001 omachi taira 
+3980004 omachi tokiwa 
+3999101 omachi miasa 
+3997301 omachi yasaka 
+3997302 omachi yasakashobu 
+3980003 omachi yashiro 
+3892200 iiyama When there is no description in below. 
+3892251 iiyama asahi 
+3892253 iiyama iiyama 
+3892602 iiyama ichiyama 
+3892415 iiyama oike 
+3892234 iiyama kijima 
+3892252 iiyama kozawara 
+3892418 iiyama kotobuki 
+3892235 iiyama sakai 
+3892255 iiyama shizuma 
+3892232 iiyama shimokijima 
+3892242 iiyama sonowata 
+3892601 iiyama teruoka 
+3892413 iiyama terusato 
+3892231 iiyama tenshindo 
+3892412 iiyama tokisato 
+3892414 iiyama tokiwa 
+3892258 iiyama tomikura 
+3892411 iiyama toyoda 
+3892417 iiyama nakasone 
+3892233 iiyama nosakada 
+3892256 iiyama hachisu 
+3892257 iiyama madaraokogen 
+3892322 iiyama mizuho 
+3892321 iiyama mizuhotoyo 
+3892416 iiyama midori 
+3892254 iiyama minamimachi 
+3892244 iiyama yasuda 
+3892241 iiyama yamagishi 
+3892243 iiyama yoshi 
+3910000 chino When there is no description in below. 
+3910214 chino izumino 
+3910012 chino kanazawa 
+3910212 chino kitayama(shibugotenyu&shibunoyu) 
+3910301 chino kitayama[sonota] 
+3910211 chino kohigashi 
+3910004 chino joyama 
+3910011 chino tamagawa 
+3910001 chino chino 
+3910002 chino tsukahara 
+3910213 chino toyohira 
+3910215 chino nakaoshio 
+3910005 chino nakamachi 
+3910003 chino honmachi 
+3910013 chino miyagawa 
+3910216 chino yonezawa 
+3990700 shiojiri When there is no description in below. 
+3990713 shiojiri ogoya 
+3990722 shiojiri kakizawa 
+3990071 shiojiri kataoka(3635,3680,5794,6114banchi) 
+3990711 shiojiri kataoka[sonota] 
+3990721 shiojiri kanai 
+3990724 shiojiri kaminishijo 
+3996302 shiojiri kisohirasawa 
+3990651 shiojiri kitaono 
+3990723 shiojiri kyushiojiri 
+3990716 shiojiri sajiki 
+3990712 shiojiri shiojirimachi 
+3990726 shiojiri shimonishijo 
+3996462 shiojiri seba 
+3996461 shiojiri soga 
+3990744 shiojiri daimon7ku 
+3990742 shiojiri daimonizumicho 
+3990745 shiojiri daimonkikyocho 
+3990741 shiojiri daimonsaiwaicho 
+3990743 shiojiri daimontagawacho 
+3990746 shiojiri daimonnamikicho 
+3990736 shiojiri daimon1bancho 
+3990735 shiojiri daimon2bancho 
+3990733 shiojiri daimon3bancho 
+3990734 shiojiri daimon4bancho 
+3990732 shiojiri daimon5bancho 
+3990731 shiojiri daimon6bancho 
+3990738 shiojiri daimon7bancho 
+3990737 shiojiri daimon8bancho 
+3990744 shiojiri daimon(banchi) 
+3990725 shiojiri nakanishijo 
+3990715 shiojiri nagaune 
+3996303 shiojiri narai 
+3996301 shiojiri niekawa 
+3990705 shiojiri hirokakataishi 
+3990704 shiojiri hirokagobara 
+3990703 shiojiri hirokatakaide 
+3990702 shiojiri hirokanomura 
+3990706 shiojiri hirokaharashinden 
+3990701 shiojiri hirokayoshida 
+3990714 shiojiri horinouchi 
+3990727 shiojiri midoriko 
+3990728 shiojiri minehara 
+3850000 saku When there is no description in below. 
+3850054 saku atobe 
+3850007 saku arakoda 
+3850015 saku imai 
+3840621 saku irisawa 
+3850022 saku iwamurada 
+3850023 saku iwamuradakita 
+3842201 saku innai 
+3840301 saku usuda 
+3850031 saku uchiyama 
+3850045 saku osawa 
+3850033 saku otabe 
+3850009 saku otai 
+3850041 saku kajiya 
+3842205 saku kasuga 
+3840302 saku katsuma 
+3840306 saku kamiotagiri 
+3850002 saku kamihirao 
+3840304 saku kitagawa 
+3842204 saku kyowa 
+3840411 saku kiyokawa 
+3842101 saku kuwayama 
+3842104 saku ko 
+3850005 saku kosaka 
+3850047 saku komiyama 
+3850028 saku sakudairaekihigashi 
+3850029 saku sakudairaekiminami 
+3850027 saku sakudairaekikita 
+3850056 saku sakurai 
+3850011 saku sarukubo 
+3842102 saku shionada 
+3850006 saku shiga 
+3840303 saku shimotagiri 
+3840414 saku shimogoe 
+3850003 saku shimohirao 
+3850035 saku seto 
+3850042 saku takayagi 
+3840412 saku taguchi 
+3850025 saku tsukabara 
+3850026 saku tokida 
+3850032 saku tokiwa 
+3850061 saku tomono 
+3850043 saku toridemachi 
+3840305 saku nakaotagiri 
+3850051 saku nakagomi 
+3850021 saku nagatoro 
+3850016 saku naruse 
+3850062 saku negishi 
+3850012 saku nenei 
+3850053 saku nozawa 
+3850052 saku hara 
+3850063 saku higashitateshina 
+3850034 saku hiraka 
+3850024 saku hiratsuka 
+3840622 saku hirabayashi 
+3842203 saku fuse 
+3850044 saku honshinmachi 
+3850046 saku maeyama 
+3850014 saku mikawada 
+3850055 saku michizuka 
+3840413 saku mibun 
+3842103 saku mimayose 
+3842206 saku motai 
+3842202 saku mochizuki 
+3842105 saku yashima 
+3850004 saku yasuhara 
+3842106 saku yawata 
+3840307 saku yuhara 
+3850001 saku yokone 
+3850013 saku yokowa 
+3842107 saku yomogida 
+3870000 chikuma When there is no description in below. 
+3870001 chikuma amenomiya 
+3890823 chikuma arayama 
+3870006 chikuma awasa 
+3870003 chikuma ikigaya 
+3890806 chikuma isobe 
+3870021 chikuma inariyama 
+3870015 chikuma imojiya 
+3890802 chikuma uchikawa 
+3870014 chikuma ussawa 
+3870013 chikuma ojima 
+3890805 chikuma kamitokuma 
+3890822 chikuma kamiyamada 
+3890821 chikuma kamiyamadaonsen 
+3870011 chikuma kuiseke 
+3870004 chikuma kurashina 
+3870024 chikuma kuwabara 
+3890801 chikuma kobuneyama 
+3870012 chikuma sakurado 
+3870016 chikuma jakumaku 
+3870018 chikuma shinden 
+3890811 chikuma suzaka 
+3890803 chikuma sembonyanagi 
+3890824 chikuma chikaraishi 
+3870002 chikuma doguchi 
+3890804 chikuma togura 
+3890807 chikuma toguraonsen 
+3870017 chikuma naka 
+3870022 chikuma notakaba 
+3890812 chikuma haneo 
+3870005 chikuma mori 
+3870007 chikuma yashiro 
+3870023 chikuma yawata 
+3890813 chikuma wakamiya 
+3890500 tomi When there is no description in below. 
+3890517 tomi agata 
+3890503 tomi araya 
+3890404 tomi ohinata 
+3890504 tomi kaizenji 
+3890514 tomi kazawa 
+3890505 tomi kano 
+3890502 tomi kurakake 
+3890519 tomi shiokawa 
+3890513 tomi shigeno 
+3890512 tomi shigeno(otsu) 
+3890511 tomi shigeno(ko) 
+3890401 tomi shimagawara 
+3890405 tomi shimonojo 
+3890516 tomi tanaka 
+3890515 tomi tokida 
+3890402 tomi nunoshita 
+3890506 tomi netsu 
+3890407 tomi hakeyama 
+3890501 tomi mihari 
+3890403 tomi mimakihara 
+3890518 tomi motonno 
+3890406 tomi yaehara 
+3998200 azumino When there is no description in below. 
+3997102 azumino akashinanakagawate 
+3997104 azumino akashinananaki 
+3997101 azumino akashinahigashikawate 
+3997103 azumino akashinahikaru 
+3997105 azumino akashinaminamirikugo 
+3998205 azumino toyoshina 
+3998204 azumino toyoshinatakibe 
+3998203 azumino toyoshinatazawa 
+3998202 azumino toyoshinahikaru 
+3998201 azumino toyoshinaminamihotaka 
+3998303 azumino hotaka 
+3998301 azumino hotakaariake 
+3998304 azumino hotakakashiwabara 
+3998302 azumino hotakakitahotaka 
+3998305 azumino hotakamaki 
+3998211 azumino horiganekarasugawa 
+3998212 azumino horiganemita 
+3998103 azumino misatogura 
+3998101 azumino misatomeisei 
+3998102 azumino misatoyutaka 
+3841100 minamisaku-gun komimachi When there is no description in below. 
+3841104 minamisaku-gun komimachi inako 
+3841102 minamisaku-gun komimachi komi 
+3841105 minamisaku-gun komimachi chiyosato 
+3841103 minamisaku-gun komimachi toyosato 
+3841101 minamisaku-gun komimachi higashimanagashi 
+3841400 minamisaku-gun kawakamimura When there is no description in below. 
+3841403 minamisaku-gun kawakamimura akiyama 
+3841402 minamisaku-gun kawakamimura azusayama 
+3841404 minamisaku-gun kawakamimura igura 
+3841405 minamisaku-gun kawakamimura omiyama 
+3841401 minamisaku-gun kawakamimura kawahake 
+3841407 minamisaku-gun kawakamimura goshodaira 
+3841406 minamisaku-gun kawakamimura hara 
+3841408 minamisaku-gun kawakamimura hisawa 
+3841300 minamisaku-gun minamimakimura When there is no description in below. 
+3841304 minamisaku-gun minamimakimura itabashi 
+3841301 minamisaku-gun minamimakimura umijiri 
+3841302 minamisaku-gun minamimakimura uminokuchi 
+3841305 minamisaku-gun minamimakimura nobeyama 
+3841306 minamisaku-gun minamimakimura hirasawa 
+3841303 minamisaku-gun minamimakimura hirose 
+3841211 minamisaku-gun minamiaikimura minamiaikimuraichien 
+3841201 minamisaku-gun kitaaikimura kitaaikimuraichien 
+3840600 minamisaku-gun sakuhomachi When there is no description in below. 
+3840502 minamisaku-gun sakuhomachi ohinata 
+3840503 minamisaku-gun sakuhomachi kaize 
+3840614 minamisaku-gun sakuhomachi kami 
+3840613 minamisaku-gun sakuhomachi takanomachi 
+3840703 minamisaku-gun sakuhomachi chiyosato 
+3840701 minamisaku-gun sakuhomachi hata 
+3840611 minamisaku-gun sakuhomachi hirabayashi 
+3840702 minamisaku-gun sakuhomachi hozumi 
+3840704 minamisaku-gun sakuhomachi yakori 
+3840612 minamisaku-gun sakuhomachi yadoiwa 
+3840501 minamisaku-gun sakuhomachi yoji 
+3890100 kitasaku-gun karuizawamachi When there is no description in below. 
+3890115 kitasaku-gun karuizawamachi oiwake 
+3890102 kitasaku-gun karuizawamachi karuizawa(oaza) 
+3890103 kitasaku-gun karuizawamachi karuizawa[sonota] 
+3890104 kitasaku-gun karuizawamachi karuizawahigashi 
+3890101 kitasaku-gun karuizawamachi togemachi 
+3890112 kitasaku-gun karuizawamachi nakakaruizawa 
+3890111 kitasaku-gun karuizawamachi nagakura 
+3890113 kitasaku-gun karuizawamachi hotchi 
+3890114 kitasaku-gun karuizawamachi mozawa 
+3890200 kitasaku-gun miyotamachi When there is no description in below. 
+3890205 kitasaku-gun miyotamachi omogae 
+3890202 kitasaku-gun miyotamachi kusagoe 
+3890201 kitasaku-gun miyotamachi shiono 
+3890203 kitasaku-gun miyotamachi hiroto 
+3890204 kitasaku-gun miyotamachi hosho 
+3890207 kitasaku-gun miyotamachi maseguchi 
+3890206 kitasaku-gun miyotamachi miyota 
+3890208 kitasaku-gun miyotamachi mosawa 
+3842300 kitasaku-gun tateshinamachi When there is no description in below. 
+3842305 kitasaku-gun tateshinamachi ashida 
+3910321 kitasaku-gun tateshinamachi ashidahatsukano(1519-1625,1628-1635) 
+3842309 kitasaku-gun tateshinamachi ashidahatsukano[sonota] 
+3910321 kitasaku-gun tateshinamachi ikenotaira 
+3842308 kitasaku-gun tateshinamachi ushiroku 
+3842306 kitasaku-gun tateshinamachi uyama 
+3842301 kitasaku-gun tateshinamachi kirihara 
+3842303 kitasaku-gun tateshinamachi shiosawa 
+3842302 kitasaku-gun tateshinamachi fujisawa 
+3842304 kitasaku-gun tateshinamachi motai(1-500<211banchiwonozoku>,2527-2529) 
+3842211 kitasaku-gun tateshinamachi motai[sonota] 
+3842307 kitasaku-gun tateshinamachi yamabe 
+3861600 chiisagata-gun aokimura When there is no description in below. 
+3861605 chiisagata-gun aokimura okami 
+3861606 chiisagata-gun aokimura kutsukake 
+3861601 chiisagata-gun aokimura tazawa 
+3861603 chiisagata-gun aokimura togo 
+3861604 chiisagata-gun aokimura tonodo 
+3861607 chiisagata-gun aokimura naramoto 
+3861602 chiisagata-gun aokimura muramatsu 
+3860600 chiisagata-gun nagawamachi When there is no description in below. 
+3860601 chiisagata-gun nagawamachi daimon 
+3860602 chiisagata-gun nagawamachi nagakubo 
+3860603 chiisagata-gun nagawamachi furumachi 
+3860701 chiisagata-gun nagawamachi wada 
+3930000 suwa-gun shimosuwamachi When there is no description in below. 
+3930066 suwa-gun shimosuwamachi akebonocho 
+3930068 suwa-gun shimosuwamachi kasugacho 
+3930052 suwa-gun shimosuwamachi kamikubo 
+3930053 suwa-gun shimosuwamachi kamibappa 
+3930042 suwa-gun shimosuwamachi kitashio 
+3930014 suwa-gun shimosuwamachi kinoshita 
+3930026 suwa-gun shimosuwamachi kubokaido 
+3930024 suwa-gun shimosuwamachi gokan 
+3930044 suwa-gun shimosuwamachi kohancho 
+3930013 suwa-gun shimosuwamachi koyunoue 
+3930084 suwa-gun shimosuwamachi sakaecho 
+3930065 suwa-gun shimosuwamachi sakigakecho 
+3930072 suwa-gun shimosuwamachi sakuramachi 
+3930086 suwa-gun shimosuwamachi shimizumachi 
+3930007 suwa-gun shimosuwamachi shimoyashiki 
+3930011 suwa-gun shimosuwamachi shinmachiue 
+3930018 suwa-gun shimosuwamachi shinmachishita 
+3930054 suwa-gun shimosuwamachi sugenomachi 
+3930022 suwa-gun shimosuwamachi sekiya 
+3930051 suwa-gun shimosuwamachi taishadori 
+3930092 suwa-gun shimosuwamachi daimon 
+3930033 suwa-gun shimosuwamachi takaki 
+3930034 suwa-gun shimosuwamachi takahama 
+3930021 suwa-gun shimosuwamachi takei 
+3930015 suwa-gun shimosuwamachi tatsumachi 
+3930078 suwa-gun shimosuwamachi tanakamachi 
+3930075 suwa-gun shimosuwamachi chuodori 
+3930073 suwa-gun shimosuwamachi tsukadamachi 
+3930023 suwa-gun shimosuwamachi tomigaoka 
+3930057 suwa-gun shimosuwamachi tomonomachi 
+3930001 suwa-gun shimosuwamachi toyohashi 
+3930064 suwa-gun shimosuwamachi nakashiocho 
+3930071 suwa-gun shimosuwamachi nakamachi 
+3930047 suwa-gun shimosuwamachi nishiakasuna 
+3930041 suwa-gun shimosuwamachi nishishio 
+3930087 suwa-gun shimosuwamachi nishitakanomachi 
+3930032 suwa-gun shimosuwamachi nishihama 
+3930082 suwa-gun shimosuwamachi nishiyayoicho 
+3930035 suwa-gun shimosuwamachi nishiyutaka 
+3930003 suwa-gun shimosuwamachi hagikura 
+3930063 suwa-gun shimosuwamachi hanasakicho 
+3930046 suwa-gun shimosuwamachi higashiakasuna 
+3930043 suwa-gun shimosuwamachi higashishio 
+3930085 suwa-gun shimosuwamachi higashitakanomachi 
+3930002 suwa-gun shimosuwamachi higashimata 
+3930006 suwa-gun shimosuwamachi higashimachiue 
+3930005 suwa-gun shimosuwamachi higashimachinaka 
+3930004 suwa-gun shimosuwamachi higashimachishita 
+3930093 suwa-gun shimosuwamachi higashiyamada 
+3930083 suwa-gun shimosuwamachi higashiyayoicho 
+3930031 suwa-gun shimosuwamachi higashiyutaka 
+3930062 suwa-gun shimosuwamachi hirasawacho 
+3930056 suwa-gun shimosuwamachi hirosecho 
+3930055 suwa-gun shimosuwamachi fujimicho 
+3930091 suwa-gun shimosuwamachi hoshigaoka 
+3930025 suwa-gun shimosuwamachi hongo 
+3930008 suwa-gun shimosuwamachi machiyashiki 
+3930061 suwa-gun shimosuwamachi mitamachi 
+3930074 suwa-gun shimosuwamachi midorimachi 
+3930045 suwa-gun shimosuwamachi minamishio 
+3930067 suwa-gun shimosuwamachi yagihigashi 
+3930076 suwa-gun shimosuwamachi yaginishi 
+3930077 suwa-gun shimosuwamachi yagimachi 
+3930081 suwa-gun shimosuwamachi yashirohigashimachi 
+3930017 suwa-gun shimosuwamachi yudanakamachi 
+3930016 suwa-gun shimosuwamachi yudamachi 
+3930012 suwa-gun shimosuwamachi yokomachi 
+3930019 suwa-gun shimosuwamachi yokomachikinoshita 
+3990200 suwa-gun fujimimachi When there is no description in below. 
+3990102 suwa-gun fujimimachi ochiai(3060,3600-4600banchi) 
+3990214 suwa-gun fujimimachi ochiai[sonota] 
+3990213 suwa-gun fujimimachi okkoto 
+3990101 suwa-gun fujimimachi sakai 
+3990212 suwa-gun fujimimachi tatsuzawa 
+3910021 suwa-gun fujimimachi fujimi(nyukasako) 
+3990211 suwa-gun fujimimachi fujimi[sonota] 
+3910100 suwa-gun haramura When there is no description in below. 
+3910101 suwa-gun haramura okubo 
+3910105 suwa-gun haramura kashiwagi 
+3910111 suwa-gun haramura kamisato 
+3910106 suwa-gun haramura shobuzawa 
+3910108 suwa-gun haramura nakashinden 
+3910112 suwa-gun haramura nojo 
+3910104 suwa-gun haramura haraizawa 
+3910115 suwa-gun haramura harayama 
+3910116 suwa-gun haramura hannoki 
+3910114 suwa-gun haramura penshon 
+3910109 suwa-gun haramura minamihara 
+3910107 suwa-gun haramura murochi 
+3910113 suwa-gun haramura yatsugane 
+3910103 suwa-gun haramura yatsude 
+3910102 suwa-gun haramura yanagisawa 
+3990400 kamiina-gun tatsunomachi When there is no description in below. 
+3990424 kamiina-gun tatsunomachi akahane 
+3990428 kamiina-gun tatsunomachi inatomi 
+3990601 kamiina-gun tatsunomachi ono 
+3990512 kamiina-gun tatsunomachi kamijima 
+3990423 kamiina-gun tatsunomachi sawasoko 
+3990421 kamiina-gun tatsunomachi tatsuno 
+3990427 kamiina-gun tatsunomachi chuo 
+3990425 kamiina-gun tatsunomachi higuchi 
+3990422 kamiina-gun tatsunomachi hiraide 
+3990426 kamiina-gun tatsunomachi miyaki 
+3990511 kamiina-gun tatsunomachi yokokawa 
+3994600 kamiina-gun minowamachi When there is no description in below. 
+3994605 kamiina-gun minowamachi nakazone 
+3994601 kamiina-gun minowamachi nakaminowa 
+3994602 kamiina-gun minowamachi higashiminowa 
+3994604 kamiina-gun minowamachi fukuyo 
+3994603 kamiina-gun minowamachi mikkamachi 
+3993700 kamiina-gun iijimamachi When there is no description in below. 
+3993702 kamiina-gun iijimamachi iijima 
+3993701 kamiina-gun iijimamachi tagiri 
+3993705 kamiina-gun iijimamachi nanakubo 
+3993703 kamiina-gun iijimamachi hissori 
+3993704 kamiina-gun iijimamachi hongo 
+3994511 kamiina-gun minamiminowamura minamiminowamuraichien 
+3993800 kamiina-gun nakagawamura When there is no description in below. 
+3993801 kamiina-gun nakagawamura okusa 
+3993802 kamiina-gun nakagawamura katagiri 
+3993803 kamiina-gun nakagawamura katsurashima 
+3993804 kamiina-gun nakagawamura shitoku 
+3994301 kamiina-gun miyadamura miyadamuraichien 
+3993300 shimoina-gun matsukawamachi When there is no description in below. 
+3993302 shimoina-gun matsukawamachi ikuta 
+3993304 shimoina-gun matsukawamachi ojima 
+3993301 shimoina-gun matsukawamachi kamikatagiri 
+3993303 shimoina-gun matsukawamachi motoojima 
+3993100 shimoina-gun takamorimachi When there is no description in below. 
+3993107 shimoina-gun takamorimachi izuhara 
+3993105 shimoina-gun takamorimachi ushimaki 
+3993106 shimoina-gun takamorimachi ojimasan 
+3993104 shimoina-gun takamorimachi kamiichida 
+3993103 shimoina-gun takamorimachi shimoichida 
+3993101 shimoina-gun takamorimachi yamabuki 
+3993102 shimoina-gun takamorimachi yoshida 
+3991500 shimoina-gun anancho When there is no description in below. 
+3991501 shimoina-gun anancho kitajo 
+3991505 shimoina-gun anancho tomikusa 
+3991612 shimoina-gun anancho niino 
+3991504 shimoina-gun anancho nishijo 
+3991502 shimoina-gun anancho higashijo 
+3991503 shimoina-gun anancho minamijo 
+3991611 shimoina-gun anancho wago 
+3950300 shimoina-gun achimura When there is no description in below. 
+3950301 shimoina-gun achimura kasuga 
+3950302 shimoina-gun achimura goka 
+3950305 shimoina-gun achimura koma 
+3950303 shimoina-gun achimura komaba 
+3950401 shimoina-gun achimura seinaiji 
+3950304 shimoina-gun achimura chisato 
+3950501 shimoina-gun achimura namiai 
+3950601 shimoina-gun hirayamura hirayamuraichien 
+3950701 shimoina-gun nebamura nebamuraichien 
+3992100 shimoina-gun shimojomura When there is no description in below. 
+3992102 shimoina-gun shimojomura hisawa 
+3992101 shimoina-gun shimojomura mutsuzawa 
+3991601 shimoina-gun urugimura urugimuraichien 
+3991200 shimoina-gun tenryumura When there is no description in below. 
+3991202 shimoina-gun tenryumura kamihara 
+3991203 shimoina-gun tenryumura nagashima 
+3991201 shimoina-gun tenryumura hiraoka 
+3991801 shimoina-gun yasuokamura yasuokamuraichien 
+3951100 shimoina-gun takagimura When there is no description in below. 
+3951101 shimoina-gun takagimura ajima 
+3951108 shimoina-gun takagimura ikuma 
+3951104 shimoina-gun takagimura ujinori 
+3951103 shimoina-gun takagimura oshima 
+3951105 shimoina-gun takagimura owachi 
+3951107 shimoina-gun takagimura ogawa 
+3951102 shimoina-gun takagimura kakasu 
+3951106 shimoina-gun takagimura tomida 
+3993200 shimoina-gun toyokamura When there is no description in below. 
+3993311 shimoina-gun toyokamura kawano(7530-7590banchi) 
+3993201 shimoina-gun toyokamura kawano[sonota] 
+3993202 shimoina-gun toyokamura kumashiro 
+3993500 shimoina-gun oshikamura When there is no description in below. 
+3993502 shimoina-gun oshikamura okawara 
+3993501 shimoina-gun oshikamura kashio 
+3995600 kiso-gun agematsumachi When there is no description in below. 
+3995601 kiso-gun agematsumachi agematsu 
+3995609 kiso-gun agematsumachi asahimachi 
+3995603 kiso-gun agematsumachi ekimaedori 
+3995607 kiso-gun agematsumachi ogawa 
+3995608 kiso-gun agematsumachi ogihara 
+3995605 kiso-gun agematsumachi sakaemachi 
+3995604 kiso-gun agematsumachi shojimamachi 
+3995602 kiso-gun agematsumachi honmachidori 
+3995606 kiso-gun agematsumachi midorimachi 
+3995300 kiso-gun nagisomachi When there is no description in below. 
+3995302 kiso-gun nagisomachi azuma 
+3995303 kiso-gun nagisomachi tadachi 
+3995301 kiso-gun nagisomachi yomikaki 
+3996200 kiso-gun kisomura When there is no description in below. 
+3996203 kiso-gun kisomura ogiso 
+3996202 kiso-gun kisomura suge 
+3996201 kiso-gun kisomura yabuhara 
+3970201 kiso-gun otakimura otakimuraichien 
+3995500 kiso-gun okuwamura When there is no description in below. 
+3995502 kiso-gun okuwamura suhara 
+3995501 kiso-gun okuwamura tono 
+3995503 kiso-gun okuwamura nagano 
+3995504 kiso-gun okuwamura nojiri 
+3970000 kiso-gun kisomachi When there is no description in below. 
+3970301 kiso-gun kisomachi kaidakogensuekawa 
+3970302 kiso-gun kisomachi kaidakogennishino 
+3970002 kiso-gun kisomachi shinkai 
+3970003 kiso-gun kisomachi shinkaifuku 
+3996101 kiso-gun kisomachi hiyoshi 
+3970001 kiso-gun kisomachi fukushima 
+3970101 kiso-gun kisomachi mitake 
+3997700 higashichikuma-gun omimura When there is no description in below. 
+3997701 higashichikuma-gun omimura o 
+3997702 higashichikuma-gun omimura hi 
+3997200 higashichikuma-gun ikusakamura When there is no description in below. 
+3997201 higashichikuma-gun ikusakamura ikusakamuranotsuginibanchigakurubaai 
+3997202 higashichikuma-gun ikusakamura kitarikugo 
+3997311 higashichikuma-gun ikusakamura higashihirotsu 
+3901301 higashichikuma-gun yamagatamura yamagatamuraichien 
+3901100 higashichikuma-gun asahimura When there is no description in below. 
+3901102 higashichikuma-gun asahimura onozawa 
+3901104 higashichikuma-gun asahimura komi 
+3901101 higashichikuma-gun asahimura nishiseba 
+3901103 higashichikuma-gun asahimura hario 
+3997500 higashichikuma-gun chikuhokumura When there is no description in below. 
+3997503 higashichikuma-gun chikuhokumura osawashinden 
+3997711 higashichikuma-gun chikuhokumura sakai 
+3997601 higashichikuma-gun chikuhokumura sakakita 
+3997501 higashichikuma-gun chikuhokumura nishijo 
+3997502 higashichikuma-gun chikuhokumura higashijo 
+3997504 higashichikuma-gun chikuhokumura midarehashi 
+3998600 kitaazumi-gun ikedamachi When there is no description in below. 
+3998602 kitaazumi-gun ikedamachi aisome 
+3998601 kitaazumi-gun ikedamachi ikeda 
+3998603 kitaazumi-gun ikedamachi nakau 
+3998604 kitaazumi-gun ikedamachi hirotsu 
+3998605 kitaazumi-gun ikedamachi rikugo 
+3998501 kitaazumi-gun matsukawamura matsukawamuraichien 
+3999300 kitaazumi-gun hakubamura When there is no description in below. 
+3999211 kitaazumi-gun hakubamura kamishiro 
+3999301 kitaazumi-gun hakubamura hokujo 
+3999400 kitaazumi-gun otarimura When there is no description in below. 
+3999601 kitaazumi-gun otarimura kitaotari 
+3999422 kitaazumi-gun otarimura chikuniotsu 
+3999421 kitaazumi-gun otarimura nakaotarihei 
+3999511 kitaazumi-gun otarimura nakatsuchi 
+3890600 hanishina-gun sakakimachi When there is no description in below. 
+3890604 hanishina-gun sakakimachi amikake 
+3890605 hanishina-gun sakakimachi uwadaira 
+3890606 hanishina-gun sakakimachi kamigomyo 
+3890601 hanishina-gun sakakimachi sakaki 
+3890602 hanishina-gun sakakimachi nakanojo 
+3890603 hanishina-gun sakakimachi minamijo 
+3810200 kamitakai-gun obusemachi When there is no description in below. 
+3810204 kamitakai-gun obusemachi iida 
+3810203 kamitakai-gun obusemachi ojima 
+3810207 kamitakai-gun obusemachi oshiha 
+3810201 kamitakai-gun obusemachi obuse 
+3810211 kamitakai-gun obusemachi karida 
+3810206 kamitakai-gun obusemachi kitaoka 
+3810205 kamitakai-gun obusemachi sannojima 
+3810208 kamitakai-gun obusemachi tsusumi 
+3810209 kamitakai-gun obusemachi nakamatsu 
+3810202 kamitakai-gun obusemachi fukuhara 
+3810212 kamitakai-gun obusemachi yoshijima 
+3820800 kamitakai-gun takayamamura When there is no description in below. 
+3820832 kamitakai-gun takayamamura akawa 
+3820831 kamitakai-gun takayamamura araihara 
+3820815 kamitakai-gun takayamamura ogikubo 
+3820833 kamitakai-gun takayamamura kubo 
+3820823 kamitakai-gun takayamamura kurobe 
+3820801 kamitakai-gun takayamamura komaba 
+3820836 kamitakai-gun takayamamura shimbori 
+3820835 kamitakai-gun takayamamura sembonmatsu 
+3820814 kamitakai-gun takayamamura tenjimbara 
+3820804 kamitakai-gun takayamamura nakahara 
+3820806 kamitakai-gun takayamamura nakahira 
+3820822 kamitakai-gun takayamamura fukuihara 
+3820826 kamitakai-gun takayamamura futatsuishi 
+3820837 kamitakai-gun takayamamura horinouchi 
+3820821 kamitakai-gun takayamamura maki 
+3820803 kamitakai-gun takayamamura masugata 
+3820827 kamitakai-gun takayamamura matsunami 
+3820802 kamitakai-gun takayamamura matsuhara 
+3820805 kamitakai-gun takayamamura misato 
+3820834 kamitakai-gun takayamamura mizunaka 
+3820824 kamitakai-gun takayamamura midorigaoka 
+3820811 kamitakai-gun takayamamura miyaseki 
+3820825 kamitakai-gun takayamamura murasaki 
+3820816 kamitakai-gun takayamamura yamadaonsen 
+3820817 kamitakai-gun takayamamura yamadabokujo 
+3820813 kamitakai-gun takayamamura warabitaira 
+3810400 shimotakai-gun yamanouchimachi When there is no description in below. 
+3810402 shimotakai-gun yamanouchimachi sano 
+3810403 shimotakai-gun yamanouchimachi samusawa 
+3810404 shimotakai-gun yamanouchimachi togari 
+3810401 shimotakai-gun yamanouchimachi hirao 
+3810405 shimotakai-gun yamanouchimachi yomase 
+3892300 shimotakai-gun kijimadairamura When there is no description in below. 
+3892302 shimotakai-gun kijimadairamura ogo 
+3892303 shimotakai-gun kijimadairamura kamikijima 
+3892301 shimotakai-gun kijimadairamura hotaka 
+3892500 shimotakai-gun nozawaonsenmura When there is no description in below. 
+3892501 shimotakai-gun nozawaonsenmura tsuboyama 
+3892502 shimotakai-gun nozawaonsenmura toyosato 
+3892612 shimotakai-gun nozawaonsenmura nanagamaki 
+3892611 shimotakai-gun nozawaonsenmura higashiotaki 
+3892614 shimotakai-gun nozawaonsenmura hirabayashi 
+3892503 shimotakai-gun nozawaonsenmura maezaka 
+3892613 shimotakai-gun nozawaonsenmura mushiu 
+3891300 kamiminochi-gun shinanomachi When there is no description in below. 
+3891311 kamiminochi-gun shinanomachi arasebara 
+3891316 kamiminochi-gun shinanomachi oi 
+3891305 kamiminochi-gun shinanomachi kashiwabara 
+3891304 kamiminochi-gun shinanomachi kamiyamakokusaimura 
+3891301 kamiminochi-gun shinanomachi kumasaka 
+3891312 kamiminochi-gun shinanomachi tomino 
+3891303 kamiminochi-gun shinanomachi nojiri 
+3891306 kamiminochi-gun shinanomachi nojiri(daigakumura) 
+3891315 kamiminochi-gun shinanomachi hiraoka 
+3891313 kamiminochi-gun shinanomachi furuma 
+3891302 kamiminochi-gun shinanomachi furumi 
+3891314 kamiminochi-gun shinanomachi honami 
+3813300 kamiminochi-gun ogawamura When there is no description in below. 
+3813301 kamiminochi-gun ogawamura inaoka 
+3813303 kamiminochi-gun ogawamura oneyama 
+3813304 kamiminochi-gun ogawamura setogawa 
+3813302 kamiminochi-gun ogawamura takafu 
+3891200 kamiminochi-gun iizunamachi When there is no description in below. 
+3891203 kamiminochi-gun iizunamachi akashio 
+3891201 kamiminochi-gun iizunamachi imogawa 
+3891226 kamiminochi-gun iizunamachi kawakami 
+3891205 kamiminochi-gun iizunamachi kawatani 
+3891204 kamiminochi-gun iizunamachi kurai 
+3891214 kamiminochi-gun iizunamachi kurokawa 
+3891227 kamiminochi-gun iizunamachi kosaka 
+3891215 kamiminochi-gun iizunamachi kodama 
+3891225 kamiminochi-gun iizunamachi sakaguchi 
+3891224 kamiminochi-gun iizunamachi jizokubo 
+3891223 kamiminochi-gun iizunamachi sodenoyama 
+3891212 kamiminochi-gun iizunamachi toyono 
+3891202 kamiminochi-gun iizunamachi higashikashiwabara 
+3891213 kamiminochi-gun iizunamachi hiraide 
+3891206 kamiminochi-gun iizunamachi fukoji 
+3891221 kamiminochi-gun iizunamachi furumachi 
+3891211 kamiminochi-gun iizunamachi mure 
+3891222 kamiminochi-gun iizunamachi yanagisato 
+3892700 shimominochi-gun sakaemura When there is no description in below. 
+9498321 shimominochi-gun sakaemura sakai(17500-18560banchi) 
+3892703 shimominochi-gun sakaemura sakai[sonota] 
+3892701 shimominochi-gun sakaemura toyosakae 
+3892702 shimominochi-gun sakaemura hokushin

@@ -1,0 +1,129 @@
+﻿using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace NSW.Posts
+{
+    public partial class EditPost : System.Web.UI.Page
+    {
+        DirectoryInfo photoFolder;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EditPost.Page_Load", "Starting...", LogEnum.Debug);
+            if (!IsPostBack)
+            {
+                LoadLabelValues();
+                LoadDropDownList();
+            }
+        }
+
+        private void LoadDropDownList()
+        {
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EditPost.LoadDropDownList", "Starting...", LogEnum.Debug);
+            SqlConnection catConn = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
+            SqlCommand catComm = catConn.CreateCommand();
+            catComm.CommandType = CommandType.Text;
+            catComm.CommandText = "Select fldPostCategory_id from tblPostCategories order by fldPostCategory_id";
+            SqlDataAdapter adap = new SqlDataAdapter(catComm);
+            DataSet ds = new DataSet();
+            catConn.Open();
+            adap.Fill(ds);
+            catConn.Close();
+            ListItem selectOne = new ListItem(NSW.Data.LabelText.Text("SelectOne"), "NoValue");
+            this.PostCategoryPicker.Items.Add(selectOne);
+            foreach(DataRow dr in ds.Tables[0].Rows)
+            {
+                ListItem item = new ListItem(NSW.Data.PostCategory.Title(Convert.ToInt32(dr["fldPostCategory_id"])), dr["fldPostCategory_id"].ToString());
+                this.PostCategoryPicker.Items.Add(item);
+            }
+        }
+
+        private void LoadLabelValues()
+        {
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EditPost.LoadLabelValues", "Starting...", LogEnum.Debug);
+            this.EditPostPageTitle.Text = NSW.Data.LabelText.Text("EditPost.EditPostPageTitle");
+            this.EditPostInstructions.Text = NSW.Data.LabelText.Text("EditPost.EditPostInstructions");
+            // now the wizard controls
+            (this.EditPostWizardStep0.FindControl("PostCategoryPickerLabel") as Label).Text = NSW.Data.LabelText.Text("EditPost.PostCategoryPickerLabel");
+            (this.EditPostWizardStep0.FindControl("PostCategoryRequired") as RequiredFieldValidator).ErrorMessage = NSW.Data.LabelText.Text("EditPost.PostCategoryRequired");
+            (this.EditPostWizardStep0.FindControl("PostTitleLabel") as Label).Text = NSW.Data.LabelText.Text("EditPost.PostTitleLabel");
+            (this.EditPostWizardStep0.FindControl("PostTitleRequired") as RequiredFieldValidator).ErrorMessage = NSW.Data.LabelText.Text("EditPost.PostTitleRequired");
+            (this.EditPostWizardStep0.FindControl("PostDescriptionLabel") as Label).Text = NSW.Data.LabelText.Text("EditPost.PostDescriptionLabel");
+            (this.EditPostWizardStep0.FindControl("PostDescriptionRequired") as RequiredFieldValidator).ErrorMessage = NSW.Data.LabelText.Text("EditPost.PostDescriptionRequired");
+            (this.EditPostWizardStep0.FindControl("PostPriceLabel") as Label).Text = NSW.Data.LabelText.Text("EditPost.PostPriceLabel");
+            (this.EditPostWizardStep0.FindControl("PostPriceRequired") as RequiredFieldValidator).ErrorMessage = NSW.Data.LabelText.Text("EditPost.PostPriceRequired");
+            (this.EditPostWizardStep0.FindControl("PostPhoto1FileContent") as Label).Text = NSW.Data.LabelText.Text("EditPost.PostPhotoErrorMessage");
+            (this.EditPostWizardStep0.FindControl("PostPhoto2FileContent") as Label).Text = NSW.Data.LabelText.Text("EditPost.PostPhotoErrorMessage");
+            (this.EditPostWizardStep0.FindControl("PostPhoto3FileContent") as Label).Text = NSW.Data.LabelText.Text("EditPost.PostPhotoErrorMessage");
+            (this.EditPostWizardStep0.FindControl("PostPhoto4FileContent") as Label).Text = NSW.Data.LabelText.Text("EditPost.PostPhotoErrorMessage");
+            (Global.GetControlFromWizard(this.EditPostWizard, WizardNavigationTempContainer.FinishNavigationTemplateContainerID, "FinishButton") as Button).Text = NSW.Data.LabelText.Text("EditPost.FinishButton");
+        }
+
+        protected void FinishClick(object sender, WizardNavigationEventArgs e)
+        {
+            try
+            {
+                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EditPost.FinishClick", "Starting...", LogEnum.Debug);
+                bool valid = true;
+                if (this.PostCategoryPicker.SelectedValue == "NoValue")
+                {
+                    this.EditPostErrorMessage.Text = NSW.Data.LabelText.Text("EditPost.PostCategoryRequired");
+                    valid = false;
+                }
+                if (valid)
+                {
+                    NSW.Data.Post newPost = new Data.Post();
+                    newPost.CategoryID = Convert.ToInt32(this.PostCategoryPicker.SelectedItem.Value);
+                    newPost.Description = this.PostDescription.Text.Trim();
+                    newPost.Title = this.PostTitle.Text.Trim();
+                    newPost.Price = Convert.ToDecimal(this.PostPrice.Text.Trim());
+                    NSW.Data.User postUser = new Data.User(Page.User.Identity.Name);
+                    newPost.UserID = postUser.ID;
+                    newPost.insertPost();
+                    // now add photos to Photo folder
+                    if (this.PostPhoto1.HasFile || this.PostPhoto2.HasFile || this.PostPhoto3.HasFile || this.PostPhoto4.HasFile)
+                    {
+                        DirectoryInfo folder = new DirectoryInfo(Server.MapPath("~/Posts/Photos"));
+                        photoFolder = folder.CreateSubdirectory(newPost.ID.ToString());
+                    }
+                    if (this.PostPhoto1.HasFile)
+                    {
+                        if (this.PostPhoto1.FileContent.Length <= 4194304)
+                            this.PostPhoto1.SaveAs(photoFolder.FullName + @"\" + this.PostPhoto1.FileName);
+                        else
+                            this.EditPostErrorMessage.Text = NSW.Data.LabelText.Text("EditPost.4MegMessage");
+                    }
+                    if (this.PostPhoto2.HasFile)
+                    {
+                        if (this.PostPhoto2.FileContent.Length <= 4194304)
+                            this.PostPhoto2.SaveAs(photoFolder.FullName + @"\" + this.PostPhoto2.FileName);
+                        else
+                            this.EditPostErrorMessage.Text = NSW.Data.LabelText.Text("EditPost.4MegMessage");
+                    }
+                    if (this.PostPhoto3.HasFile)
+                    {
+                        if (this.PostPhoto3.FileContent.Length <= 4194304)
+                            this.PostPhoto4.SaveAs(photoFolder.FullName + @"\" + this.PostPhoto3.FileName);
+                        else
+                            this.EditPostErrorMessage.Text = NSW.Data.LabelText.Text("EditPost.4MegMessage");
+                    }
+                    if (this.PostPhoto4.HasFile)
+                    {
+                        if (this.PostPhoto4.FileContent.Length <= 4194304)
+                            this.PostPhoto4.SaveAs(photoFolder.FullName + @"\" + this.PostPhoto4.FileName);
+                        else
+                            this.EditPostErrorMessage.Text = NSW.Data.LabelText.Text("EditPost.4MegMessage");
+                    }
+                    Response.Redirect("EditPostSuccess.aspx");
+                }
+            }
+            catch (Exception x)
+            {
+                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EditPost.FinishClick", x, LogEnum.Debug);
+            }
+        }
+    }
+}

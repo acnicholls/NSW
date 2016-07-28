@@ -1,0 +1,4 @@
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_Info\bin\Release\NSWINF.dll
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_Info\bin\Release\NSWINF.pdb
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_Info\obj\Release\NSWINF.dll
+D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_Info\obj\Release\NSWINF.pdb

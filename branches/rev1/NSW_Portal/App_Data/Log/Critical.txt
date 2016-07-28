@@ -1,0 +1,2347 @@
+7/11/2014 6:01:39 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/11/2014 6:02:21 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/30/2014 10:32:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/30/2014 10:32:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/30/2014 10:32:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/30/2014 10:32:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/30/2014 10:32:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/30/2014 10:32:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/30/2014 10:32:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/30/2014 10:32:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/30/2014 10:32:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/30/2014 10:32:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/30/2014 10:32:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/30/2014 10:32:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+7/30/2014 10:32:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:57 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:57 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:57 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:57 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:57 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:57 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:57 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:57 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:57 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:57 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:57 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:57 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:01:58 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 8:01:58 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 8:01:58 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 8:01:58 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 8:02:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 8:02:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 8:02:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 8:02:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 8:02:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 8:02:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 8:02:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 8:04:28 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:04:28 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:04:28 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:04:28 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:04:28 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:04:28 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:04:28 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:04:28 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:04:28 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:04:28 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:04:28 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:04:28 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:04:29 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:31 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 8:05:31 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:31 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:31 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:31 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:32 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:32 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:32 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:32 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:32 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:32 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:32 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:32 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:32 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:05:32 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:06:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:06:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:06:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:06:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:06:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:06:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:06:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:06:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:06:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:06:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:06:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:06:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:11:43 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:16:12 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:16:13 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:16:13 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:16:13 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:16:13 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:16:13 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:16:13 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:16:13 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:16:13 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:16:13 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:16:13 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 8:16:13 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:14 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:14 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:14 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:14 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:14 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:14 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:14 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:14 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:14 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:14 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:14 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:14 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:15 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:12:17 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:12:17 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:12:17 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:12:17 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:14:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:14:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:14:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:14:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:14:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:14:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:14:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:14:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:14:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:14:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:14:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:14:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:14:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:14:25 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:25:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:25:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:25:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:25:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:25:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:25:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:25:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:25:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:25:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:25:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:25:08 PM, WriteToDatabase, The connection was not closed. The connection's current state is connecting.
+
+8/2/2014 9:25:08 PM, WriteToDatabase, Procedure or function insertSiteLog has too many arguments specified.
+
+8/2/2014 9:30:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:19 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:19 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:19 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:19 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:19 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:20 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:20 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:20 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:20 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:20 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:20 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:20 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:20 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:20 PM, WriteToDatabase, Object reference not set to an instance of an object.
+
+8/2/2014 9:30:20 PM, WriteToDatabase, Procedure or function insertSiteLog has too many arguments specified.
+
+8/2/2014 9:30:20 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:20 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:20 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:20 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:20 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:20 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:20 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:20 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:20 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:21 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:30:21 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:33:33 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:33:33 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:33:33 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:33:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:33:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:33:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:33:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:33:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:33:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:33:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:33:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:33:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:33:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:33:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:33:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:33:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:33:49 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:33:49 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:33:49 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:33:49 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:33:49 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:33:49 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:33:49 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:22 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:34:22 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:34:22 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:34:22 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:34:22 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:34:22 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:34:22 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:34:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:34:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:34:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:34:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:34:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:34:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:34:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:59 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:59 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:59 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:59 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:59 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:59 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:59 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:59 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:59 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:59 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:34:59 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:35:00 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:35:00 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:36:02 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:36:02 PM, WriteToDatabase, Invalid operation. The connection is closed.
+
+8/2/2014 9:36:32 PM, WriteToDatabase, Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+
+8/2/2014 9:36:32 PM, WriteToDatabase, Invalid operation. The connection is closed.
+
+8/2/2014 9:36:32 PM, WriteToDatabase, Invalid operation. The connection is closed.
+
+8/2/2014 9:37:00 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:37:00 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:37:00 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:37:00 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:37:00 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:37:00 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:37:00 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:37:00 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:37:00 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:37:00 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:37:00 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:37:01 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:37:01 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:37:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:37:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:37:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:37:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:37:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:37:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:37:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:37:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:37:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:37:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:37:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:37:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:37:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:14 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:14 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:14 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:14 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:14 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:14 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:14 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:14 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:14 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:14 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:14 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:14 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:14 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:46:38 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:47:24 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:24 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:24 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:24 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:24 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:24 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:26 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:47:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:47:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:51:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:51:38 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:38 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:38 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:38 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:38 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:38 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:38 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:38 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:38 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:38 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:38 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:38 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:38 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 9:51:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:51:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:51:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:51:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:51:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:51:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:51:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:51:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 9:51:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:19:03 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:03 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:04 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:19:04 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:19:11 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:19:11 PM, WriteToDatabase, Procedure or function insertSiteLog has too many arguments specified.
+
+8/2/2014 10:19:11 PM, WriteToDatabase, The connection was not closed. The connection's current state is connecting.
+
+8/2/2014 10:19:41 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:41 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:41 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:41 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:42 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:42 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:42 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:42 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:42 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:42 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:42 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:42 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:42 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:19:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:23:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:52 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:52 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:52 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:52 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:52 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:52 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:52 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:52 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:52 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:52 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:52 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:52 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:23:52 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:25:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:25:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:25:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:25:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:25:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:25:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:25:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:25:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:25:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:25:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:25:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:25:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:25:23 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:25:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:25:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:25:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:25:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:25:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:25:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:25:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:25:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:25:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:25:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:25:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:25:23 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:25:24 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:26:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:26:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:26:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:26:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:26:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:26:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:26:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:26:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:26:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:26:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:26:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:26:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:26:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:27:31 PM, WriteToDatabase, Invalid operation. The connection is closed.
+
+8/2/2014 10:27:31 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:28:01 PM, WriteToDatabase, The connection was not closed. The connection's current state is connecting.
+
+8/2/2014 10:28:01 PM, WriteToDatabase, Procedure or function insertSiteLog has too many arguments specified.
+
+8/2/2014 10:28:01 PM, WriteToDatabase, Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+
+8/2/2014 10:28:01 PM, WriteToDatabase, Invalid operation. The connection is closed.
+
+8/2/2014 10:28:01 PM, WriteToDatabase, Invalid operation. The connection is closed.
+
+8/2/2014 10:30:00 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:00 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:00 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:00 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:00 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:00 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:00 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:29 PM, WriteToDatabase, The connection was not closed. The connection's current state is connecting.
+
+8/2/2014 10:30:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:30:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/2/2014 10:33:27 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:27 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:27 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:27 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:27 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:27 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:27 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:27 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:27 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:27 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:27 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:27 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:27 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:33 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:33 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:33 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:33 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:33 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:33 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:34 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:34 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:34 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:34 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:34 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:34 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:33:34 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:36:34 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:36:39 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:36:39 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:36:39 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:36:39 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:36:39 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:36:39 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:36:39 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:36:39 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:36:39 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:36:39 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:36:39 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/2/2014 10:36:39 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 6:08:55 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 6:08:55 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 6:08:55 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 6:35:24 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 6:35:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 6:35:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 6:35:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 6:35:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 6:35:25 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 6:35:25 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 6:35:25 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 6:35:25 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 6:55:54 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 6:55:54 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 6:55:54 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 6:55:54 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 6:55:54 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 6:55:54 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 6:59:18 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:02:55 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:02:55 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:02:55 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:02:55 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:02:55 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:05:11 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:05:33 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:05:33 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:05:33 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:05:33 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:05:33 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:07:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:07:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:07:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:07:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:07:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:07:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:07:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:07:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:07:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:07:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:07:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:07:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:13:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:13:03 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:13:03 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:13:03 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:13:03 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:13:03 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:15:01 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:17:54 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:17:54 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:17:54 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:17:54 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:17:54 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:39:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:41:11 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:41:12 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:41:14 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:41:15 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:41:17 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:43:51 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:45:01 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:45:03 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:45:04 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:45:05 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:45:07 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:46:46 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:47:16 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:47:21 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:50:02 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:50:03 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:50:05 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:54:07 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:54:41 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:54:46 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:54:48 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:54:50 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:54:52 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:56:51 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:56:54 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:56:56 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:56:58 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:57:00 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:57:03 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 7:57:31 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 8:05:44 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:12:43 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:12:44 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:12:44 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:12:45 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:12:45 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:14:03 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:16:07 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:16:08 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:16:08 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:16:08 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:16:09 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:20:22 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:21:16 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:21:16 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:21:16 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:21:17 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:21:17 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:36:17 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:36:26 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:36:36 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:36:41 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:36:47 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:36:52 PM, ProjectInfo.protocol, Object reference not set to an instance of an object.
+
+8/4/2014 8:37:07 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 8:37:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 8:37:08 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:20:28 PM, WriteToDatabase, Procedure or function insertSiteLog has too many arguments specified.
+
+8/4/2014 11:20:28 PM, WriteToSQL with message, The process cannot access the file 'D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_Portal\App_Data\Log\Critical.txt' because it is being used by another process.
+
+8/4/2014 11:20:28 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:13 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:27 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:27 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:27 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:27 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:27 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:27 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:21:27 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:34:46 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:34:46 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:34:46 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:34:46 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:34:46 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:34:46 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:34:46 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:35:42 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:35:42 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:35:42 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:35:43 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:35:43 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:35:43 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:35:43 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:53:26 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:53:26 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:53:26 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/4/2014 11:53:26 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/6/2014 11:10:07 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/6/2014 11:10:07 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/6/2014 11:10:07 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/6/2014 11:20:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/6/2014 11:20:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/6/2014 11:20:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/6/2014 11:20:11 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/6/2014 11:20:11 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/6/2014 11:40:20 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+8/6/2014 11:40:20 PM, WriteToDatabase, Object reference not set to an instance of an object.
+
+8/7/2014 11:22:28 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/7/2014 11:26:28 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/7/2014 11:26:28 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/7/2014 11:26:28 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/7/2014 11:26:28 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/7/2014 11:26:28 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/7/2014 11:26:28 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/7/2014 11:26:28 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:08:55 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:08:55 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:08:55 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:08:55 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:08:55 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:11:13 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:11:13 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:11:13 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:11:13 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:11:13 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:11:13 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:11:13 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:17:54 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:17:54 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:26:01 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:26:01 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:26:01 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:26:01 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:26:01 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:26:01 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:26:01 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:26:01 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:26:01 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:26:01 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:30:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:44:11 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:44:11 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:44:11 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:44:11 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/8/2014 12:44:11 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/9/2014 11:43:48 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 10:16:15 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 10:55:48 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 11:00:31 AM, WriteToDatabase, The connection was not closed. The connection's current state is connecting.
+
+8/11/2014 11:00:32 AM, WriteToDatabase, Procedure or function insertSiteLog has too many arguments specified.
+
+8/11/2014 9:57:00 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 9:57:00 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 9:57:00 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 9:57:00 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 9:57:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 9:57:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 9:57:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 9:57:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 9:57:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 9:57:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 9:57:10 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 9:58:50 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+8/11/2014 9:58:50 PM, WriteToDatabase, Object reference not set to an instance of an object.
+
+8/11/2014 9:58:50 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 10:00:16 PM, WriteToDatabase, Object reference not set to an instance of an object.
+
+8/11/2014 10:00:16 PM, WriteToDatabase, Object reference not set to an instance of an object.
+
+8/11/2014 10:04:03 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/11/2014 11:59:22 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 12:09:20 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 12:12:32 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 12:17:24 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+8/12/2014 12:28:57 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 12:31:38 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+8/12/2014 12:31:40 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+8/12/2014 12:36:52 AM, WriteToDatabase, Invalid operation. The connection is closed.
+
+8/12/2014 12:37:43 AM, WriteToDatabase, Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+
+8/12/2014 12:47:39 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 12:47:39 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 11:20:39 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 11:29:16 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+8/12/2014 11:31:51 AM, WriteToDatabase, Object reference not set to an instance of an object.
+
+8/12/2014 11:31:51 AM, WriteToDatabase, Procedure or function insertSiteLog has too many arguments specified.
+
+8/12/2014 11:31:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 11:31:51 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 11:35:09 AM, WriteToDatabase, Object reference not set to an instance of an object.
+
+8/12/2014 11:35:09 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+8/12/2014 11:35:09 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+8/12/2014 11:35:32 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is open.
+
+8/12/2014 11:35:33 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+8/12/2014 11:35:42 AM, WriteToDatabase, Invalid operation. The connection is closed.
+
+8/12/2014 11:36:12 AM, WriteToDatabase, Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+
+8/12/2014 11:36:56 AM, WriteToDatabase, The connection was not closed. The connection's current state is connecting.
+
+8/12/2014 11:36:56 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+8/12/2014 11:36:56 AM, WriteToDatabase, Procedure or function insertSiteLog has too many arguments specified.
+
+8/12/2014 11:48:23 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 11:48:23 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 11:48:23 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 11:48:23 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 11:57:33 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 11:59:38 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 11:59:38 AM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 12:00:12 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+8/12/2014 12:01:44 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+8/12/2014 12:07:01 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+8/12/2014 12:07:15 PM, WriteToDatabase, Invalid operation. The connection is closed.
+
+8/12/2014 12:07:51 PM, WriteToDatabase, Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+
+8/12/2014 12:07:53 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 12:07:53 PM, WriteToDatabase, Invalid operation. The connection is closed.
+
+8/12/2014 12:07:53 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/12/2014 12:08:23 PM, WriteToDatabase, Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+
+8/30/2014 12:22:25 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/30/2014 12:22:25 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/30/2014 12:22:25 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/30/2014 12:22:42 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/30/2014 12:22:42 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/30/2014 12:22:42 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/30/2014 12:22:44 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/30/2014 12:22:44 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/30/2014 12:22:44 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+8/30/2014 12:22:44 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:54:07 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:54:07 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:54:07 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:54:07 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+9/14/2014 10:54:07 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:54:07 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:56:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:56:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:56:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:56:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:56:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:56:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:56:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:56:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:56:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 10:56:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:00:43 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:00:44 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:00:44 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:00:48 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:00:48 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:03:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:03:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:03:37 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:03:38 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:03:38 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:03:38 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:03:38 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:03:38 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:03:38 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:03:38 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:08:33 PM, WriteToDatabase, The connection was not closed. The connection's current state is connecting.
+
+9/14/2014 11:08:33 PM, WriteToDatabase, Procedure or function insertSiteLog has too many arguments specified.
+
+9/14/2014 11:24:53 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:24:53 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:29:29 PM, WriteToDatabase, Object reference not set to an instance of an object.
+
+9/14/2014 11:29:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:29:29 PM, WriteToDatabase, Procedure or function insertSiteLog has too many arguments specified.
+
+9/14/2014 11:29:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:29:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:29:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:29:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:29:29 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:34 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:34 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:34 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:34 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:34 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:34 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:34 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:34 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:34 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:39 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:43 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:43 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:43 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:43 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:45 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:45 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:45 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:45 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:45 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:45 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:45 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:45 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:46 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:31:46 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:32:16 PM, WriteToDatabase, Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+
+9/14/2014 11:32:16 PM, WriteToDatabase, Invalid operation. The connection is closed.
+
+9/14/2014 11:35:41 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is open.
+
+9/14/2014 11:50:24 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:50:24 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:50:24 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:50:24 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:50:24 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:50:24 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:50:24 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:50:24 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:50:24 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/14/2014 11:50:24 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/15/2014 10:16:33 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/15/2014 11:01:55 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:57 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:57 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:57 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:01:59 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/15/2014 11:22:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:49 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:52 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:52 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:52 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:23:54 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:19 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:23 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:25 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:25 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:25 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:25 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:25 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:25 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:25 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:25 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:25 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:27 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:27 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:27 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:27 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:27 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:27 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:27 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:28 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:28 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:28 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:28 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:29:28 PM, WriteToDatabase, Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:31:34 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/16/2014 10:32:30 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/16/2014 10:32:30 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/16/2014 10:32:30 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/16/2014 10:32:30 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/16/2014 10:32:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/16/2014 10:32:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/16/2014 10:32:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/16/2014 10:32:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/16/2014 10:32:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/16/2014 10:32:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/16/2014 10:32:32 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/18/2014 7:32:57 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:00 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:00 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:00 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:02 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:03 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:03 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:03 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:03 PM, WriteToDatabase, The EXECUTE permission was denied on the object 'insertSiteLog', database 'NSW', schema 'dbo'.
+
+9/18/2014 7:33:53 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/18/2014 7:33:53 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/18/2014 7:33:53 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/18/2014 7:33:53 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/18/2014 7:33:53 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/18/2014 9:30:26 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/18/2014 9:30:26 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/18/2014 9:30:26 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/18/2014 9:30:26 PM, WriteToDatabase, ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+3/29/2015 2:22:32 PM, WriteToDatabase, Requested URL : /NSW/WebResource.axd?d=RrwURmSc-entZj83hxxHv53e1ijgMhNrmSQeScskvaDJL4GBOo23xnTCjHsDQnA_o6oOfS0mRDtm2xZUTpS6ujGKYPlIMUh3ljTm83yTNIo1&t=635369890656103379
+
+Object reference not set to an instance of an object.
+
+6/7/2015 12:25:55 AM, WriteToDatabase, Requested URL : /NSW/Admin/WebAnalysis/index_files/powered.gif
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+6/7/2015 12:25:56 AM, WriteToDatabase, Requested URL : /NSW/Admin/WebAnalysis/index_files/TOC.htm
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+6/7/2015 12:25:56 AM, WriteToSQL with exception, Requested URL : /NSW/Admin/WebAnalysis/index_files/section_right.gif
+
+The process cannot access the file 'D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_Portal\App_Data\Log\Critical.txt' because it is being used by another process.
+
+6/7/2015 2:28:26 AM, WriteToDatabase, Requested URL : /NSW/WebResource.axd?d=RrwURmSc-entZj83hxxHv53e1ijgMhNrmSQeScskvaDJL4GBOo23xnTCjHsDQnA_o6oOfS0mRDtm2xZUTpS6ujGKYPlIMUh3ljTm83yTNIo1&t=635589147476784022
+
+Invalid operation. The connection is closed.
+
+6/7/2015 2:28:56 AM, WriteToDatabase, Requested URL : /NSW/images/ads/ad3.png
+
+Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+
+6/7/2015 2:50:56 AM, WriteToDatabase, Requested URL : /NSW/WebResource.axd?d=Y8GrvclZT7pYMcE6wdSY4klag8bTQNYA_KzkysWjgyf-x81C2NJ6BSnDrePcJPm_wvqJZwI91VZCT9NyZkRo95fFGcu4lREN3eD5j7KpUzNYCWRIQTNePb_goDoaUfHS0&t=635589147476784022
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+6/7/2015 2:55:17 AM, WriteToDatabase, Requested URL : /NSW/WebResource.axd?d=RrwURmSc-entZj83hxxHv53e1ijgMhNrmSQeScskvaDJL4GBOo23xnTCjHsDQnA_o6oOfS0mRDtm2xZUTpS6ujGKYPlIMUh3ljTm83yTNIo1&t=635589147476784022
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+6/7/2015 2:55:17 AM, WriteToDatabase, Requested URL : /NSW/WebResource.axd?d=Y8GrvclZT7pYMcE6wdSY4klag8bTQNYA_KzkysWjgyf-x81C2NJ6BSnDrePcJPm_wvqJZwI91VZCT9NyZkRo95fFGcu4lREN3eD5j7KpUzNYCWRIQTNePb_goDoaUfHS0&t=635589147476784022
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+6/7/2015 2:55:42 AM, WriteToDatabase, Requested URL : /NSW/WebResource.axd?d=Y8GrvclZT7pYMcE6wdSY4klag8bTQNYA_KzkysWjgyf-x81C2NJ6BSnDrePcJPm_wvqJZwI91VZCT9NyZkRo95fFGcu4lREN3eD5j7KpUzNYCWRIQTNePb_goDoaUfHS0&t=635589147476784022
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+6/7/2015 2:55:42 AM, WriteToDatabase, Requested URL : /NSW/WebResource.axd?d=RrwURmSc-entZj83hxxHv53e1ijgMhNrmSQeScskvaDJL4GBOo23xnTCjHsDQnA_o6oOfS0mRDtm2xZUTpS6ujGKYPlIMUh3ljTm83yTNIo1&t=635589147476784022
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+6/7/2015 2:56:15 AM, WriteToDatabase, Requested URL : /NSW/WebResource.axd?d=RrwURmSc-entZj83hxxHv53e1ijgMhNrmSQeScskvaDJL4GBOo23xnTCjHsDQnA_o6oOfS0mRDtm2xZUTpS6ujGKYPlIMUh3ljTm83yTNIo1&t=635589147476784022
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+6/7/2015 2:56:15 AM, WriteToDatabase, Requested URL : /NSW/WebResource.axd?d=Y8GrvclZT7pYMcE6wdSY4klag8bTQNYA_KzkysWjgyf-x81C2NJ6BSnDrePcJPm_wvqJZwI91VZCT9NyZkRo95fFGcu4lREN3eD5j7KpUzNYCWRIQTNePb_goDoaUfHS0&t=635589147476784022
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+6/7/2015 2:56:57 AM, WriteToDatabase, Requested URL : /NSW/WebResource.axd?d=RrwURmSc-entZj83hxxHv53e1ijgMhNrmSQeScskvaDJL4GBOo23xnTCjHsDQnA_o6oOfS0mRDtm2xZUTpS6ujGKYPlIMUh3ljTm83yTNIo1&t=635589147476784022
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+9/26/2015 12:08:45 AM, WriteToDatabase, Requested URL : /NSW/Styles/Site.css
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+9/26/2015 12:08:45 AM, WriteToDatabase, Requested URL : /NSW/images/noPic.JPG
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+1/12/2016 11:19:13 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:13 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:13 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:16 PM, WriteToDatabase, Requested URL : /NSW/Account/Login.aspx
+
+Cannot open user default database. Login failed.
+Login failed for user 'NSW'.
+
+1/12/2016 11:19:30 PM, WriteToDatabase, Requested URL : /NSW/WebResource.axd?d=Y8GrvclZT7pYMcE6wdSY4klag8bTQNYA_KzkysWjgyf-x81C2NJ6BSnDrePcJPm_wvqJZwI91VZCT9NyZkRo95fFGcu4lREN3eD5j7KpUzNYCWRIQTNePb_goDoaUfHS0&t=635589147476784022
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+1/12/2016 11:19:30 PM, WriteToDatabase, Requested URL : /NSW/WebResource.axd?d=8bDMu06GearG-cUq8s3KZecagWsTOBq7GlDZCUjYsjwdSfvctfo_FDZDVBaq7iNI3Il6Y19XDn9iaSNvUoTaysZ24Lzek9u6kInWCc4qbzI1&t=635589147476784022
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+
+1/12/2016 11:19:30 PM, WriteToDatabase, Requested URL : /NSW/WebResource.axd?d=Y8GrvclZT7pYMcE6wdSY4klag8bTQNYA_KzkysWjgyf-x81C2NJ6BSnDrePcJPm_wvqJZwI91VZCT9NyZkRo95fFGcu4lREN3eD5j7KpUzNYCWRIQTNePb_goDoaUfHS0&t=635589147476784022
+
+ExecuteNonQuery requires an open and available Connection. The connection's current state is connecting.
+

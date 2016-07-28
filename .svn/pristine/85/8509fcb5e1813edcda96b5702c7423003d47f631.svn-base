@@ -1,0 +1,208 @@
+﻿using System;
+using System.IO;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.ComponentModel;
+using System.Timers;
+using System.Data;
+using System.Data.SqlClient;
+
+
+namespace NSW
+{
+    public class Global : System.Web.HttpApplication
+    {
+        BackgroundWorker worker1 = new BackgroundWorker();
+        System.Timers.Timer timer1 = new System.Timers.Timer();
+
+        void Application_Start(object sender, EventArgs e)
+        {
+            // Code that runs on application startup
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Global", "Application_Start", LogEnum.Debug);
+            this.StartBackgroundProcess();
+        }
+
+        void Application_End(object sender, EventArgs e)
+        {
+            //  Code that runs on application shutdown
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Global", "Application_End", LogEnum.Debug);
+        }
+
+        void Application_Error(object sender, EventArgs e)
+        {
+            //// Code that runs when an unhandled error occurs
+            Exception ex = Server.GetLastError();
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Global.Application_Error", ex, LogEnum.Critical);
+        }
+
+        void Session_Start(object sender, EventArgs e)
+        {
+            // Code that runs when a new session is started
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Global", "Session_Start", LogEnum.Debug);
+        }
+
+        void Session_End(object sender, EventArgs e)
+        {
+            // Code that runs when a session ends. 
+            // Note: The Session_End event is raised only when the sessionstate mode
+            // is set to InProc in the Web.config file. If session mode is set to StateServer 
+            // or SQLServer, the event is not raised.
+            Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Global", "Session_End", LogEnum.Debug);
+        }
+
+        public static Control GetControlFromWizard(Wizard wizard, WizardNavigationTempContainer wzdTemplate, string controlName)
+        {
+            System.Text.StringBuilder strCtrl = new System.Text.StringBuilder();
+            strCtrl.Append(wzdTemplate);
+            strCtrl.Append("$");
+            strCtrl.Append(controlName);
+
+            return wizard.FindControl(strCtrl.ToString());
+        }
+
+        private void CheckSessionExpiry()
+        {
+            if (this.Session.IsNewSession)
+            {
+
+            }
+        }
+
+        public static string[] GrabKeyPairs(string requestQString)
+        {
+            string[] keyPairs = null;
+            try
+            {
+                // split the string
+                keyPairs = requestQString.Split('&');
+                int num = keyPairs.Length;
+                Log.WriteToLog(LogTypeEnum.Database, "WebFunctions : GrabKeyPairs ", "Number of keypairs : " + num.ToString(), LogEnum.Debug);
+            }
+            catch (Exception x)
+            {
+                Log.WriteToLog(LogTypeEnum.Database, "WebFunctions : GrabKeyPairs ", x, LogEnum.Critical);
+            }
+            return keyPairs;
+        }
+
+        public static bool KeyPairContains(string[] keyPairs, string inputString)
+        {
+            Log.WriteToLog(LogTypeEnum.Database, "WebFunctions : KeyPairContains ", "Contains : Looking for : " + inputString, LogEnum.Debug);
+            foreach (string keypair in keyPairs)
+            {
+                string[] values = keypair.Split('=');
+                Log.WriteToLog(LogTypeEnum.Database, "WebFunctions : KeyPairContains ", "Checking value : " + values[0].ToString(), LogEnum.Debug);
+                if (values[0].ToString() == inputString)
+                {
+                    Log.WriteToLog(LogTypeEnum.Database, "WebFunctions : KeyPairContains ", "Found : " + inputString, LogEnum.Debug);
+                    return true;
+                }
+            }
+            Log.WriteToLog(LogTypeEnum.Database, "WebFunctions : KeyPairContains ", "Not Found.", LogEnum.Debug);
+            return false;
+        }
+      
+        public static string KeyPairValue(string[] keyPairs, string inputString)
+        {
+            foreach (string keypair in keyPairs)
+            {
+                string[] values = keypair.Split('=');
+                if (values[0].ToString() == inputString)
+                {
+                    Log.WriteToLog(LogTypeEnum.Database, "WebFunctions.KeyPairValue", "Returning Value : " + values[1].ToString(), LogEnum.Debug);
+                    return values[1].ToString();
+                }
+            }
+            return "";
+        }
+
+        private void StartBackgroundProcess()
+        {
+            worker1.WorkerReportsProgress = false;
+            worker1.WorkerSupportsCancellation = false;
+            double ticksPerHour = (1000*60)*60;
+            double ticksPerDay = ticksPerHour * 24;
+            double numOfDaysBetweenRuns = Convert.ToDouble(NSW.Info.AppSettings.GetAppSetting("NumOfDaysBetweenBackgroundRuns", false));
+            timer1.Interval = (ticksPerDay * numOfDaysBetweenRuns);
+            timer1.Elapsed += new ElapsedEventHandler(timer1_Elasped);
+            timer1.AutoReset = true;
+            timer1.Start();
+        }
+
+        private void timer1_Elasped(object sender, ElapsedEventArgs e)
+        {
+            worker1.RunWorkerAsync();
+        }
+
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {       
+                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "BackgroundWorker_DoWork","Starting...", LogEnum.Message);
+                // set all sold posts to be deleted  (give users more time, in case sold was premature)
+                SqlConnection globConn = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
+                SqlCommand globComm = globConn.CreateCommand();
+                // run expire posts procedure
+                globComm.CommandType = CommandType.StoredProcedure;
+                globComm.CommandText = "ExpirePosts";
+                globConn.Open();
+                globComm.ExecuteNonQuery();
+                globConn.Close();
+                ExpirePosts();
+                // mark posts for deletion
+                globComm.CommandText = "CheckForDeleteablePosts";
+                globConn.Open();
+                globComm.ExecuteNonQuery();
+                globConn.Close();
+                // delete all posts and photos for marked posts.
+                globComm.CommandType = CommandType.Text;
+                globComm.CommandText = "Select * from tblPosts where fldPost_DeleteFlag = 1";
+                SqlDataAdapter adap = new SqlDataAdapter(globComm);
+                DataSet ds = new DataSet();
+                globConn.Open();
+                adap.Fill(ds);
+                globConn.Close();
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    // delete each post and post photos
+                    NSW.Data.Post thisPost = new Data.Post(Convert.ToInt32(dr["fldPost_id"]));
+                    DirectoryInfo fotoFolder = new DirectoryInfo(Server.MapPath("~/Posts/Photos/" + thisPost.ID.ToString()));
+                    FileInfo[] pics = fotoFolder.GetFiles();
+                    foreach (FileInfo fi in pics)
+                    {
+                        fi.Delete();
+                    }
+                    fotoFolder.Delete();
+                    thisPost.deletePost();
+               }
+               Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "BackgroundWorker_DoWork", "Complete.", LogEnum.Message);
+            }
+            catch (Exception ex)
+            {
+                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "BackgroundWorker_DoWork", ex, LogEnum.Critical);
+            }
+        }
+
+        private void ExpirePosts()
+        {
+            DateTime today = DateTime.Today;
+            SqlConnection globConn = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
+            SqlCommand globComm = globConn.CreateCommand();
+            globComm.CommandType = CommandType.Text;
+            globComm.CommandText = "Select * from tblPosts where fldPost_Status='EXPIRED' and CAST(fldPost_ChangeDate as date)='" + today.ToString() + "'";
+            SqlDataAdapter adap = new SqlDataAdapter(globComm);
+            DataSet ds = new DataSet();
+            globConn.Open();
+            adap.Fill(ds);
+            globConn.Close();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+             // send email to post's user
+                NSW.Data.Post thisPost = new Data.Post(Convert.ToInt32(dr["fldPost_id"]));
+                thisPost.SendExpiryEmail();
+            }
+        }
+
+    }
+}

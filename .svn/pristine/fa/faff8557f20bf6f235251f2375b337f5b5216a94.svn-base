@@ -1,0 +1,145 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Data;
+using System.Data.SqlClient;
+
+
+namespace NSW.Data
+{
+    public class LabelText
+    {
+        public string ID { get; set; }
+        public string English { get; set; }
+        public string Japanese { get; set; }
+
+        private SqlConnection labelConn = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
+
+        public LabelText()
+        {
+
+        }
+
+        public LabelText(string ID)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                SqlCommand labelComm = labelConn.CreateCommand();
+                SqlDataAdapter adap = new SqlDataAdapter(labelComm);
+                labelComm.CommandType = CommandType.Text;
+                labelComm.CommandText = "Select * from tblLabelText where fldLabel_ID='" + ID + "'";
+                // first find the user row in the database
+                labelConn.Open();
+                adap.Fill(ds);
+                labelConn.Close();
+                // assign values
+                DataRow dr = ds.Tables[0].Rows[0];
+                this.ID = ID;
+                this.English = dr["fldLabel_English"].ToString();
+                this.Japanese = dr["fldLabel_Japanese"].ToString();
+            }
+            catch (Exception x)
+            {
+                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelText", x, LogEnum.Critical);
+            }
+            finally
+            {
+                if (labelConn.State == ConnectionState.Open)
+                    labelConn.Close();
+            }
+        }
+
+        public void modifyLabel(string ID)
+        {
+            try
+            {
+                SqlCommand labelComm = labelConn.CreateCommand();
+                labelComm.CommandType = CommandType.StoredProcedure;
+                labelComm.CommandText = "modifyLabelText";
+                // set all the parameters
+                SqlParameter param = new SqlParameter();
+                // assign values
+                param = new SqlParameter("@id", this.ID);
+                labelComm.Parameters.Add(param);
+                param = new SqlParameter("@english", this.English);
+                labelComm.Parameters.Add(param);
+                param = new SqlParameter("@japanese", this.Japanese);
+                labelComm.Parameters.Add(param);
+                // execute the command
+                labelConn.Open();
+                labelComm.ExecuteNonQuery();
+                labelConn.Close();
+            }
+            catch (Exception x)
+            {
+                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "modifyLabel", x, LogEnum.Critical);
+            }
+            finally
+            {
+                if (labelConn.State == ConnectionState.Open)
+                    labelConn.Close();
+            }
+        }
+
+        public void deleteLabel(string ID)
+        {
+            try
+            {
+                SqlCommand labelComm = labelConn.CreateCommand();
+                labelComm.CommandType = CommandType.StoredProcedure;
+                labelComm.CommandText = "deleteLabelText";
+                // set all the parameters
+                SqlParameter param = new SqlParameter();
+                // assign values
+                param = new SqlParameter("@id", this.ID);
+                labelComm.Parameters.Add(param);
+                // execute the command
+                labelConn.Open();
+                labelComm.ExecuteNonQuery();
+                labelConn.Close();
+            }
+            catch (Exception x)
+            {
+                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "deleteLabel", x, LogEnum.Critical);
+            }
+            finally
+            {
+                if (labelConn.State == ConnectionState.Open)
+                    labelConn.Close();
+            }
+        }
+        public void insertLabel()
+        {
+            try
+            {
+                SqlCommand labelComm = labelConn.CreateCommand();
+                labelComm.CommandType = CommandType.StoredProcedure;
+                labelComm.CommandText = "insertLabelText";
+                // set all the parameters
+                SqlParameter param = new SqlParameter();
+                // assign values
+                param = new SqlParameter("@id", this.ID);
+                labelComm.Parameters.Add(param);
+                param = new SqlParameter("@english", this.English);
+                labelComm.Parameters.Add(param);
+                param = new SqlParameter("@japanese", this.Japanese);
+                labelComm.Parameters.Add(param);
+                // execute the command
+                labelConn.Open();
+                labelComm.ExecuteNonQuery();
+                labelConn.Close();
+            }
+            catch (Exception x)
+            {
+                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "insertLabel", x, LogEnum.Critical);
+            }
+            finally
+            {
+                if (labelConn.State == ConnectionState.Open)
+                    labelConn.Close();
+            }
+        }
+    }
+}
