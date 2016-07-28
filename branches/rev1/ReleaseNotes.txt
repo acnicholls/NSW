@@ -1,2 +1,0 @@
-fixed sort order on PostList.aspx
-fixed PostList.aspx search function not displaying not found list when not items returned from search

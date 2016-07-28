@@ -1,7 +1,0 @@
-D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\bin\Release\NSWDAT.dll
-D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\bin\Release\NSWDAT.pdb
-D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\bin\Release\NSWINF.dll
-D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\bin\Release\NSWINF.pdb
-D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\obj\Release\NSW_Data.csprojResolveAssemblyReference.cache
-D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\obj\Release\NSWDAT.dll
-D:\Project Folders\~!projectsWeb\NSW\branches\rev1\NSW_DataClasses\obj\Release\NSWDAT.pdb
