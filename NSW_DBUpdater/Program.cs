@@ -4,6 +4,9 @@ using System.Data;
 
 namespace NSW_DBUpdater
 {
+    /// <summary>
+    /// this program was written to take the production instance's Japanese text and move them to the testing database
+    /// </summary>
     class Program
     {
 
