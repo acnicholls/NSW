@@ -243,7 +243,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-/FolderSizeCalcPortal/App_Data/log
-/FolderSizeCalcPortal/App_Data/updateChecks
+
 /pullResult.txt
 /NSW_GeoCoder/APIKEY.txt
