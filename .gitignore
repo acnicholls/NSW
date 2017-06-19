@@ -143,7 +143,7 @@ publish/
 # TODO: Un-comment the next line if you do not want to checkin 
 # your web deploy settings because they may include unencrypted
 # passwords
-#*.pubxml
+*.pubxml
 *.publishproj
 
 # NuGet Packages
@@ -247,3 +247,4 @@ ModelManifest.xml
 /pullResult.txt
 /NSW_GeoCoder/APIKEY.txt
 /NSW_Portal/App_Data/Cache/*
+/NSW_Portal/Posts/Photos/*
