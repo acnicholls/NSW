@@ -246,3 +246,4 @@ ModelManifest.xml
 
 /pullResult.txt
 /NSW_GeoCoder/APIKEY.txt
+/NSW_Portal/App_Data/Cache/*
