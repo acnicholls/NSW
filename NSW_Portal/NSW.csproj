@@ -24,6 +24,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,7 +55,7 @@
     </Reference>
     <Reference Include="MSCaptcha, Version=1.0.2832.11804, Culture=neutral, PublicKeyToken=22fb54a8be1255fc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\~MSCaptcha\MSCaptcha.dll</HintPath>
+      <HintPath>..\~MSCaptcha\MSCaptcha.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -380,6 +381,7 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Local_Release.pubxml" />
     <None Include="Properties\PublishProfiles\Mikechi_Release.pubxml" />
+    <None Include="Properties\PublishProfiles\ThermaltakeStaging.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

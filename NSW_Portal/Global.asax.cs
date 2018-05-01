@@ -20,15 +20,15 @@ namespace NSW
         /// <param name="e"></param>
         void Application_Start(object sender, EventArgs e)
         {
-            try
-            {
-                // Code that runs on application startup
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Global", "Application_Start", LogEnum.Debug);
-            }
-            catch (Exception x)
-            {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Global.Application_Start", x, LogEnum.Critical);
-            }
+            //try
+            //{
+            //    // Code that runs on application startup
+            //    Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Global", "Application_Start", LogEnum.Debug);
+            //}
+            //catch (Exception x)
+            //{
+            //    Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "Global.Application_Start", x, LogEnum.Critical);
+            //}
         }
 
         /// <summary>
