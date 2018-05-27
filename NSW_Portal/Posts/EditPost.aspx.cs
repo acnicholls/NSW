@@ -24,7 +24,7 @@ namespace NSW.Posts
             {
                 keyPairs = Global.GrabKeyPairs(Request.QueryString.ToString());
                 Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EditPost.Page_Load", "Starting...", LogEnum.Debug);
-                thisPost = new Data.Post(Convert.ToInt16(Global.KeyPairValue(keyPairs, "postID")));
+                thisPost = new Data.Post(Convert.ToInt32(Global.KeyPairValue(keyPairs, "postID")));
                 NSW.Data.User currUser = new Data.User(Page.User.Identity.Name);
                 NSW.Data.User postUser = thisPost.PostUser();
                 if (postUser.ID == currUser.ID)
