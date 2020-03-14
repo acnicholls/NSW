@@ -244,11 +244,8 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 
-/pullResult.txt
-/NSW_GeoCoder/APIKEY.txt
-/NSW_Portal/App_Data/Cache/*
-/NSW_Portal/Posts/Photos/*
-/NSW_Portal/App_Data/Log/Debug.txt
-/NSW_Portal/App_Data/Log/Error.txt
-/NSW_Portal/App_Data/Log/Critical.txt
-/NSW_Portal/App_Data/Log/Warning.txt
+pullResult.txt
+NSW_GeoCoder/APIKEY.txt
+NSW_Portal/App_Data/Cache/*
+NSW_Portal/Posts/Photos/*
+NSW_Portal/App_Data/Log/*

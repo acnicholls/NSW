@@ -54,6 +54,10 @@ namespace NSW
             newLabel = (Label)this.HeadLoginView.FindControl("lblLogin");
             if (newLabel != null)
                 newLabel.Text = NSW.Data.LabelText.Text("Master.lblLogin");
+            // register button
+            Label registerLabel = (Label)this.HeadLoginView.FindControl("lblRegister");
+            if (registerLabel != null)
+                registerLabel.Text = NSW.Data.LabelText.Text("Login.RegisterHyperLink");
             // logout button
             if (Page.User.Identity.IsAuthenticated)
             {

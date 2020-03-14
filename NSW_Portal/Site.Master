@@ -27,7 +27,8 @@
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
-                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server"><asp:Label ID="lblLogin" class="lblLogin" runat="server"></asp:Label></a> ]
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server"><asp:Label ID="lblLogin" class="lblLogin" runat="server"></asp:Label></a> ] <br />
+                        [ <a href="~/Account/Register.aspx" ID="A1" runat="server"><asp:Label ID="lblRegister" class="lblRegister" runat="server"></asp:Label></a> ]
                     </AnonymousTemplate>
                     <LoggedInTemplate>
                          <span class="bold"><asp:Label ID="lblWelcome" class="lblWelcome" runat="server"></asp:Label> <asp:LoginName ID="HeadLoginName" runat="server" /></span>!

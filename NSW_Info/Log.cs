@@ -134,9 +134,9 @@ namespace NSW
         {
             try
             {
-                string strMessage = "Requested URL : " + System.Web.HttpContext.Current.Request.RawUrl.ToString() + "\r\n\r\n";
-                strMessage = ex.ToString() + "\r\n";
-                strMessage += ex.Message.ToString() + "\r\n";
+                //string strMessage = "Requested URL : " + System.Web.HttpContext.Current.Request.RawUrl.ToString() + "\r\n\r\n";
+                //strMessage = ex.ToString() + "\r\n";
+                string strMessage = ex.Message.ToString() + "\r\n";
                 strMessage += ex.StackTrace.ToString(); //.InnerException.Message.ToString();
                 WriteToDatabase(caller, strMessage, Convert.ToInt32(import));
             }
