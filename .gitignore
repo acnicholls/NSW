@@ -249,3 +249,4 @@ NSW_GeoCoder/APIKEY.txt
 NSW_Portal/App_Data/Cache/*
 NSW_Portal/Posts/Photos/*
 NSW_Portal/App_Data/Log/*
+NSW_Portal/Web.config
