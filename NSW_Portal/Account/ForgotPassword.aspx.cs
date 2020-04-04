@@ -27,8 +27,14 @@ namespace NSW.Account
             try
             {
                 NSW.Data.User fpUser = new Data.User(this.ForgotPasswordUser.Text.Trim());
-                if (fpUser != new Data.User())
+
+                if (fpUser.ID != 0)
                 {
+                    // reset the useer's password
+                    string newPassword = NSW.Info.RandomFunctions.BuildNewPassword();
+                    fpUser.changePassword(newPassword);
+                    fpUser.Password = newPassword;
+                    // send the new password to the registered email address
                     NSW.Info.EmailMessage email = new Info.EmailMessage();
                     System.Net.Mail.MailAddress userAddress = new System.Net.Mail.MailAddress(this.ForgotPasswordUser.Text.Trim());
                     email.To.Add(userAddress);
@@ -40,10 +46,15 @@ namespace NSW.Account
                     strBody += NSW.Data.LabelText.Text("ForgotPass.Line3");
                     email.Body = strBody;
                     email.Send();
+                    string url = "ForgotPasswordEmailSent.aspx";
+                    Response.Redirect(url, false);
+                    Context.ApplicationInstance.CompleteRequest();
                 }
-                string url = "ForgotPasswordEmailSent.aspx";
-                Response.Redirect(url, false);
-                Context.ApplicationInstance.CompleteRequest();
+                else
+                {
+                    this.FailureText.Text = "No user with that email found.";
+                    e.Cancel = true;
+                }
             }
             catch (Exception x)
             {

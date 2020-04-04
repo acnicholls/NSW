@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -20,6 +21,8 @@ namespace NSW
     {
         private static SqlConnection conACN;
         private static SqlCommand comACN;
+
+        private static ILogger logLogger;
 
         public Log()
         { }
@@ -198,14 +201,62 @@ namespace NSW
 
         private static void WriteToFile(string caller, string message, LogEnum import)
         {
-            string fileName = NSW.Info.ProjectInfo.LogLocation + @"\" + import.ToString() + ".txt";
-            CheckFolderExists(fileName);
-            StreamWriter logFile = new StreamWriter(fileName, true);
-            string strMessage = "Requested URL : " + System.Web.HttpContext.Current.Request.RawUrl.ToString() + "\r\n\r\n";
-            strMessage += message + "\r\n";
-            logFile.WriteLine(DateTime.Now + ", " + caller + ", " + strMessage);
-            logFile.Flush();
-            logFile.Close();
+            try
+            {
+                logLogger = NLog.LogManager.GetLogger("NSW");
+
+                string logMessage = caller + System.Environment.NewLine + message;
+
+                switch (import)
+                {
+                    case LogEnum.Critical:
+                        {
+                            logLogger.Error(logMessage);
+                            break;
+                        }
+                    case LogEnum.Error:
+                        {
+                            logLogger.Error(logMessage);
+                            break;
+                        }
+                    case LogEnum.Message:
+                        {
+                            logLogger.Info(logMessage);
+                            break;
+                        }
+                    case LogEnum.Warning:
+                        {
+                            logLogger.Warn(logMessage);
+                            break;
+                        }
+                    case LogEnum.Important:
+                        {
+                            logLogger.Info(logMessage);
+                            break;
+                        }
+                    case LogEnum.Debug:
+                        {
+                            logLogger.Debug(logMessage);
+                            break;
+                        }
+                    case LogEnum.Access:
+                        {
+                            logLogger.Info(logMessage);
+                            break;
+                        }
+                }
+            }
+            catch (Exception ex)
+            {
+                string fileName = NSW.Info.ProjectInfo.LogLocation + @"LogFailure.txt";
+                CheckFolderExists(fileName);
+                StreamWriter logFile = new StreamWriter(fileName, true);
+                logFile.WriteLine(ex.Message);
+                logFile.WriteLine(ex.StackTrace);
+                logFile.Flush();
+                logFile.Close();
+            }
+
         }
 
         /// <summary>
@@ -216,16 +267,65 @@ namespace NSW
         /// <param name="import">name of file/importance of log entry</param>
         private static void WriteToFile(string caller, Exception ex, LogEnum import)
         {
-            string fileName = NSW.Info.ProjectInfo.LogLocation + @"\" + import.ToString() + ".txt";
-            CheckFolderExists(fileName);
+            try
+            {
+                logLogger = NLog.LogManager.GetLogger("NSW");
 
-            StreamWriter logFile = new StreamWriter(fileName, true);
-            string strMessage = "Requested URL : " + System.Web.HttpContext.Current.Request.RawUrl.ToString() + "\r\n\r\n"; 
-            strMessage += ex.ToString() + "\r\n";
-            strMessage += ex.Message.ToString() + "\r\n";
-            logFile.WriteLine(DateTime.Now + ", " + caller + ", " + strMessage);
-            logFile.Flush();
-            logFile.Close();
+                string logMessage = caller + System.Environment.NewLine + ex.Message;
+
+                switch (import)
+                {
+                    case LogEnum.Critical:
+                        {
+                            logLogger.Error(ex, logMessage);
+                            break;
+                        }
+                    case LogEnum.Error:
+                        {
+                            logLogger.Error(ex, logMessage);
+                            break;
+                        }
+                    case LogEnum.Message:
+                        {
+                            logLogger.Info(ex, logMessage);
+                            break;
+                        }
+                    case LogEnum.Warning:
+                        {
+                            logLogger.Warn(ex, logMessage);
+                            break;
+                        }
+                    case LogEnum.Important:
+                        {
+                            logLogger.Info(ex, logMessage);
+                            break;
+                        }
+                    case LogEnum.Debug:
+                        {
+                            logLogger.Debug(ex, logMessage);
+                            break;
+                        }
+                    case LogEnum.Access:
+                        {
+                            logLogger.Info(ex, logMessage);
+                            break;
+                        }
+                }
+
+            }
+            catch (Exception innerException)
+            {
+                string fileName = NSW.Info.ProjectInfo.LogLocation + @"LogFailure.txt";
+                CheckFolderExists(fileName);
+                StreamWriter logFile = new StreamWriter(fileName, true);
+                logFile.WriteLine(ex.Message);
+                logFile.WriteLine(ex.StackTrace);
+                logFile.WriteLine("#######################  Inner Exception  ####################");
+                logFile.WriteLine(innerException.Message);
+                logFile.WriteLine(innerException.StackTrace);
+                logFile.Flush();
+                logFile.Close();
+            }
         }
 
         /// <summary>

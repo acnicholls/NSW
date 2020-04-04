@@ -25,6 +25,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -381,6 +382,7 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Local_Release.pubxml" />
     <None Include="Properties\PublishProfiles\Mikechi_Release.pubxml" />
+    <None Include="Properties\PublishProfiles\TestingOnServer2019.pubxml" />
     <None Include="Properties\PublishProfiles\ThermaltakeStaging.pubxml" />
   </ItemGroup>
   <PropertyGroup>

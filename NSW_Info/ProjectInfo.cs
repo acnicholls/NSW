@@ -27,7 +27,7 @@ namespace NSW.Info
             get
             {
                 LogTypeEnum returnValue = new LogTypeEnum();
-                switch (NSW.Info.AppSettings.GetAppSetting("LogType", false))
+                switch (NSW.Info.AppSettings.GetAppSetting("LogType", false).ToLower())
                 {
                     case "database":
                         {
