@@ -382,6 +382,7 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Local_Release.pubxml" />
     <None Include="Properties\PublishProfiles\Mikechi_Release.pubxml" />
+    <None Include="Properties\PublishProfiles\ProductionOnServer2016.pubxml" />
     <None Include="Properties\PublishProfiles\TestingOnServer2019.pubxml" />
     <None Include="Properties\PublishProfiles\ThermaltakeStaging.pubxml" />
   </ItemGroup>
