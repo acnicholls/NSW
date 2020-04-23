@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
     <title></title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" runat="server" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -39,7 +39,7 @@
             <div class="clear"></div>
             <div class="MenuSection">
                 <div class="NavhideSkiplink">
-                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="navMenu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                    <asp:Menu ID="NavigationMenu" runat="server" CssClass="navMenu" EnableViewState="false" IncludeStyleBlock="false" RenderingMode="List" Orientation="Horizontal">
                         <Items>
                             <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
                             <asp:MenuItem NavigateUrl="~/Search.aspx" Text="Search"/>
@@ -47,7 +47,7 @@
                     </asp:Menu>
                 </div>
                 <div class="MemhideSkiplink">
-                    <asp:Menu ID="MemberMenu" runat="server" CssClass="memberMenu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                    <asp:Menu ID="MemberMenu" runat="server" CssClass="memberMenu" EnableViewState="false" IncludeStyleBlock="false" RenderingMode="List" Orientation="Horizontal">
                         <Items>
                             <asp:MenuItem Text="Members">
                                 <asp:MenuItem NavigateUrl="~/Account/ChangePassword.aspx" Text="Change Password" />
