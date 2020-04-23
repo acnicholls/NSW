@@ -11,7 +11,7 @@ namespace NSW.Data
         public string English { get; set; }
         public string Japanese { get; set; }
 
-        private SqlConnection labelConn = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
+        private static readonly SqlConnection labelConn = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
 
         public LabelText()
         {
@@ -24,19 +24,18 @@ namespace NSW.Data
         /// <param name="identifier">ID of object to build</param>
         public LabelText(string identifier)
         {
-            SqlConnection textConn = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
             try
             {
                 DataSet ds = new DataSet();
-                SqlCommand labelComm = textConn.CreateCommand();
+                SqlCommand labelComm = labelConn.CreateCommand();
                 SqlDataAdapter adap = new SqlDataAdapter(labelComm);
                 labelComm.CommandType = CommandType.Text;
                 labelComm.CommandText = "Select * from tblLabelText where fldLabel_ID='" + identifier + "'";
                 Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelText", labelComm.CommandText, LogEnum.Debug);
                 // first find the user row in the database
-                textConn.Open();
+                labelConn.Open();
                 adap.Fill(ds);
-                textConn.Close();
+                labelConn.Close();
                 // assign values
                 DataRow dr = ds.Tables[0].Rows[0];
                 this.ID = dr["fldLabel_ID"].ToString();
@@ -56,18 +55,17 @@ namespace NSW.Data
         /// <returns>text string in desired language</returns>
         public static string Text(string ID)
         {
-            SqlConnection textConn = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
             try
             {
                 DataSet ds = new DataSet();
-                SqlCommand labelComm = textConn.CreateCommand();
+                SqlCommand labelComm = labelConn.CreateCommand();
                 SqlDataAdapter adap = new SqlDataAdapter(labelComm);
                 labelComm.CommandType = CommandType.Text;
                 labelComm.CommandText = "Select * from tblLabelText where fldLabel_ID='" + ID + "'";
                 // first find the user row in the database
-                textConn.Open();
+                labelConn.Open();
                 adap.Fill(ds);
-                textConn.Close();
+                labelConn.Close();
                 // assign values
                 DataRow dr = ds.Tables[0].Rows[0];
                 switch (DisplayLanguage)
@@ -140,18 +138,17 @@ namespace NSW.Data
         /// <returns>desired text string</returns>
         public static string Text(string ID, Data.User curUser)
         {
-            SqlConnection textConn = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
             try
             {
                 DataSet ds = new DataSet();
-                SqlCommand labelComm = textConn.CreateCommand();
+                SqlCommand labelComm = labelConn.CreateCommand();
                 SqlDataAdapter adap = new SqlDataAdapter(labelComm);
                 labelComm.CommandType = CommandType.Text;
                 labelComm.CommandText = "Select * from tblLabelText where fldLabel_ID='" + ID + "'";
                 // first find the user row in the database
-                textConn.Open();
+                labelConn.Open();
                 adap.Fill(ds);
-                textConn.Close();
+                labelConn.Close();
                 // assign values
                 DataRow dr = ds.Tables[0].Rows[0];
                 string language = ((LanguagePreference)curUser.LanguagePreference).ToString();
