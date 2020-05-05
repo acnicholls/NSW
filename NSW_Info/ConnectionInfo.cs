@@ -1,5 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Configuration;
 
 namespace NSW.Info
 {
@@ -8,17 +7,15 @@ namespace NSW.Info
     /// </summary>
     public class ConnectionInfo
     {
-
         /// <summary>
-        /// returns the appsetting value of 'ConnectionString'
+        /// returns the string value of 'ConnectionString'
         /// </summary>
         public static string ConnectionString
         {
             get
             {
-                return NSW.Info.AppSettings.GetAppSetting("ConnectionString", false);
+                return ConfigurationManager.ConnectionStrings[AppSettings.GetAppSetting("ConnectionString", false)].ConnectionString;
             }
         }
-
     }
 }

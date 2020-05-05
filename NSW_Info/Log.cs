@@ -4,9 +4,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 
-
 namespace NSW
-{	//////	Debug = 0,
+{	
+    //////	Debug = 0,
     //////	Message = 1,
     //////	Important = 2,
     //////	Access = 3,
@@ -101,7 +101,7 @@ namespace NSW
                     }
                 case LogTypeEnum.Database:
                     {
-                        WriteToSQL(caller, ex, import);
+                        WriteToDatabase(caller, ex, import);
                         break;
                     }
             }
@@ -133,7 +133,7 @@ namespace NSW
         /// <param name="caller">calling method</param>
         /// <param name="ex">System.Exception to log</param>
         /// <param name="import">log importance</param>
-        private static void WriteToSQL(string caller, Exception ex, LogEnum import)
+        private static void WriteToDatabase(string caller, Exception ex, LogEnum import)
         {
             try
             {
@@ -179,26 +179,11 @@ namespace NSW
         }
 
         /// <summary>
-        /// writes a string log entry to a file
+        /// writes the passed message to the passed file, listed as the passed caller
         /// </summary>
-        /// <param name="caller">calling method</param>
-        /// <param name="message">message to write</param>
-        /// <param name="import">name of file/importance of log entry</param>
-
-        private static void WriteToSQL(string caller, string message, LogEnum import)
-        {
-            try
-            {
-                string strMessage = "Requested URL : " + System.Web.HttpContext.Current.Request.RawUrl.ToString() + "\r\n\r\n";
-                strMessage += message + "\r\n";
-                WriteToDatabase(caller, strMessage, Convert.ToInt32(import));
-            }
-            catch (Exception x)
-            {
-                WriteToFile("WriteToSQL with message", x.Message, LogEnum.Critical);
-            }
-        }
-
+        /// <param name="caller">the caller to log as</param>
+        /// <param name="message">the message to log</param>
+        /// <param name="import">the importance (name) of the log file to log to</param>
         private static void WriteToFile(string caller, string message, LogEnum import)
         {
             try

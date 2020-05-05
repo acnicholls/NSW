@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace NSW_DBUpdater
 {
@@ -13,8 +14,8 @@ namespace NSW_DBUpdater
         static void Main(string[] args)
         {
             // declare connections
-            SqlConnection LocalConnection = new SqlConnection(NSW.Info.AppSettings.GetAppSetting("ConnectionStringLocal", false));
-            SqlConnection RemoteConnection = new SqlConnection(NSW.Info.AppSettings.GetAppSetting("ConnectionStringRemote", false));
+            SqlConnection LocalConnection = new SqlConnection(ConfigurationManager.ConnectionStrings[NSW.Info.AppSettings.GetAppSetting("ConnectionStringLocal", false)].ConnectionString);
+            SqlConnection RemoteConnection = new SqlConnection(ConfigurationManager.ConnectionStrings[NSW.Info.AppSettings.GetAppSetting("ConnectionStringRemote", false)].ConnectionString);
             // declare data objects
             SqlDataAdapter adap = new SqlDataAdapter();
             DataSet rds = new DataSet();

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSW", "NSW_Portal\NSW.csproj", "{CEE337EE-27D4-4682-B54F-167251CCEE2E}"
 EndProject
@@ -65,5 +65,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {3527EB40-AB6C-4401-8E63-29612BB7434B}
 	EndGlobalSection
 EndGlobal

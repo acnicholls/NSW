@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,15 +49,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
+    <Content Include="App.config" />
+    <Content Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+    </Content>
+    <Content Include="App.Release.config">
+      <DependentUpon>App.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NSW_Info\NSW_Info.csproj">
       <Project>{580acce2-4df2-4d09-8fa1-b6481f07d857}</Project>
       <Name>NSW_Info</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config\connectionStrings.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

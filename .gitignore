@@ -250,3 +250,7 @@ NSW_Portal/App_Data/Cache/*
 NSW_Portal/Posts/Photos/*
 NSW_Portal/App_Data/Log/*
 NSW_Portal/Web.config
+
+# connectionstring container, so repo doesn't hold sensitive info
+connectionStrings.config
+mail.config

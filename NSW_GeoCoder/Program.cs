@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Net;
 using System.Xml;
+using System.Configuration;
 
 namespace NSW.GeoCoder
 {
@@ -21,7 +22,7 @@ namespace NSW.GeoCoder
         /// <summary>
         /// this is the connection to the database
         /// </summary>
-        static SqlConnection nswConn = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
+        static SqlConnection nswConn = new SqlConnection(ConfigurationManager.ConnectionStrings[NSW.Info.ConnectionInfo.ConnectionString].ConnectionString);
 
         /// <summary>
         /// bool containing the true/false result of the Google API call.  
