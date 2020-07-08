@@ -2,7 +2,7 @@
 Natsuko's Sharing Website
 
 ## Demo working version
-http://acnlop.dyndns.org/nsw
+https://nsw.acnicholls.com
 
 ## Development Note
 - all connection strings are securly stored in a config folder for the project they are used in.  use a file named connectionStrings.config
