@@ -274,6 +274,11 @@ namespace NSW.Posts
                 valid = false;
                 this.AddPostErrorMessage.Text = NSW.Data.LabelText.Text("AddPost.FileNameMessage");
             }
+            if (itemToCheck.FileName.Contains(" "))
+            {
+                valid = false;
+                this.AddPostErrorMessage.Text = NSW.Data.LabelText.Text("AddPost.FileNameMessage");
+            }
             Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "AddPost.IsFileValid", "Done, returning : " + valid.ToString(), LogEnum.Debug);
 
             return valid;

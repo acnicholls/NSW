@@ -266,7 +266,7 @@ namespace NSW.Posts
             mapText += lat.ToString();
             mapText += ", " + lon.ToString();
             mapText += "], zoom:15});";
-            mapText += "L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png'";
+            mapText += "L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png'";
             mapText += ", {attribution: '&copy; <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors'}";
             mapText += ").addTo(map);";
             mapText += "L.marker([" + lat.ToString() + ", " + lon.ToString() + "]).addTo(map);";
