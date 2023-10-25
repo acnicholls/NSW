@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", ".").Replace("_","."))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NSW_DataClasses\NSW_Data.csproj" />
+    <ProjectReference Include="..\NSW_Info\NSW_Info.csproj" />
+    <ProjectReference Include="..\NSW_Repositories\NSW_Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

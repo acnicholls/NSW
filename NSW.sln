@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSW", "NSW_Portal\NSW.csproj", "{CEE337EE-27D4-4682-B54F-167251CCEE2E}"
 EndProject
@@ -12,6 +12,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSW_DBUpdater", "NSW_DBUpdater\NSW_DBUpdater.csproj", "{8F9B235F-F102-41D5-BB40-D0B58FD77DE0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSW_GeoCoder", "NSW_GeoCoder\NSW_GeoCoder.csproj", "{F63A85B9-844B-4623-B290-AF055D6C54E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSW_Services", "NSW_Services\NSW_Services.csproj", "{65DB0804-E219-48B5-9436-DECD5CA78740}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSW_Repositories", "NSW_Repositories\NSW_Repositories.csproj", "{A351C48E-2B88-466C-9944-FE4E80DF9797}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSW_Api", "NSW_Api\NSW_Api.csproj", "{54787528-7AA3-4994-8621-DE323F8536E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,12 +65,36 @@ Global
 		{F63A85B9-844B-4623-B290-AF055D6C54E4}.Release|Any CPU.ActiveCfg = Release|x86
 		{F63A85B9-844B-4623-B290-AF055D6C54E4}.Release|x86.ActiveCfg = Release|x86
 		{F63A85B9-844B-4623-B290-AF055D6C54E4}.Release|x86.Build.0 = Release|x86
+		{65DB0804-E219-48B5-9436-DECD5CA78740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65DB0804-E219-48B5-9436-DECD5CA78740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65DB0804-E219-48B5-9436-DECD5CA78740}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{65DB0804-E219-48B5-9436-DECD5CA78740}.Debug|x86.Build.0 = Debug|Any CPU
+		{65DB0804-E219-48B5-9436-DECD5CA78740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65DB0804-E219-48B5-9436-DECD5CA78740}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65DB0804-E219-48B5-9436-DECD5CA78740}.Release|x86.ActiveCfg = Release|Any CPU
+		{65DB0804-E219-48B5-9436-DECD5CA78740}.Release|x86.Build.0 = Release|Any CPU
+		{A351C48E-2B88-466C-9944-FE4E80DF9797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A351C48E-2B88-466C-9944-FE4E80DF9797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A351C48E-2B88-466C-9944-FE4E80DF9797}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A351C48E-2B88-466C-9944-FE4E80DF9797}.Debug|x86.Build.0 = Debug|Any CPU
+		{A351C48E-2B88-466C-9944-FE4E80DF9797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A351C48E-2B88-466C-9944-FE4E80DF9797}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A351C48E-2B88-466C-9944-FE4E80DF9797}.Release|x86.ActiveCfg = Release|Any CPU
+		{A351C48E-2B88-466C-9944-FE4E80DF9797}.Release|x86.Build.0 = Release|Any CPU
+		{54787528-7AA3-4994-8621-DE323F8536E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54787528-7AA3-4994-8621-DE323F8536E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54787528-7AA3-4994-8621-DE323F8536E3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{54787528-7AA3-4994-8621-DE323F8536E3}.Debug|x86.Build.0 = Debug|Any CPU
+		{54787528-7AA3-4994-8621-DE323F8536E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54787528-7AA3-4994-8621-DE323F8536E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54787528-7AA3-4994-8621-DE323F8536E3}.Release|x86.ActiveCfg = Release|Any CPU
+		{54787528-7AA3-4994-8621-DE323F8536E3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		VisualSVNWorkingCopyRoot = .
 		SolutionGuid = {3527EB40-AB6C-4401-8E63-29612BB7434B}
+		VisualSVNWorkingCopyRoot = .
 	EndGlobalSection
 EndGlobal

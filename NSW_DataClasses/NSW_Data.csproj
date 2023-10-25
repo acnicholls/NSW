@@ -51,9 +51,9 @@
     <Compile Include="Data\Post.cs" />
     <Compile Include="Data\PostalCode.cs" />
     <Compile Include="Data\PostCategory.cs" />
-    <Compile Include="Data\Security\MembershipProvider.cs" />
-    <Compile Include="Data\Security\RoleProvider.cs" />
     <Compile Include="Data\User.cs" />
+    <Compile Include="Enums\LanguagePreferenceEnum.cs" />
+    <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
