@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using NSW.Data;
 using NSW.Data.Interfaces;
 using System.Data;
 
@@ -6,7 +7,7 @@ namespace NSW.Repositories
 {
 	public class BaseRepository
 	{
-		protected readonly IUser _currentUser;
+		protected readonly IUser _currentUser = new User("test", "Test@acnicholls.com");
 
 		private static readonly SqlConnection connection = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
 

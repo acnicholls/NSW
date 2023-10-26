@@ -6,6 +6,17 @@ namespace NSW.Data
 
 	public class User : IUser
 	{
+		public User(string name, string email)
+		{
+			this.ID = 0;
+			this.Name = name;
+			this.Email = email;
+			this.Password = "passw0rd!";
+			this.Phone = "";
+			this.PostalCode = "12345";
+			this.Role = "Member";
+			this.LanguagePreference = 1;
+		}
 
 		public int ID { get; set; }
 		public string Name { get; set; }

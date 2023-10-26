@@ -8,7 +8,11 @@ namespace NSW.Data.Extensions
 	{
 		public static void RegisterServices(IServiceCollection services)
 		{
-			services.AddScoped<IUser, User>();
+			var user = new User("test", "Test@acnicholls.com");
+			services.AddScoped<IUser>((services) =>
+			{
+				return user;
+			});
 
 		}
 	}

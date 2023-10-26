@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Configuration;
+using System.Runtime.CompilerServices;
+
 
 namespace NSW.Info
 {
@@ -8,20 +10,27 @@ namespace NSW.Info
     /// </summary>
     public class AppSettings
     {
+		//private static readonly IConfiguration _configuration;
         public AppSettings()
         {
         }
 
-        /// <summary>
-        /// decrypts the requested appsetting in memory
-        /// </summary>
-        /// <param name="settingName">setting name to decrypt</param>
-        /// <returns>string of unencrypted data</returns>
-        private static string DecryptAppSetting(string settingName)
+		//public AppSettings(IConfiguration configuration)
+		//{
+		//	_configuration = configuration;
+		//}
+
+		/// <summary>
+		/// decrypts the requested appsetting in memory
+		/// </summary>
+		/// <param name="settingName">setting name to decrypt</param>
+		/// <returns>string of unencrypted data</returns>
+		private static string DecryptAppSetting(string settingName)
         {
-            Byte[] b = Convert.FromBase64String(ConfigurationManager.AppSettings[settingName]);
-            string decryptedConnectionString = System.Text.ASCIIEncoding.ASCII.GetString(b);
-            return decryptedConnectionString;
+			//Byte[] b = Convert.FromBase64String(ConfigurationManager.AppSettings[settingName]);
+			//string decryptedConnectionString = System.Text.ASCIIEncoding.ASCII.GetString(b);
+			//return decryptedConnectionString;
+			return string.Empty;
         }
 
         /// <summary>
@@ -30,7 +39,7 @@ namespace NSW.Info
         /// <param name="settingName">requested key</param>
         /// <param name="encrypted">if true, decrypts the setting before returning the value</param>
         /// <returns>string value of requested setting</returns>
-        public static string GetAppSetting(string settingName, bool encrypted)
+        public static string GetAppSetting(string settingName, bool encrypted = false)
         {
             string returnValue = "";
             if (encrypted)
@@ -39,7 +48,21 @@ namespace NSW.Info
             }
             else
             {
-                returnValue = ConfigurationManager.AppSettings[settingName].ToString();
+				//try
+				//{
+				//	returnValue = ConfigurationManager.AppSettings[settingName].ToString();
+				//}
+				//catch
+				//{
+				//	try
+				//	{
+				//		returnValue = _configuration.GetSection(settingName).Value.ToString();
+				//	}
+				//	catch (Exception)
+				//	{
+				//		// eat the error
+				//	}
+				//}
             }
             return returnValue;
         }
@@ -51,7 +74,7 @@ namespace NSW.Info
         /// <param name="keyValue">new appsetting value</param>
         public static void SetAppSetting(string keyName, string keyValue)
         {
-            ConfigurationManager.AppSettings.Set(keyName, keyValue);
+            //ConfigurationManager.AppSettings.Set(keyName, keyValue);
         }
     }
 }
