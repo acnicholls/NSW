@@ -1,17 +1,17 @@
-﻿using System.Runtime.Caching;
-
-namespace NSW.Data
+﻿namespace NSW.Data
 {
-    public class Cache
+	public class Cache
     {
-        private static System.Runtime.Caching.ObjectCache DataStore = MemoryCache.Default;
+		//private static System.Runtime.Caching.ObjectCache DataStore = MemoryCache.Default;
 
-        /// <summary>
-        /// adds an object to the Data Cache
-        /// </summary>
-        /// <param name="key">key to locate object with</param>
-        /// <param name="itemToInsert">object to insert</param>
-        public static void Add(string key, object itemToInsert)
+		private static Dictionary<string, object> DataStore = new();
+
+		/// <summary>
+		/// adds an object to the Data Cache
+		/// </summary>
+		/// <param name="key">key to locate object with</param>
+		/// <param name="itemToInsert">object to insert</param>
+		public static void Add(string key, object itemToInsert)
         {
             DataStore[key] = itemToInsert;
         }

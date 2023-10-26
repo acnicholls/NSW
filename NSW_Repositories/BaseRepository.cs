@@ -1,5 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
-using NSW.Interfaces;
+using NSW.Data.Interfaces;
 using System.Data;
 
 namespace NSW.Repositories
@@ -13,19 +13,6 @@ namespace NSW.Repositories
 		public BaseRepository(IUser currentUser)
 		{
 			_currentUser = currentUser;
-		}
-
-		protected DataSet GetDataFromStoreProcedure(string procedureName)
-		{
-			DataSet ds = new DataSet();
-			SqlCommand command = connection.CreateCommand();
-			SqlDataAdapter adap = new SqlDataAdapter(command);
-			command.CommandType = CommandType.StoredProcedure;
-			command.CommandText = procedureName;
-			connection.Open();
-			adap.Fill(ds);
-			connection.Close();
-			return ds;
 		}
 
 		protected int ExecuteStoreProcedure(string procedureName, List<SqlParameter> parameters)
@@ -42,6 +29,7 @@ namespace NSW.Repositories
 			connection.Close();
 			return returnValue;
 		}
+
 		protected DataSet GetDataFromSqlString(string sqlString)
 		{
 			DataSet ds = new DataSet();
@@ -66,44 +54,43 @@ namespace NSW.Repositories
 			return returnValue;
 		}
 
-
 		protected async Task<DataSet> GetDataFromSqlStringAsync(string sqlString)
 		{
-			throw new NotImplementedException();
-			//DataSet ds = new DataSet();
-			//SqlCommand command = connection.CreateCommand();
-			//SqlDataAdapter adap = new SqlDataAdapter(command);
-			//command.CommandType = CommandType.Text;
-			//command.CommandText = sqlString;
-			//connection.Open();
-			//adap.Fill(ds);
-			//connection.Close();
-			//return ds;
-		}
-		protected async Task<DataSet> GetDataFromStoreProcedureAsync(string procedureName)
-		{
-			throw new NotImplementedException();
-			//DataSet ds = new DataSet();
-			//SqlCommand command = connection.CreateCommand();
-			//SqlDataAdapter adap = new SqlDataAdapter(command);
-			//command.CommandType = CommandType.StoredProcedure;
-			//command.CommandText = procedureName;
-			//connection.Open();
-			//adap.Fill(ds);
-			//connection.Close();
-			//return ds;
+			DataSet ds = new DataSet();
+			SqlCommand command = connection.CreateCommand();
+			SqlDataAdapter adap = new SqlDataAdapter(command);
+			command.CommandType = CommandType.Text;
+			command.CommandText = sqlString;
+			await connection.OpenAsync();
+			adap.Fill(ds);
+			await connection.CloseAsync();
+			return ds;
 		}
 
-		protected async Task ExecuteStoreProcedureAsync(string procedureName)
+		protected async Task<int> ExecuteStoreProcedureAsync(string procedureName, List<SqlParameter> parameters)
 		{
-			throw new NotImplementedException();
-			//SqlCommand command = connection.CreateCommand();
-			//command.CommandType = CommandType.StoredProcedure;
-			//command.CommandText = procedureName;
-			//connection.Open();
-			//command.ExecuteNonQuery();
-			//connection.Close();
+			SqlCommand command = connection.CreateCommand();
+			command.CommandType = CommandType.StoredProcedure;
+			command.CommandText = procedureName;
+			foreach (SqlParameter p in parameters)
+			{
+				command.Parameters.Add(p);
+			}
+			await connection.OpenAsync();
+			int returnValue = await command.ExecuteNonQueryAsync();
+			await connection.CloseAsync();
+			return returnValue;
 		}
 
+		protected async Task<int> ExecuteNonQueryAsync(string sqlString)
+		{
+			SqlCommand command = connection.CreateCommand();
+			command.CommandType = CommandType.Text;
+			command.CommandText = sqlString;
+			await connection.OpenAsync();
+			int returnValue = await command.ExecuteNonQueryAsync();
+			await connection.CloseAsync();
+			return returnValue;
+		}
 	}
 }

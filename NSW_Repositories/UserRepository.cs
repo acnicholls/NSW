@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using NSW.Data;
-using NSW.Interfaces;
+using NSW.Data.Interfaces;
 using NSW.Repositories.Interfaces;
 using System.Data;
 

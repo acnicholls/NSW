@@ -1,6 +1,6 @@
 ﻿using NSW.Enums;
 
-namespace NSW.Interfaces
+namespace NSW.Data.Interfaces
 {
 	public interface IUser
 	{

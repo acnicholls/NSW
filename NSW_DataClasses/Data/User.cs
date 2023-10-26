@@ -1,5 +1,5 @@
 ﻿using NSW.Enums;
-using NSW.Interfaces;
+using NSW.Data.Interfaces;
 
 namespace NSW.Data
 {
@@ -26,11 +26,11 @@ namespace NSW.Data
 				{
 					case "ADMIN":
 						{
-							returnValue = NSW.Role.Admin; break;
+							returnValue = NSW.Enums.Role.Admin; break;
 						}
 					case "MEMBER":
 						{
-							returnValue = NSW.Role.Member; break;
+							returnValue = NSW.Enums.Role.Member; break;
 						}
 				}
 				return returnValue;

@@ -6,6 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>d7df2e78-b68f-405a-821c-48eac048a5a8</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", ".").Replace("_","."))</RootNamespace>
+    <AssemblyVersion>2.*.*.*</AssemblyVersion>
+    <FileVersion>2.*.*.*</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

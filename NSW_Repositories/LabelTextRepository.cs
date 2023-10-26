@@ -1,8 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
 using NSW.Data;
-using NSW.Interfaces;
+using NSW.Data.Interfaces;
 using NSW.Repositories.Interfaces;
 using System.Data;
+using NSW.Enums;
 
 
 
@@ -24,7 +25,25 @@ namespace NSW.Repositories
 
 		public IList<LabelText> GetAll()
 		{
-			throw new NotImplementedException();
+			List<LabelText> returnValue = new List<LabelText>();
+			try
+			{
+				DataSet ds = base.GetDataFromSqlString("Select * from tblLabelText");
+				foreach(DataRow dr in ds.Tables[0].Rows)
+				{
+					returnValue.Add(new LabelText()
+					{
+						ID = dr["fldLabel_ID"].ToString(),
+						English = dr["fldLabel_English"].ToString(),
+						Japanese = dr["fldLabel_Japanese"].ToString()
+					});
+				}
+			}
+			catch (Exception x)
+			{
+				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelTextRepository.GetByIdentifier", x, LogEnum.Critical); 
+			}
+			return returnValue;
 		}
 
 		public LabelText GetByIdentifier(string identifier)

@@ -1,9 +1,6 @@
 ﻿
-using System;
-
-namespace NSW
+namespace NSW.Enums
 {
-	[Obsolete]
     /// <summary>
     /// user role enums
     /// </summary>
@@ -13,11 +10,10 @@ namespace NSW
         Member
     }
 
-	[Obsolete]
-	/// <summary>
-	/// log importance enum
-	/// </summary>
-	public enum LogEnum
+    /// <summary>
+    /// log importance enum
+    /// </summary>
+    public enum LogEnum
     {
         Debug = 0,
         Message = 1,
@@ -28,32 +24,29 @@ namespace NSW
         Critical = 6
     }
 
-	[Obsolete]
-	/// <summary>
-	/// log location enum
-	/// </summary>
-	public enum LogTypeEnum
+    /// <summary>
+    /// log location enum
+    /// </summary>
+    public enum LogTypeEnum
     {
         File,
         Database
     }
 
-	[Obsolete]
-	/// <summary>
-	/// wizard step navigation container enum
-	/// </summary>
-	public enum WizardNavigationTempContainer
+    /// <summary>
+    /// wizard step navigation container enum
+    /// </summary>
+    public enum WizardNavigationTempContainer
     {
         StartNavigationTemplateContainerID = 1,
         StepNavigationTemplateContainerID = 2,
         FinishNavigationTemplateContainerID = 3
     }
 
-	[Obsolete]
-	/// <summary>
-	/// user language option enum
-	/// </summary>
-	public enum LanguagePreference
+    /// <summary>
+    /// user language option enum
+    /// </summary>
+    public enum LanguagePreference
     {
         English = 2,
         Japanese = 1

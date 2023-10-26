@@ -1,5 +1,5 @@
 ﻿using NSW.Data;
-using NSW.Interfaces;
+using NSW.Data.Interfaces;
 
 namespace NSW.Services.Interfaces
 {
