@@ -4,8 +4,8 @@
   <ImplicitUsings>enable</ImplicitUsings>
   <Nullable>enable</Nullable>
   <RootNamespace>$(MSBuildProjectName.Replace("_", ".").Replace(" ", "."))</RootNamespace>
-  <FileVersion>2.*.*.*</FileVersion>
-  <AssemblyVersion>2.*.*.*</AssemblyVersion>
+  <FileVersion>1.1.*.*</FileVersion>
+  <AssemblyVersion>1.1.0.0</AssemblyVersion>
   <UserSecretsId>5955f2e6-2ebf-49f2-80cd-c1a9b4cab8a3</UserSecretsId>
 </PropertyGroup>
 
@@ -13,6 +13,10 @@
   <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
   <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
   <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+</ItemGroup>
+
+<ItemGroup>
+  <Folder Include="Properties\" />
 </ItemGroup>
 
 </Project>

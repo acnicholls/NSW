@@ -7,8 +7,8 @@
     <UserSecretsId>d7df2e78-b68f-405a-821c-48eac048a5a8</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <RootNamespace>$(MSBuildProjectName.Replace(" ", ".").Replace("_","."))</RootNamespace>
-    <AssemblyVersion>2.*.*.*</AssemblyVersion>
-    <FileVersion>2.*.*.*</FileVersion>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.*.*</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +21,10 @@
     <ProjectReference Include="..\NSW_DataClasses\NSW_Data.csproj" />
     <ProjectReference Include="..\NSW_Info\NSW_Info.csproj" />
     <ProjectReference Include="..\NSW_Services\NSW_Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Middlewares\" />
   </ItemGroup>
 
 </Project>
