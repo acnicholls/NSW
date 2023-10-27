@@ -1,10 +1,10 @@
-﻿using NSW.Enums;
+﻿using NSW;
 
 namespace NSW.Data.Interfaces
 {
 	public interface IUser
 	{
-		LanguagePreferenceEnum DisplayLanguage { get; }
+		LanguagePreference DisplayLanguage { get; }
 		 int ID { get; set; }
 		 string Name { get; set; }
 		 string Password { get; set; }

@@ -4,7 +4,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 builder.Configuration.AddUserSecrets("d7df2e78-b68f-405a-821c-48eac048a5a8", true);
 
+builder.Services.AddHttpContextAccessor();
 // Add services to the container.
+NSW.Info.Extensions.DependencyInjection.RegisterServices(builder.Services);
 NSW.Data.Extensions.DependencyInjecction.RegisterServices(builder.Services);
 NSW.Repositories.Extensions.DependencyInjection.RegisterServices(builder.Services);
 NSW.Services.Extensions.DependencyInjection.RegisterServices(builder.Services);

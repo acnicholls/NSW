@@ -1,5 +1,6 @@
-﻿using NSW.Enums;
+﻿using NSW;
 using NSW.Data.Interfaces;
+
 
 namespace NSW.Data
 {
@@ -37,29 +38,29 @@ namespace NSW.Data
 				{
 					case "ADMIN":
 						{
-							returnValue = NSW.Enums.Role.Admin; break;
+							returnValue = NSW.Role.Admin; break;
 						}
 					case "MEMBER":
 						{
-							returnValue = NSW.Enums.Role.Member; break;
+							returnValue = NSW.Role.Member; break;
 						}
 				}
 				return returnValue;
 			}
 		}
 
-		public LanguagePreferenceEnum DisplayLanguage
+		public LanguagePreference DisplayLanguage
 		{
 			get
 			{
 				switch (LanguagePreference)
 				{
 					case 2:
-						return LanguagePreferenceEnum.English;
+						return NSW.LanguagePreference.English;
 					case 1:
-						return LanguagePreferenceEnum.Japanese;
+						return NSW.LanguagePreference.Japanese;
 					default:
-						return LanguagePreferenceEnum.Japanese;
+						return NSW.LanguagePreference.Japanese;
 				}
 			}
 		}
