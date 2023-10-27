@@ -1,23 +1,26 @@
-﻿using System;
+﻿using NSW.Info.Interfaces;
 using System.Text;
+using ILog = NSW.Info.Interfaces.ILog;
 
 namespace NSW.Info
 {
-    /// <summary>
-    /// Creates random numbers, strings, passwords, and verify codes
-    /// Useful for membership functions
-    /// </summary>
-    public class RandomFunctions
+	/// <summary>
+	/// Creates random numbers, strings, passwords, and verify codes
+	/// Useful for membership functions
+	/// </summary>
+	public class RandomFunctions : IRandomFunctions
     {
 
-        private static Random rand;
+        private  Random rand;
+		private readonly ILog Log;
 
-        public RandomFunctions()
+        public RandomFunctions(ILog log)
         {
-
+			this.rand = new Random();
+			this.Log = log;
         }
 
-        public static int RandomNumber(int min, int max)
+        public  int RandomNumber(int min, int max)
         {
             int returnValue = 0;
             try
@@ -32,7 +35,7 @@ namespace NSW.Info
             return returnValue;
         }
 
-        public static string RandomString(int size, bool lowerCase)
+        public  string RandomString(int size, bool lowerCase)
         {
             StringBuilder builder = new StringBuilder();
             char ch;
@@ -49,7 +52,7 @@ namespace NSW.Info
         /// builds a random code to send to a new user
         /// </summary>
         /// <returns></returns>
-        public static string BuildVerifyCode()
+        public  string BuildVerifyCode()
         {
             string verify = "";
             string randNum = RandomNumber(2, 210).ToString();
@@ -65,7 +68,7 @@ namespace NSW.Info
         /// builds a new password
         /// </summary>
         /// <returns></returns>
-        public static string BuildNewPassword()
+        public  string BuildNewPassword()
         {
             string password = "";
             string randNum = RandomNumber(4, 210).ToString();

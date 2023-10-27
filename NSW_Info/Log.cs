@@ -3,6 +3,9 @@ using System;
 using System.Data;
 using Microsoft.Data.SqlClient;
 using System.IO;
+using ILogger = NLog.ILogger;
+using NSW.Info.Interfaces;
+using NSW.Info;
 
 namespace NSW
 {	
@@ -17,15 +20,23 @@ namespace NSW
     /// <summary>
     /// contains methods for writing to log
     ///</summary>
-    public class Log
+    public class Log : ILog
     {
         private static SqlConnection conACN;
         private static SqlCommand comACN;
 
         private static ILogger logLogger;
+		private readonly IProjectInfo _projectInfo;
+		private readonly IConnectionInfo _connectionInfo;
 
-        public Log()
-        { }
+        public Log(
+			IProjectInfo projectInfo,
+			IConnectionInfo connection
+			)
+        { 
+			_projectInfo = projectInfo;
+			_connectionInfo = connection;
+		}
 
         /// <summary>
         /// writes a log with string message to the requested data store
@@ -34,7 +45,7 @@ namespace NSW
         /// <param name="caller">calling method</param>
         /// <param name="message">log message</param>
         /// <param name="import">log importance</param>
-        public static void WriteToLog(LogTypeEnum type, string caller, string message, LogEnum import)
+        public  void WriteToLog(LogTypeEnum type, string caller, string message, LogEnum import)
         {
 #if !DEBUG
 
@@ -82,7 +93,7 @@ namespace NSW
         /// <param name="caller">calling method</param>
         /// <param name="ex">System.Exception to log details of</param>
         /// <param name="import">log importance</param>
-        public static void WriteToLog(LogTypeEnum type, string caller, Exception ex, LogEnum import)
+        public  void WriteToLog(LogTypeEnum type, string caller, Exception ex, LogEnum import)
         {
 #if !DEBUG
 			if(import != LogEnum.Debug)
@@ -133,7 +144,7 @@ namespace NSW
         /// <param name="caller">calling method</param>
         /// <param name="ex">System.Exception to log</param>
         /// <param name="import">log importance</param>
-        private static void WriteToDatabase(string caller, Exception ex, LogEnum import)
+        private  void WriteToDatabase(string caller, Exception ex, LogEnum import)
         {
             try
             {
@@ -155,14 +166,14 @@ namespace NSW
         /// <param name="caller">calling method</param>
         /// <param name="message">message to store</param>
         /// <param name="import">importance of entry</param>
-        private static void WriteToDatabase(string caller, string message, int import)
+        private  void WriteToDatabase(string caller, string message, int import)
         {
             try
             {
-                conACN = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
+                conACN = new SqlConnection(_connectionInfo.ConnectionString);
                 comACN = conACN.CreateCommand();
                 comACN.CommandType = CommandType.StoredProcedure;
-                comACN.CommandText = NSW.Info.ProjectInfo.PortalLogProcedure;
+                comACN.CommandText = _projectInfo.PortalLogProcedure;
                 comACN.Parameters.AddWithValue("@caller", caller);
                 comACN.Parameters.AddWithValue("@message", message);
                 comACN.Parameters.AddWithValue("@import", import);
@@ -184,7 +195,7 @@ namespace NSW
         /// <param name="caller">the caller to log as</param>
         /// <param name="message">the message to log</param>
         /// <param name="import">the importance (name) of the log file to log to</param>
-        private static void WriteToFile(string caller, string message, LogEnum import)
+        private  void WriteToFile(string caller, string message, LogEnum import)
         {
             try
             {
@@ -233,7 +244,7 @@ namespace NSW
             }
             catch (Exception ex)
             {
-                string fileName = NSW.Info.ProjectInfo.LogLocation + @"LogFailure.txt";
+                string fileName = _projectInfo.LogLocation + @"LogFailure.txt";
                 CheckFolderExists(fileName);
                 StreamWriter logFile = new StreamWriter(fileName, true);
                 logFile.WriteLine(ex.Message);
@@ -250,7 +261,7 @@ namespace NSW
         /// <param name="caller">calling method</param>
         /// <param name="ex">System.Exception to log</param>
         /// <param name="import">name of file/importance of log entry</param>
-        private static void WriteToFile(string caller, Exception ex, LogEnum import)
+        private  void WriteToFile(string caller, Exception ex, LogEnum import)
         {
             try
             {
@@ -300,7 +311,7 @@ namespace NSW
             }
             catch (Exception innerException)
             {
-                string fileName = NSW.Info.ProjectInfo.LogLocation + @"LogFailure.txt";
+                string fileName = _projectInfo.LogLocation + @"LogFailure.txt";
                 CheckFolderExists(fileName);
                 StreamWriter logFile = new StreamWriter(fileName, true);
                 logFile.WriteLine(ex.Message);
@@ -318,7 +329,7 @@ namespace NSW
         /// </summary>
         /// <param name="fileName">name of folder</param>
         /// <returns>true</returns>
-        private static bool CheckFolderExists(string fileName)
+        private  bool CheckFolderExists(string fileName)
         {
             FileInfo file = new FileInfo(fileName);
             DirectoryInfo folder = file.Directory;
@@ -334,7 +345,7 @@ namespace NSW
             }
             catch (Exception x)
             {
-                Log.WriteToFile("Check for Folder", x.Message, LogEnum.Error);
+                this.WriteToFile("Check for Folder", x.Message, LogEnum.Error);
             }
             return false;
 

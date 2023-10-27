@@ -1,16 +1,29 @@
-﻿using System;
+﻿using NSW.Info.Interfaces;
 using System.Reflection;
-using System.Web;
 using Microsoft.AspNetCore.Http;
 
 namespace NSW.Info
 {
-    public class ProjectInfo
+	public class ProjectInfo : IProjectInfo
     {
-        /// <summary>
-        /// returns the version number of the current assembly
-        /// </summary>
-        public static string Version
+		private readonly IHttpContextAccessor _contextAccessor;
+		private readonly IAppSettings _appSettings;
+		private readonly ILog _log;
+		public ProjectInfo(
+			IHttpContextAccessor contextAccessor
+, IAppSettings appSettings,
+			ILog log
+
+			)
+		{
+			_contextAccessor = contextAccessor;
+			_appSettings = appSettings;
+			_log = log;
+		}
+		/// <summary>
+		/// returns the version number of the current assembly
+		/// </summary>
+		 public  string Version
         {
             get
             {
@@ -23,12 +36,12 @@ namespace NSW.Info
         /// <summary>
         /// checks the appsetting to determine where to log to
         /// </summary>
-        public static LogTypeEnum ProjectLogType
+        public  LogTypeEnum ProjectLogType
         {
             get
             {
                 LogTypeEnum returnValue = new LogTypeEnum();
-                switch (NSW.Info.AppSettings.GetAppSetting("LogType", false).ToLower())
+                switch (_appSettings.GetAppSetting("LogType", false).ToLower())
                 {
                     case "database":
                         {
@@ -48,40 +61,40 @@ namespace NSW.Info
         /// <summary>
         /// checks the appsetting for the name of the SQL Stored Procedure to send log entries to
         /// </summary>
-        public static string PortalLogProcedure
+        public  string PortalLogProcedure
         {
             get
             {
-                return NSW.Info.AppSettings.GetAppSetting("LogSproc", false);
+                return _appSettings.GetAppSetting("LogSproc", false);
             }
         }
 
         /// <summary>
         /// checks the appsetting to determine where file logs are kept
         /// </summary>
-        public static string LogLocation
+        public  string LogLocation
         {
             get
             {
-                return AppDomain.CurrentDomain.BaseDirectory.ToString() + NSW.Info.AppSettings.GetAppSetting("LogLocation", false);
+                return AppDomain.CurrentDomain.BaseDirectory.ToString() + _appSettings.GetAppSetting("LogLocation", false);
             }
         }
 
         /// <summary>
         /// checks the current request protocol
         /// </summary>
-        public static string protocol
+        public  string protocol
         {
             get
             {
                 string returnValue = null;
                 try
                 {
-                    if (HttpContext.Current == null)
+                    if (_contextAccessor.HttpContext== null)
                         returnValue = basicProtocol;
                     else
                     {
-                        if (HttpContext.Current.Request.IsSecureConnection)
+                        if (_contextAccessor.HttpContext.Request.IsHttps)
                             returnValue = secureProtocol;
                         else
                             returnValue = basicProtocol;
@@ -89,7 +102,7 @@ namespace NSW.Info
                 }
                 catch (Exception x)
                 {
-                    Log.WriteToLog(LogTypeEnum.File, "ProjectInfo.protocol", x, LogEnum.Critical);
+                    _log.WriteToLog(LogTypeEnum.File, "ProjectInfo.protocol", x, LogEnum.Critical);
                 }
                 return returnValue;
             }
@@ -98,7 +111,7 @@ namespace NSW.Info
         /// <summary>
         /// returns a string representing the current protocol
         /// </summary>
-        public static string basicProtocol
+        public  string basicProtocol
         {
             get
             {
@@ -111,7 +124,7 @@ namespace NSW.Info
         /// <summary>
         /// returns a string representing the current protocol
         /// </summary>
-        public static string secureProtocol
+        public  string secureProtocol
         {
             get
             {
@@ -124,23 +137,23 @@ namespace NSW.Info
         /// <summary>
         /// returns the appsetting value representing the current web server address
         /// </summary>
-        public static string webServer
+        public  string webServer
         {
             get
             {
-                return NSW.Info.AppSettings.GetAppSetting("webServer", false);
+                return _appSettings.GetAppSetting("webServer", false);
             }
         }
 
         /// <summary>
         /// contains emails for project administration
         /// </summary>
-        public static string AdminEmailList = "ac.nicholls@gmail.com;natsuko.thai@gmail.com";
+        public  string AdminEmailList => "ac.nicholls@gmail.com;natsuko.thai@gmail.com";
 
         /// <summary>
         /// return the string value for the default display language of the project
         /// </summary>
-        public static string DefaultLanguage
+        public  string DefaultLanguage
         {
             // this can be set depending on a user preference
             // or user location
@@ -160,7 +173,7 @@ namespace NSW.Info
         /// <summary>
         /// returns the symbol representing currency for the project
         /// </summary>
-        public static string CurrencySymbol
+        public  string CurrencySymbol
         {
 
             get

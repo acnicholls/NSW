@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NSW.Info.Interfaces;
+using System;
 using System.Net.Mail;
 
 
@@ -13,17 +14,20 @@ namespace NSW.Info
     public class EmailMessage : System.Net.Mail.MailMessage
     {
 
-        #region Private Variables
+		#region Private Variables
 
 
-        private static string _Server = NSW.Info.AppSettings.GetAppSetting("MailServer", false);
-        private static long _Port = Convert.ToInt64(NSW.Info.AppSettings.GetAppSetting("MailPort", false));
-        private static string _From = NSW.Info.AppSettings.GetAppSetting("MailFrom", false);
-        private static string _UserName = NSW.Info.AppSettings.GetAppSetting("MailUser", false);
-        private static string _Password = NSW.Info.AppSettings.GetAppSetting("MailPassword", false);
-        private static long _MaxAttachmentLength = Convert.ToInt64(NSW.Info.AppSettings.GetAppSetting("MailMaxAttachmentLength", false));
-        private static bool _UseSSL = Convert.ToBoolean(NSW.Info.AppSettings.GetAppSetting("MailRequireSSL", false));
-        private static bool _ReqSecurity = Convert.ToBoolean(NSW.Info.AppSettings.GetAppSetting("MailRequireSecurity", false));
+		private string _Server = "";
+		private long _Port = 0;
+		private string _From = "";
+		private string _UserName = "";
+		private string _Password = "";
+		private long _MaxAttachmentLength = 0;
+		private bool _UseSSL = false;
+		private bool _ReqSecurity = false;
+		private readonly IProjectInfo _projectInfo;
+		private readonly IAppSettings _appSettings;
+		private readonly ILog _log;
         #endregion
 
         #region Public Members
@@ -31,12 +35,29 @@ namespace NSW.Info
         /// <summary>
         /// Constructor, creates the GmailMessage object
         /// </summary>
-        public EmailMessage()
+        public EmailMessage(
+			IProjectInfo projectInfo,
+			IAppSettings settings,
+			ILog log
+			)
         {
-            try { }
+            try 
+			{
+				_projectInfo = projectInfo;
+				_appSettings = settings;
+				_log = log;
+				_Server = settings.GetAppSetting("MailServer", false);
+				_Port = Convert.ToInt64(settings.GetAppSetting("MailPort", false));
+				_From = settings.GetAppSetting("MailFrom", false);
+				_UserName = settings.GetAppSetting("MailUser", false);
+				_Password = settings.GetAppSetting("MailPassword", false);
+				_MaxAttachmentLength = Convert.ToInt64(settings.GetAppSetting("MailMaxAttachmentLength", false));
+				_UseSSL = Convert.ToBoolean(settings.GetAppSetting("MailRequireSSL", false));
+				_ReqSecurity = Convert.ToBoolean(settings.GetAppSetting("MailRequireSecurity", false));
+			}
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EmailMessage", x, LogEnum.Critical);
+                log.WriteToLog(_projectInfo.ProjectLogType, "EmailMessage", x, LogEnum.Critical);
             }
         }
 
@@ -69,7 +90,7 @@ namespace NSW.Info
             }
             catch (Exception ex)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EmailMessage.Send", ex, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "EmailMessage.Send", ex, LogEnum.Critical);
             }
         }
 
@@ -84,14 +105,14 @@ namespace NSW.Info
         /// <param name="toAddress">Recipients email address</param>
         /// <param name="subject">Message subject</param>
         /// <param name="messageBody">Message body</param>
-        public static void SendFromExternalServer(string toAddress, string subject, string messageBody)
+        public void SendFromExternalServer(string toAddress, string subject, string messageBody)
         {
             if (_Server != "")
             {
                 try
                 {
-                    Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EmailMessage.SendFromExternalServer", "Attempting Email to : " + toAddress, LogEnum.Debug);
-                    EmailMessage gMessage = new EmailMessage();
+                    _log.WriteToLog(_projectInfo.ProjectLogType, "EmailMessage.SendFromExternalServer", "Attempting Email to : " + toAddress, LogEnum.Debug);
+					MailMessage gMessage = new MailMessage();
                     gMessage.To.Add(new MailAddress(toAddress));
                     gMessage.Subject = subject;
                     gMessage.Body = messageBody;
@@ -99,11 +120,11 @@ namespace NSW.Info
                     System.Net.Mail.SmtpClient newClient = new SmtpClient(_Server, (int)_Port);
                     newClient.EnableSsl = false;
                     newClient.Send(gMessage);
-                    Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EmailMessage.SendFromExternalServer", "Email Sent to : " + toAddress, LogEnum.Debug);
+                    _log.WriteToLog(_projectInfo.ProjectLogType, "EmailMessage.SendFromExternalServer", "Email Sent to : " + toAddress, LogEnum.Debug);
                 }
                 catch (Exception ex)
                 {
-                    Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EmailMessage.SendFromExternalServer", ex, LogEnum.Critical);
+                    _log.WriteToLog(_projectInfo.ProjectLogType, "EmailMessage.SendFromExternalServer", ex, LogEnum.Critical);
                 }
             }
         }
@@ -115,14 +136,14 @@ namespace NSW.Info
         /// <param name="subject">Message subject</param>
         /// <param name="messageBody">Message body</param>
         /// <param name="messageAttachment">Message attachment - max 5 MB</param>
-        public static void SendFromExternalServer(string toAddress, string subject, string messageBody, Attachment messageAttachment)
+        public void SendFromExternalServer(string toAddress, string subject, string messageBody, Attachment messageAttachment)
         {
             if (_Server != "")
             {
                 try
                 {
-                    Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EmailMessage.SendFromExternalServer /w attachment", "Attempting Email to : " + toAddress, LogEnum.Debug);
-                    EmailMessage gMessage = new EmailMessage();
+                    _log.WriteToLog(_projectInfo.ProjectLogType, "EmailMessage.SendFromExternalServer /w attachment", "Attempting Email to : " + toAddress, LogEnum.Debug);
+                    MailMessage gMessage = new MailMessage();
                     gMessage.To.Add(new MailAddress(toAddress));
                     gMessage.Subject = subject;
                     gMessage.Body = messageBody;
@@ -132,11 +153,11 @@ namespace NSW.Info
                     System.Net.Mail.SmtpClient newClient = new SmtpClient(_Server, (int)_Port);
                     newClient.EnableSsl = false;
                     newClient.Send(gMessage);
-                    Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EmailMessage.SendFromExternalServer /w attachment", "Email Sent to : " + toAddress, LogEnum.Debug);
+                    _log.WriteToLog(_projectInfo.ProjectLogType, "EmailMessage.SendFromExternalServer /w attachment", "Email Sent to : " + toAddress, LogEnum.Debug);
                 }
                 catch (Exception ex)
                 {
-                    Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "EmailMessage.SendFromExternalServer /w attachment", ex, LogEnum.Critical);
+                    _log.WriteToLog(_projectInfo.ProjectLogType, "EmailMessage.SendFromExternalServer /w attachment", ex, LogEnum.Critical);
                 }
             }
         }
