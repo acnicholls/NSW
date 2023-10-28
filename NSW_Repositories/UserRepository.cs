@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using NSW.Data;
 using NSW.Data.Interfaces;
+using NSW.Info;
 using NSW.Info.Interfaces;
 using NSW.Repositories.Interfaces;
 using System.Data;
@@ -13,8 +14,9 @@ namespace NSW.Repositories
         public UserRepository(
 			ILog log,
 			IUser user,
-			IProjectInfo projectInfo
-			) : base(log, user, projectInfo)
+			IProjectInfo projectInfo,
+			IConnectionInfo connectionInfo
+			) : base(log, user, projectInfo, connectionInfo)
 		{
 		}
 

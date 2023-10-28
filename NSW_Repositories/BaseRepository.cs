@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using NSW.Data;
 using NSW.Data.Interfaces;
+using NSW.Info;
 using NSW.Info.Interfaces;
 using System.Data;
 
@@ -11,94 +12,106 @@ namespace NSW.Repositories
 		protected readonly IUser _currentUser = new User("test", "Test@acnicholls.com");
 		protected readonly ILog _log;
 		protected readonly IProjectInfo _projectInfo;
+		protected readonly IConnectionInfo _connectionInfo;
 
-		private static readonly SqlConnection connection = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
+		protected SqlConnection _connection { get; private set; }
 
 		public BaseRepository(
 			ILog log,
 			IUser currentUser,
-			IProjectInfo projectInfo)
+			IProjectInfo projectInfo,
+			IConnectionInfo connectionInfo)
 		{
 			_currentUser = currentUser;
 			_log = log;
 			_projectInfo = projectInfo;
+			_connectionInfo = connectionInfo;
+			_connection = new SqlConnection(connectionInfo.ConnectionString);
 		}
 
 		protected int ExecuteStoreProcedure(string procedureName, List<SqlParameter> parameters)
 		{
-			SqlCommand command = connection.CreateCommand();
+			SqlCommand command = _connection.CreateCommand();
 			command.CommandType = CommandType.StoredProcedure;
 			command.CommandText = procedureName;
 			foreach(SqlParameter p in parameters)
 			{
 				command.Parameters.Add(p);
 			}
-			connection.Open();
+			_connection.Open();
 			int returnValue = command.ExecuteNonQuery();
-			connection.Close();
+			_connection.Close();
 			return returnValue;
 		}
 
 		protected DataSet GetDataFromSqlString(string sqlString)
 		{
-			DataSet ds = new DataSet();
-			SqlCommand command = connection.CreateCommand();
-			SqlDataAdapter adap = new SqlDataAdapter(command);
-			command.CommandType = CommandType.Text;
-			command.CommandText = sqlString;
-			connection.Open();
-			adap.Fill(ds);
-			connection.Close();
-			return ds;
+			try
+			{
+				DataSet ds = new DataSet();
+				SqlCommand command = _connection.CreateCommand();
+				SqlDataAdapter adap = new SqlDataAdapter(command);
+				command.CommandType = CommandType.Text;
+				command.CommandText = sqlString;
+				_connection.Open();
+				adap.Fill(ds);
+				_connection.Close();
+				return ds;
+			}
+			catch (Exception x)
+			{
+				_log.WriteToLog(_projectInfo.ProjectLogType, "BaseRepository.GetDataFromSqlString", x, LogEnum.Critical);
+				throw;
+			}
 		}
 
 		protected int ExecuteNonQuery(string sqlString)
 		{
-			SqlCommand command = connection.CreateCommand();
+			SqlCommand command = _connection.CreateCommand();
 			command.CommandType = CommandType.Text;
 			command.CommandText = sqlString;
-			connection.Open();
+			_connection.Open();
 			int returnValue = command.ExecuteNonQuery();
-			connection.Close();
+			_connection.Close();
 			return returnValue;
 		}
 
 		protected async Task<DataSet> GetDataFromSqlStringAsync(string sqlString)
 		{
 			DataSet ds = new DataSet();
-			SqlCommand command = connection.CreateCommand();
+			SqlCommand command = _connection.CreateCommand();
 			SqlDataAdapter adap = new SqlDataAdapter(command);
 			command.CommandType = CommandType.Text;
 			command.CommandText = sqlString;
-			await connection.OpenAsync();
+			await _connection.OpenAsync();
 			adap.Fill(ds);
-			await connection.CloseAsync();
+			await _connection.CloseAsync();
 			return ds;
 		}
 
 		protected async Task<int> ExecuteStoreProcedureAsync(string procedureName, List<SqlParameter> parameters)
 		{
-			SqlCommand command = connection.CreateCommand();
+			SqlCommand command = _connection.CreateCommand();
 			command.CommandType = CommandType.StoredProcedure;
 			command.CommandText = procedureName;
 			foreach (SqlParameter p in parameters)
 			{
 				command.Parameters.Add(p);
 			}
-			await connection.OpenAsync();
+			await _connection.OpenAsync();
 			int returnValue = await command.ExecuteNonQueryAsync();
-			await connection.CloseAsync();
+			await _connection.CloseAsync();
 			return returnValue;
 		}
 
 		protected async Task<int> ExecuteNonQueryAsync(string sqlString)
 		{
-			SqlCommand command = connection.CreateCommand();
+			SqlCommand command = _connection.CreateCommand();
 			command.CommandType = CommandType.Text;
 			command.CommandText = sqlString;
-			await connection.OpenAsync();
+			await _connection.OpenAsync();
 			int returnValue = await command.ExecuteNonQueryAsync();
-			await connection.CloseAsync();
+			await _connection.CloseAsync();
 			return returnValue;
 		}
 

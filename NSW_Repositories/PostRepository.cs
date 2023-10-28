@@ -1,10 +1,11 @@
 ﻿using Microsoft.Data.SqlClient;
 using NSW.Data;
 using NSW.Data.Interfaces;
+using NSW.Info;
 using NSW.Info.Interfaces;
 using NSW.Repositories.Interfaces;
 using System.Data;
-
+using System.Net.Mail;
 
 namespace NSW.Repositories
 {
@@ -13,17 +14,22 @@ namespace NSW.Repositories
 
 		private readonly IRepository<User> _userRepository;
 		private readonly ILabelTextRepository _labelTextRepository;
+		private readonly IServiceProvider _serviceProvider;
+
 
 		public PostRepository(
 			ILog log,
 			IUser user,
 			IProjectInfo projectInfo,
+			IConnectionInfo connectionInfo,
 			IRepository<User> userRepo,
-			ILabelTextRepository labelTextRepository
-			) : base(log, user, projectInfo) 
+			ILabelTextRepository labelTextRepository,
+			IServiceProvider serviceProvider
+			) : base(log, user, projectInfo, connectionInfo) 
 		{
 			_userRepository = userRepo;
 			_labelTextRepository = labelTextRepository;
+			_serviceProvider = serviceProvider;
 		}
 
 		public Post? GetByIdentifier(string identifier)
@@ -171,37 +177,7 @@ namespace NSW.Repositories
 			return new User();
         }
 
-        /// <summary>
-        /// sends an email to the current posts user indicating post expiry
-        /// </summary>
-        public void SendExpiryEmail(Post post)
-        {
-            try
-            {
-				var emailDetails = _labelTextRepository.GetListOfGroupedLabels("ExpiryEmail");
 
-				NSW.Info.EmailMessage email = new Info.EmailMessage();
-                IUser thisUser = PostUser(post);
-                email.To.Add(thisUser.Email);
-                email.Subject = emailDetails[".Subject"];
-                string strBody = emailDetails[".Line1"] + " " + post.Title + "\r\n\r\n";
-                strBody += "\r\n";
-                strBody += emailDetails[".Line2"];
-                strBody += "\r\n\r\n";
-                string strLink = _projectInfo.protocol + _projectInfo.webServer + "/Posts/RenewPost.aspx?postID=" + post.ID.ToString();
-                strBody += strLink;
-                strBody += "\r\n\r\n";
-                strBody += emailDetails[".Line3"] + "\r\n";
-                strBody += emailDetails[".Line4"];
-                email.Body = strBody;
-                email.Send();
-                SetEmailSent(post);
-            }
-            catch (Exception x)
-            {
-                _log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.SendExpiryEmail", x, LogEnum.Critical);
-            }
-        }
 
         /// <summary>
         /// if email is successfully sent, sets flag in the database

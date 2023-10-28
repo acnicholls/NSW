@@ -14,7 +14,11 @@ NSW.Services.Extensions.DependencyInjection.RegisterServices(builder.Services);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen((options) => 
+{
+	var fileLocation = $"{Environment.CurrentDirectory}\\bin\\Debug\\net7.0\\NSW_Api.xml";
+	options.IncludeXmlComments(fileLocation);
+});
 
 
 var app = builder.Build();

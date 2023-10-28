@@ -20,6 +20,7 @@ namespace NSW.Services.Extensions
 			// custom interfaces
 			services.AddScoped<ILabelTextService, LabelTextService>();
 			services.AddScoped<IUserService, UserService>();
+			services.AddTransient<IEmailService, EmailService>();
 		}
 	}
 }

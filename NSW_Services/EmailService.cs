@@ -1,9 +1,9 @@
 ﻿using NSW.Info.Interfaces;
 using System;
 using System.Net.Mail;
+using NSW.Services.Interfaces;
 
-
-namespace NSW.Info
+namespace NSW.Services
 {
     // this class has been rewritten to use any email servers.  
 
@@ -11,7 +11,7 @@ namespace NSW.Info
     /// Provides a message object that sends the email through gmail. 
     /// EmailMessage is inherited from <c>System.Net.Mail.MailMessage</c>, so all the mail message features are available.
     /// </summary>
-    public class EmailMessage : System.Net.Mail.MailMessage
+    public class EmailService : IEmailService
     {
 
 		#region Private Variables
@@ -35,7 +35,7 @@ namespace NSW.Info
         /// <summary>
         /// Constructor, creates the GmailMessage object
         /// </summary>
-        public EmailMessage(
+        public EmailService(
 			IProjectInfo projectInfo,
 			IAppSettings settings,
 			ILog log
@@ -64,15 +64,15 @@ namespace NSW.Info
         /// <summary>
         /// Sends the message. If no from address is given the message will be from _UserName
         /// </summary>
-        public void Send()
+        public void Send(MailMessage message)
         {
             try
             {
                 if (_Server != "")
                 {
-                    if (this.From == null)
+                    if (message.From == null)
                     {
-                        this.From = new MailAddress(_From);
+						message.From = new MailAddress(_From);
                     }
                     //this.IsBodyHtml = true;
                     System.Net.Mail.SmtpClient newClient = new SmtpClient(_Server, (int)_Port);
@@ -85,7 +85,7 @@ namespace NSW.Info
                     }
                     newClient.EnableSsl = _UseSSL;
                     newClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    newClient.Send(this);
+                    newClient.Send(message);
                 }
             }
             catch (Exception ex)
@@ -94,9 +94,7 @@ namespace NSW.Info
             }
         }
 
-        #endregion
 
-        #region Static Members
 
 
         /// <summary>

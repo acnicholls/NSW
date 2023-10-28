@@ -5,6 +5,7 @@ using NSW.Data.Interfaces;
 using NSW.Repositories.Interfaces;
 using System.Data;
 using NSW.Info.Interfaces;
+using NSW.Info;
 
 namespace NSW.Repositories
 {
@@ -16,8 +17,9 @@ namespace NSW.Repositories
         public PostCategoryRepository(
 			ILog log,
 			IUser user,
-			IProjectInfo projectInfo
-			) : base(log, user, projectInfo)
+			IProjectInfo projectInfo,
+			IConnectionInfo connectionInfo
+			) : base(log, user, projectInfo, connectionInfo)
 		{
         }
 

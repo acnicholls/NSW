@@ -8,17 +8,13 @@ namespace NSW.Info
     {
 		private readonly IHttpContextAccessor _contextAccessor;
 		private readonly IAppSettings _appSettings;
-		private readonly ILog _log;
 		public ProjectInfo(
 			IHttpContextAccessor contextAccessor
-, IAppSettings appSettings,
-			ILog log
-
+			, IAppSettings appSettings
 			)
 		{
 			_contextAccessor = contextAccessor;
 			_appSettings = appSettings;
-			_log = log;
 		}
 		/// <summary>
 		/// returns the version number of the current assembly
@@ -102,7 +98,6 @@ namespace NSW.Info
                 }
                 catch (Exception x)
                 {
-                    _log.WriteToLog(LogTypeEnum.File, "ProjectInfo.protocol", x, LogEnum.Critical);
                 }
                 return returnValue;
             }

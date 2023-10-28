@@ -7,7 +7,6 @@ namespace NSW.Repositories.Interfaces
 	{
 		IUser PostUser(Post post);
 
-		void SendExpiryEmail(Post post);
 
 		void SetEmailSent(Post post);
 	}
