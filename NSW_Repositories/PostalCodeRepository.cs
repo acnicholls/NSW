@@ -1,5 +1,6 @@
 ﻿using NSW.Data;
 using NSW.Data.Interfaces;
+using NSW.Info.Interfaces;
 using NSW.Repositories.Interfaces;
 using System.Data;
 
@@ -7,7 +8,11 @@ namespace NSW.Repositories
 {
 	public class PostalCodeRepository : BaseRepository, IRepository<PostalCode>
     {
-		public PostalCodeRepository(IUser user): base(user) { }
+		public PostalCodeRepository(
+			ILog log,
+			IUser user,
+			IProjectInfo projectInfo
+			) : base(log, user, projectInfo) { }
 
 
 
@@ -36,7 +41,7 @@ namespace NSW.Repositories
 			}
 			catch (Exception x)
 			{
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostalCode.ByCode", x, LogEnum.Critical);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "PostalCode.ByCode", x, LogEnum.Critical);
 			}
 			return postalCode;
 		}

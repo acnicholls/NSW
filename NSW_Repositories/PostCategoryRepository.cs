@@ -1,9 +1,10 @@
 ﻿using Microsoft.Data.SqlClient;
 using NSW.Data;
-using NSW.Enums;
+using NSW;
 using NSW.Data.Interfaces;
 using NSW.Repositories.Interfaces;
 using System.Data;
+using NSW.Info.Interfaces;
 
 namespace NSW.Repositories
 {
@@ -12,8 +13,12 @@ namespace NSW.Repositories
 
 
 
-        public PostCategoryRepository(IUser user) :base(user)
-        {
+        public PostCategoryRepository(
+			ILog log,
+			IUser user,
+			IProjectInfo projectInfo
+			) : base(log, user, projectInfo)
+		{
         }
 
         /// <summary>
@@ -39,7 +44,7 @@ namespace NSW.Repositories
             }
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostCategory.GetById", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "PostCategory.GetById", x, LogEnum.Critical);
             }
 			return category;
         }
@@ -57,24 +62,11 @@ namespace NSW.Repositories
 				DataSet ds = base.GetDataFromSqlString("Select * from tblPostCategories where fldPostCategory_id=" + ID);
                 // assign values
                 DataRow dr = ds.Tables[0].Rows[0];
-				// TODO: set up a user, get their display lang
-                switch (_currentUser.DisplayLanguage)
-                {
-                    case LanguagePreferenceEnum.English:
-                        {
-							returnValue = dr["fldPostCategory_English"].ToString();
-							break;
-                        }
-                    case LanguagePreferenceEnum.Japanese:
-                        {
-							returnValue = dr["fldPostCategory_Japanese"].ToString();
-							break;
-                        }
-                }
+				returnValue = GetLabelTextFromDataRow(dr);
             }
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostCategory.GetTitleById", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "PostCategory.GetTitleById", x, LogEnum.Critical);
             }
             return returnValue;
         }
@@ -86,28 +78,19 @@ namespace NSW.Repositories
         /// <returns>string of description text</returns>
         public string GetDescriptionById(int ID) 
         {
-            try
-            {
+			string returnValue = string.Empty;
+			try
+			{
 				DataSet ds = base.GetDataFromSqlString("Select * from tblPostCategories where fldPostCategory_id=" + ID);
                 DataRow dr = ds.Tables[0].Rows[0];
-                switch (_currentUser.DisplayLanguage)
-                {
-					case LanguagePreferenceEnum.English:
-						{
-							return dr["fldPostCategory_DescEnglish"].ToString();
-                        }
-					case LanguagePreferenceEnum.Japanese:
-						{
-							return dr["fldPostCategory_DescJapanese"].ToString();
-                        }
-                }
-            }
-            catch (Exception x)
+				returnValue = GetLabelTextFromDataRow(dr);
+			}
+			catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostCategory.GetDescriptionById", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "PostCategory.GetDescriptionById", x, LogEnum.Critical);
             }
-            return string.Empty;
-        }
+			return returnValue;
+		}
 
 		public IList<PostCategory> GetAll()
 		{
@@ -150,7 +133,7 @@ namespace NSW.Repositories
 			}
 			catch (Exception x)
 			{
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostCategory.Insert", x, LogEnum.Critical);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "PostCategory.Insert", x, LogEnum.Critical);
 			}
 			return entity;
 		}
@@ -187,7 +170,7 @@ namespace NSW.Repositories
 			}
 			catch (Exception x)
 			{
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostCategory.Modify", x, LogEnum.Critical);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "PostCategory.Modify", x, LogEnum.Critical);
 			}
 			return entity;
 		}

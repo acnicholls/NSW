@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using NSW.Data;
 using NSW.Data.Interfaces;
+using NSW.Info.Interfaces;
 using NSW.Repositories.Interfaces;
 using System.Data;
 
@@ -9,15 +10,19 @@ namespace NSW.Repositories
 
 	public class UserRepository: BaseRepository, IUserRepository
 	{
-        public UserRepository(IUser user) :base(user)
-        {
-        }
+        public UserRepository(
+			ILog log,
+			IUser user,
+			IProjectInfo projectInfo
+			) : base(log, user, projectInfo)
+		{
+		}
 
-        /// <summary>
-        /// builds a user object based on the ID of the user row
-        /// </summary>
-        /// <param name="id">integer ID of the user row</param>
-        public User GetById(int id)
+		/// <summary>
+		/// builds a user object based on the ID of the user row
+		/// </summary>
+		/// <param name="id">integer ID of the user row</param>
+		public User GetById(int id)
         {
 			var user = new User();
             try
@@ -37,7 +42,7 @@ namespace NSW.Repositories
             }
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "User.ByID", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "User.ByID", x, LogEnum.Critical);
             }
 			return user;
         }
@@ -72,7 +77,7 @@ namespace NSW.Repositories
             }
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "User.ByEmailAndPassword", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "User.ByEmailAndPassword", x, LogEnum.Critical);
             }
 			return user;
         }
@@ -106,7 +111,7 @@ namespace NSW.Repositories
             }
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "User.ByEmail", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "User.ByEmail", x, LogEnum.Critical);
             }
 			return user;
         }
@@ -116,7 +121,7 @@ namespace NSW.Repositories
         /// </summary>
         /// <param name="email">email to check for</param>
         /// <returns>true if found, false if not</returns>
-        public bool Exists(string email)
+        public bool Exists(string email)	
         {
             try
             {
@@ -131,7 +136,7 @@ namespace NSW.Repositories
             }
             catch   (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "User.Exists", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "User.Exists", x, LogEnum.Critical);
             }
             return false;
         }
@@ -154,11 +159,11 @@ namespace NSW.Repositories
                 parameters.Add(param);
                 // execute the command
 				var result = base.ExecuteStoreProcedure("modifyUserPassword", parameters);
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "UserRepository.ChangePassword", "UserRepository modifyUserPassword result : " + result.ToString(), LogEnum.Debug);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "UserRepository.ChangePassword", "UserRepository modifyUserPassword result : " + result.ToString(), LogEnum.Debug);
 			}
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "UserRepository.changePassword", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "UserRepository.changePassword", x, LogEnum.Critical);
             }
         }
 
@@ -197,7 +202,7 @@ namespace NSW.Repositories
 			}
 			catch (Exception x)
 			{
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "User.insertUser", x, LogEnum.Critical);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "User.insertUser", x, LogEnum.Critical);
 			}
 			return entity;
 		}
@@ -229,7 +234,7 @@ namespace NSW.Repositories
 			}
 			catch (Exception x)
 			{
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "User.modifyUser", x, LogEnum.Critical);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "User.modifyUser", x, LogEnum.Critical);
 			}
 			return entity;
 		}
@@ -249,7 +254,7 @@ namespace NSW.Repositories
 			}
 			catch (Exception x)
 			{
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "User.deleteUser", x, LogEnum.Critical);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "User.deleteUser", x, LogEnum.Critical);
 			}
 		}
 	}

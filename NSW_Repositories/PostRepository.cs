@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using NSW.Data;
 using NSW.Data.Interfaces;
+using NSW.Info.Interfaces;
 using NSW.Repositories.Interfaces;
 using System.Data;
 
@@ -13,7 +14,17 @@ namespace NSW.Repositories
 		private readonly IRepository<User> _userRepository;
 		private readonly ILabelTextRepository _labelTextRepository;
 
-		public PostRepository(IUser user) : base(user) { }
+		public PostRepository(
+			ILog log,
+			IUser user,
+			IProjectInfo projectInfo,
+			IRepository<User> userRepo,
+			ILabelTextRepository labelTextRepository
+			) : base(log, user, projectInfo) 
+		{
+			_userRepository = userRepo;
+			_labelTextRepository = labelTextRepository;
+		}
 
 		public Post? GetByIdentifier(string identifier)
 		{
@@ -55,7 +66,7 @@ namespace NSW.Repositories
             }
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostRepository.ByID", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.ByID", x, LogEnum.Critical);
             }
 			return post;
         }
@@ -84,11 +95,11 @@ namespace NSW.Repositories
 
 				var result = base.ExecuteStoreProcedure("insertPost", parameters);
 				post.ID = Convert.ToInt32(param.Value);
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostRepository.insertPost", "PostRepository inserted result : " + result.ToString(), LogEnum.Debug);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.insertPost", "PostRepository inserted result : " + result.ToString(), LogEnum.Debug);
             }
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostRepository.insertPost", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.insertPost", x, LogEnum.Critical);
             }
 			return post;
         }
@@ -112,11 +123,11 @@ namespace NSW.Repositories
                 param = new SqlParameter("@status", post.Status);
                 parameters.Add(param);
 				var result = base.ExecuteStoreProcedure("modifyPost", parameters);
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostRepository.insertPost", "PostRepository modified result : " + result.ToString(), LogEnum.Debug);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.insertPost", "PostRepository modified result : " + result.ToString(), LogEnum.Debug);
             }
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostRepository.modifyPost", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.modifyPost", x, LogEnum.Critical);
             }
 			return post;
         }
@@ -132,11 +143,11 @@ namespace NSW.Repositories
                 SqlParameter param = new SqlParameter("@ID", post.ID);
                 parameters.Add(param);
 				var result = base.ExecuteStoreProcedure("deletePost", parameters);
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostRepository.deletePost", "PostRepository deleted result : " + result.ToString(), LogEnum.Debug);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.deletePost", "PostRepository deleted result : " + result.ToString(), LogEnum.Debug);
 			}
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostRepository.deletePost", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.deletePost", x, LogEnum.Critical);
             }
         }
 
@@ -155,7 +166,7 @@ namespace NSW.Repositories
             }
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostRepository.PostUser", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.PostUser", x, LogEnum.Critical);
             }
 			return new User();
         }
@@ -177,7 +188,7 @@ namespace NSW.Repositories
                 strBody += "\r\n";
                 strBody += emailDetails[".Line2"];
                 strBody += "\r\n\r\n";
-                string strLink = NSW.Info.ProjectInfo.protocol + NSW.Info.ProjectInfo.webServer + "/Posts/RenewPost.aspx?postID=" + post.ID.ToString();
+                string strLink = _projectInfo.protocol + _projectInfo.webServer + "/Posts/RenewPost.aspx?postID=" + post.ID.ToString();
                 strBody += strLink;
                 strBody += "\r\n\r\n";
                 strBody += emailDetails[".Line3"] + "\r\n";
@@ -188,7 +199,7 @@ namespace NSW.Repositories
             }
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostRepository.SendExpiryEmail", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.SendExpiryEmail", x, LogEnum.Critical);
             }
         }
 
@@ -200,11 +211,11 @@ namespace NSW.Repositories
             try
             {
 				var result = base.ExecuteNonQuery("update tblPosts set fldPost_emailSent=1 where fldPost_id=" + post.ID.ToString());
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostRepository.SetEmailSent", "PostRepository.SetEmailSent result: " + result.ToString(), LogEnum.Critical);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.SetEmailSent", "PostRepository.SetEmailSent result: " + result.ToString(), LogEnum.Critical);
 			}
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "PostRepository.SetEmailSent", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.SetEmailSent", x, LogEnum.Critical);
             }
         }
 

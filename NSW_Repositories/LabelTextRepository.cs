@@ -1,19 +1,20 @@
 ﻿using Microsoft.Data.SqlClient;
 using NSW.Data;
 using NSW.Data.Interfaces;
+using NSW.Info.Interfaces;
 using NSW.Repositories.Interfaces;
 using System.Data;
-using NSW;
-
-
 
 namespace NSW.Repositories
 {
 	public class LabelTextRepository : BaseRepository, ILabelTextRepository
     {
 
-
-        public LabelTextRepository(IUser user) : base(user)
+        public LabelTextRepository(
+			ILog log,
+			IUser user,
+			IProjectInfo projectInfo
+			) : base(log, user,  projectInfo)
         {
                
         }
@@ -41,7 +42,7 @@ namespace NSW.Repositories
 			}
 			catch (Exception x)
 			{
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelTextRepository.GetByIdentifier", x, LogEnum.Critical); 
+				_log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.GetByIdentifier", x, LogEnum.Critical); 
 			}
 			return returnValue;
 		}
@@ -59,7 +60,7 @@ namespace NSW.Repositories
 			}
 			catch (Exception x)
 			{
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelTextRepository.GetByIdentifier", x, LogEnum.Critical);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.GetByIdentifier", x, LogEnum.Critical);
 			}
 			return text;
 		}
@@ -75,21 +76,11 @@ namespace NSW.Repositories
             {
 				DataSet ds = base.GetDataFromSqlString("Select * from tblLabelText where fldLabel_ID='" + identifier + "'");
                 DataRow dr = ds.Tables[0].Rows[0];
-                switch (base._currentUser.DisplayLanguage)
-                {
-                    case Enums.LanguagePreferenceEnum.English:
-                        {
-                            return dr["fldLabel_English"]?.ToString();
-                        }
-                    case Enums.LanguagePreferenceEnum.Japanese:
-                        {
-                            return dr["fldLabel_Japanese"]?.ToString();
-                        }
-                }
-            }
+				return GetLabelTextFromDataRow(dr);
+			}
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelTextRepository.GetTextByIdentifier", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.GetTextByIdentifier", x, LogEnum.Critical);
             }
             return string.Empty;
         }
@@ -105,27 +96,14 @@ namespace NSW.Repositories
 				{
 					var fullString = row["fldLabelText_ID"].ToString();
 					string key= fullString.Remove(1, groupIdentifier.Length);
-					string value = "";
-					switch (_currentUser.DisplayLanguage)
-					{
-						case Enums.LanguagePreferenceEnum.English:
-							{
-								value = row["fldLabel_English"].ToString();
-								break;
-							}
-						default:
-							{
-								value = row["fldLabel_Japanese"].ToString();
-								break;
-							}
-					}
+					string value = GetLabelTextFromDataRow(row);
 					returnValue.Add(key, value);
 				}
 			}
 			catch (Exception x)
 			{
 
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelTextRepository.GetTextWithPreferenceByIdentifier", x, LogEnum.Critical);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.GetTextWithPreferenceByIdentifier", x, LogEnum.Critical);
 			}
 			return returnValue;
 		}
@@ -141,21 +119,11 @@ namespace NSW.Repositories
             {
 				DataSet ds = base.GetDataFromSqlString("Select * from tblLabelText where fldLabel_ID='" + identifier + "'");
                 DataRow dr = ds.Tables[0].Rows[0];
-                switch (_currentUser.DisplayLanguage)
-                {
-                    case Enums.LanguagePreferenceEnum.English:
-                        {
-                            return dr["fldLabel_English"].ToString();
-                        }
-                    case Enums.LanguagePreferenceEnum.Japanese:
-                        {
-                            return dr["fldLabel_Japanese"].ToString();
-                        }
-                }
+				return GetLabelTextFromDataRow (dr);
             }
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelTextRepository.GetTextWithPreferenceByIdentifier", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.GetTextWithPreferenceByIdentifier", x, LogEnum.Critical);
             }
             return string.Empty;
         }
@@ -179,11 +147,11 @@ namespace NSW.Repositories
                 parameters.Add(param);
                 // execute the command
 				var result = base.ExecuteStoreProcedure("modifyLabelText", parameters);
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelTextRepository.Modify", "modifyLabelText result: " + result.ToString(), LogEnum.Debug);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.Modify", "modifyLabelText result: " + result.ToString(), LogEnum.Debug);
 			}
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelTextRepository.Modify", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.Modify", x, LogEnum.Critical);
             }
 			return label;
         }
@@ -204,11 +172,11 @@ namespace NSW.Repositories
                 parameters.Add(param);
                 // execute the command
 				var result = base.ExecuteStoreProcedure("deleteLabelText", parameters);
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelTextRepository.Delete", "deleteLabelText result: " + result.ToString(), LogEnum.Debug);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.Delete", "deleteLabelText result: " + result.ToString(), LogEnum.Debug);
 			}
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelTextRepository.Delete", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.Delete", x, LogEnum.Critical);
             }
         }
 
@@ -231,11 +199,11 @@ namespace NSW.Repositories
                 parameters.Add(param);
                 // execute the command
 				var result = base.ExecuteStoreProcedure("insertLabelText", parameters);
-				Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelTextRepository.Delete", "insertLabelText result: " + result.ToString(), LogEnum.Debug);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.Delete", "insertLabelText result: " + result.ToString(), LogEnum.Debug);
 			}
             catch (Exception x)
             {
-                Log.WriteToLog(NSW.Info.ProjectInfo.ProjectLogType, "LabelTextRepository.Delete", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.Delete", x, LogEnum.Critical);
             }
 			return label;
         }

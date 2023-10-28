@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using NSW.Data;
 using NSW.Data.Interfaces;
+using NSW.Info.Interfaces;
 using System.Data;
 
 namespace NSW.Repositories
@@ -8,12 +9,19 @@ namespace NSW.Repositories
 	public class BaseRepository
 	{
 		protected readonly IUser _currentUser = new User("test", "Test@acnicholls.com");
+		protected readonly ILog _log;
+		protected readonly IProjectInfo _projectInfo;
 
 		private static readonly SqlConnection connection = new SqlConnection(NSW.Info.ConnectionInfo.ConnectionString);
 
-		public BaseRepository(IUser currentUser)
+		public BaseRepository(
+			ILog log,
+			IUser currentUser,
+			IProjectInfo projectInfo)
 		{
 			_currentUser = currentUser;
+			_log = log;
+			_projectInfo = projectInfo;
 		}
 
 		protected int ExecuteStoreProcedure(string procedureName, List<SqlParameter> parameters)
@@ -92,6 +100,22 @@ namespace NSW.Repositories
 			int returnValue = await command.ExecuteNonQueryAsync();
 			await connection.CloseAsync();
 			return returnValue;
+		}
+
+		protected string GetLabelTextFromDataRow(DataRow row)
+		{
+			switch (_currentUser.DisplayLanguage)
+			{
+				case LanguagePreference.English:
+					{
+						return row["fldLabel_English"].ToString();
+					}
+				case LanguagePreference.Japanese:
+				default:
+					{
+						return row["fldLabel_Japanese"].ToString();
+					}
+			}
 		}
 	}
 }
