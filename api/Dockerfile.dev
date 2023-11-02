@@ -6,11 +6,11 @@ WORKDIR /app
 
 # restore the project's nuget packages
 COPY . .
-RUN dotnet restore ./src/API.csproj
+RUN dotnet restore ./src/NSW_Api/NSW_Api.csproj
 # build the application
-RUN dotnet build -c Debug -o out ./src/API.csproj
+RUN dotnet build -c Debug -o out ./src/NSW_Api/NSW_Api.csproj
 
 # expose the ports
 EXPOSE 5002 5003
 # run the project
-ENTRYPOINT  ["dotnet", "watch", "run", "API.dll"]
+ENTRYPOINT  ["dotnet", "watch", "run", "NSW_Api.dll"]

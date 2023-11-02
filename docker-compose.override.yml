@@ -1,0 +1,30 @@
+version: "3.3"
+
+services:
+    app:
+        networks:
+            - acn_bridge
+  
+    bff:
+        networks:
+            - acn_bridge
+
+    idp:
+        networks:
+            - acn_bridge
+
+    api:
+        networks:
+            - acn_bridge
+
+    db:
+        networks:
+            - acn_bridge
+          
+    proxy:
+        networks:
+            - acn_bridge
+
+networks:
+    acn_bridge:
+        external: true
