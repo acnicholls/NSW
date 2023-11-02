@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = AspNetCoreSecurity
+build_property.ProjectDir = a:\source\githubRepos\idsrv-dotnet-react\idp\

@@ -1,0 +1,57 @@
+[02:43:26 Information] 
+Starting host...
+
+[02:43:27 Warning] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository
+Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+
+[02:43:30 Debug] 
+alice already exists
+
+[02:43:30 Debug] 
+bob already exists
+
+[02:43:30 Information] IdentityServer4.Startup
+Starting IdentityServer4 version 4.1.2+997a6cdd643e46cd5762b710c4ddc43574cbec2e
+
+[02:43:30 Information] IdentityServer4.Startup
+You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+
+[02:43:30 Debug] IdentityServer4.Startup
+Custom IssuerUri set to https://localhost
+
+[02:43:30 Information] IdentityServer4.Startup
+Using the default authentication scheme Identity.Application for IdentityServer
+
+[02:43:30 Debug] IdentityServer4.Startup
+Using Identity.Application as default ASP.NET Core scheme for authentication
+
+[02:43:30 Debug] IdentityServer4.Startup
+Using Identity.External as default ASP.NET Core scheme for sign-in
+
+[02:43:30 Debug] IdentityServer4.Startup
+Using Identity.External as default ASP.NET Core scheme for sign-out
+
+[02:43:30 Debug] IdentityServer4.Startup
+Using Identity.Application as default ASP.NET Core scheme for challenge
+
+[02:43:30 Debug] IdentityServer4.Startup
+Using Identity.Application as default ASP.NET Core scheme for forbid
+
+[02:43:31 Warning] Microsoft.AspNetCore.Server.Kestrel
+Overriding address(es) 'https://localhost:5001, http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
+
+[02:43:31 Information] Microsoft.Hosting.Lifetime
+Now listening on: http://0.0.0.0:5006
+
+[02:43:31 Information] Microsoft.Hosting.Lifetime
+Now listening on: https://0.0.0.0:5007
+
+[02:43:31 Information] Microsoft.Hosting.Lifetime
+Application started. Press Ctrl+C to shut down.
+
+[02:43:31 Information] Microsoft.Hosting.Lifetime
+Hosting environment: Development
+
+[02:43:31 Information] Microsoft.Hosting.Lifetime
+Content root path: /app
+

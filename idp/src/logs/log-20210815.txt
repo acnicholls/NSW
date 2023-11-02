@@ -1,0 +1,54 @@
+[23:55:41 Information] 
+Starting host...
+
+[23:55:41 Warning] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository
+Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+
+[23:55:41 Warning] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager
+No XML encryptor configured. Key {819d3eba-f591-48f7-8dcb-9e0077d18a80} may be persisted to storage in unencrypted form.
+
+[23:55:41 Information] IdentityServer4.Startup
+Starting IdentityServer4 version 4.1.2+997a6cdd643e46cd5762b710c4ddc43574cbec2e
+
+[23:55:41 Information] IdentityServer4.Startup
+You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+
+[23:55:41 Debug] IdentityServer4.Startup
+Custom IssuerUri set to http://localhost
+
+[23:55:41 Information] IdentityServer4.Startup
+Using the default authentication scheme Identity.Application for IdentityServer
+
+[23:55:41 Debug] IdentityServer4.Startup
+Using Identity.Application as default ASP.NET Core scheme for authentication
+
+[23:55:41 Debug] IdentityServer4.Startup
+Using Identity.External as default ASP.NET Core scheme for sign-in
+
+[23:55:41 Debug] IdentityServer4.Startup
+Using Identity.External as default ASP.NET Core scheme for sign-out
+
+[23:55:41 Debug] IdentityServer4.Startup
+Using Identity.Application as default ASP.NET Core scheme for challenge
+
+[23:55:41 Debug] IdentityServer4.Startup
+Using Identity.Application as default ASP.NET Core scheme for forbid
+
+[23:55:41 Warning] Microsoft.AspNetCore.Server.Kestrel
+Overriding address(es) 'https://localhost:5001, http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
+
+[23:55:41 Information] Microsoft.Hosting.Lifetime
+Now listening on: http://0.0.0.0:5006
+
+[23:55:41 Information] Microsoft.Hosting.Lifetime
+Now listening on: https://0.0.0.0:5007
+
+[23:55:41 Information] Microsoft.Hosting.Lifetime
+Application started. Press Ctrl+C to shut down.
+
+[23:55:41 Information] Microsoft.Hosting.Lifetime
+Hosting environment: Development
+
+[23:55:41 Information] Microsoft.Hosting.Lifetime
+Content root path: /app
+

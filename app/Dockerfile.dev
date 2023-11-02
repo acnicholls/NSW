@@ -1,0 +1,11 @@
+FROM node as build-env
+
+WORKDIR /app
+
+COPY ./cra/* /app/
+
+RUN npm install
+
+EXPOSE 3000
+
+ENTRYPOINT ["npm", "start"]
