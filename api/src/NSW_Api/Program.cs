@@ -42,9 +42,7 @@ builder.Services.AddSwaggerGen((options) =>
 	options.IncludeXmlComments(fileLocation);
 });
 
-
 var app = builder.Build();
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
