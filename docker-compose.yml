@@ -24,7 +24,7 @@ services:
             - idp
             - db
     bff:
-        image: mcr.microsoft.com/dotnet/sdk:5.0
+        image: mcr.microsoft.com/dotnet/sdk:7.0
         working_dir: /app
         volumes:
             - ./bff/src:/app
@@ -44,7 +44,7 @@ services:
             - api
             - idp
     idp:
-        image: mcr.microsoft.com/dotnet/sdk:5.0
+        image: mcr.microsoft.com/dotnet/sdk:7.0
         working_dir: /app
         volumes:
             - ./idp/src:/app
