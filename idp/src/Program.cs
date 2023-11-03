@@ -89,7 +89,7 @@ namespace Starter.Idp
                         opts.Listen(address, 5006);
                         opts.Listen(address, 5007, opts =>
                             opts.UseHttps(
-                                "/ssl/idsrv-dotnet-react.pfx",
+                                "/ssl/NSW_BFF.pfx",
                                 "123456"
                             ));
                     });

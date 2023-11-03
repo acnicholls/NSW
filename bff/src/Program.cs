@@ -52,7 +52,7 @@ namespace Starter.Bff
                         opts.Listen(address, 5004);
                         opts.Listen(address, 5005, opts => 
                             opts.UseHttps(
-                                "/ssl/idsrv-dotnet-react.pfx",
+                                "/ssl/NSW_BFF.pfx",
                                 "123456"
                         ));
                     });
