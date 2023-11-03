@@ -6,7 +6,6 @@
   <RootNamespace>$(MSBuildProjectName.Replace("_", ".").Replace(" ", "."))</RootNamespace>
   <FileVersion>1.1.*.*</FileVersion>
   <AssemblyVersion>1.1.0.0</AssemblyVersion>
-  <UserSecretsId>5955f2e6-2ebf-49f2-80cd-c1a9b4cab8a3</UserSecretsId>
 </PropertyGroup>
 
 <ItemGroup>
