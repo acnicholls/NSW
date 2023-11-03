@@ -38,6 +38,7 @@ namespace NSW.GeoCoder
 			_log = log;
 			_apiCall = apiCall;
 			sqlConn = new SqlConnection(_configuration.GetConnectionString(_configuration.GetSection("ConnectionString").Value));
+			sqlComm = sqlConn.CreateCommand();
 		}
 
 		/// <summary>
