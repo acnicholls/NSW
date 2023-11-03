@@ -9,11 +9,6 @@
     <AssemblyVersion>1.1.0.0</AssemblyVersion>
     <UserSecretsId>d7df2e78-b68f-405a-821c-48eac048a5a8</UserSecretsId>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="config\**" />
-    <EmbeddedResource Remove="config\**" />
-    <None Remove="config\**" />
-  </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\..\..\api\src\NSW_Info\NSW_Info.csproj" />
