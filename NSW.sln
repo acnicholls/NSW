@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSW_Data", "api\src\NSW_Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSW_Info", "api\src\NSW_Info\NSW_Info.csproj", "{580ACCE2-4DF2-4D09-8FA1-B6481F07D857}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSW_DBUpdater", ".tools\db_updater\NSW_DBUpdater\NSW_DBUpdater.csproj", "{8F9B235F-F102-41D5-BB40-D0B58FD77DE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSW_DBUpdater", ".tools\db_updater\NSW_DBUpdater\NSW_DBUpdater.csproj", "{8F9B235F-F102-41D5-BB40-D0B58FD77DE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSW_GeoCoder", ".tools\geo_coder\NSW_GeoCoder\NSW_GeoCoder.csproj", "{F63A85B9-844B-4623-B290-AF055D6C54E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSW_GeoCoder", ".tools\geo_coder\NSW_GeoCoder\NSW_GeoCoder.csproj", "{F63A85B9-844B-4623-B290-AF055D6C54E4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSW_Services", "api\src\NSW_Services\NSW_Services.csproj", "{65DB0804-E219-48B5-9436-DECD5CA78740}"
 EndProject
@@ -56,7 +56,6 @@ Global
 		{580ACCE2-4DF2-4D09-8FA1-B6481F07D857}.Release|x86.ActiveCfg = Release|Any CPU
 		{580ACCE2-4DF2-4D09-8FA1-B6481F07D857}.Release|x86.Build.0 = Release|Any CPU
 		{8F9B235F-F102-41D5-BB40-D0B58FD77DE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F9B235F-F102-41D5-BB40-D0B58FD77DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F9B235F-F102-41D5-BB40-D0B58FD77DE0}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{8F9B235F-F102-41D5-BB40-D0B58FD77DE0}.Debug|x86.Build.0 = Debug|Any CPU
 		{8F9B235F-F102-41D5-BB40-D0B58FD77DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -125,7 +124,7 @@ Global
 		{FB1E344E-65F7-4EA3-9B7A-20629148A6C6} = {9373609B-240A-4A30-90EF-7B732BE2AB71}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		VisualSVNWorkingCopyRoot = .
 		SolutionGuid = {3527EB40-AB6C-4401-8E63-29612BB7434B}
+		VisualSVNWorkingCopyRoot = .
 	EndGlobalSection
 EndGlobal
