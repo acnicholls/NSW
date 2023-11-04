@@ -4,15 +4,12 @@
 
 using IdentityServer4;
 using IdentityServer4.Models;
-using IdentityServer4.Services;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 
 namespace Starter.Idp
 {
-    using Starter.Idp.Models;
-    public static class Config
+	using Starter.Idp.Models;
+	public static class Config
     {
         public static IEnumerable<IdentityResource> IdentityResources =>
             new List<IdentityResource>
@@ -26,7 +23,7 @@ namespace Starter.Idp
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
-                new ApiScope("Starter.Api", "The starter api project's scope")
+                new ApiScope("NSW_Api", "The NSW project's API scope")
             };
 
         public static IEnumerable<ApiResource> ApiResources =>
@@ -34,13 +31,13 @@ namespace Starter.Idp
             {
                 new ApiResource
                 {
-                    Name = "starter.api",
-                    DisplayName = "the starter solution api",
+                    Name = "nsw.api",
+                    DisplayName = "the nsw solution api",
                     ApiSecrets = {
-                        new Secret("secret".Sha256()),
+                        new Secret("secret".Sha256()),  // TODO: change for production
                     },
                     Scopes = {
-                        "Starter.Api",
+						"NSW_Api",
                     }
                 },
             };
@@ -69,7 +66,7 @@ namespace Starter.Idp
                 // },
                 new Client
                 {
-                    ClientId = "Starter.Bff",
+                    ClientId = "NSW.Bff",
                     ClientSecrets = {
                         new Secret("secret".Sha256()),
                     },
@@ -86,10 +83,10 @@ namespace Starter.Idp
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "Starter.Api"
-                    },
+						"NSW_Api"
+					},
                     AllowOfflineAccess = true,
-                    AllowedCorsOrigins = {
+                    AllowedCorsOrigins = { // TODO: change for production
                         "https://localhost",
                         "http://bff:5004",
                         "https://bff:5005",
