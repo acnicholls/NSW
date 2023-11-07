@@ -39,7 +39,28 @@ namespace NSW.Repositories
 
 		public IList<Post> GetAll()
 		{
-			throw new NotImplementedException();
+			List<Post> posts = new List<Post>();
+			try
+			{
+				DataSet ds = base.GetDataFromSqlString("Select * from tblPosts");
+				if (ds.Tables[0].Rows.Count > 0)
+				{
+					foreach(DataRow dr in ds.Tables[0].Rows)
+					{
+						posts.Add(AssignFromDataRow(dr));
+					}
+				}
+				else
+				{
+					Exception ex = new Exception("Something went wrong listing all posts.");
+					throw ex;
+				}
+			}
+			catch (Exception x)
+			{
+				_log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.GetAll", x, LogEnum.Critical);
+			}
+			return posts;
 		}
 		/// <summary>
 		/// builds a post based on the integer ID
@@ -54,15 +75,7 @@ namespace NSW.Repositories
                 if (ds.Tables[0].Rows.Count == 1)
                 {
                     DataRow dr = ds.Tables[0].Rows[0];
-					post.ID = Convert.ToInt32(dr["fldPost_id"]);
-					post.CategoryID = Convert.ToInt32(dr["fldPost_CategoryID"]);
-					post.Title = dr["fldPost_Title"].ToString();
-					post.Description = dr["fldPost_Description"].ToString();
-					post.Price = Convert.ToDecimal(dr["fldPost_Price"]);
-					post.Expiry = Convert.ToDateTime(dr["fldPost_Expiry"]);
-					post.UserID = Convert.ToInt32(dr["fldPost_UserID"]);
-					post.Status = dr["fldPost_Status"].ToString();
-					post.DeleteFlag = Convert.ToBoolean(dr["fldPost_DeleteFlag"]);
+					post = AssignFromDataRow(dr);
                 }
                 else
                 {
@@ -177,7 +190,20 @@ namespace NSW.Repositories
 			return new User();
         }
 
-
+		private Post AssignFromDataRow(DataRow dr)
+		{
+			var post = new Post();
+			post.ID = Convert.ToInt32(dr["fldPost_id"]);
+			post.CategoryID = Convert.ToInt32(dr["fldPost_CategoryID"]);
+			post.Title = dr["fldPost_Title"].ToString();
+			post.Description = dr["fldPost_Description"].ToString();
+			post.Price = Convert.ToDecimal(dr["fldPost_Price"]);
+			post.Expiry = Convert.ToDateTime(dr["fldPost_Expiry"]);
+			post.UserID = Convert.ToInt32(dr["fldPost_UserID"]);
+			post.Status = dr["fldPost_Status"].ToString();
+			post.DeleteFlag = Convert.ToBoolean(dr["fldPost_DeleteFlag"]);
+			return post;
+		}
 
         /// <summary>
         /// if email is successfully sent, sets flag in the database
@@ -195,6 +221,30 @@ namespace NSW.Repositories
             }
         }
 
-
-    }
+		public IList<Post> GetByCategoryId(int categoryId)
+		{
+			List<Post> posts = new List<Post>();
+			try
+			{
+				DataSet ds = base.GetDataFromSqlString("Select * from tblPosts where fldPost_CategoryID=" + categoryId.ToString());
+				if (ds.Tables[0].Rows.Count > 0)
+				{
+					foreach (DataRow dr in ds.Tables[0].Rows)
+					{
+						posts.Add(AssignFromDataRow(dr));
+					}
+				}
+				else
+				{
+					Exception ex = new Exception("Something went wrong listing all posts for category with id =" + categoryId.ToString());
+					throw ex;
+				}
+			}
+			catch (Exception x)
+			{
+				_log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.GetByCategoryId", x, LogEnum.Critical);
+			}
+			return posts;
+		}
+	}
 }

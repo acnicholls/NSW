@@ -11,7 +11,7 @@ const PostComponent = ({ id }) => {
     usePostContext();
   const { user } = useUserContext();
 
-  return <>the post or post list goes here.</>;
+  return <>the post info goes here.</>;
 };
 
 export default PostComponent;

@@ -2,9 +2,11 @@
 
 namespace NSW.Services.Interfaces
 {
-	public interface IPostService
+	public interface IPostService : IService<Post>
 	{
 		void SendExpiryEmail(Post post);
+
+		IList<Post> GetByCategoryId(int categoryId);
 
 	}
 }

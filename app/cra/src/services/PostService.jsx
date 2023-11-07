@@ -5,7 +5,21 @@ const baseRoute = `${routes.post}`;
 const getPosts = async () => {
   try {
     var postInfo = await api.apiGet(baseRoute);
-    console.log("getPost:response:", postInfo);
+    console.log("getPosts:response:", postInfo);
+    if (postInfo && postInfo.status === 200) {
+      return postInfo.data;
+    } else {
+      return postInfo.error;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getPostsByCategoryId = async (categoryId) => {
+  try {
+    var postInfo = await api.apiGet(`${baseRoute}/category/${categoryId}`);
+    console.log("getPostsByCategoryId:response:", postInfo);
     if (postInfo && postInfo.status === 200) {
       return postInfo.data;
     } else {

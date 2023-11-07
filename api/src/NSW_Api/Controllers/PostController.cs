@@ -10,8 +10,8 @@ namespace NSW.Api.Controllers
 	[ApiController]
 	public class PostController : ControllerBase, IController<Post>
 	{
-		private readonly IService<Post> _service;
-		public PostController(IService<Post> service)
+		private readonly IPostService _service;
+		public PostController(IPostService service)
 		{
 			_service = service;
 		}
@@ -121,5 +121,22 @@ namespace NSW.Api.Controllers
 
 		[HttpPut]
 		public async Task<ActionResult<Post>> ModifyAsync([FromBody] Post entity) => await Task.Run(() => this._modify(entity));
+
+		[HttpGet("category/{categoryId}")]
+		public async Task<ActionResult<IList<Post>>> GetByCategoryIdAsync([FromRoute] int categoryId) => await Task.Run(() => this._getByCategoryId(categoryId));
+
+		private ActionResult<IList<Post>> _getByCategoryId(int categoryId)
+		{
+			try
+			{
+				var returnValue = _service.GetByCategoryId(categoryId);
+				return new OkObjectResult(returnValue);
+			}
+			catch (Exception ex)
+			{
+				// add logging
+				return BadRequest(ex.Message);
+			}
+		}
 	}
 }

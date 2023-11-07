@@ -8,7 +8,7 @@ using System.Net.Mail;
 
 namespace NSW.Services
 {
-	public class PostService : IService<Post>
+	public class PostService : IPostService
     {
 		private readonly IPostRepository _repository;
 		private readonly ILabelTextRepository _labelTextRepository;
@@ -78,5 +78,7 @@ namespace NSW.Services
 				_log.WriteToLog(_projectInfo.ProjectLogType, "PostRepository.SendExpiryEmail", x, LogEnum.Critical);
 			}
 		}
+
+		public IList<Post> GetByCategoryId(int categoryId) => this._repository.GetByCategoryId(categoryId);
 	}
 }
