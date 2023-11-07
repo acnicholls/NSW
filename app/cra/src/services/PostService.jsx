@@ -2,7 +2,7 @@ import routes from "../constants/RouteConstants";
 import * as api from "./api";
 const baseRoute = `${routes.post}`;
 
-const getPost = async () => {
+const getPosts = async () => {
   try {
     var postInfo = await api.apiGet(baseRoute);
     console.log("getPost:response:", postInfo);
@@ -72,6 +72,12 @@ const deletePost = async (post) => {
   }
 };
 
-var service = { deletePost, updatePost, savePost, getPostById, getPost };
+var service = {
+  deletePost,
+  updatePost,
+  savePost,
+  getPostById,
+  getPost: getPosts,
+};
 
 export default service;
