@@ -146,7 +146,7 @@ namespace NSW
                 msg.Body = msgBody;
                 msg.From = new System.Net.Mail.MailAddress(_appSettings.GetAppSetting("MailFrom", false));
                 msg.To.Add("ac.nicholls@gmail.com");
-                msg.Send();
+                SendEmail?.Invoke(msg);
             }
 
             }
