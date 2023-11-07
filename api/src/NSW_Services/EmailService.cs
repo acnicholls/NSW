@@ -26,7 +26,6 @@ namespace NSW.Services
 		private bool _UseSSL = false;
 		private bool _ReqSecurity = false;
 		private readonly IProjectInfo _projectInfo;
-		private readonly IAppSettings _appSettings;
 		private readonly ILog _log;
         #endregion
 
@@ -44,7 +43,7 @@ namespace NSW.Services
             try 
 			{
 				_projectInfo = projectInfo;
-				_appSettings = settings;
+				log.SendEmail += this.Send;
 				_log = log;
 				_Server = settings.GetAppSetting("MailServer", false);
 				_Port = Convert.ToInt64(settings.GetAppSetting("MailPort", false));

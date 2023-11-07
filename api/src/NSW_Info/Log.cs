@@ -6,6 +6,9 @@ using System.IO;
 using ILogger = NLog.ILogger;
 using NSW.Info.Interfaces;
 using NSW.Info;
+using System.Net.Mail;
+using Microsoft.AspNetCore.Http;
+using System.Runtime.CompilerServices;
 
 namespace NSW
 {	
@@ -28,14 +31,25 @@ namespace NSW
         private static ILogger logLogger;
 		private readonly IProjectInfo _projectInfo;
 		private readonly IConnectionInfo _connectionInfo;
+		private readonly IAppSettings _appSettings;
+		private readonly IHttpContextAccessor _contextAccessor;
+
+		public delegate void SendMail(MailMessage msg);
+
+		public event SendMail SendEmail;
+
 
         public Log(
 			IProjectInfo projectInfo,
-			IConnectionInfo connection
+			IConnectionInfo connection,
+			IAppSettings appSettings,
+			IHttpContextAccessor contextAccessor
 			)
         { 
 			_projectInfo = projectInfo;
 			_connectionInfo = connection;
+			_appSettings = appSettings;
+			_contextAccessor = contextAccessor;
 		}
 
         /// <summary>
@@ -68,14 +82,15 @@ namespace NSW
 #if !DEBUG
             if (import == LogEnum.Critical)
             {
-                Info.EmailMessage msg = new Info.EmailMessage();
+
+                MailMessage msg = new MailMessage();
                 msg.Subject = "Mikechi.com experienced an error...";
-                string msgBody = "Requested URL : " + System.Web.HttpContext.Current.Request.RawUrl.ToString() + "\r\n\r\n";
+                string msgBody = "Requested URL : " + _contextAccessor.HttpContext.Request.Query.ToString() + "\r\n\r\n";
                 msgBody += "ERROR :" + "\r\n\r\n" + message + "\r\n\r\n";
                 msg.Body = msgBody;
-                msg.From = new System.Net.Mail.MailAddress(NSW.Info.AppSettings.GetAppSetting("MailFrom", false));
+                msg.From = new System.Net.Mail.MailAddress(_appSettings.GetAppSetting("MailFrom", false));
                 msg.To.Add("ac.nicholls@gmail.com");
-                msg.Send();
+				SendEmail?.Invoke(msg);
             }
 
             }
@@ -119,9 +134,9 @@ namespace NSW
 #if !DEBUG
             if (import == LogEnum.Critical)
             {
-                Info.EmailMessage msg = new Info.EmailMessage();
+                MailMessage msg = new MailMessage();
                 msg.Subject = "Mikechi.com experienced an error...";
-                string msgBody = "Requested URL : " + System.Web.HttpContext.Current.Request.RawUrl.ToString() + "\r\n\r\n";
+                string msgBody = "Requested URL : " + _contextAccessor.HttpContext.Request.Query.ToString() + "\r\n\r\n";
                 msgBody += "ERROR :" + "\r\n\r\n" + ex.Message + "\r\n\r\n";
                 if (ex.InnerException != null)
                 {
@@ -129,7 +144,7 @@ namespace NSW
                 }
                 msgBody += ex.StackTrace.ToString();
                 msg.Body = msgBody;
-                msg.From = new System.Net.Mail.MailAddress(NSW.Info.AppSettings.GetAppSetting("MailFrom", false));
+                msg.From = new System.Net.Mail.MailAddress(_appSettings.GetAppSetting("MailFrom", false));
                 msg.To.Add("ac.nicholls@gmail.com");
                 msg.Send();
             }
