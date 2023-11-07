@@ -9,8 +9,8 @@ namespace NSW.Api.Controllers
 	[ApiController]
 	public class LabelTextController : ControllerBase, IController<LabelText>
 	{
-		private readonly IService<LabelText> _service;
-		public LabelTextController(IService<LabelText> service)
+		private readonly ILabelTextService _service;
+		public LabelTextController(ILabelTextService service)
 		{
 			_service = service;
 		}
@@ -101,8 +101,27 @@ namespace NSW.Api.Controllers
 			}
 		}
 
+
 		[HttpPost]
 		public async Task<ActionResult<LabelText>> InsertAsync([FromBody] LabelText entity) => await Task.Run(() => this._insert(entity));
+
+		private ActionResult<IList<LabelText>> _getByGroupIdentifier(string identifier)
+		{
+			try
+			{
+				var returnValue = _service.GetListOfGroupedLabels(identifier);
+				return new OkObjectResult(returnValue);
+			}
+			catch (Exception ex)
+			{
+
+				return BadRequest(ex.Message);
+			}
+		}
+
+		[HttpGet("group/{identifier}")]
+
+		public async Task<ActionResult<IList<LabelText>>> GetbyGroupIdentifier(string identifier) => await Task.Run(() => this._getByGroupIdentifier(identifier));
 
 		private ActionResult<LabelText> _modify([FromBody] LabelText entity)
 		{

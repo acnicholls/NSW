@@ -44,7 +44,7 @@ namespace NSW.Repositories
 			}
 			catch (Exception x)
 			{
-				_log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.GetByIdentifier", x, LogEnum.Critical); 
+				_log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.GetAll", x, LogEnum.Critical); 
 			}
 			return returnValue;
 		}
@@ -92,20 +92,20 @@ namespace NSW.Repositories
 			var returnValue = new Dictionary<string, string>();
 			try
 			{
-				DataSet ds = base.GetDataFromSqlString("Select * from tblLabelText where fldLabelText_Id like '" + groupIdentifier + "%';");
+				DataSet ds = base.GetDataFromSqlString("Select * from tblLabelText where fldLabel_ID like '" + groupIdentifier + "%';");
 				DataTable dt = ds.Tables[0];
 				foreach(DataRow row in dt.Rows)
 				{
-					var fullString = row["fldLabelText_ID"].ToString();
-					string key= fullString.Remove(1, groupIdentifier.Length);
+					var fullString = row["fldLabel_ID"].ToString();
+					string key= fullString.Remove(0, groupIdentifier.Length);
 					string value = GetLabelTextFromDataRow(row);
 					returnValue.Add(key, value);
 				}
 			}
 			catch (Exception x)
 			{
-
-				_log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.GetTextWithPreferenceByIdentifier", x, LogEnum.Critical);
+				_log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.GetListOfGroupedLabels", x, LogEnum.Critical);
+				throw;
 			}
 			return returnValue;
 		}

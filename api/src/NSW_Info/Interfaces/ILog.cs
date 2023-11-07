@@ -1,5 +1,4 @@
-﻿using System.Net.Mail;
-using static NSW.Log;
+﻿using static NSW.Log;
 
 namespace NSW.Info.Interfaces
 {

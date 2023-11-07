@@ -1,17 +1,16 @@
 ﻿using NSW.Info.Interfaces;
-using System;
-using System.Net.Mail;
 using NSW.Services.Interfaces;
+using System.Net.Mail;
 
 namespace NSW.Services
 {
-    // this class has been rewritten to use any email servers.  
+	// this class has been rewritten to use any email servers.  
 
-    /// <summary>
-    /// Provides a message object that sends the email through gmail. 
-    /// EmailMessage is inherited from <c>System.Net.Mail.MailMessage</c>, so all the mail message features are available.
-    /// </summary>
-    public class EmailService : IEmailService
+	/// <summary>
+	/// Provides a message object that sends the email through gmail. 
+	/// EmailMessage is inherited from <c>System.Net.Mail.MailMessage</c>, so all the mail message features are available.
+	/// </summary>
+	public class EmailService : IEmailService
     {
 
 		#region Private Variables

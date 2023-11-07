@@ -18,6 +18,7 @@ namespace NSW.Services
 		public LabelText? GetById(int id) => _labelTextRespository.GetById(id);
 		public LabelText? GetByIdentifier(string identifier) => _labelTextRespository.GetByIdentifier(identifier);
 
+
 		public LabelText Insert(LabelText entity) => _labelTextRespository.Insert(entity);
 
 		public LabelText Modify(LabelText entity) => _labelTextRespository.Modify(entity);
