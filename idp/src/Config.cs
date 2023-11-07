@@ -23,7 +23,7 @@ namespace Starter.Idp
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
-                new ApiScope("NSW_Api", "The NSW project's API scope")
+                new ApiScope("NSW.ApiScope", "The NSW project's API scope")
             };
 
         public static IEnumerable<ApiResource> ApiResources =>
@@ -31,13 +31,13 @@ namespace Starter.Idp
             {
                 new ApiResource
                 {
-                    Name = "nsw.api",
+                    Name = "NSW.Api",
                     DisplayName = "the nsw solution api",
                     ApiSecrets = {
                         new Secret("secret".Sha256()),  // TODO: change for production
                     },
                     Scopes = {
-						"NSW_Api",
+						"NSW.ApiScope",
                     }
                 },
             };
@@ -76,14 +76,14 @@ namespace Starter.Idp
                     RedirectUris = { "https://localhost/signin-oidc", "https://bff:5005/signin-oidc", "https://localhost/loggedin" },
 
                     // where to redirect to after logout
-                    PostLogoutRedirectUris = { "https://localhost/signout-callback-oidc", "https://localhost/loggedout" },                    
+                    PostLogoutRedirectUris = { "https://localhost/signout-callback-oidc", "https://localhost/loggedout" },
 
                     // what information the application is allowed access to
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-						"NSW_Api"
+						"NSW.ApiScope"
 					},
                     AllowOfflineAccess = true,
                     AllowedCorsOrigins = { // TODO: change for production

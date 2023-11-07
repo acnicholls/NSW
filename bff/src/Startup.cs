@@ -32,6 +32,14 @@ namespace Starter.Bff
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+			// TODO: Load config options here
+			// authority
+			// internal url
+			// metadata url
+			// clientId
+			// clientSecret
+
             IdentityModelEventSource.ShowPII = true;
             services.AddProxy();
             services.AddAccessTokenManagement();
@@ -46,13 +54,13 @@ namespace Starter.Bff
             })
             .AddCookie("cookies", options =>
             {
-                options.Cookie.Name = "Starter.bff";
+                options.Cookie.Name = "NSW.bff";
                 options.Cookie.SameSite = SameSiteMode.Strict;
             })
             .AddOpenIdConnect("oidc", options =>
             {
                 options.Authority = "https://localhost";
-                options.ClientId = "Starter.Bff";
+                options.ClientId = "NSW.Bff";
                 options.ClientSecret = "secret";
                 options.MetadataAddress = "http://idp:5006/.well-known/openid-configuration";
                 options.RequireHttpsMetadata = false;

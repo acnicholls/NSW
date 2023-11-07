@@ -22,7 +22,7 @@ namespace Starter.Bff
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
-                .WriteTo.File("starter.bff.log")
+                .WriteTo.File("logs\\starter.bff.log")
                 .CreateLogger();
 
             try{

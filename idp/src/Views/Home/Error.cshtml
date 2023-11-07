@@ -16,7 +16,7 @@
             <div class="alert alert-danger">
                 Sorry, there was an error
 
-                @if (error != null)
+                @if (@error != null)
                 {
                     <strong>
                         <em>
@@ -24,7 +24,7 @@
                         </em>
                     </strong>
 
-                    if (errorDescription != null)
+                    @if (errorDescription != null)
                     {
                         <div>@errorDescription</div>
                     }
