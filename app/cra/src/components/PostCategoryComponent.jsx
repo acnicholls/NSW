@@ -1,12 +1,12 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import { useUserContext } from "../contexts/UserContext";
-import { usePostCategoryContext } from "../../contexts/PostCategoryContext";
+import { usePostCategoryContext } from "../contexts/PostCategoryContext";
 import { Row, Col, FormCheck, Button } from "react-bootstrap";
 import FormCheckInput from "react-bootstrap/esm/FormCheckInput";
 import FormCheckLabel from "react-bootstrap/esm/FormCheckLabel";
 
-const ViewPostCategory = ({ id }) => {
+const PostCategoryComponent = ({ id }) => {
   const {
     postCategory,
     setPostCategory,
@@ -20,8 +20,8 @@ const ViewPostCategory = ({ id }) => {
   return <>the postCategory or postCategory list goes here.</>;
 };
 
-export default ViewPostCategory;
+export default PostCategoryComponent;
 
-ViewPostCategory.propTypes = {
+PostCategoryComponent.propTypes = {
   id: PropTypes.number,
 };
