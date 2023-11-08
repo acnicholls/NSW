@@ -2,7 +2,7 @@ import routes from "../constants/RouteConstants";
 import * as api from "./api";
 const baseRoute = `${routes.postCategory}`;
 
-const getPostCategory = async () => {
+const getPostCategories = async () => {
   try {
     var postCategoryInfo = await api.apiGet(baseRoute);
     console.log("getPostCategory:response:", postCategoryInfo);
@@ -89,7 +89,7 @@ var service = {
   updatePostCategory,
   savePostCategory,
   getPostCategoryById,
-  getPostCategory,
+  getPostCategories,
 };
 
 export default service;

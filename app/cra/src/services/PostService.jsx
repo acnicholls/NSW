@@ -91,7 +91,8 @@ var service = {
   updatePost,
   savePost,
   getPostById,
-  getPost: getPosts,
+  getPosts,
+  getPostsByCategoryId,
 };
 
 export default service;

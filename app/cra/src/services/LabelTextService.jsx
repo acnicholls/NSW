@@ -2,7 +2,7 @@ import routes from "../constants/RouteConstants";
 import * as api from "./api";
 const baseRoute = `${routes.labelText}`;
 
-const getLabelText = async () => {
+const getLabelTexts = async () => {
   try {
     var labelTextInfo = await api.apiGet(baseRoute);
     console.log("getLabelText:response:", labelTextInfo);
@@ -89,7 +89,7 @@ const service = {
   updateLabelText,
   saveLabelText,
   getLabelTextById,
-  getLabelText,
+  getLabelTexts,
 };
 
 export default service;

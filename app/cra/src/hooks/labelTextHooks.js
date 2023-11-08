@@ -1,12 +1,12 @@
 import { useQuery } from "react-query";
 import { labelTextQueryKeys } from "../queryKeys/labelTextQueryKeys";
 
-import { getLabelText, getLabelTextById } from "../services/LabelTextService";
+import { getLabelTexts, getLabelTextById } from "../services/LabelTextService";
 
 const useLabelTextList = (isDisabled, onSuccess, onError) => {
   return useQuery(
     labelTextQueryKeys.getLabelTexts,
-    async () => await getLabelText(),
+    async () => await getLabelTexts(),
     {
       staleTime: Infinity,
       isDisabled: isDisabled,

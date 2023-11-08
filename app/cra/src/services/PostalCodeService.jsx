@@ -2,7 +2,7 @@ import routes from "../constants/RouteConstants";
 import * as api from "./api";
 const baseRoute = `${routes.postalCode}`;
 
-const getPostalCode = async () => {
+const getPostalCodes = async () => {
   try {
     var postalCodeInfo = await api.apiGet(baseRoute);
     console.log("getPostalCode:response:", postalCodeInfo);
@@ -89,7 +89,7 @@ var service = {
   updatePostalCode,
   savePostalCode,
   getPostalCodeById,
-  getPostalCode,
+  getPostalCode: getPostalCodes,
 };
 
 export default service;
