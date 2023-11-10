@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import "./App.css";
 
 import React from "react";
@@ -7,21 +6,16 @@ import {
   Switch,
   Route,
   Redirect,
-  // Link,
-  // Redirect
 } from "react-router-dom";
 import About from "./components/About";
 import Index from "./components/Index";
 import UserDetails from "./components/UserDetails";
 import Posts from "./components/Posts";
 import Search from "./components/Search";
-// import { ProvideAuth } from "./contexts/AuthContext_cookie";
-// import Login from "./components/authentication/Login";
 import PrivateRoute from "./components/navigation/PrivateRoute";
 import NavBar from "./components/navigation/NavBar";
 import { CookiesProvider } from "react-cookie";
 import { ApiProvider } from "./contexts/ApiContext";
-// import Logout from "./components/authentication/Logout";
 import LoggedIn from "./components/authentication/LoggedIn";
 import LoggedOut from "./components/authentication/LoggedOut";
 import { UserProvider } from "./contexts/UserContext";
