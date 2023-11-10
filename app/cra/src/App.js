@@ -13,6 +13,8 @@ import {
 import About from "./components/About";
 import Index from "./components/Index";
 import UserDetails from "./components/UserDetails";
+import Posts from "./components/Posts";
+import Search from "./components/Search";
 // import { ProvideAuth } from "./contexts/AuthContext_cookie";
 // import Login from "./components/authentication/Login";
 import PrivateRoute from "./components/navigation/PrivateRoute";
@@ -46,6 +48,15 @@ export default function App() {
                   <WeatherProvider>
                     <About />
                   </WeatherProvider>
+                </Route>
+                <Route path="/search">
+                  <Search />
+                </Route>
+                <Route path="/posts">
+                  <Posts />
+                </Route>
+                <Route path="/my-posts">
+                  <Posts variant={"My"} />
                 </Route>
                 <ExternalRedirect
                   path="/login"

@@ -1,22 +1,9 @@
 import React from "react";
-import {
-  // BrowserRouter as Router,
-  // Switch,
-  // Route,
-  // Link,
-  NavLink,
-  // Redirect,
-  // useHistory,
-  // useLocation
-} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 
 const NavBar = () => {
   const { user } = useUserContext();
-  // const auth = useAuth();
-  // const handleLoginClick = () => {
-  //   auth.signin();
-  // }
   const loggedOutView = (
     <>
       <table>
@@ -27,6 +14,12 @@ const NavBar = () => {
             </td>
             <td>
               <NavLink to="/about">About</NavLink>
+            </td>
+            <td>
+              <NavLink to="/search">Search</NavLink>
+            </td>
+            <td>
+              <NavLink to="/posts">Posts</NavLink>
             </td>
             <td>
               <NavLink to="/register">Register</NavLink>
@@ -50,6 +43,15 @@ const NavBar = () => {
             </td>
             <td>
               <NavLink to="/about">About</NavLink>
+            </td>
+            <td>
+              <NavLink to="/search">Search</NavLink>
+            </td>
+            <td>
+              <NavLink to="/posts">Posts</NavLink>
+            </td>
+            <td>
+              <NavLink to="/my-posts">My Posts</NavLink>
             </td>
             <td>
               <NavLink to="/user-details">Profile</NavLink>

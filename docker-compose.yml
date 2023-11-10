@@ -11,8 +11,8 @@ services:
         volumes:
             - ./app/cra:/app
             - ./app/proxy/docker-prep.dev.sh:/tmp/docker-prep.dev.sh
-            # - ./app/proxy/conf:/etc/nginx/conf.d
             - ./ssl:/ssl
+            # - ./app/proxy/conf:/etc/nginx/conf.d
         entrypoint: /bin/bash -x /tmp/docker-prep.dev.sh
         ports:
             - 3000:3000
@@ -28,10 +28,10 @@ services:
         working_dir: /app
         volumes:
             - ./bff/src:/app
-            # - ${HOME}/.dotnet/dotnet:/usr/bin/dotnet
-            # - /usr/share/dotnet:/usr/share/dotnet
             - ${HOME}/.nuget:${HOME}/.nuget
             - ./ssl:/ssl            
+            # - ${HOME}/.dotnet/dotnet:/usr/bin/dotnet
+            # - /usr/share/dotnet:/usr/share/dotnet
         environment:
             - HOME:/home/${USER}
         entrypoint: /app/entrypoint.sh
@@ -48,10 +48,10 @@ services:
         working_dir: /app
         volumes:
             - ./idp/src:/app
-            # - ${HOME}/.dotnet/dotnet:/usr/bin/dotnet
-            # - /usr/share/dotnet:/usr/share/dotnet
             - ${HOME}/.nuget:${HOME}/.nuget            
             - ./ssl:/ssl
+            # - ${HOME}/.dotnet/dotnet:/usr/bin/dotnet
+            # - /usr/share/dotnet:/usr/share/dotnet
         environment:
             - HOME:/home/${USER}            
         entrypoint: ["dotnet", "watch", "run", "--project", "/app/IDP.csproj"]
@@ -68,9 +68,9 @@ services:
         volumes:
             - ./api/src:/app
             - ./ssl:/ssl            
+            - ${HOME}/.nuget:${HOME}/.nuget  
             # - ${HOME}/.dotnet/dotnet:/usr/bin/dotnet
             # - /usr/share/dotnet:/usr/share/dotnet
-            - ${HOME}/.nuget:${HOME}/.nuget  
         environment:
             - HOME:/home/${USER}                                              
         entrypoint: /app/entrypoint.sh

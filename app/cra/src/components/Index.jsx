@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+import { Row, Col } from "react-bootstrap";
 
 const Index = () => {
-    return(
-        <>
-        {"This is the index page."}
-        </>
-    );
+  return (
+    <>
+      <Row>
+        <Col></Col>
+        <Col>{"This is the index page."}</Col>
+        <Col></Col>
+      </Row>
+    </>
+  );
 };
 
 export default Index;

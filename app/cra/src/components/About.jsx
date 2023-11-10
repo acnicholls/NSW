@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useWeatherContext } from "../contexts/WeatherContext";
+import { Row, Col } from "react-bootstrap";
 
 const About = () => {
   const { weather, getWeather } = useWeatherContext();
@@ -19,8 +20,14 @@ const About = () => {
 
   return (
     <>
-      <div>{"This is the about page."}</div>
-      {displaySection}
+      <Row>
+        <Col></Col>
+        <Col>
+          <div>{"This is the about page."}</div>
+          {displaySection}
+        </Col>
+        <Col></Col>
+      </Row>
     </>
   );
 };
