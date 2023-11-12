@@ -5,7 +5,6 @@ import { useUserContext } from "../../contexts/UserContext";
 // A wrapper for <Route> that redirects to the login
 // route if you're not yet authenticated.
 const PrivateRoute = ({ children, ...rest }) => {
-  // let auth = useAuth();
   const { user } = useUserContext();
   return (
     <Route
