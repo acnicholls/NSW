@@ -42,7 +42,7 @@ const postShape = PropTypes.shape({
   userId: PropTypes.number,
   status: PropTypes.string,
   deleteFlag: PropTypes.bool,
-  postUser: PropTypes.instaceOf(userShape),
+  postUser: PropTypes.instanceOf(userShape),
 });
 
 export {

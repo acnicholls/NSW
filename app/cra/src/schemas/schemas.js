@@ -44,3 +44,11 @@ const postSchema = yup.object().shape({
   deleteFlag: yup.bool(),
   postUser: yup.object().shape(userSchema),
 });
+
+export {
+  postSchema,
+  userSchema,
+  postalCodeSchema,
+  postCategorySchema,
+  labelTextSchema,
+};
