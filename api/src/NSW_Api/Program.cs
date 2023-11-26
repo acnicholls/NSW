@@ -16,6 +16,7 @@ builder.ConfigureNswKestrel();
 builder.Services.AddAuthentication("Bearer")
 	.AddJwtBearer("Bearer", options =>
 	{
+		// TODO: make these configuration options, so they can change per env
 		options.Authority = "https://localhost";
 		options.MetadataAddress = "http://idp:5006/.well-known/openid-configuration";
 		options.RequireHttpsMetadata = false;
@@ -37,7 +38,7 @@ NSW.Services.Extensions.DependencyInjection.RegisterServices(builder.Services);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen((options) => 
+builder.Services.AddSwaggerGen((options) =>
 {
 	var fileLocation = $"{Environment.CurrentDirectory}\\bin\\Debug\\net7.0\\NSW_Api.xml";
 	options.IncludeXmlComments(fileLocation);

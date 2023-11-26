@@ -33,12 +33,12 @@ namespace Starter.Bff
         public void ConfigureServices(IServiceCollection services)
         {
 
-			// TODO: Load config options here
-			// authority
-			// internal url
-			// metadata url
-			// clientId
-			// clientSecret
+            // TODO: Load config options here
+            // authority
+            // internal url
+            // metadata url
+            // clientId
+            // clientSecret
 
             IdentityModelEventSource.ShowPII = true;
             services.AddProxy();
@@ -102,7 +102,7 @@ namespace Starter.Bff
                 options.Scope.Clear();
                 options.Scope.Add("openid");
                 options.Scope.Add("profile");
-                options.Scope.Add("Starter.Api");  // this is the API from this solution
+                options.Scope.Add("NSW.ApiScope");  // this is the API from this solution
                 options.Scope.Add("offline_access");
 
                 options.TokenValidationParameters = new TokenValidationParameters

@@ -20,7 +20,7 @@ namespace Starter.Idp
             };
 
 
-        public static IEnumerable<ApiScope> ApiScopes =>
+        public static IEnumerable<ApiScope> ApiScopes => 
             new List<ApiScope>
             {
                 new ApiScope("NSW.ApiScope", "The NSW project's API scope")
@@ -34,7 +34,7 @@ namespace Starter.Idp
                     Name = "NSW.Api",
                     DisplayName = "the nsw solution api",
                     ApiSecrets = {
-                        new Secret("secret".Sha256()),  // TODO: change for production
+                        new Secret("apisecret".Sha256()),  // TODO: change for production
                     },
                     Scopes = {
 						"NSW.ApiScope",
@@ -68,7 +68,7 @@ namespace Starter.Idp
                 {
                     ClientId = "NSW.Bff",
                     ClientSecrets = {
-                        new Secret("secret".Sha256()),
+                        new Secret("secret".Sha256()), 
                     },
                     AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                     RequirePkce = true,
