@@ -6,6 +6,7 @@ services:
         environment:
             - CHOKIDAR_USEPOLLING=1
             - HTTPS=true
+            - PORT=3000
             - SSL_CERT_FILE=/ssl/cert.pem
             - SSL_KEY_FILE=/ssl/key.pem
         volumes:
