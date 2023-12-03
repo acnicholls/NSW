@@ -31,14 +31,31 @@ export const defaultPost = {
   postUser: null,
 };
 
-export const defaultUser = {
+/*
+  this is the C# representation of the user (currently)
+*/
+
+// var user = new
+// {
+// cookiename = User.Identity.Name,
+// Id = response.Claims.FirstOrDefault(x => x.Type == "sub").Value,
+// Name = response.Claims.FirstOrDefault(x => x.Type == "name").Value,
+// FirstName = response.Claims.FirstOrDefault(x => x.Type == "given_name").Value,
+// LastName = response.Claims.FirstOrDefault(x => x.Type == "family_name").Value,
+// Username = response.Claims.FirstOrDefault(x => x.Type == "preferred_username").Value,
+// Role = "MEMBER", // get these from the user API?
+// LanguagePreference = -1, //
+// IsAuthenticated = true,
+// };
+
+export const anonymousUser = {
+  cookiename: "Anonymous User",
   id: -1,
-  name: "Empty",
-  password: "Empty",
-  email: "Empty",
-  status: "Empty",
-  phone: "Empty",
-  postalCode: "Empty",
+  name: "Anonymous User",
+  firstName: "Anonymous",
+  lastName: "User",
+  username: "Anon",
   role: "Empty",
   languagePreference: -1,
+  isAuthenticated: false,
 };

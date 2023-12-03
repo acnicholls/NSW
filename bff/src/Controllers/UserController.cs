@@ -37,7 +37,7 @@ namespace Starter.Bff.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
-        
+
         [HttpGet("info")]
         public async Task<IActionResult> GetUserAsync()
         {
@@ -121,7 +121,7 @@ namespace Starter.Bff.Controllers
                     return this.StatusCode(500, "error getting user info response");
                 }
 
-                foreach(var claim in response.Claims)
+                foreach (var claim in response.Claims)
                 {
                     _logger.LogDebug($"{claim.Type} : {claim.Value}");
                 }
@@ -136,13 +136,14 @@ namespace Starter.Bff.Controllers
                     FirstName = response.Claims.FirstOrDefault(x => x.Type == "given_name").Value,
                     LastName = response.Claims.FirstOrDefault(x => x.Type == "family_name").Value,
                     Username = response.Claims.FirstOrDefault(x => x.Type == "preferred_username").Value,
-                    Website = response.Claims.FirstOrDefault(x => x.Type == "website").Value,
+                    Role = "MEMBER", // get these from the user API?
+                    LanguagePreference = -1, // 
                     IsAuthenticated = true,
                 };
 
                 return new JsonResult(user);
             }
-            catch(Exception x)
+            catch (Exception x)
             {
                 _logger.LogError(x, "UserController.GetUserAsync");
                 return this.StatusCode(500, "error in user controller");

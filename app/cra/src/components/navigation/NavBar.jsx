@@ -59,7 +59,7 @@ const NswNavBar = () => {
     </Navbar>
   );
 
-  const userView = user ? loggedInView : loggedOutView;
+  const userView = user && user.isAuthenticated ? loggedInView : loggedOutView;
   return <>{userView}</>;
 };
 

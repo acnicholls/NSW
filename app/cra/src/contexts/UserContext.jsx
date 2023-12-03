@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 import PropTypes from "prop-types";
 import routes from "../constants/RouteConstants";
 import { useApiContext } from "./ApiContext";
+import { anonymousUser } from "../data/data";
 
 const UserContext = createContext(null);
 
@@ -10,11 +11,9 @@ export function useUserContext() {
 }
 
 export function UserProvider({ children }) {
-  const [user, setUser] = useState(null);
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(anonymousUser);
   const api = useApiContext();
 
-  //   useEffect(() => {
   const loggedIn = async () => {
     try {
       var userInfo = await api.apiGet(routes.userInfo);
@@ -22,22 +21,12 @@ export function UserProvider({ children }) {
       if (userInfo && userInfo.status === 200) {
         setUser(userInfo.data);
       } else {
-        setUser(null);
+        setUser(anonymousUser);
       }
     } catch (error) {
       console.log(error);
     }
   };
-  //     loggedIn();
-  //   }, [user]);
-
-  // useEffect(() => {
-  //   if (!user) {
-  //     setIsAuthenticated(false);
-  //   } else {
-  //     setIsAuthenticated(true);
-  //   }
-  // });
 
   return (
     <UserContext.Provider value={{ user, setUser, loggedIn }}>

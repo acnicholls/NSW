@@ -5,9 +5,10 @@ import { useUserContext } from "../../contexts/UserContext";
 
 // A wrapper for <Route> that redirects to the login
 // route if you're not yet authenticated and have the correct role.
-const RoleProtectedRoute = ({ selectedRole, children, ...rest }) => {
+const RoleProtectedRoute = ({ requiredRole, children, ...rest }) => {
   const { user } = useUserContext();
-  const showContent = user && user.role === selectedRole;
+  const showContent =
+    user && user.isAuthenticated && user.role === requiredRole;
   return (
     <Route
       {...rest}
@@ -30,5 +31,5 @@ const RoleProtectedRoute = ({ selectedRole, children, ...rest }) => {
 export default RoleProtectedRoute;
 
 RoleProtectedRoute.propTypes = {
-  selectedRole: PropTypes.string.isRequired,
+  requiredRole: PropTypes.string.isRequired,
 };
