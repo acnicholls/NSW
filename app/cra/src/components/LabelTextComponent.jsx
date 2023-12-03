@@ -1,7 +1,7 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import { useUserContext } from "../contexts/UserContext";
-import { useLabelTextContext } from "../contexts/LabelTextContext";
+//import { useLabelTextContext } from "../contexts/LabelTextContext";
 import { Row, Col, FormCheck, Button } from "react-bootstrap";
 import FormCheckInput from "react-bootstrap/esm/FormCheckInput";
 import FormCheckLabel from "react-bootstrap/esm/FormCheckLabel";
@@ -9,7 +9,8 @@ import { labelTextShape } from "../shapes/shapes";
 import { RoleEnum } from "../constants/RoleEnum";
 import { ViewModes } from "../constants/ViewModes";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "yup";
+// import { yupResolver } from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { labelTextSchema } from "../schemas/schemas";
 
 const LabelTextComponent = ({
@@ -18,14 +19,14 @@ const LabelTextComponent = ({
   onCancel,
   onSave,
 }) => {
-  const {
-    labelText,
-    setLabelText,
-    getLabelText,
-    getLabelTextById,
-    labelTextList,
-    setLabelTextList,
-  } = useLabelTextContext();
+  // const {
+  //   labelText,
+  //   setLabelText,
+  //   getLabelText,
+  //   getLabelTextById,
+  //   labelTextList,
+  //   setLabelTextList,
+  // } = useLabelTextContext();
   const { user } = useUserContext();
 
   /*
@@ -58,11 +59,11 @@ const LabelTextComponent = ({
     <>
       <Row>
         <Col>Identifier:</Col>
-        <Col>{labelText.id}</Col>
+        <Col>{currentLabelText.id}</Col>
       </Row>
       <Row>
-        <Col>English: {labelText.english}</Col>
-        <Col>Japanese: {labelText.japanese}</Col>
+        <Col>English: {currentLabelText.english}</Col>
+        <Col>Japanese: {currentLabelText.japanese}</Col>
       </Row>
     </>
   );
