@@ -7,24 +7,33 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import routes from "./constants/RouteConstants";
+/*
+  Components
+*/
 import About from "./components/About";
 import Index from "./components/Index";
-import UserDetails from "./components/UserDetails";
 import Posts from "./components/Posts";
 import Search from "./components/Search";
-import PrivateRoute from "./components/navigation/PrivateRoute";
-import NswNavBar from "./components/navigation/NavBar";
-import { CookiesProvider } from "react-cookie";
-import { ApiProvider } from "./contexts/ApiContext";
+import UserDetails from "./components/UserDetails";
 import LoggedIn from "./components/authentication/LoggedIn";
 import LoggedOut from "./components/authentication/LoggedOut";
-import { UserProvider } from "./contexts/UserContext";
-import { WeatherProvider } from "./contexts/WeatherContext";
-import ExternalRedirect from "./components/navigation/ExternalRedirect";
-import routes from "./constants/RouteConstants";
 import TitleBarComponent from "./components/TitleBarComponent";
-import RoleProtectedRoute from "./components/navigation/RoleProtectedRoute";
 import LabelTextComponent from "./components/LabelTextComponent";
+/*
+  Hook Contexts
+*/
+import { CookiesProvider } from "react-cookie";
+import { UserProvider } from "./contexts/UserContext";
+import { ApiProvider } from "./contexts/ApiContext";
+import { WeatherProvider } from "./contexts/WeatherContext";
+/*
+  NavBar components
+*/
+import NswNavBar from "./components/navigation/NavBar";
+import ExternalRedirect from "./components/navigation/ExternalRedirect";
+import PrivateRoute from "./components/navigation/PrivateRoute";
+import RoleProtectedRoute from "./components/navigation/RoleProtectedRoute";
 
 export default function App() {
   return (
@@ -37,55 +46,55 @@ export default function App() {
               <NswNavBar />
               <div>
                 <Switch>
-                  <Route exact path="/">
-                    <Redirect to="/index" />
+                  <Route exact path={routes.frontend.slash}>
+                    <Redirect to={routes.frontend.index} />
                   </Route>
-                  <Route path="/index">
+                  <Route path={routes.frontend.index}>
                     <Index />
                   </Route>
-                  <Route path="/about">
+                  <Route path={routes.frontend.about}>
                     <WeatherProvider>
                       <About />
                     </WeatherProvider>
                   </Route>
-                  <Route path="/search">
+                  <Route path={routes.frontend.search}>
                     <Search />
                   </Route>
-                  <Route path="/posts">
+                  <Route path={routes.frontend.posts}>
                     <Posts />
                   </Route>
-                  <PrivateRoute path="/my-posts">
+                  <PrivateRoute path={routes.frontend.myPostsn}>
                     <Posts variant={"My"} />
                   </PrivateRoute>
-                  <PrivateRoute path="/user-details">
+                  <PrivateRoute path={routes.frontend.userDetails}>
                     <UserDetails />
                   </PrivateRoute>
                   <RoleProtectedRoute
-                    path="/admin/label-text"
-                    selectedRole={"ADMIN"}
+                    path={routes.frontend.admin.labelText}
+                    requiredRole={"ADMIN"}
                   >
                     <LabelTextComponent />
                   </RoleProtectedRoute>
                   <RoleProtectedRoute
-                    path="/admin/post-category"
-                    selectedRole={"ADMIN"}
+                    path={routes.frontend.admin.postCategory}
+                    requiredRole={"ADMIN"}
                   >
                     <LabelTextComponent />
                   </RoleProtectedRoute>
                   <RoleProtectedRoute
-                    path="/admin/users"
-                    selectedRole={"ADMIN"}
+                    path={routes.frontend.admin.users}
+                    requiredRole={"ADMIN"}
                   >
                     <LabelTextComponent />
                   </RoleProtectedRoute>
                   <ExternalRedirect
-                    path="/login"
-                    link={`${routes.login}`}
+                    path={routes.frontend.login}
+                    link={`${routes.backend.login}`}
                     exact={true}
                   />
                   <ExternalRedirect
-                    path="/logout"
-                    link={`${routes.logout}`}
+                    path={routes.frontend.logout}
+                    link={`${routes.backend.logout}`}
                     isPrivate={true}
                     exact={true}
                   />
