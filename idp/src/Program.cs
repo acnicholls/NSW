@@ -83,7 +83,8 @@ namespace Starter.Idp
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseKestrel(opts =>
+#if !DEBUG
+					webBuilder.UseKestrel(opts =>
                     {
                         var address = System.Net.IPAddress.Parse("0.0.0.0");
                         opts.Listen(address, 5006);
@@ -93,6 +94,7 @@ namespace Starter.Idp
                                 "123456"
                             ));
                     });
+#endif
                 });
     }
 }

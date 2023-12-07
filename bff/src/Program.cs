@@ -39,7 +39,10 @@ namespace Starter.Bff
                 .UseSerilog()
                 .ConfigureWebHostDefaults(WebHostBuilder => {
                     WebHostBuilder.UseStartup<Startup>();
-                    WebHostBuilder.UseKestrel(opts =>
+					//next portion put into release build for docker.  
+					// but could likely be removed and env used for config.
+#if !DEBUG
+					WebHostBuilder.UseKestrel(opts =>
                     {
                         var address = System.Net.IPAddress.Parse("0.0.0.0");
                         opts.Listen(address, 5004);
@@ -49,6 +52,7 @@ namespace Starter.Bff
                                 "123456"
                         ));
                     });
+#endif
                 });
                 
     }

@@ -1,8 +1,10 @@
-﻿using IdentityModel.Client;
+﻿using BFF.Internal;
+using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Logging;
@@ -17,31 +19,32 @@ namespace Starter.Bff
     public class Startup
     {
         private readonly ILogger<Startup> _logger;
+		private readonly IConfiguration _configuration;
 
 
-        public Startup()
+        //public Startup()
+        //{
+        //    JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+        //}
+
+        public Startup(
+			//ILogger<Startup> logger, 
+			IConfiguration configuration)
         {
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-        }
-
-        public Startup(ILogger<Startup> logger)
-        {
-            _logger = logger;
+            //_logger = logger;
+			_configuration = configuration;
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-
-            // TODO: Load config options here
-            // authority
-            // internal url
-            // metadata url
-            // clientId
-            // clientSecret
+			// capture the settings.
+			OidcOptions oidcOptions = new OidcOptions();
+			_configuration.Bind("Authentication", oidcOptions);
 
             IdentityModelEventSource.ShowPII = true;
             services.AddProxy();
+			services.AddLogging();
             services.AddAccessTokenManagement();
 
             services.AddControllers();
@@ -59,47 +62,47 @@ namespace Starter.Bff
             })
             .AddOpenIdConnect("oidc", options =>
             {
-                options.Authority = "https://localhost";
-                options.ClientId = "NSW.Bff";
-                options.ClientSecret = "secret";
-                options.MetadataAddress = "http://idp:5006/.well-known/openid-configuration";
-                options.RequireHttpsMetadata = false;
-                // options.CallbackPath = "http://bff:5004/signin-oidc";
+				options.Authority = oidcOptions.Authority;
+                options.ClientId = oidcOptions.ClientId;
+				options.ClientSecret = oidcOptions.ClientSecret;
+				options.MetadataAddress = oidcOptions.MetadataAddress;
+				options.RequireHttpsMetadata = oidcOptions.RequireHttpsMetadata;
+				// options.CallbackPath = oidcOptions.CallbackPath;
 
-                options.ResponseType = "code";
-                options.GetClaimsFromUserInfoEndpoint = true;
-                options.SaveTokens = true;
+				options.ResponseType = oidcOptions.ResponseType;
+				options.GetClaimsFromUserInfoEndpoint = oidcOptions.GetClaimsFromUserInfoEndpoint; 
+                options.SaveTokens = oidcOptions.SaveTokens;
 
-                // options.Events = new OpenIdConnectEvents
-                // {
-                //     OnRedirectToIdentityProvider = async context =>
-                //     {
-                //         context.ProtocolMessage.State = context.HttpContext.Request.Path.Value.ToString();
-                //     },
-                //     OnTokenValidated = ctx =>
-                //     {
-                //         var url = ctx.ProtocolMessage.GetParameter("state");
-                //         var claims = new List<Claim>
-                //         {
-                //             new Claim("returnUrl ", url)
-                //         };
-                //         var appIdentity = new ClaimsIdentity(claims);
+				// options.Events = new OpenIdConnectEvents
+				// {
+				//     OnRedirectToIdentityProvider = async context =>
+				//     {
+				//         context.ProtocolMessage.State = context.HttpContext.Request.Path.Value.ToString();
+				//     },
+				//     OnTokenValidated = ctx =>
+				//     {
+				//         var url = ctx.ProtocolMessage.GetParameter("state");
+				//         var claims = new List<Claim>
+				//         {
+				//             new Claim("returnUrl ", url)
+				//         };
+				//         var appIdentity = new ClaimsIdentity(claims);
 
-                //         //add url to claims
-                //         ctx.Principal.AddIdentity(appIdentity);
+				//         //add url to claims
+				//         ctx.Principal.AddIdentity(appIdentity);
 
-                //         return Task.CompletedTask;
-                //     },
-                //     OnTicketReceived = ctx =>
-                //     {
-                //         var url = ctx.Principal.FindFirst("returnUrl").Value;
-                //         ctx.ReturnUri = url;
-                //         return Task.CompletedTask;
-                //     }
+				//         return Task.CompletedTask;
+				//     },
+				//     OnTicketReceived = ctx =>
+				//     {
+				//         var url = ctx.Principal.FindFirst("returnUrl").Value;
+				//         ctx.ReturnUri = url;
+				//         return Task.CompletedTask;
+				//     }
 
-                // };
+				// };
 
-                options.Scope.Clear();
+				options.Scope.Clear();
                 options.Scope.Add("openid");
                 options.Scope.Add("profile");
                 options.Scope.Add("NSW.ApiScope");  // this is the API from this solution
@@ -126,7 +129,7 @@ namespace Starter.Bff
             //});
 
             var cache = new DiscoveryCache(
-                "http://idp:5006",
+				oidcOptions.Authority,
                 new DiscoveryPolicy
                 {
                     RequireHttps = false,
@@ -157,9 +160,12 @@ namespace Starter.Bff
                 await next();
                 if (httpcontext.Response.StatusCode == StatusCodes.Status302Found)
                 {
+					var oldPart = _configuration.GetValue<string>("Authentication:InternalAddressPart");
+					var newPart = _configuration.GetValue<string>("Authentication:ExternalAddressPart");
+					
                     string location = httpcontext.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Location];
                     httpcontext.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Location] =
-                            location.Replace("://idp:5006/", "://localhost/");
+                            location.Replace(oldPart, newPart);
                 }
 
             });
@@ -169,7 +175,7 @@ namespace Starter.Bff
             {
                 if (!context.User.Identity.IsAuthenticated)
                 {
-                    await context.ChallengeAsync(new AuthenticationProperties { RedirectUri = "https://localhost/loggedin" });
+                    await context.ChallengeAsync(new AuthenticationProperties { RedirectUri = _configuration.GetValue<string>("Authentication::LoggedInRedirect") });
                     return;
                 }
 
@@ -185,7 +191,7 @@ namespace Starter.Bff
             {
                 api.RunProxy(async context =>
                 {
-                    var forwardContext = context.ForwardTo("https://api:5003");
+                    var forwardContext = context.ForwardTo(_configuration.GetValue<string>("Api::ForwardTo"));
 
                     var token = await context.GetUserAccessTokenAsync();
                     forwardContext.UpstreamRequest.SetBearerToken(token);

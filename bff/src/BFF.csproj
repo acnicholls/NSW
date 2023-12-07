@@ -4,7 +4,16 @@
     <TargetFramework>net7.0</TargetFramework>
     <UserSecretsId>85d017cb-ba19-4455-8640-d58bb2841284</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DockerfileContext>A:\source\githubRepos\NSW\bff\src\</DockerfileContext>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="logs\**" />
+    <Content Remove="logs\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="IdentityModel" Version="6.0.0" />

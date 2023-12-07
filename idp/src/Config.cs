@@ -73,7 +73,7 @@ namespace Starter.Idp
                     AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                     RequirePkce = true,
                     // where to redirect to after login
-                    RedirectUris = { "https://localhost/signin-oidc", "https://bff:5005/signin-oidc", "https://localhost/loggedin" },
+                    RedirectUris = { "https://localhost/signin-oidc", "https://bff:5005/signin-oidc", "https://localhost/loggedin", "http://localhost:5004/signin-oidc" },
 
                     // where to redirect to after logout
                     PostLogoutRedirectUris = { "https://localhost/signout-callback-oidc", "https://localhost/loggedout" },
@@ -87,15 +87,23 @@ namespace Starter.Idp
 					},
                     AllowOfflineAccess = true,
                     AllowedCorsOrigins = { // TODO: change for production
-                        "https://localhost",
+                        "http://localhost",
+						"https://localhost",
                         "http://bff:5004",
                         "https://bff:5005",
                         "http://api:5002",
                         "https://api:5003",
                         "https://idp:5007",
-                        "http://idp:5006"
-                    }
-                },
+                        "http://idp:5006",
+						"http://localhost:5002",
+						"https://localhost:5003",
+						"http://localhost:5004",
+						"https://localhost:5005",
+						"http://localhost:5006",
+						"https://localhost:5007",
+
+					}
+				},
             };
 
         public static List<ApplicationUser> TestUsers =>
