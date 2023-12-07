@@ -500,3 +500,4 @@ FodyWeavers.xsd
 docs/.$idsrv-dotnet-react_infraDesign.drawio.bkp
 
 .vscode/
+**/logs
