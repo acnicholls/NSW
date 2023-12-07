@@ -113,7 +113,7 @@ namespace Starter.Idp
         {
             if (Environment.EnvironmentName == "Development")
             {
-                SeedData.EnsureSeedData(Configuration.GetConnectionString("DefaultConnection"));
+                SeedData.EnsureSeedData(Configuration.GetConnectionString(Configuration.GetSection("ConnectionString").Value));
             }
             app.UseForwardedHeaders();
             //Add our new middleware to the pipeline
