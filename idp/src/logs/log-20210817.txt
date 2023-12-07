@@ -1,880 +1,0 @@
-[01:34:35 Information] 
-Starting host...
-
-[01:34:35 Warning] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository
-Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
-
-[01:34:35 Information] IdentityServer4.Startup
-Starting IdentityServer4 version 4.1.2+997a6cdd643e46cd5762b710c4ddc43574cbec2e
-
-[01:34:35 Information] IdentityServer4.Startup
-You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
-
-[01:34:35 Debug] IdentityServer4.Startup
-Custom IssuerUri set to http://localhost
-
-[01:34:35 Information] IdentityServer4.Startup
-Using the default authentication scheme Identity.Application for IdentityServer
-
-[01:34:35 Debug] IdentityServer4.Startup
-Using Identity.Application as default ASP.NET Core scheme for authentication
-
-[01:34:35 Debug] IdentityServer4.Startup
-Using Identity.External as default ASP.NET Core scheme for sign-in
-
-[01:34:35 Debug] IdentityServer4.Startup
-Using Identity.External as default ASP.NET Core scheme for sign-out
-
-[01:34:35 Debug] IdentityServer4.Startup
-Using Identity.Application as default ASP.NET Core scheme for challenge
-
-[01:34:35 Debug] IdentityServer4.Startup
-Using Identity.Application as default ASP.NET Core scheme for forbid
-
-[01:34:35 Warning] Microsoft.AspNetCore.Server.Kestrel
-Overriding address(es) 'https://localhost:5001, http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
-
-[01:34:35 Information] Microsoft.Hosting.Lifetime
-Now listening on: http://0.0.0.0:5006
-
-[01:34:35 Information] Microsoft.Hosting.Lifetime
-Now listening on: https://0.0.0.0:5007
-
-[01:34:35 Information] Microsoft.Hosting.Lifetime
-Application started. Press Ctrl+C to shut down.
-
-[01:34:35 Information] Microsoft.Hosting.Lifetime
-Hosting environment: Development
-
-[01:34:35 Information] Microsoft.Hosting.Lifetime
-Content root path: /app
-
-[02:38:36 Debug] IdentityServer4.Startup
-Login Url: /Account/Login
-
-[02:38:36 Debug] IdentityServer4.Startup
-Login Return Url Parameter: ReturnUrl
-
-[02:38:36 Debug] IdentityServer4.Startup
-Logout Url: /Account/Logout
-
-[02:38:36 Debug] IdentityServer4.Startup
-ConsentUrl Url: /consent
-
-[02:38:36 Debug] IdentityServer4.Startup
-Consent Return Url Parameter: returnUrl
-
-[02:38:36 Debug] IdentityServer4.Startup
-Error Url: /home/error
-
-[02:38:36 Debug] IdentityServer4.Startup
-Error Id Parameter: errorId
-
-[02:38:36 Debug] IdentityServer4.Hosting.EndpointRouter
-Request path /.well-known/openid-configuration matched to endpoint type Discovery
-
-[02:38:36 Debug] IdentityServer4.Hosting.EndpointRouter
-Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
-
-[02:38:36 Information] IdentityServer4.Hosting.IdentityServerMiddleware
-Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
-
-[02:38:36 Debug] IdentityServer4.Endpoints.DiscoveryEndpoint
-Start discovery request
-
-[02:38:36 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request http idp:5006/.well-known/openid-configuration  
-
-[02:38:36 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 200: {"issuer":"http://localhost","jwks_uri":"http://idp:5006/.well-known/openid-configuration/jwks","authorization_endpoint":"http://idp:5006/connect/authorize","token_endpoint":"http://idp:5006/connect/token","userinfo_endpoint":"http://idp:5006/connect/userinfo","end_session_endpoint":"http://idp:5006/connect/endsession","check_session_iframe":"http://idp:5006/connect/checksession","revocation_endpoint":"http://idp:5006/connect/revocation","introspection_endpoint":"http://idp:5006/connect/introspect","device_authorization_endpoint":"http://idp:5006/connect/deviceauthorization","frontchannel_logout_supported":true,"frontchannel_logout_session_supported":true,"backchannel_logout_supported":true,"backchannel_logout_session_supported":true,"scopes_supported":["openid","profile","Starter.Api","offline_access"],"claims_supported":["sub","name","family_name","given_name","middle_name","nickname","preferred_username","profile","picture","website","gender","birthdate","zoneinfo","locale","updated_at"],"grant_types_supported":["authorization_code","client_credentials","refresh_token","implicit","password","urn:ietf:params:oauth:grant-type:device_code"],"response_types_supported":["code","token","id_token","id_token token","code id_token","code token","code id_token token"],"response_modes_supported":["form_post","query","fragment"],"token_endpoint_auth_methods_supported":["client_secret_basic","client_secret_post"],"id_token_signing_alg_values_supported":["RS256"],"subject_types_supported":["public"],"code_challenge_methods_supported":["plain","S256"],"request_parameter_supported":true}
-
-[02:38:36 Debug] IdentityServer4.Hosting.EndpointRouter
-Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
-
-[02:38:36 Debug] IdentityServer4.Hosting.EndpointRouter
-Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
-
-[02:38:36 Information] IdentityServer4.Hosting.IdentityServerMiddleware
-Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
-
-[02:38:36 Debug] IdentityServer4.Endpoints.DiscoveryKeyEndpoint
-Start key discovery request
-
-[02:38:36 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request http idp:5006/.well-known/openid-configuration/jwks  
-
-[02:38:36 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 200: {"keys":[{"kty":"RSA","use":"sig","kid":"85E7700288E9AB2DA8BE808BA2DFFE6C","e":"AQAB","n":"4tSGBIRf8Ogmm5SE5vKfKIfrUe624SUQdhyEjSf4NadZYkvlBse2Ap-kqCcypmy5fGGJZMH3u7juX1h1qOBT6T0rRVdIrUwUuH6JtjI8egy9C-zvMcQaLZYKiU43YHXWllW6CcExRZxYFntBp-cz7HELpvmj5TmW_7zK8C-436aI5lxpH8a1QwevX0muLka1PJDpMoqhIRgyF2s-9_bR_wL6YjDgYnzmew2wyueB5y1taL-2LTLjUO9nX2BfQXuNvEs2MKCHqwvvOahvRZP7_0uKykVcYyrEDbVJ_T1VvFJ5-ElB68CdZOiFRZs7Q6lOdih_U17qGclOwNXpieJ8_Q","alg":"RS256"}]}
-
-[02:38:37 Debug] IdentityServer4.Hosting.EndpointRouter
-Request path /connect/authorize matched to endpoint type Authorize
-
-[02:38:37 Debug] IdentityServer4.Hosting.EndpointRouter
-Endpoint enabled: Authorize, successfully created handler: IdentityServer4.Endpoints.AuthorizeEndpoint
-
-[02:38:37 Information] IdentityServer4.Hosting.IdentityServerMiddleware
-Invoking IdentityServer endpoint: IdentityServer4.Endpoints.AuthorizeEndpoint for /connect/authorize
-
-[02:38:37 Debug] IdentityServer4.Endpoints.AuthorizeEndpoint
-Start authorize request
-
-[02:38:37 Debug] IdentityServer4.Endpoints.AuthorizeEndpoint
-No user present in authorize request
-
-[02:38:37 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
-Start authorize request protocol validation
-
-[02:38:37 Debug] IdentityServer4.Stores.ValidatingClientStore
-client configuration validation for client starter.bff succeeded.
-
-[02:38:37 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
-Checking for PKCE parameters
-
-[02:38:37 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
-Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
-
-[02:38:37 Debug] IdentityServer4.Endpoints.AuthorizeEndpoint
-ValidatedAuthorizeRequest
-{"ClientId":"starter.bff","ClientName":null,"RedirectUri":"http://localhost/signin-oidc","AllowedRedirectUris":["http://localhost/signin-oidc","http://bff:5004/signin-oidc"],"SubjectId":"anonymous","ResponseType":"code","ResponseMode":"form_post","GrantType":"authorization_code","RequestedScopes":"openid profile Starter.Api","State":"CfDJ8D3IADo1RzhKj3fpk4yIx5hERvexwDJ9oa2K-oLznUDZbeHhCPIqFfHdZvgc6UO0NF03_r7O0CIVeFPvUNABh0bsxmzRdMhyZ7Gwz5NGqw8RELNsyo4cBvqYfdP3axkdyqMyRnZ3oaEFk78d3jfwopB_CPaKfx1W9kqveoC2yGtPSsRTVYMK1dwmCLmp8oisqG_vJrTdLexpO_z5QxNJJLJHD4Acaxo6wanDr1kf0rlFp6CpJ-3YXtNFvKFKRf0N2nAW-SqVJxHi9fti0r3Of9e-NUQtr-levWi_HT4fqe8V0a8pxhUIWs0Gs_GrL0F7u401ikPEXq-4izgoGYnVUiCamlWFw8Fb6b_IEUkI427ES9OS5LPPr_ls_QtufvpmYA","UiLocales":null,"Nonce":"637647647169786233.ZTdjYWM5YTMtOTRlZS00ZTdlLWI4M2ItOWUxMGQzYjMzY2JiMjMwN2I0NzMtYjU4YS00YzRmLWJiZjQtYTM3OTFhMzVhNTBi","AuthenticationContextReferenceClasses":null,"DisplayMode":null,"PromptMode":"","MaxAge":null,"LoginHint":null,"SessionId":"","Raw":{"client_id":"starter.bff","redirect_uri":"http://localhost/signin-oidc","response_type":"code","scope":"openid profile Starter.Api","code_challenge":"J79lV5kVrM_X9MqD0AfDxoGeB3z_APH99c-jH_O5eOA","code_challenge_method":"S256","response_mode":"form_post","nonce":"637647647169786233.ZTdjYWM5YTMtOTRlZS00ZTdlLWI4M2ItOWUxMGQzYjMzY2JiMjMwN2I0NzMtYjU4YS00YzRmLWJiZjQtYTM3OTFhMzVhNTBi","state":"CfDJ8D3IADo1RzhKj3fpk4yIx5hERvexwDJ9oa2K-oLznUDZbeHhCPIqFfHdZvgc6UO0NF03_r7O0CIVeFPvUNABh0bsxmzRdMhyZ7Gwz5NGqw8RELNsyo4cBvqYfdP3axkdyqMyRnZ3oaEFk78d3jfwopB_CPaKfx1W9kqveoC2yGtPSsRTVYMK1dwmCLmp8oisqG_vJrTdLexpO_z5QxNJJLJHD4Acaxo6wanDr1kf0rlFp6CpJ-3YXtNFvKFKRf0N2nAW-SqVJxHi9fti0r3Of9e-NUQtr-levWi_HT4fqe8V0a8pxhUIWs0Gs_GrL0F7u401ikPEXq-4izgoGYnVUiCamlWFw8Fb6b_IEUkI427ES9OS5LPPr_ls_QtufvpmYA","x-client-SKU":"ID_NETSTANDARD2_0","x-client-ver":"5.5.0.0"},"$type":"AuthorizeRequestValidationLog"}
-
-[02:38:37 Information] IdentityServer4.ResponseHandling.AuthorizeInteractionResponseGenerator
-Showing login: User is not authenticated
-
-[02:38:37 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request http localhost/connect/authorize ?client_id=starter.bff&redirect_uri=http%3A%2F%2Flocalhost%2Fsignin-oidc&response_type=code&scope=openid%20profile%20Starter.Api&code_challenge=J79lV5kVrM_X9MqD0AfDxoGeB3z_APH99c-jH_O5eOA&code_challenge_method=S256&response_mode=form_post&nonce=637647647169786233.ZTdjYWM5YTMtOTRlZS00ZTdlLWI4M2ItOWUxMGQzYjMzY2JiMjMwN2I0NzMtYjU4YS00YzRmLWJiZjQtYTM3OTFhMzVhNTBi&state=CfDJ8D3IADo1RzhKj3fpk4yIx5hERvexwDJ9oa2K-oLznUDZbeHhCPIqFfHdZvgc6UO0NF03_r7O0CIVeFPvUNABh0bsxmzRdMhyZ7Gwz5NGqw8RELNsyo4cBvqYfdP3axkdyqMyRnZ3oaEFk78d3jfwopB_CPaKfx1W9kqveoC2yGtPSsRTVYMK1dwmCLmp8oisqG_vJrTdLexpO_z5QxNJJLJHD4Acaxo6wanDr1kf0rlFp6CpJ-3YXtNFvKFKRf0N2nAW-SqVJxHi9fti0r3Of9e-NUQtr-levWi_HT4fqe8V0a8pxhUIWs0Gs_GrL0F7u401ikPEXq-4izgoGYnVUiCamlWFw8Fb6b_IEUkI427ES9OS5LPPr_ls_QtufvpmYA&x-client-SKU=ID_NETSTANDARD2_0&x-client-ver=5.5.0.0 
-
-[02:38:37 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 302: 
-
-[02:38:37 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
-Start authorize request protocol validation
-
-[02:38:37 Debug] IdentityServer4.Stores.ValidatingClientStore
-client configuration validation for client starter.bff succeeded.
-
-[02:38:37 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
-Checking for PKCE parameters
-
-[02:38:37 Debug] IdentityServer4.Validation.AuthorizeRequestValidator
-Calling into custom validator: IdentityServer4.Validation.DefaultCustomAuthorizeRequestValidator
-
-[02:38:37 Debug] IdentityServer4.Stores.ValidatingClientStore
-client configuration validation for client starter.bff succeeded.
-
-[02:38:37 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request http localhost/Account/Login ?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dstarter.bff%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520Starter.Api%26code_challenge%3DJ79lV5kVrM_X9MqD0AfDxoGeB3z_APH99c-jH_O5eOA%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D637647647169786233.ZTdjYWM5YTMtOTRlZS00ZTdlLWI4M2ItOWUxMGQzYjMzY2JiMjMwN2I0NzMtYjU4YS00YzRmLWJiZjQtYTM3OTFhMzVhNTBi%26state%3DCfDJ8D3IADo1RzhKj3fpk4yIx5hERvexwDJ9oa2K-oLznUDZbeHhCPIqFfHdZvgc6UO0NF03_r7O0CIVeFPvUNABh0bsxmzRdMhyZ7Gwz5NGqw8RELNsyo4cBvqYfdP3axkdyqMyRnZ3oaEFk78d3jfwopB_CPaKfx1W9kqveoC2yGtPSsRTVYMK1dwmCLmp8oisqG_vJrTdLexpO_z5QxNJJLJHD4Acaxo6wanDr1kf0rlFp6CpJ-3YXtNFvKFKRf0N2nAW-SqVJxHi9fti0r3Of9e-NUQtr-levWi_HT4fqe8V0a8pxhUIWs0Gs_GrL0F7u401ikPEXq-4izgoGYnVUiCamlWFw8Fb6b_IEUkI427ES9OS5LPPr_ls_QtufvpmYA%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.5.0.0 
-
-[02:38:37 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 200: <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-
-    <title>IdentityServer4</title>
-    
-    <link rel="icon" type="image/x-icon" href="/idp/favicon.ico" />
-    <link rel="shortcut icon" type="image/x-icon" href="/idp/favicon.ico" />
-    
-    <link rel="stylesheet" href="/idp/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/idp/css/site.css" />
-</head>
-<body>
-    
-
-<div class="nav-page">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-        <a href="/" class="navbar-brand">
-            <img src="/icon.png" class="icon-banner">
-            IdentityServer4
-        </a>
-
-    
-    </nav>
-</div>
-
-   
-    <div class="container body-container">
-        
-<div class="login-page">
-    <div class="lead">
-        <h1>Login</h1>
-        <p>Choose how to login</p>
-    </div>
-
-    
-
-    <div class="row">
-
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Local Account</h2>
-                    </div>
-
-                    <div class="card-body">
-                        <form action="" method="post">
-                            <input type="hidden" id="ReturnUrl" name="ReturnUrl" value="/connect/authorize/callback?client_id=starter.bff&amp;redirect_uri=http%3A%2F%2Flocalhost%2Fsignin-oidc&amp;response_type=code&amp;scope=openid%20profile%20Starter.Api&amp;code_challenge=J79lV5kVrM_X9MqD0AfDxoGeB3z_APH99c-jH_O5eOA&amp;code_challenge_method=S256&amp;response_mode=form_post&amp;nonce=637647647169786233.ZTdjYWM5YTMtOTRlZS00ZTdlLWI4M2ItOWUxMGQzYjMzY2JiMjMwN2I0NzMtYjU4YS00YzRmLWJiZjQtYTM3OTFhMzVhNTBi&amp;state=CfDJ8D3IADo1RzhKj3fpk4yIx5hERvexwDJ9oa2K-oLznUDZbeHhCPIqFfHdZvgc6UO0NF03_r7O0CIVeFPvUNABh0bsxmzRdMhyZ7Gwz5NGqw8RELNsyo4cBvqYfdP3axkdyqMyRnZ3oaEFk78d3jfwopB_CPaKfx1W9kqveoC2yGtPSsRTVYMK1dwmCLmp8oisqG_vJrTdLexpO_z5QxNJJLJHD4Acaxo6wanDr1kf0rlFp6CpJ-3YXtNFvKFKRf0N2nAW-SqVJxHi9fti0r3Of9e-NUQtr-levWi_HT4fqe8V0a8pxhUIWs0Gs_GrL0F7u401ikPEXq-4izgoGYnVUiCamlWFw8Fb6b_IEUkI427ES9OS5LPPr_ls_QtufvpmYA&amp;x-client-SKU=ID_NETSTANDARD2_0&amp;x-client-ver=5.5.0.0" />
-
-                            <div class="form-group">
-                                <label for="Username">Username</label>
-                                <input class="form-control" placeholder="Username" autofocus type="text" data-val="true" data-val-required="The Username field is required." id="Username" name="Username" value="">
-                            </div>
-                            <div class="form-group">
-                                <label for="Password">Password</label>
-                                <input type="password" class="form-control" placeholder="Password" autocomplete="off" data-val="true" data-val-required="The Password field is required." id="Password" name="Password">
-                            </div>
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" data-val="true" data-val-required="The RememberLogin field is required." id="RememberLogin" name="RememberLogin" value="true">
-                                        <label class="form-check-label" for="RememberLogin">
-                                            Remember My Login
-                                        </label>
-                                    </div>
-                                </div>
-                            <button class="btn btn-primary" name="button" value="login">Login</button>
-                            <button class="btn btn-secondary" name="button" value="cancel">Cancel</button>
-                        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8Lo-nYGR9fdIjcueAHfRioAsD4MAWRt7CCokFO4Me4fipoqne7yipxvBIPHcCF2ftmmOHMndFtUD6wHI-ZzHoNKOx_Nsu49lJf5eXk5U06mi1Jxw3LNmVCNBSBfEp-EHFbML5DM4CUODOMqBGw7cJtc" /><input name="RememberLogin" type="hidden" value="false"></form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>External Account</h2>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a class="btn btn-secondary" href="/External/Challenge?scheme=Google&amp;returnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dstarter.bff%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520Starter.Api%26code_challenge%3DJ79lV5kVrM_X9MqD0AfDxoGeB3z_APH99c-jH_O5eOA%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D637647647169786233.ZTdjYWM5YTMtOTRlZS00ZTdlLWI4M2ItOWUxMGQzYjMzY2JiMjMwN2I0NzMtYjU4YS00YzRmLWJiZjQtYTM3OTFhMzVhNTBi%26state%3DCfDJ8D3IADo1RzhKj3fpk4yIx5hERvexwDJ9oa2K-oLznUDZbeHhCPIqFfHdZvgc6UO0NF03_r7O0CIVeFPvUNABh0bsxmzRdMhyZ7Gwz5NGqw8RELNsyo4cBvqYfdP3axkdyqMyRnZ3oaEFk78d3jfwopB_CPaKfx1W9kqveoC2yGtPSsRTVYMK1dwmCLmp8oisqG_vJrTdLexpO_z5QxNJJLJHD4Acaxo6wanDr1kf0rlFp6CpJ-3YXtNFvKFKRf0N2nAW-SqVJxHi9fti0r3Of9e-NUQtr-levWi_HT4fqe8V0a8pxhUIWs0Gs_GrL0F7u401ikPEXq-4izgoGYnVUiCamlWFw8Fb6b_IEUkI427ES9OS5LPPr_ls_QtufvpmYA%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.5.0.0">
-                                        Google
-                                    </a>
-                                </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-    </div>
-</div>
-    </div>
-
-    <script src="/idp/lib/jquery/dist/jquery.slim.min.js"></script>
-    <script src="/idp/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-    
-</body>
-</html>
-
-
-[02:38:53 Debug] IdentityServer4.Hosting.CorsPolicyProvider
-CORS request made for path: /Account/Login from origin: null but was ignored because path was not for an allowed IdentityServer CORS endpoint
-
-[02:38:53 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request http localhost/Account/Login ?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dstarter.bff%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520Starter.Api%26code_challenge%3DJ79lV5kVrM_X9MqD0AfDxoGeB3z_APH99c-jH_O5eOA%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D637647647169786233.ZTdjYWM5YTMtOTRlZS00ZTdlLWI4M2ItOWUxMGQzYjMzY2JiMjMwN2I0NzMtYjU4YS00YzRmLWJiZjQtYTM3OTFhMzVhNTBi%26state%3DCfDJ8D3IADo1RzhKj3fpk4yIx5hERvexwDJ9oa2K-oLznUDZbeHhCPIqFfHdZvgc6UO0NF03_r7O0CIVeFPvUNABh0bsxmzRdMhyZ7Gwz5NGqw8RELNsyo4cBvqYfdP3axkdyqMyRnZ3oaEFk78d3jfwopB_CPaKfx1W9kqveoC2yGtPSsRTVYMK1dwmCLmp8oisqG_vJrTdLexpO_z5QxNJJLJHD4Acaxo6wanDr1kf0rlFp6CpJ-3YXtNFvKFKRf0N2nAW-SqVJxHi9fti0r3Of9e-NUQtr-levWi_HT4fqe8V0a8pxhUIWs0Gs_GrL0F7u401ikPEXq-4izgoGYnVUiCamlWFw8Fb6b_IEUkI427ES9OS5LPPr_ls_QtufvpmYA%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.5.0.0 ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dstarter.bff%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%2520Starter.Api%26code_challenge%3DJ79lV5kVrM_X9MqD0AfDxoGeB3z_APH99c-jH_O5eOA%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D637647647169786233.ZTdjYWM5YTMtOTRlZS00ZTdlLWI4M2ItOWUxMGQzYjMzY2JiMjMwN2I0NzMtYjU4YS00YzRmLWJiZjQtYTM3OTFhMzVhNTBi%26state%3DCfDJ8D3IADo1RzhKj3fpk4yIx5hERvexwDJ9oa2K-oLznUDZbeHhCPIqFfHdZvgc6UO0NF03_r7O0CIVeFPvUNABh0bsxmzRdMhyZ7Gwz5NGqw8RELNsyo4cBvqYfdP3axkdyqMyRnZ3oaEFk78d3jfwopB_CPaKfx1W9kqveoC2yGtPSsRTVYMK1dwmCLmp8oisqG_vJrTdLexpO_z5QxNJJLJHD4Acaxo6wanDr1kf0rlFp6CpJ-3YXtNFvKFKRf0N2nAW-SqVJxHi9fti0r3Of9e-NUQtr-levWi_HT4fqe8V0a8pxhUIWs0Gs_GrL0F7u401ikPEXq-4izgoGYnVUiCamlWFw8Fb6b_IEUkI427ES9OS5LPPr_ls_QtufvpmYA%26x-client-SKU%3DID_NETSTANDARD2_0%26x-client-ver%3D5.5.0.0&Username=anthony&Password=P%40ssw0rd&button=login&__RequestVerificationToken=CfDJ8Lo-nYGR9fdIjcueAHfRioAsD4MAWRt7CCokFO4Me4fipoqne7yipxvBIPHcCF2ftmmOHMndFtUD6wHI-ZzHoNKOx_Nsu49lJf5eXk5U06mi1Jxw3LNmVCNBSBfEp-EHFbML5DM4CUODOMqBGw7cJtc&RememberLogin=false
-
-[02:38:53 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 400: 
-
-[03:22:22 Information] 
-Starting host...
-
-[03:22:22 Warning] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository
-Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
-
-[03:22:22 Fatal] 
-Host terminated unexpectedly.
-Interop+Crypto+OpenSslCryptographicException: error:2006D080:BIO routines:BIO_new_file:no such file
-   at Interop.Crypto.CheckValidOpenSslHandle(SafeHandle handle)
-   at Internal.Cryptography.Pal.OpenSslX509CertificateReader.FromFile(String fileName, SafePasswordHandle password, X509KeyStorageFlags keyStorageFlags)
-   at System.Security.Cryptography.X509Certificates.X509Certificate..ctor(String fileName, String password, X509KeyStorageFlags keyStorageFlags)
-   at System.Security.Cryptography.X509Certificates.X509Certificate2..ctor(String fileName, String password)
-   at Microsoft.AspNetCore.Hosting.ListenOptionsHttpsExtensions.UseHttps(ListenOptions listenOptions, String fileName, String password)
-   at Starter.Idp.Program.<>c.<CreateHostBuilder>b__1_2(ListenOptions opts) in /app/Program.cs:line 87
-   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen(EndPoint endPoint, Action`1 configure)
-   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen(IPAddress address, Int32 port, Action`1 configure)
-   at Starter.Idp.Program.<>c.<CreateHostBuilder>b__1_1(KestrelServerOptions opts) in /app/Program.cs:line 86
-   at Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure(String name, TOptions options)
-   at Microsoft.Extensions.Options.OptionsFactory`1.Create(String name)
-   at Microsoft.Extensions.Options.OptionsManager`1.<>c__DisplayClass5_0.<Get>b__0()
-   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
-   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
-   at System.Lazy`1.CreateValue()
-   at System.Lazy`1.get_Value()
-   at Microsoft.Extensions.Options.OptionsCache`1.GetOrAdd(String name, Func`1 createOptions)
-   at Microsoft.Extensions.Options.OptionsManager`1.Get(String name)
-   at Microsoft.Extensions.Options.OptionsManager`1.get_Value()
-   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.CreateServiceContext(IOptions`1 options, ILoggerFactory loggerFactory)
-   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl..ctor(IOptions`1 options, IEnumerable`1 transportFactories, IEnumerable`1 multiplexedFactories, ILoggerFactory loggerFactory)
-   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
-   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, RuntimeResolverContext context)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite singletonCallSite, RuntimeResolverContext context)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
-   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
-   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetService[T](IServiceProvider provider)
-   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
-   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
-   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
-   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
-   at Starter.Idp.Program.Main(String[] args) in /app/Program.cs:line 62
-
-[03:23:22 Information] 
-Starting host...
-
-[03:23:22 Warning] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository
-Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
-
-[03:23:22 Warning] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager
-No XML encryptor configured. Key {40fd710d-b2d1-434a-b525-dbe7dc03208b} may be persisted to storage in unencrypted form.
-
-[03:23:22 Information] IdentityServer4.Startup
-Starting IdentityServer4 version 4.1.2+997a6cdd643e46cd5762b710c4ddc43574cbec2e
-
-[03:23:22 Information] IdentityServer4.Startup
-You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
-
-[03:23:22 Debug] IdentityServer4.Startup
-Custom IssuerUri set to http://localhost
-
-[03:23:22 Information] IdentityServer4.Startup
-Using the default authentication scheme Identity.Application for IdentityServer
-
-[03:23:22 Debug] IdentityServer4.Startup
-Using Identity.Application as default ASP.NET Core scheme for authentication
-
-[03:23:22 Debug] IdentityServer4.Startup
-Using Identity.External as default ASP.NET Core scheme for sign-in
-
-[03:23:22 Debug] IdentityServer4.Startup
-Using Identity.External as default ASP.NET Core scheme for sign-out
-
-[03:23:22 Debug] IdentityServer4.Startup
-Using Identity.Application as default ASP.NET Core scheme for challenge
-
-[03:23:22 Debug] IdentityServer4.Startup
-Using Identity.Application as default ASP.NET Core scheme for forbid
-
-[03:23:23 Warning] Microsoft.AspNetCore.Server.Kestrel
-Overriding address(es) 'https://localhost:5001, http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
-
-[03:23:23 Information] Microsoft.Hosting.Lifetime
-Now listening on: http://0.0.0.0:5006
-
-[03:23:23 Information] Microsoft.Hosting.Lifetime
-Now listening on: https://0.0.0.0:5007
-
-[03:23:23 Information] Microsoft.Hosting.Lifetime
-Application started. Press Ctrl+C to shut down.
-
-[03:23:23 Information] Microsoft.Hosting.Lifetime
-Hosting environment: Development
-
-[03:23:23 Information] Microsoft.Hosting.Lifetime
-Content root path: /app
-
-[03:35:07 Information] 
-Starting host...
-
-[03:35:07 Warning] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository
-Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
-
-[03:35:07 Information] IdentityServer4.Startup
-Starting IdentityServer4 version 4.1.2+997a6cdd643e46cd5762b710c4ddc43574cbec2e
-
-[03:35:07 Information] IdentityServer4.Startup
-You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
-
-[03:35:07 Debug] IdentityServer4.Startup
-Custom IssuerUri set to http://localhost
-
-[03:35:07 Information] IdentityServer4.Startup
-Using the default authentication scheme Identity.Application for IdentityServer
-
-[03:35:07 Debug] IdentityServer4.Startup
-Using Identity.Application as default ASP.NET Core scheme for authentication
-
-[03:35:07 Debug] IdentityServer4.Startup
-Using Identity.External as default ASP.NET Core scheme for sign-in
-
-[03:35:07 Debug] IdentityServer4.Startup
-Using Identity.External as default ASP.NET Core scheme for sign-out
-
-[03:35:07 Debug] IdentityServer4.Startup
-Using Identity.Application as default ASP.NET Core scheme for challenge
-
-[03:35:07 Debug] IdentityServer4.Startup
-Using Identity.Application as default ASP.NET Core scheme for forbid
-
-[03:35:07 Warning] Microsoft.AspNetCore.Server.Kestrel
-Overriding address(es) 'https://localhost:5001, http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
-
-[03:35:07 Information] Microsoft.Hosting.Lifetime
-Now listening on: http://0.0.0.0:5006
-
-[03:35:07 Information] Microsoft.Hosting.Lifetime
-Now listening on: https://0.0.0.0:5007
-
-[03:35:07 Information] Microsoft.Hosting.Lifetime
-Application started. Press Ctrl+C to shut down.
-
-[03:35:07 Information] Microsoft.Hosting.Lifetime
-Hosting environment: Development
-
-[03:35:07 Information] Microsoft.Hosting.Lifetime
-Content root path: /app
-
-[03:36:12 Debug] IdentityServer4.Startup
-Login Url: /Account/Login
-
-[03:36:12 Debug] IdentityServer4.Startup
-Login Return Url Parameter: ReturnUrl
-
-[03:36:12 Debug] IdentityServer4.Startup
-Logout Url: /Account/Logout
-
-[03:36:12 Debug] IdentityServer4.Startup
-ConsentUrl Url: /consent
-
-[03:36:12 Debug] IdentityServer4.Startup
-Consent Return Url Parameter: returnUrl
-
-[03:36:12 Debug] IdentityServer4.Startup
-Error Url: /home/error
-
-[03:36:12 Debug] IdentityServer4.Startup
-Error Id Parameter: errorId
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request https localhost:5007/  
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 200: <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-
-    <title>IdentityServer4</title>
-    
-    <link rel="icon" type="image/x-icon" href="/idp/favicon.ico" />
-    <link rel="shortcut icon" type="image/x-icon" href="/idp/favicon.ico" />
-    
-    <link rel="stylesheet" href="/idp/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/idp/css/site.css" />
-</head>
-<body>
-    
-
-<div class="nav-page">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-        <a href="/" class="navbar-brand">
-            <img src="/icon.png" class="icon-banner">
-            IdentityServer4
-        </a>
-
-    
-    </nav>
-</div>
-
-   
-    <div class="container body-container">
-        
-
-<div class="welcome-page">
-    <h1>
-        <img src="/idp/icon.jpg">
-        Welcome to IdentityServer4
-        <small class="text-muted">(version 4.1.2)</small>
-    </h1>
-
-    <ul>
-        <li>
-            IdentityServer publishes a
-            <a href="/.well-known/openid-configuration">discovery document</a>
-            where you can find metadata and links to all the endpoints, key material, etc.
-        </li>
-        <li>
-            Click <a href="/diagnostics">here</a> to see the claims for your current session.
-        </li>
-        <li>
-            Click <a href="/grants">here</a> to manage your stored grants.
-        </li>
-        <li>
-            Here are links to the
-            <a href="https://github.com/identityserver/IdentityServer4">source code repository</a>,
-            and <a href="https://github.com/IdentityServer/IdentityServer4/tree/main/samples">ready to use samples</a>.
-        </li>
-    </ul>
-</div>
-
-    </div>
-
-    <script src="/idp/lib/jquery/dist/jquery.slim.min.js"></script>
-    <script src="/idp/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-    
-</body>
-</html>
-
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request https localhost:5007/idp/lib/bootstrap/dist/js/bootstrap.bundle.min.js  
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request https localhost:5007/idp/lib/jquery/dist/jquery.slim.min.js  
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request https localhost:5007/idp/lib/bootstrap/dist/css/bootstrap.min.css  
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 404: 
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 404: 
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 404: 
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request https localhost:5007/idp/css/site.css  
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 404: 
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request https localhost:5007/idp/icon.jpg  
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request https localhost:5007/idp/lib/bootstrap/dist/js/bootstrap.bundle.min.js  
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 404: 
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 404: 
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request https localhost:5007/icon.png  
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 200: �PNG
-
-   IHDR           szz�   	pHYs     ��  
-OiCCPPhotoshop ICC profile  xڝSgTS�=���BK���KoR RB���&*!	J�!��Q�EEȠ�����Q,�
-��!���������{�kּ������>�����H3Q5��B�������.@�
-$p �d!s�# �~<<+"�� x� �M��0���B�\���t�8K� @z�B� @F���&S � `�cb� P- `'�� ����{ [�!��  e�D h; ��V�E X0 fK�9 �- 0IWfH �� ���  0Q��) { `�##x �� F�W<�+��*  x��<�$9E�[-qWW.(�I+6aa�@.�y�2�4���  ������x����6��_-��"bb���ϫp@  �t~��,/��;�m��%�h^�u��f�@� ���W�p�~<<E���������J�B[a�W}�g�_�W�l�~<�����$�2]�G�����L�ϒ	�b��G�����"�Ib�X*�Qq�D���2�"�B�)�%��d��,�>�5 �j>{�-�]c�K'Xt���  �o��(�h���w��?�G�% �fI�q  ^D$.Tʳ?�  D��*�A��,�����`6�B$��BB
-d�r`)��B(�Ͱ*`/�@4�Qh��p.�U�=p�a��(��	A�a!ڈb�X#����!�H�$ ɈQ"K�5H1R�T UH�=r9�\F��;� 2����G1���Q=��C��7�F��dt1�����r�=�6��Ыhڏ>C�0��3�l0.��B�8,	�c˱"����V����cϱw�E�	6wB aAHXLXN�H� $4�	7	�Q�'"��K�&���b21�XH,#��/{�C�7$�C2'��I��T��F�nR#�,��4H#���dk�9�, +ȅ����3��!�[
-�b@q��S�(R�jJ��4�e�2AU��Rݨ�T5�ZB���R�Q��4u�9̓IK�����hh�i��t�ݕN��W���G���w��ǈg(�gw��L�Ӌ�T071���oUX*�*|��
-�J�&�*/T����ުU�U�T��^S}�FU3S�	Ԗ�U��P�SSg�;���g�oT?�~Y��Y�L�OC�Q��_�� c�x,!k��u�5�&���|v*�����=���9C3J3W�R�f?�q��tN	�(���~���)�)�4L�1e\k����X�H�Q�G�6������E�Y��A�J'\'Gg����S�Sݧ
-�M=:��.�k���Dw�n��^��Lo��y���}/�T�m���GX�$��<�5qo</���QC]�@C�a�a�ᄑ��<��F�F�i�\�$�m�mƣ&&!&KM�M�RM��)�;L;L���͢�֙5�=1�2��כ߷`ZxZ,����eI��Z�Yn�Z9Y�XUZ]�F���%ֻ�����N�N���gð�ɶ�����ۮ�m�}agbg�Ů��}�}��=���Z~s�r:V:ޚΜ�?}����/gX���3��)�i�S��Ggg�s�󈋉K��.�>.���Ƚ�Jt�q]�z���������ۯ�6�i�ܟ�4�)�Y3s���C�Q��?��0k߬~OCO�g��#/c/�W�װ��w��a�>�>r��>�<7�2�Y_�7��ȷ�O�o�_��C#�d�z�� ��%g��A�[��z|!��?:�e����A���AA�������!h�쐭!��Α�i�P~���a�a��~'���W�?�p�X�1�5w��Cs�D�D�Dޛg1O9�-J5*>�.j<�7�4�?�.fY��X�XIlK9.*�6nl��������{�/�]py�����.,:�@L�N8��A*��%�w%�
-y��g"/�6ш�C\*N�H*Mz�쑼5y$�3�,幄'���LLݛ:��v m2=:�1����qB�!M��g�g�fvˬe����n��/��k���Y-
-�B��TZ(�*�geWf�͉�9���+��̳�ې7�����ᒶ��KW-X潬j9�<qy�
-�+�V�<���*m�O��W��~�&zMk�^�ʂ��k�U
-�}����]OX/Yߵa���>������(�x��oʿ�ܔ���Ĺd�f�f���-�[����n�ڴ�V����E�/��(ۻ��C���<��e����;?T�T�T�T6��ݵa��n��{��4���[���>ɾ�UUM�f�e�I���?�������m]�Nmq����#�׹���=TR��+�G�����w-6U����#pDy���	��:�v�{���vg/jB��F�S��[b[�O�>����z�G��4<YyJ�T�i��ӓg�ό���}~.��`ۢ�{�c��jo�t��E���;�;�\�t���W�W��:_m�t�<���Oǻ�����\k��z��{f���7����y���՞9=ݽ�zo������~r'��˻�w'O�_�@�A�C݇�?[�����j�w����G��������C���ˆ��8>99�?r����C�d�&����ˮ/~�����јѡ�򗓿m|������������x31^�V���w�w��O�| (�h���SЧ��������c3-�  =�iTXtXML:com.adobe.xmp     <?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
-<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c014 79.156797, 2014/08/20-09:53:02        ">
-   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-      <rdf:Description rdf:about=""
-            xmlns:xmp="http://ns.adobe.com/xap/1.0/"
-            xmlns:dc="http://purl.org/dc/elements/1.1/"
-            xmlns:photoshop="http://ns.adobe.com/photoshop/1.0/"
-            xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
-            xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"
-            xmlns:tiff="http://ns.adobe.com/tiff/1.0/"
-            xmlns:exif="http://ns.adobe.com/exif/1.0/">
-         <xmp:CreatorTool>Adobe Photoshop CC 2014 (Macintosh)</xmp:CreatorTool>
-         <xmp:CreateDate>2015-04-11T10:40:47-04:00</xmp:CreateDate>
-         <xmp:ModifyDate>2015-04-11T11:06:53-04:00</xmp:ModifyDate>
-         <xmp:MetadataDate>2015-04-11T11:06:53-04:00</xmp:MetadataDate>
-         <dc:format>image/png</dc:format>
-         <photoshop:ColorMode>3</photoshop:ColorMode>
-         <photoshop:DocumentAncestors>
-            <rdf:Bag>
-               <rdf:li>xmp.did:663af1e6-0e6c-41ee-89a9-7df87aa55991</rdf:li>
-            </rdf:Bag>
-         </photoshop:DocumentAncestors>
-         <photoshop:ICCProfile>sRGB IEC61966-2.1</photoshop:ICCProfile>
-         <xmpMM:InstanceID>xmp.iid:93b04dc3-dc8c-484b-aad8-8f48a1ab0a5d</xmpMM:InstanceID>
-         <xmpMM:DocumentID>adobe:docid:photoshop:c9fa4d0f-20ea-1178-bbc3-c931522eefcb</xmpMM:DocumentID>
-         <xmpMM:OriginalDocumentID>xmp.did:c039cb49-b17c-4c4c-af03-a186a91b1f96</xmpMM:OriginalDocumentID>
-         <xmpMM:History>
-            <rdf:Seq>
-               <rdf:li rdf:parseType="Resource">
-                  <stEvt:action>created</stEvt:action>
-                  <stEvt:instanceID>xmp.iid:c039cb49-b17c-4c4c-af03-a186a91b1f96</stEvt:instanceID>
-                  <stEvt:when>2015-04-11T10:40:47-04:00</stEvt:when>
-                  <stEvt:softwareAgent>Adobe Photoshop CC 2014 (Macintosh)</stEvt:softwareAgent>
-               </rdf:li>
-               <rdf:li rdf:parseType="Resource">
-                  <stEvt:action>converted</stEvt:action>
-                  <stEvt:parameters>from application/vnd.adobe.photoshop to image/png</stEvt:parameters>
-               </rdf:li>
-               <rdf:li rdf:parseType="Resource">
-                  <stEvt:action>saved</stEvt:action>
-                  <stEvt:instanceID>xmp.iid:6781f23e-1426-452b-a1c8-4169e0020454</stEvt:instanceID>
-                  <stEvt:when>2015-04-11T11:05:40-04:00</stEvt:when>
-                  <stEvt:softwareAgent>Adobe Photoshop CC 2014 (Macintosh)</stEvt:softwareAgent>
-                  <stEvt:changed>/</stEvt:changed>
-               </rdf:li>
-               <rdf:li rdf:parseType="Resource">
-                  <stEvt:action>saved</stEvt:action>
-                  <stEvt:instanceID>xmp.iid:93b04dc3-dc8c-484b-aad8-8f48a1ab0a5d</stEvt:instanceID>
-                  <stEvt:when>2015-04-11T11:06:53-04:00</stEvt:when>
-                  <stEvt:softwareAgent>Adobe Photoshop CC 2014 (Macintosh)</stEvt:softwareAgent>
-                  <stEvt:changed>/</stEvt:changed>
-               </rdf:li>
-            </rdf:Seq>
-         </xmpMM:History>
-         <tiff:Orientation>1</tiff:Orientation>
-         <tiff:XResolution>720000/10000</tiff:XResolution>
-         <tiff:YResolution>720000/10000</tiff:YResolution>
-         <tiff:ResolutionUnit>2</tiff:ResolutionUnit>
-         <exif:ColorSpace>1</exif:ColorSpace>
-         <exif:PixelXDimension>32</exif:PixelXDimension>
-         <exif:PixelYDimension>32</exif:PixelYDimension>
-      </rdf:Description>
-   </rdf:RDF>
-</x:xmpmeta>
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                            
-<?xpacket end="w"?>��jq    cHRM  z%  ��  ��  ��  u0  �`  :�  o�_�F  �IDATxڜVkpU���>���Gnro^@�}���-��+E�e,$F��
-��>���Q����&�>��!δJ��5u�	y�$M�%���9g��I0�$�~w��9g�^��k����
-�!�� �����l�1gl9��$���X,J&�D�4]��\����QQ�H��HR��᫟.G�q6OS����� ���L�=n�1$�	�D#� d���2��o	!^�D���4M{hhp�=ݞ4���\��o^j-*-U
-C��~�c###�����<q��9���w���	�79��/$M�g �&��M��5������U�[�laE�� �̠����^�]�vj�h��F0�Z�<qY�#��}�t�-���T�޽[ܰx�:u /B����(p���s�Ħ�Q__������-B�N�8�4�1���t[����lh��nX�X��9ɎOl��Ni�[*���h.�|�СC���6�t�w��䇜�0h��N������-My�V����� ʴq��I��[���^�8����H�)��gw�P9��g��C��F������冒�QWW�gr ��B���*<ͣ�\/�iO��?���ʊ[W��gN�����00�쁁��$o׽-.� ��`,�()� "0u�m�믽�׋H4R�9/%@U����f[�n�j���眙�$ &��$����۶���AQ��ƪ �:<4���������ʞ��lnn��ˊX���T�$+G`�8��k��ȯ)1�[7݄6��7��s�v�Z ����d,!}>_
-�n ��{$	�-�-Vee��*�������%^Ȥ�Nс���H����+K�����Dd���7n ��(Xϥ�� �m��.�Y]]m�^�555�CQ�y� S8c���sض  �����j�'M9�ޮ>��b<w˖-�  ���[Is�������j]n߾�ڴi����FFL\�A~ٱD_/���gw��˖ْAf�2��z����y�Q���� \}�U̗�E</���m+�����$겦�&	@��hNV6���fc�y���e�7nJ��M��n��8�"�YD$�H���� $ ���]�׭[��m��'�٥&�	�;��7mR�{�z���4/7-]�Q[[+***T ]�$/挩*(�s�2)%�����_w������R���W�n7,�RT��ľzw5�hW����"���'���/�2q��}c�m�v���S��������cxxxb��GG�2��g��+dyy��җ����Z;12MSm��x�;�:���4q����D�#�mӝw�ASV�k����uvv��I�⺮���q��qR'Ku:!Ĩ�wGzf�n��N�8�h?���F�9�  ޫO�8	��%lY������b�<����+�Q.�|7��<�������{�����Y8}�R�n�ĨΏO�u8	�m������D�Ϝ��2|���z�܎M���)����}��	b_m��j�*�~��X�|�=����R]M�ΟGvNλ���� g�CCCg����j���i ���f2�q�0|q��>�XW�S�v�|��*�,��〢��N������b1+
-kV"�������D����=e�&V�^��Cma�����崿8Ո°�s�'�ik�_�T�Z��$Wg:�������Ӎ���פ�  #��/2
-� @�ׯ�ؽ����Z�|���^��te�<�Wt�_A$kn5e�q���|��Ǔ ��D�P�i�0���
-��9��@ mذ!9�����̊�
-+5m���V��ۀE��i^��R�ǶoO��9s�0d\kF�� �N�8/�Bim?��d��ꫯʢ���*H]=Qy��ct�od�+s�9����޼y3���j��̅35u�-D��9͗�>�H�.0�����������٣����W�����f �����E\ѝS�$������E��jG�Q�@��	!E:.��D8t��H4�-�׋ܬ,|﮻�t�R��k�e�E������?��رc������Fx].̝3�O�e�@dJ횉�hJ�U��n�F/����� 3#����fd�s���\�D�ߞn�R"-Յ���`x^J����r�3�����;�K�x���P^�25 LUT�v��].�皦}"�<@D-��� �K�@f��x    IEND�B`�
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request https localhost:5007/idp/favicon.ico  
-
-[03:36:12 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 404: 
-
-[03:43:12 Debug] IdentityServer4.Hosting.EndpointRouter
-Request path /.well-known/openid-configuration matched to endpoint type Discovery
-
-[03:43:13 Debug] IdentityServer4.Hosting.EndpointRouter
-Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
-
-[03:43:13 Information] IdentityServer4.Hosting.IdentityServerMiddleware
-Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
-
-[03:43:13 Debug] IdentityServer4.Endpoints.DiscoveryEndpoint
-Start discovery request
-
-[03:43:13 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request http idp:5006/.well-known/openid-configuration  
-
-[03:43:13 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 200: {"issuer":"http://localhost","jwks_uri":"http://idp:5006/.well-known/openid-configuration/jwks","authorization_endpoint":"http://idp:5006/connect/authorize","token_endpoint":"http://idp:5006/connect/token","userinfo_endpoint":"http://idp:5006/connect/userinfo","end_session_endpoint":"http://idp:5006/connect/endsession","check_session_iframe":"http://idp:5006/connect/checksession","revocation_endpoint":"http://idp:5006/connect/revocation","introspection_endpoint":"http://idp:5006/connect/introspect","device_authorization_endpoint":"http://idp:5006/connect/deviceauthorization","frontchannel_logout_supported":true,"frontchannel_logout_session_supported":true,"backchannel_logout_supported":true,"backchannel_logout_session_supported":true,"scopes_supported":["openid","profile","Starter.Api","offline_access"],"claims_supported":["sub","name","family_name","given_name","middle_name","nickname","preferred_username","profile","picture","website","gender","birthdate","zoneinfo","locale","updated_at"],"grant_types_supported":["authorization_code","client_credentials","refresh_token","implicit","password","urn:ietf:params:oauth:grant-type:device_code"],"response_types_supported":["code","token","id_token","id_token token","code id_token","code token","code id_token token"],"response_modes_supported":["form_post","query","fragment"],"token_endpoint_auth_methods_supported":["client_secret_basic","client_secret_post"],"id_token_signing_alg_values_supported":["RS256"],"subject_types_supported":["public"],"code_challenge_methods_supported":["plain","S256"],"request_parameter_supported":true}
-
-[03:43:13 Debug] IdentityServer4.Hosting.EndpointRouter
-Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
-
-[03:43:13 Debug] IdentityServer4.Hosting.EndpointRouter
-Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
-
-[03:43:13 Information] IdentityServer4.Hosting.IdentityServerMiddleware
-Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
-
-[03:43:13 Debug] IdentityServer4.Endpoints.DiscoveryKeyEndpoint
-Start key discovery request
-
-[03:43:13 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Request http idp:5006/.well-known/openid-configuration/jwks  
-
-[03:43:13 Debug] Starter.Idp.Custom.RequestResponseLoggingMiddleware
-Response 200: {"keys":[{"kty":"RSA","use":"sig","kid":"85E7700288E9AB2DA8BE808BA2DFFE6C","e":"AQAB","n":"4tSGBIRf8Ogmm5SE5vKfKIfrUe624SUQdhyEjSf4NadZYkvlBse2Ap-kqCcypmy5fGGJZMH3u7juX1h1qOBT6T0rRVdIrUwUuH6JtjI8egy9C-zvMcQaLZYKiU43YHXWllW6CcExRZxYFntBp-cz7HELpvmj5TmW_7zK8C-436aI5lxpH8a1QwevX0muLka1PJDpMoqhIRgyF2s-9_bR_wL6YjDgYnzmew2wyueB5y1taL-2LTLjUO9nX2BfQXuNvEs2MKCHqwvvOahvRZP7_0uKykVcYyrEDbVJ_T1VvFJ5-ElB68CdZOiFRZs7Q6lOdih_U17qGclOwNXpieJ8_Q","alg":"RS256"}]}
-
-[03:48:22 Information] 
-Starting host...
-
-[03:48:22 Warning] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository
-Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
-
-[03:48:22 Information] IdentityServer4.Startup
-Starting IdentityServer4 version 4.1.2+997a6cdd643e46cd5762b710c4ddc43574cbec2e
-
-[03:48:22 Information] IdentityServer4.Startup
-You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
-
-[03:48:22 Debug] IdentityServer4.Startup
-Custom IssuerUri set to http://localhost
-
-[03:48:22 Information] IdentityServer4.Startup
-Using the default authentication scheme Identity.Application for IdentityServer
-
-[03:48:22 Debug] IdentityServer4.Startup
-Using Identity.Application as default ASP.NET Core scheme for authentication
-
-[03:48:22 Debug] IdentityServer4.Startup
-Using Identity.External as default ASP.NET Core scheme for sign-in
-
-[03:48:22 Debug] IdentityServer4.Startup
-Using Identity.External as default ASP.NET Core scheme for sign-out
-
-[03:48:22 Debug] IdentityServer4.Startup
-Using Identity.Application as default ASP.NET Core scheme for challenge
-
-[03:48:22 Debug] IdentityServer4.Startup
-Using Identity.Application as default ASP.NET Core scheme for forbid
-
-[03:48:22 Warning] Microsoft.AspNetCore.Server.Kestrel
-Overriding address(es) 'https://localhost:5001, http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
-
-[03:48:23 Information] Microsoft.Hosting.Lifetime
-Now listening on: http://0.0.0.0:5006
-
-[03:48:23 Information] Microsoft.Hosting.Lifetime
-Now listening on: https://0.0.0.0:5007
-
-[03:48:23 Information] Microsoft.Hosting.Lifetime
-Application started. Press Ctrl+C to shut down.
-
-[03:48:23 Information] Microsoft.Hosting.Lifetime
-Hosting environment: Development
-
-[03:48:23 Information] Microsoft.Hosting.Lifetime
-Content root path: /app
-
