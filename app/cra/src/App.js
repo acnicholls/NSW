@@ -13,6 +13,7 @@ import routes from "./constants/RouteConstants";
 */
 import About from "./components/About";
 import Index from "./components/Index";
+import Denied from "./components/Denied";
 import Posts from "./components/Posts";
 import Search from "./components/Search";
 import UserDetails from "./components/UserDetails";
@@ -63,7 +64,7 @@ export default function App() {
                   <Route path={routes.frontend.posts}>
                     <Posts />
                   </Route>
-                  <PrivateRoute path={routes.frontend.myPostsn}>
+                  <PrivateRoute path={routes.frontend.myPosts}>
                     <Posts variant={"My"} />
                   </PrivateRoute>
                   <PrivateRoute path={routes.frontend.userDetails}>
@@ -88,21 +89,28 @@ export default function App() {
                     <LabelTextComponent />
                   </RoleProtectedRoute>
                   <ExternalRedirect
+                    path={routes.frontend.register}
+                    link={routes.backend.register}
+                  />
+                  <ExternalRedirect
                     path={routes.frontend.login}
-                    link={`${routes.backend.login}`}
+                    link={routes.backend.login}
                     exact={true}
                   />
                   <ExternalRedirect
                     path={routes.frontend.logout}
-                    link={`${routes.backend.logout}`}
+                    link={routes.backend.logout}
                     isPrivate={true}
                     exact={true}
                   />
-                  <Route path="/loggedin">
+                  <Route path={routes.frontend.loggedIn}>
                     <LoggedIn />
                   </Route>
-                  <Route path="/loggedout">
+                  <Route path={routes.frontend.loggedOut}>
                     <LoggedOut />
+                  </Route>
+                  <Route path={routes.frontend.denied}>
+                    <Denied />
                   </Route>
                 </Switch>
               </div>

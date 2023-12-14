@@ -18,7 +18,7 @@ const RoleProtectedRoute = ({ requiredRole, children, ...rest }) => {
         ) : (
           <Redirect
             to={{
-              pathname: "/login",
+              pathname: "/denied",
               state: { from: location },
             }}
           />

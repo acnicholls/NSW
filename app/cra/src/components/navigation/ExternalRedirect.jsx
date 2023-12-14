@@ -38,7 +38,7 @@ const ExternalRedirect = (props) => {
         user ? (
           redirectBrowser(link)
         ) : (
-          <Redirect to={{ pathname: "/login", state: { from: location } }} />
+          <Redirect to={{ pathname: "/denied", state: { from: location } }} />
         )
       }
     />
