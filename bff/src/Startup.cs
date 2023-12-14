@@ -10,11 +10,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using ProxyKit;
-using Starter.Bff.Internal;
+using NSW.Bff.Internal;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
 
-namespace Starter.Bff
+namespace NSW.Bff
 {
     public class Startup
     {
@@ -175,7 +175,7 @@ namespace Starter.Bff
             {
                 if (!context.User.Identity.IsAuthenticated)
                 {
-                    await context.ChallengeAsync(new AuthenticationProperties { RedirectUri = _configuration.GetValue<string>("Authentication::LoggedInRedirect") });
+                    await context.ChallengeAsync(new AuthenticationProperties { RedirectUri = _configuration.GetValue<string>("Authentication:LoggedInRedirect") });
                     return;
                 }
 
@@ -191,7 +191,7 @@ namespace Starter.Bff
             {
                 api.RunProxy(async context =>
                 {
-                    var forwardContext = context.ForwardTo(_configuration.GetValue<string>("Api::ForwardTo"));
+                    var forwardContext = context.ForwardTo(_configuration.GetValue<string>("Api:ForwardTo"));
 
                     var token = await context.GetUserAccessTokenAsync();
                     forwardContext.UpstreamRequest.SetBearerToken(token);

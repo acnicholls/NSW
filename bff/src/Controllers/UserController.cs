@@ -12,7 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Starter.Bff.Controllers
+namespace NSW.Bff.Controllers
 {
     [ApiController]
     [Route("bff/[controller]")]
@@ -81,7 +81,7 @@ namespace Starter.Bff.Controllers
                 //var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
                 //{
                 //    Address = disco.TokenEndpoint,
-                //    ClientId = "Starter.Bff",
+                //    ClientId = "NSW.Bff",
                 //    ClientSecret = "secret",
                 //    Scope = "profile"
                 //});

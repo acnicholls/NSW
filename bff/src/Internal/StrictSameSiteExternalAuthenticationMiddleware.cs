@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Starter.Bff.Internal
+namespace NSW.Bff.Internal
 {
     // Fixes for Safari
     // https://brockallen.com/2019/01/11/same-site-cookies-asp-net-core-and-external-authentication-providers/

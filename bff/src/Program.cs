@@ -4,7 +4,7 @@ using Serilog;
 using Serilog.Events;
 using System;
 
-namespace Starter.Bff
+namespace NSW.Bff
 {
 	public class Program
     {
@@ -15,11 +15,11 @@ namespace Starter.Bff
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
-                .WriteTo.File("logs\\starter.bff.log")
+                .WriteTo.File("logs\\NSW.Bff.log")
                 .CreateLogger();
 
             try{
-                Log.Information("Starting Starter.Bff");
+                Log.Information("Starting NSW.Bff");
                 CreateHostBuilder(args).Build().Run();
                 return 0;
             }
