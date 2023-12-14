@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using Starter.Idp.Models.Home;
+using NSW.Idp.Models.Home;
 
-namespace Starter.Idp.Controllers.Home
+namespace NSW.Idp.Controllers.Home
 {
     [SecurityHeaders]
     [AllowAnonymous]

@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;
-using Starter.Idp.Models.Grants;
+using NSW.Idp.Models.Grants;
 
-namespace Starter.Idp.Controllers.Grants
+namespace NSW.Idp.Controllers.Grants
 {
     /// <summary>
     /// This sample controller allows a user to revoke grants given to clients

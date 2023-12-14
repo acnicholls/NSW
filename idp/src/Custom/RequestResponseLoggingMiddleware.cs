@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using Microsoft.Extensions.Logging;
 
-namespace Starter.Idp.Custom
+namespace NSW.Idp.Custom
 {
 
     public class RequestResponseLoggingMiddleware

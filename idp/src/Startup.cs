@@ -10,12 +10,12 @@ using Microsoft.IdentityModel.Logging;
 using Microsoft.Extensions.Logging;
 
 
-namespace Starter.Idp
+namespace NSW.Idp
 {
-    using Starter.Idp.Configuration;
-    using Starter.Idp.Custom;
-    using Starter.Idp.Data;
-    using Starter.Idp.Models;
+    using NSW.Idp.Configuration;
+    using NSW.Idp.Custom;
+    using NSW.Idp.Data;
+    using NSW.Idp.Models;
 
     public class Startup
     {

@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IDP", "src\IDP.csproj", "{8ED474AA-9678-45B3-9781-4BB926115CBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSW_IDP", "src\NSW_IDP.csproj", "{8ED474AA-9678-45B3-9781-4BB926115CBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,5 +17,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1FA35F85-AED9-4338-8B58-52F2A1CA5D92}
 	EndGlobalSection
 EndGlobal

@@ -17,10 +17,11 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Starter.Idp.Models;
-using Starter.Idp.Models.Account;
+using NSW.Idp.Models;
+using NSW.Idp.Models.Account;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace Starter.Idp.Controllers.Account
+namespace NSW.Idp.Controllers.Account
 {
     [SecurityHeaders]
     [AllowAnonymous]
@@ -149,6 +150,38 @@ namespace Starter.Idp.Controllers.Account
             var vm = await BuildLoginViewModelAsync(model);
             return View(vm);
         }
+
+		[HttpGet]
+		public async Task<IActionResult> Register()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Register(NewUserModel model)
+		{
+			if(!ModelState.IsValid)
+			{
+				return BadRequest();
+			}
+
+			var user = new ApplicationUser();
+			user.Email = model.Email;
+			user.UserName = model.UserName;
+			var result = this._userManager.CreateAsync(user, model.Password);
+			if(result.IsCompletedSuccessfully)
+			{
+				return Redirect(model.ReturnUrl);
+			}
+			if (!result.Result.Succeeded)
+			{
+				foreach (var error in result.Result.Errors)
+				{
+					ModelState.AddModelError(error.Code, error.Description);
+				}
+			}
+			return View(model);
+		}
 
 
         /// <summary>

@@ -3,7 +3,7 @@
 
 
 
-namespace Starter.Idp.Models.Account
+namespace NSW.Idp.Models.Account
 {
     public class RedirectViewModel
     {

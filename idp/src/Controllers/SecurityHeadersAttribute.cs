@@ -5,7 +5,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Starter.Idp.Controllers
+namespace NSW.Idp.Controllers
 {
     public class SecurityHeadersAttribute : ActionFilterAttribute
     {

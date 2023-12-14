@@ -6,9 +6,9 @@ using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
-namespace Starter.Idp
+namespace NSW.Idp
 {
-	using Starter.Idp.Models;
+	using NSW.Idp.Models;
 	public static class Config
     {
         public static IEnumerable<IdentityResource> IdentityResources =>
@@ -73,7 +73,7 @@ namespace Starter.Idp
                     AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
                     RequirePkce = true,
                     // where to redirect to after login
-                    RedirectUris = { "https://localhost/signin-oidc", "https://bff:5005/signin-oidc", "https://localhost/loggedin", "http://localhost:5004/signin-oidc" },
+                    RedirectUris = { "https://localhost/signin-oidc", "https://bff:5005/signin-oidc", "https://localhost/loggedin", "https://localhost:5005/signin-oidc" },
 
                     // where to redirect to after logout
                     PostLogoutRedirectUris = { "https://localhost/signout-callback-oidc", "https://localhost/loggedout" },

@@ -6,14 +6,14 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 using IdentityModel;
-using Starter.Idp.Data;
-using Starter.Idp.Models;
+using NSW.Idp.Data;
+using NSW.Idp.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
-namespace Starter.Idp
+namespace NSW.Idp
 {
     public class SeedData
     {

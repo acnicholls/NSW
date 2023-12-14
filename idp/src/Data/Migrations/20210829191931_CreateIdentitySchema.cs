@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Starter.Idp.Data.Migrations
+namespace NSW.Idp.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {

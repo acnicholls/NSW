@@ -14,9 +14,9 @@ using System.Threading.Tasks;
 using IdentityServer4.Validation;
 using System.Collections.Generic;
 using System;
-using Starter.Idp.Models.Consent;
+using NSW.Idp.Models.Consent;
 
-namespace Starter.Idp.Controllers.Consent
+namespace NSW.Idp.Controllers.Consent
 {
     /// <summary>
     /// This controller processes the consent UI

@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 
-namespace Starter.Idp.Models.Consent
+namespace NSW.Idp.Models.Consent
 {
     public class ConsentInputModel
     {

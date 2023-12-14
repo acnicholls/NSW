@@ -4,7 +4,7 @@
 
 using IdentityServer4.Models;
 
-namespace Starter.Idp.Models.Home
+namespace NSW.Idp.Models.Home
 {
     public class ErrorViewModel
     {

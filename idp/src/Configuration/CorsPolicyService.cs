@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 using Microsoft.Extensions.Logging;
 
-namespace Starter.Idp.Configuration
+namespace NSW.Idp.Configuration
 {
 
     public class CorsPolicyService : IdentityServer4.Services.ICorsPolicyService

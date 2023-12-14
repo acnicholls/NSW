@@ -16,10 +16,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Starter.Idp.Models.Device;
-using Starter.Idp.Models.Consent;
+using NSW.Idp.Models.Device;
+using NSW.Idp.Models.Consent;
 
-namespace Starter.Idp.Controllers.Device
+namespace NSW.Idp.Controllers.Device
 {
     [Authorize]
     [SecurityHeaders]

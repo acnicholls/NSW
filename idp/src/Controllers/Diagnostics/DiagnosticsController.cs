@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Starter.Idp.Models.Diagnostics;
+using NSW.Idp.Models.Diagnostics;
 
-namespace Starter.Idp.Controllers.Diagnostics
+namespace NSW.Idp.Controllers.Diagnostics
 {
     [SecurityHeaders]
     [Authorize]

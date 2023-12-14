@@ -1,9 +1,9 @@
 // Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-using Starter.Idp.Models.Consent;
+using NSW.Idp.Models.Consent;
 
-namespace Starter.Idp.Models.Device
+namespace NSW.Idp.Models.Device
 {
     public class DeviceAuthorizationInputModel : ConsentInputModel
     {

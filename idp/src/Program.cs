@@ -12,7 +12,7 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace Starter.Idp
+namespace NSW.Idp
 {
     public class Program
     {
@@ -25,9 +25,9 @@ namespace Starter.Idp
                .MinimumLevel.Override("System", LogEventLevel.Debug)
                .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Debug)
                // #if DEBUG                
-               //                 .MinimumLevel.Override("Starter.Idp", LogEventLevel.)
+               //                 .MinimumLevel.Override("NSW.Idp", LogEventLevel.)
                // #else
-               //                 .MinimumLevel.Override("Starter.Idp", LogEventLevel.Warning)
+               //                 .MinimumLevel.Override("NSW.Idp", LogEventLevel.Warning)
                // #endif                
                .Enrich.FromLogContext()
                // uncomment to write to Azure diagnostics stream

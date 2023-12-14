@@ -14,10 +14,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Starter.Idp.Models.Account;
-using Starter.Idp.Data;
+using NSW.Idp.Models.Account;
+using NSW.Idp.Data;
 
-namespace Starter.Idp.Controllers.Account
+namespace NSW.Idp.Controllers.Account
 {
     [SecurityHeaders]
     [AllowAnonymous]

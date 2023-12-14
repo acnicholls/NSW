@@ -5,7 +5,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Starter.Idp.Models.Grants
+namespace NSW.Idp.Models.Grants
 {
     public class GrantsViewModel
     {

@@ -4,7 +4,7 @@
 
 using IdentityServer4.Models;
 
-namespace Starter.Idp.Models.Consent
+namespace NSW.Idp.Models.Consent
 {
     public class ProcessConsentResult
     {

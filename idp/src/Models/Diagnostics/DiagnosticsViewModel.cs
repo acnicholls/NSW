@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Starter.Idp.Models.Diagnostics
+namespace NSW.Idp.Models.Diagnostics
 {
     public class DiagnosticsViewModel
     {

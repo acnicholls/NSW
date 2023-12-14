@@ -1,9 +1,9 @@
 using System;
 using IdentityServer4.Models;
 using Microsoft.AspNetCore.Mvc;
-using Starter.Idp.Models.Account;
+using NSW.Idp.Models.Account;
 
-namespace Starter.Idp.Controllers
+namespace NSW.Idp.Controllers
 {
     public static class Extensions
     {
