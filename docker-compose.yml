@@ -55,7 +55,7 @@ services:
             # - /usr/share/dotnet:/usr/share/dotnet
         environment:
             - HOME:/home/${USER}            
-        entrypoint: ["dotnet", "watch", "run", "--project", "/app/IDP.csproj"]
+        entrypoint: ["dotnet", "watch", "run", "--project", "/app/NSW_IDP.csproj"]
         ports:
             - 5006:5006
             - 5007:5007 
