@@ -2,6 +2,7 @@ FROM node:latest as build-env
 
 WORKDIR /app
 
+COPY ./../ssl/* /ssl/
 COPY ./cra/* /app/
 
 RUN npm install
