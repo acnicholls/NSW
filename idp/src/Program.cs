@@ -56,7 +56,7 @@ namespace NSW.Idp
                 {
                     Log.Information("Seeding database...");
                     var config = host.Services.GetRequiredService<IConfiguration>();
-					var connectionString = config.GetConnectionString(config.GetSection("ConnectionString").Value);
+                    var connectionString = config.GetConnectionString(config.GetSection("ConnectionString").Value);
                     SeedData.EnsureSeedData(connectionString);
                     Log.Information("Done seeding database.");
                     return 0;
@@ -80,11 +80,18 @@ namespace NSW.Idp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseSerilog()
+                .ConfigureHostConfiguration(configHost =>
+                {
+                    configHost.SetBasePath(Directory.GetCurrentDirectory());
+                    // configHost.AddJsonFile("hostsettings.json", optional: true);  // this isn't needed, just to prove a point
+                    configHost.AddUserSecrets("4ccf36a0-933c-463f-a8aa-8b252c45c6b6");
+                    configHost.AddEnvironmentVariables("DOTNET_");
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
 #if !DEBUG
-					webBuilder.UseKestrel(opts =>
+                    webBuilder.UseKestrel(opts =>
                     {
                         var address = System.Net.IPAddress.Parse("0.0.0.0");
                         opts.Listen(address, 5006);
