@@ -30,6 +30,20 @@ const getLabelTextById = async (id) => {
   }
 };
 
+const getLabelTextByPageIdentifier = async (identifier) => {
+  try {
+    var labelTextInfo = await api.apiGet(`${baseRoute}/page/${identifier}`);
+    console.log("getLabelTextByPageIdentifier:response:", labelTextInfo);
+    if (labelTextInfo && labelTextInfo.status === 200) {
+      return labelTextInfo.data;
+    } else {
+      return labelTextInfo.error;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const saveLabelText = async (labelText) => {
   try {
     var labelTextInfo = await api.apiPost(baseRoute, labelText);
@@ -89,6 +103,7 @@ const service = {
   updateLabelText,
   saveLabelText,
   getLabelTextById,
+  getLabelTextByPageIdentifier,
   getLabelTexts,
 };
 
