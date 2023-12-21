@@ -3,9 +3,9 @@ import "./App.css";
 import React from "react";
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
-  Redirect,
+  Navigate,
 } from "react-router-dom";
 import routes from "./constants/RouteConstants";
 /*
@@ -20,104 +20,131 @@ import UserDetails from "./components/UserDetails";
 import LoggedIn from "./components/authentication/LoggedIn";
 import LoggedOut from "./components/authentication/LoggedOut";
 import TitleBarComponent from "./components/TitleBarComponent";
-import LabelTextComponent from "./components/LabelTextComponent";
+import LabelTextEditComponent from "./components/LabelText/LabelTextEditComponent";
+import NotFound from "./components/NotFound";
 /*
   Hook Contexts
 */
-import { CookiesProvider } from "react-cookie";
 import { UserProvider } from "./contexts/UserContext";
-import { ApiProvider } from "./contexts/ApiContext";
-import { WeatherProvider } from "./contexts/WeatherContext";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 /*
   NavBar components
 */
 import NswNavBar from "./components/navigation/NavBar";
 import ExternalRedirect from "./components/navigation/ExternalRedirect";
-import PrivateRoute from "./components/navigation/PrivateRoute";
-import RoleProtectedRoute from "./components/navigation/RoleProtectedRoute";
+import RequireAuth from "./components/authentication/RequireAuth";
+import RequireRole from "./components/authentication/RequireRole";
+import { RoleEnum } from "./constants/RoleEnum";
+
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
     <>
-      <TitleBarComponent />
-      <CookiesProvider>
-        <ApiProvider>
-          <UserProvider>
-            <Router>
-              <NswNavBar />
-              <div>
-                <Switch>
-                  <Route exact path={routes.frontend.slash}>
-                    <Redirect to={routes.frontend.index} />
-                  </Route>
-                  <Route path={routes.frontend.index}>
-                    <Index />
-                  </Route>
-                  <Route path={routes.frontend.about}>
-                    <WeatherProvider>
-                      <About />
-                    </WeatherProvider>
-                  </Route>
-                  <Route path={routes.frontend.search}>
-                    <Search />
-                  </Route>
-                  <Route path={routes.frontend.posts}>
-                    <Posts />
-                  </Route>
-                  <PrivateRoute path={routes.frontend.myPosts}>
-                    <Posts variant={"My"} />
-                  </PrivateRoute>
-                  <PrivateRoute path={routes.frontend.userDetails}>
-                    <UserDetails />
-                  </PrivateRoute>
-                  <RoleProtectedRoute
-                    path={routes.frontend.admin.labelText}
-                    requiredRole={"ADMIN"}
-                  >
-                    <LabelTextComponent />
-                  </RoleProtectedRoute>
-                  <RoleProtectedRoute
-                    path={routes.frontend.admin.postCategory}
-                    requiredRole={"ADMIN"}
-                  >
-                    <LabelTextComponent />
-                  </RoleProtectedRoute>
-                  <RoleProtectedRoute
-                    path={routes.frontend.admin.users}
-                    requiredRole={"ADMIN"}
-                  >
-                    <LabelTextComponent />
-                  </RoleProtectedRoute>
-                  <ExternalRedirect
-                    path={routes.frontend.register}
-                    link={routes.backend.register}
-                  />
-                  <ExternalRedirect
-                    path={routes.frontend.login}
-                    link={routes.backend.login}
-                    exact={true}
-                  />
-                  <ExternalRedirect
-                    path={routes.frontend.logout}
-                    link={routes.backend.logout}
-                    isPrivate={true}
-                    exact={true}
-                  />
-                  <Route path={routes.frontend.loggedIn}>
-                    <LoggedIn />
-                  </Route>
-                  <Route path={routes.frontend.loggedOut}>
-                    <LoggedOut />
-                  </Route>
-                  <Route path={routes.frontend.denied}>
-                    <Denied />
-                  </Route>
-                </Switch>
-              </div>
-            </Router>
-          </UserProvider>
-        </ApiProvider>
-      </CookiesProvider>
+      <QueryClientProvider client={queryClient}>
+        <TitleBarComponent />
+        <UserProvider>
+          <Router>
+            <NswNavBar />
+            <div>
+              <Routes>
+                <Route
+                  exact
+                  path={routes.frontend.slash}
+                  element={<Navigate to={routes.frontend.index} />}
+                />
+                <Route path={routes.frontend.index} element={<Index />} />
+                <Route path={routes.frontend.about} element={<About />} />
+                <Route path={routes.frontend.search} element={<Search />} />
+                <Route path={routes.frontend.posts} element={<Posts />} />
+                <Route
+                  path={routes.frontend.myPosts}
+                  element={
+                    <RequireAuth>
+                      <Posts variant={"My"} />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path={routes.frontend.userDetails}
+                  element={
+                    <RequireAuth>
+                      <UserDetails />
+                    </RequireAuth>
+                  }
+                />
+                <Route
+                  path={routes.frontend.admin.labelText}
+                  element={
+                    <RequireRole selectedRole={RoleEnum.Admin}>
+                      <LabelTextEditComponent />
+                    </RequireRole>
+                  }
+                />
+                <Route
+                  path={routes.frontend.admin.postCategory}
+                  requiredRole={"ADMIN"}
+                  element={
+                    <RequireRole selectedRole={RoleEnum.Admin}>
+                      <LabelTextEditComponent />
+                    </RequireRole>
+                  }
+                />
+                <Route
+                  path={routes.frontend.admin.users}
+                  requiredRole={"ADMIN"}
+                  element={
+                    <RequireRole selectedRole={RoleEnum.Admin}>
+                      <LabelTextEditComponent />
+                    </RequireRole>
+                  }
+                />
+                <Route
+                  path={routes.frontend.register}
+                  element={
+                    <ExternalRedirect
+                      path={routes.frontend.register}
+                      link={routes.backend.register}
+                    />
+                  }
+                />
+                <Route
+                  path={routes.frontend.login}
+                  element={
+                    <ExternalRedirect
+                      path={routes.frontend.login}
+                      link={routes.backend.login}
+                      exact={true}
+                    />
+                  }
+                />
+                <Route
+                  path={routes.frontend.logout}
+                  element={
+                    <ExternalRedirect
+                      path={routes.frontend.logout}
+                      link={routes.backend.logout}
+                      isPrivate={true}
+                      exact={true}
+                    />
+                  }
+                />
+                <Route path={routes.frontend.loggedIn} element={<LoggedIn />} />
+
+                <Route
+                  path={routes.frontend.loggedOut}
+                  element={<LoggedOut />}
+                />
+
+                <Route path={routes.frontend.denied} element={<Denied />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
+          </Router>
+        </UserProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </>
   );
 }

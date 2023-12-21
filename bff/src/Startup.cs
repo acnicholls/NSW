@@ -42,7 +42,27 @@ namespace NSW.Bff
 			OidcOptions oidcOptions = new OidcOptions();
 			_configuration.Bind("Authentication", oidcOptions);
 
-            IdentityModelEventSource.ShowPII = true;
+			services.AddCors(options =>
+			{
+				options.AddPolicy("CorsPolicy",
+					builder => builder.WithOrigins(
+						"http://localhost",
+						"https://localhost",
+						"http://bff:5004",
+						"https://bff:5005",
+						"http://api:5002",
+						"https://api:5003",
+						"http://idp:5006",
+						"https://idp:5007",
+						"http://localhost:3000",
+						"https://localhost:3000"
+						)
+					.AllowAnyMethod()
+					.AllowAnyHeader()
+					.AllowCredentials());
+			});
+
+			IdentityModelEventSource.ShowPII = true;
             services.AddProxy();
 			services.AddLogging();
             services.AddAccessTokenManagement();
@@ -207,8 +227,10 @@ namespace NSW.Bff
             // use the url to determine the files to use to process the request
             app.UseRouting();
 
-            // // process authentication and authorization of the response to the earlier challenge
-            app.UseAuthentication();
+			app.UseCors("CorsPolicy");
+
+			// // process authentication and authorization of the response to the earlier challenge
+			app.UseAuthentication();
             app.UseAuthorization();
 
             // create route endpoints from all the ApiController/Controller classes registered

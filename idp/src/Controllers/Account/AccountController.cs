@@ -157,12 +157,12 @@ namespace NSW.Idp.Controllers.Account
 			return View();
 		}
 
-		[HttpGet]
-		public async Task<IActionResult> Register([FromQuery]string returnUrl)
-		{
-			var vm = new NewUserModel { ReturnUrl = returnUrl };
-			return View(vm);
-		}
+		//[HttpGet]
+		//public async Task<IActionResult> Register([FromQuery]string returnUrl)
+		//{
+		//	var vm = new NewUserModel { ReturnUrl = returnUrl };
+		//	return View(vm);
+		//}
 
 		[HttpPost]
 		public async Task<IActionResult> Register(NewUserModel model)

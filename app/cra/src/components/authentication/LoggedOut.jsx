@@ -1,10 +1,10 @@
 import { useUserContext } from "../../contexts/UserContext";
-import initialUser from "../../constants/user";
+import { anonymousUser } from "../../data/data";
 
 const LoggedOut = () => {
   const { user, setUser } = useUserContext();
 
-  setUser(initialUser);
+  setUser(anonymousUser);
   const returnedView = user.isAuthenticated ? (
     <>
       Houston, we have a problem. Please contact your nearest webmaster and get

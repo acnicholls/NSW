@@ -1,23 +1,27 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
+import { useUserInfo } from "../../hooks/userHooks";
 import { RoleEnum } from "../../constants/RoleEnum";
 import routes from "../../constants/RouteConstants";
 
 const NswNavBar = () => {
   const { user } = useUserContext();
+  //const { user } = useUserInfo();
+  console.log("user in NavBar", user);
   const loggedOutView = (
     <Navbar>
       <Container>
         <Navbar.Brand href={routes.frontend.slash}>NSW</Navbar.Brand>
         <Navbar.Collapse id="main-nav">
           <Nav>
-            <Nav.Link href={routes.frontend.index}>Index</Nav.Link>
-            <Nav.Link href={routes.frontend.about}>About</Nav.Link>
-            <Nav.Link href={routes.frontend.search}>Search</Nav.Link>
-            <Nav.Link href={routes.frontend.posts}>Posts</Nav.Link>
-            <Nav.Link href={routes.frontend.register}>Register</Nav.Link>
-            <Nav.Link href={routes.frontend.login}>Login</Nav.Link>
+            <NavLink to={routes.frontend.index}>Index</NavLink>
+            <NavLink to={routes.frontend.about}>About</NavLink>
+            <NavLink to={routes.frontend.search}>Search</NavLink>
+            <NavLink to={routes.frontend.posts}>Posts</NavLink>
+            <NavLink to={routes.frontend.register}>Register</NavLink>
+            <NavLink to={routes.frontend.login}>Login</NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -27,14 +31,16 @@ const NswNavBar = () => {
   const adminMenuItems =
     user.role === RoleEnum.Admin ? (
       <>
-        <NavDropdown.Item href={routes.frontend.admin.labelText}>
-          Label Text
+        <NavDropdown.Item>
+          <NavLink to={routes.frontend.admin.labelText}>Label Text</NavLink>
         </NavDropdown.Item>
-        <NavDropdown.Item href={routes.frontend.admin.postCategory}>
-          Post Categories
+        <NavDropdown.Item>
+          <NavLink to={routes.frontend.admin.postCategory}>
+            Post Categories
+          </NavLink>
         </NavDropdown.Item>
-        <NavDropdown.Item href={routes.frontend.admin.users}>
-          Users
+        <NavDropdown.Item>
+          <NavLink to={routes.frontend.admin.users}>Users</NavLink>
         </NavDropdown.Item>
       </>
     ) : (
@@ -44,22 +50,22 @@ const NswNavBar = () => {
   const loggedInView = (
     <Navbar>
       <Container>
-        <Navbar.Brand href={routes.frontend.slash}>NSW</Navbar.Brand>
+        <Navbar.Brand to={routes.frontend.slash}>NSW</Navbar.Brand>
         <Navbar.Collapse id="main-nav">
           <Nav>
-            <Nav.Link href={routes.frontend.index}>Index</Nav.Link>
-            <Nav.Link href={routes.frontend.about}>About</Nav.Link>
-            <Nav.Link href={routes.frontend.search}>Search</Nav.Link>
-            <Nav.Link href={routes.frontend.posts}>Posts</Nav.Link>
-            <Nav.Link href={routes.frontend.myPosts}>My Posts</Nav.Link>
+            <NavLink to={routes.frontend.index}>Index</NavLink>
+            <NavLink to={routes.frontend.about}>About</NavLink>
+            <NavLink to={routes.frontend.search}>Search</NavLink>
+            <NavLink to={routes.frontend.posts}>Posts</NavLink>
+            <NavLink to={routes.frontend.myPosts}>My Posts</NavLink>
             <NavDropdown title="Members" id="account-dropdown">
-              <NavDropdown.Item href={routes.frontend.userDetails}>
-                Profile
+              <NavDropdown.Item>
+                <NavLink to={routes.frontend.userDetails}>Profile</NavLink>
               </NavDropdown.Item>
               {adminMenuItems}
               <NavDropdown.Divider />
-              <NavDropdown.Item href={routes.frontend.logout}>
-                Log out
+              <NavDropdown.Item>
+                <NavLink to={routes.frontend.logout}>Log out</NavLink>
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

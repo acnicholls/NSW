@@ -1,18 +1,29 @@
-import { useEffect } from "react";
 import { useUserContext } from "../../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 import { anonymousUser } from "../../data/data";
+import { useUserInfo } from "../../hooks/userHooks";
+import routes from "../../constants/RouteConstants";
 
 const LoggedIn = () => {
-  const { user, loggedIn } = useUserContext();
+  const { user, setUser } = useUserContext();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (user === null || user === anonymousUser) {
-      const callLoggedIn = async () => {
-        await loggedIn();
-      };
-      callLoggedIn();
-    }
-  });
+  const onSuccess = (response) => {
+    console.log("LoggedIn onSuccess");
+    console.log(response);
+    setUser(response.data);
+    navigate(routes.frontend.myPosts);
+  };
+
+  const onError = (error) => {
+    console.log("LoggedIn onError");
+    console.log(error);
+  };
+
+  var queryIsDisabled = user.id > 0;
+  useUserInfo(queryIsDisabled, onSuccess, onError);
+
+  console.log("LoggedIn.User", user);
   return null;
 };
 

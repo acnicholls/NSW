@@ -6,7 +6,7 @@ using System;
 
 namespace NSW.Bff
 {
-	public class Program
+    public class Program
     {
         public static int Main(string[] args)
         {
@@ -15,7 +15,7 @@ namespace NSW.Bff
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
-                .WriteTo.File("logs\\NSW.Bff.log")
+                .WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
                 .CreateLogger();
 
             try{
@@ -39,10 +39,10 @@ namespace NSW.Bff
                 .UseSerilog()
                 .ConfigureWebHostDefaults(WebHostBuilder => {
                     WebHostBuilder.UseStartup<Startup>();
-					//next portion put into release build for docker.  
-					// but could likely be removed and env used for config.
+                    //next portion put into release build for docker.  
+                    // but could likely be removed and env used for config.
 #if !DEBUG
-					WebHostBuilder.UseKestrel(opts =>
+                    WebHostBuilder.UseKestrel(opts =>
                     {
                         var address = System.Net.IPAddress.Parse("0.0.0.0");
                         opts.Listen(address, 5004);

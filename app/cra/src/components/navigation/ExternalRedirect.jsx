@@ -1,7 +1,8 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useUserContext } from "../../contexts/UserContext";
+import routes from "../../constants/RouteConstants";
 
 /**
  * When the router navigates to the internal URL, this component instead redirects the browser to an external URL.
@@ -15,7 +16,7 @@ import { useUserContext } from "../../contexts/UserContext";
  */
 const ExternalRedirect = (props) => {
   // first deconstruct the props
-  const { isPrivate, link, ...routeProps } = props;
+  const { isPrivate, link } = props;
   // grab user details
   const { user } = useUserContext();
 
@@ -26,26 +27,32 @@ const ExternalRedirect = (props) => {
   };
 
   // define the return if isPrivate is false
-  const normalReturnValue = (
-    <Route {...routeProps} render={() => redirectBrowser(link)} />
-  );
+  const normalReturnValue = redirectBrowser(routes.frontend.denied);
+  // const normalReturnValue = (
+  //   <Route {...routeProps} render={() => redirectBrowser(link)} />
+  // );
 
   // define the return if isPrivate is true
-  const privateReturnValue = (
-    <Route
-      {...routeProps}
-      render={({ location }) =>
-        user ? (
-          redirectBrowser(link)
-        ) : (
-          <Redirect to={{ pathname: "/denied", state: { from: location } }} />
-        )
-      }
-    />
-  );
+  const privateReturnValue = redirectBrowser(link);
+  // const privateReturnValue = (
+  //   <Route
+  //     {...routeProps}
+  //     render={({ location }) =>
+  //       user ? (
+  //         redirectBrowser(link)
+  //       ) : (
+  //         <Navigate to={{ pathname: "/denied", state: { from: location } }} />
+  //       )
+  //     }
+  //   />
+  // );
+
+  const canDisplayPrivateContent = isPrivate && user && user.isAuthenticated;
 
   // determine which value to render
-  const returnValue = isPrivate ? privateReturnValue : normalReturnValue;
+  const returnValue = canDisplayPrivateContent
+    ? privateReturnValue
+    : normalReturnValue;
 
   // return
   return returnValue;
