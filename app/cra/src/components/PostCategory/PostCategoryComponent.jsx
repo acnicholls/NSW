@@ -1,12 +1,12 @@
 import React from "react";
 import { PropTypes } from "prop-types";
-import { useUserContext } from "../contexts/UserContext";
-import { usePostCategoryContext } from "../contexts/PostCategoryContext";
+import { useUserContext } from "../../contexts/UserContext";
+import { useParams } from "react-router";
 import { Row, Col, FormCheck, Button } from "react-bootstrap";
 import FormCheckInput from "react-bootstrap/esm/FormCheckInput";
 import FormCheckLabel from "react-bootstrap/esm/FormCheckLabel";
-import { ViewModes } from "../constants/ViewModes";
-import { postCategoryShape } from "../shapes/shapes";
+import { ViewModes } from "../../constants/ViewModes";
+import { postCategoryShape } from "../../shapes/shapes";
 
 const PostCategoryComponent = ({
   id,
@@ -15,19 +15,11 @@ const PostCategoryComponent = ({
   onCancel,
   onSave,
 }) => {
-  const {
-    postCategory,
-    setPostCategory,
-    getPostCategory,
-    getPostCategoryById,
-    postCategoryList,
-    setPostCategoryList,
-  } = usePostCategoryContext();
   const { user } = useUserContext();
+  const { categoryId } = useParams();
 
   const listMode = viewMode === ViewModes.view && id !== null;
   // if list mode, get the list
-  
 
   const viewModeListReturnValue = <></>;
   const viewModeSingleReturnValue = <></>;

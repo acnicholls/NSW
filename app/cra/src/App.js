@@ -14,7 +14,7 @@ import routes from "./constants/RouteConstants";
 import About from "./components/About";
 import Index from "./components/Index";
 import Denied from "./components/Denied";
-import Posts from "./components/Posts";
+import Posts from "./components/Post/Posts";
 import Search from "./components/Search";
 import UserDetails from "./components/UserDetails";
 import LoggedIn from "./components/authentication/LoggedIn";

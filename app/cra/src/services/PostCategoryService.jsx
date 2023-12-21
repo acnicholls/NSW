@@ -1,6 +1,6 @@
 import routes from "../constants/RouteConstants";
 import * as api from "./api";
-const baseRoute = `${routes.postCategory}`;
+const baseRoute = `${routes.backend.postCategory}`;
 
 const getPostCategories = async () => {
   try {

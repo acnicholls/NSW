@@ -2,13 +2,11 @@ import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
-import { useUserInfo } from "../../hooks/userHooks";
 import { RoleEnum } from "../../constants/RoleEnum";
 import routes from "../../constants/RouteConstants";
 
 const NswNavBar = () => {
   const { user } = useUserContext();
-  //const { user } = useUserInfo();
   console.log("user in NavBar", user);
   const loggedOutView = (
     <Navbar>

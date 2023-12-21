@@ -1,6 +1,5 @@
 import { useUserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
-import { anonymousUser } from "../../data/data";
 import { useUserInfo } from "../../hooks/userHooks";
 import routes from "../../constants/RouteConstants";
 

@@ -1,6 +1,6 @@
 import routes from "../constants/RouteConstants";
 import * as api from "./api";
-const baseRoute = `${routes.labelText}`;
+const baseRoute = `${routes.backend.labelText}`;
 
 const getLabelTexts = async () => {
   try {

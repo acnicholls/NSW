@@ -1,6 +1,6 @@
 import routes from "../constants/RouteConstants";
 import * as api from "./api";
-const baseRoute = `${routes.post}`;
+const baseRoute = `${routes.backend.post}`;
 
 const getPosts = async () => {
   try {

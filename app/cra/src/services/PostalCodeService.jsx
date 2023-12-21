@@ -1,6 +1,6 @@
 import routes from "../constants/RouteConstants";
 import * as api from "./api";
-const baseRoute = `${routes.postalCode}`;
+const baseRoute = `${routes.backend.postalCode}`;
 
 const getPostalCodes = async () => {
   try {
