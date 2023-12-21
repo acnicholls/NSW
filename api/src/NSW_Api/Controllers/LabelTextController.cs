@@ -67,7 +67,7 @@ namespace NSW.Api.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<LabelText?>> GetByIdAsync([FromQuery] int id) => await Task.Run(() => this._getById(id));
+        public async Task<ActionResult<LabelText?>> GetByIdAsync([FromRoute] int id) => await Task.Run(() => this._getById(id));
 
 
         private ActionResult<LabelText?> _getByIdentifier(string identifier)
@@ -85,7 +85,7 @@ namespace NSW.Api.Controllers
         }
 
         [HttpGet("{identifier}")]
-        public async Task<ActionResult<LabelText?>> GetByIdentifierAsync([FromQuery] string identifier) => await Task.Run(() => this._getByIdentifier(identifier));
+        public async Task<ActionResult<LabelText?>> GetByIdentifierAsync([FromRoute] string identifier) => await Task.Run(() => this._getByIdentifier(identifier));
 
         private ActionResult<LabelText> _insert(LabelText entity)
         {

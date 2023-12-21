@@ -69,7 +69,7 @@ namespace NSW.Api.Controllers
 		}
 
 		[HttpGet("{id:int}")]
-		public async Task<ActionResult<PostalCode?>> GetByIdAsync([FromQuery] int id) => await Task.Run(() => this._getById(id));
+		public async Task<ActionResult<PostalCode?>> GetByIdAsync([FromRoute] int id) => await Task.Run(() => this._getById(id));
 
 
 		private ActionResult<PostalCode?> _getByIdentifier(string identifier)
@@ -87,7 +87,7 @@ namespace NSW.Api.Controllers
 		}
 
 		[HttpGet("{identifier}")]
-		public async Task<ActionResult<PostalCode?>> GetByIdentifierAsync([FromQuery] string identifier) => await Task.Run(() => this._getByIdentifier(identifier));
+		public async Task<ActionResult<PostalCode?>> GetByIdentifierAsync([FromRoute] string identifier) => await Task.Run(() => this._getByIdentifier(identifier));
 
 		private ActionResult<PostalCode> _insert(PostalCode entity)
 		{
