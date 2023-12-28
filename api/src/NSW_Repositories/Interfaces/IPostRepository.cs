@@ -11,5 +11,6 @@ namespace NSW.Repositories.Interfaces
 		void SetEmailSent(Post post);
 
 		IList<Post> GetByCategoryId(int categoryId);
+		IList<Post> GetByUserId(int userId);
 	}
 }

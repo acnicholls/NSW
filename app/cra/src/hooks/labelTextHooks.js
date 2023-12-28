@@ -1,12 +1,12 @@
 import { useQuery } from "react-query";
 import { labelTextQueryKeys } from "../queryKeys/labelTextQueryKeys";
 
-import { getLabelTexts, getLabelTextById } from "../services/LabelTextService";
+import service from "../services/LabelTextService";
 
 const useLabelTextList = (isDisabled, onSuccess, onError) => {
   return useQuery(
     labelTextQueryKeys.getLabelTexts,
-    async () => await getLabelTexts(),
+    async () => await service.getLabelTexts(),
     {
       staleTime: Infinity,
       isDisabled: isDisabled,
@@ -19,7 +19,7 @@ const useLabelTextList = (isDisabled, onSuccess, onError) => {
 const useLabelTextById = (labelTextId, isDisabled, onSuccess, onError) => {
   return useQuery(
     labelTextQueryKeys.getLabelTextById,
-    async (labelTextId) => await getLabelTextById(labelTextId),
+    async (labelTextId) => await service.getLabelTextById(labelTextId),
     {
       staleTime: Infinity,
       enabled: labelTextId !== "" || labelTextId !== 0,
@@ -30,4 +30,23 @@ const useLabelTextById = (labelTextId, isDisabled, onSuccess, onError) => {
   );
 };
 
-export { useLabelTextById, useLabelTextList };
+const useLabelTextByGroupIdentifier = (
+  groupIdentifier,
+  isDisabled,
+  onSuccess,
+  onError
+) => {
+  return useQuery(
+    labelTextQueryKeys.getByGroupIdentifier,
+    async (groupIdentifier) =>
+      await service.getLabelTextByPageIdentifier(groupIdentifier),
+    {
+      staleTime: Infinity,
+      enabled: groupIdentifier !== "",
+      isDisabled: isDisabled,
+      onSuccess: (data) => onSuccess && onSuccess(data),
+      onError: (error) => onError && onError(error),
+    }
+  );
+};
+export { useLabelTextById, useLabelTextList, useLabelTextByGroupIdentifier };

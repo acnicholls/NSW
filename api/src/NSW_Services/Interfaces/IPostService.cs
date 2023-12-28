@@ -8,5 +8,7 @@ namespace NSW.Services.Interfaces
 
 		IList<Post> GetByCategoryId(int categoryId);
 
+		IList<Post> GetByUserId(int userId);
+
 	}
 }

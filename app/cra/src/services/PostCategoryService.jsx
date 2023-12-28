@@ -4,83 +4,56 @@ const baseRoute = `${routes.backend.postCategory}`;
 
 const getPostCategories = async () => {
   try {
-    var postCategoryInfo = await api.apiGet(baseRoute);
-    console.log("getPostCategory:response:", postCategoryInfo);
-    if (postCategoryInfo && postCategoryInfo.status === 200) {
-      return postCategoryInfo.data;
-    } else {
-      return postCategoryInfo.error;
-    }
+    var response = await api.apiGet(baseRoute);
+    console.log("getPostCategory:response:", response);
+    return response;
   } catch (error) {
     console.log(error);
+    return error.response;
   }
 };
 
 const getPostCategoryById = async (id) => {
   try {
-    var postCategoryInfo = await api.apiGet(`${baseRoute}/${id}`);
-    console.log("getPostCategoryById:response:", postCategoryInfo);
-    if (postCategoryInfo && postCategoryInfo.status === 200) {
-      return postCategoryInfo.data;
-    } else {
-      return postCategoryInfo.error;
-    }
+    var response = await api.apiGet(`${baseRoute}/${id}`);
+    console.log("getPostCategoryById:response:", response);
+    return response;
   } catch (error) {
     console.log(error);
+    return error.response;
   }
 };
 
 const savePostCategory = async (postCategory) => {
   try {
-    var postCategoryInfo = await api.apiPostCategory(baseRoute, postCategory);
-    console.log("savePostCategory:response:", postCategoryInfo);
-    if (
-      postCategoryInfo &&
-      postCategoryInfo.status >= 200 &&
-      postCategoryInfo.status <= 400
-    ) {
-      return postCategoryInfo.data;
-    } else {
-      return postCategoryInfo.error;
-    }
+    var response = await api.apiPostCategory(baseRoute, postCategory);
+    console.log("savePostCategory:response:", response);
+    return response;
   } catch (error) {
     console.log(error);
+    return error.response;
   }
 };
 
 const updatePostCategory = async (postCategory) => {
   try {
-    var postCategoryInfo = await api.apiPut(baseRoute, postCategory);
-    console.log("updatePostCategory:response:", postCategoryInfo);
-    if (
-      postCategoryInfo &&
-      postCategoryInfo.status >= 200 &&
-      postCategoryInfo.status <= 400
-    ) {
-      return postCategoryInfo.data;
-    } else {
-      return postCategoryInfo.error;
-    }
+    var response = await api.apiPut(baseRoute, postCategory);
+    console.log("updatePostCategory:response:", response);
+    return response;
   } catch (error) {
     console.log(error);
+    return error.response;
   }
 };
 
 const deletePostCategory = async (postCategory) => {
   try {
-    var postCategoryInfo = await api.apiDelete(baseRoute, postCategory);
-    console.log("deletePostCategory:response:", postCategoryInfo);
-    if (
-      postCategoryInfo &&
-      postCategoryInfo.status >= 200 &&
-      postCategoryInfo.status <= 400
-    ) {
-      return postCategoryInfo.data;
-    } else {
-      return postCategoryInfo.error;
-    }
+    var response = await api.apiDelete(baseRoute, postCategory);
+    console.log("deletePostCategory:response:", response);
+    return response;
   } catch (error) {
     console.log(error);
+    return error.response;
   }
 };
 

@@ -138,5 +138,22 @@ namespace NSW.Api.Controllers
 				return BadRequest(ex.Message);
 			}
 		}
+
+		[HttpGet("user/{userId}")]
+		public async Task<ActionResult<IList<Post>>> GetByUserIdAsync([FromRoute] int userId) => await Task.Run(() => this._getByUserId(userId));
+
+		private ActionResult<IList<Post>> _getByUserId(int userId)
+		{
+			try
+			{
+				var returnValue = _service.GetByUserId(userId);
+				return new OkObjectResult(returnValue);
+			}
+			catch (Exception ex)
+			{
+				// add logging
+				return BadRequest(ex.Message);
+			}
+		}
 	}
 }

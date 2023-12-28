@@ -16,6 +16,12 @@
 		Admin,
 		Member
 	}
+
+	public enum CustomClaimType
+	{
+		PostalCode,
+		LanguagePreference
+	}
 }
 
 

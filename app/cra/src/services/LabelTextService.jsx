@@ -4,97 +4,69 @@ const baseRoute = `${routes.backend.labelText}`;
 
 const getLabelTexts = async () => {
   try {
-    var labelTextInfo = await api.apiGet(baseRoute);
-    console.log("getLabelText:response:", labelTextInfo);
-    if (labelTextInfo && labelTextInfo.status === 200) {
-      return labelTextInfo.data;
-    } else {
-      return labelTextInfo.error;
-    }
+    var response = await api.apiGet(baseRoute);
+    console.log("getLabelText:response:", response);
+    return response;
   } catch (error) {
     console.log(error);
+    return error.response;
   }
 };
 
 const getLabelTextById = async (id) => {
   try {
-    var labelTextInfo = await api.apiGet(`${baseRoute}/${id}`);
-    console.log("getLabelTextById:response:", labelTextInfo);
-    if (labelTextInfo && labelTextInfo.status === 200) {
-      return labelTextInfo.data;
-    } else {
-      return labelTextInfo.error;
-    }
+    var response = await api.apiGet(`${baseRoute}/${id}`);
+    console.log("getLabelTextById:response:", response);
+    return response;
   } catch (error) {
     console.log(error);
+    return error.response;
   }
 };
 
 const getLabelTextByPageIdentifier = async (identifier) => {
   try {
-    var labelTextInfo = await api.apiGet(`${baseRoute}/page/${identifier}`);
-    console.log("getLabelTextByPageIdentifier:response:", labelTextInfo);
-    if (labelTextInfo && labelTextInfo.status === 200) {
-      return labelTextInfo.data;
-    } else {
-      return labelTextInfo.error;
-    }
+    var response = await api.apiGet(
+      `${routes.backend.labelTextGroup}/${identifier}`
+    );
+    console.log("getLabelTextByPageIdentifier:response:", response);
+    return response;
   } catch (error) {
     console.log(error);
+    return error.response;
   }
 };
 
 const saveLabelText = async (labelText) => {
   try {
-    var labelTextInfo = await api.apiPost(baseRoute, labelText);
-    console.log("saveLabelText:response:", labelTextInfo);
-    if (
-      labelTextInfo &&
-      labelTextInfo.status >= 200 &&
-      labelTextInfo.status <= 400
-    ) {
-      return labelTextInfo.data;
-    } else {
-      return labelTextInfo.error;
-    }
+    var response = await api.apiPost(baseRoute, labelText);
+    console.log("saveLabelText:response:", response);
+    return response;
   } catch (error) {
     console.log(error);
+    return error.response;
   }
 };
 
 const updateLabelText = async (labelText) => {
   try {
-    var labelTextInfo = await api.apiPut(baseRoute, labelText);
-    console.log("updateLabelText:response:", labelTextInfo);
-    if (
-      labelTextInfo &&
-      labelTextInfo.status >= 200 &&
-      labelTextInfo.status <= 400
-    ) {
-      return labelTextInfo.data;
-    } else {
-      return labelTextInfo.error;
-    }
+    var response = await api.apiPut(baseRoute, labelText);
+    console.log("updateLabelText:response:", response);
+    return response;
   } catch (error) {
     console.log(error);
+    return error.response;
   }
 };
 
 const deleteLabelText = async (labelText) => {
   try {
-    var labelTextInfo = await api.apiDelete(routes.labelText, labelText);
-    console.log("deleteLabelText:response:", labelTextInfo);
-    if (
-      labelTextInfo &&
-      labelTextInfo.status >= 200 &&
-      labelTextInfo.status <= 400
-    ) {
-      return labelTextInfo.data;
-    } else {
-      return labelTextInfo.error;
-    }
+    var response = await api.apiDelete(routes.labelText, labelText);
+    console.log("deleteLabelText:response:", response);
+    return response;
   } catch (error) {
     console.log(error);
+    return error.response;
   }
 };
 

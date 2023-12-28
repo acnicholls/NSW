@@ -6,6 +6,7 @@ import { useUserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router";
 import routes from "../../constants/RouteConstants";
 import { LanguagePreference } from "../../constants/LanguagePreference";
+import { useLabelTextByGroupIdentifier } from "../../hooks/labelTextHooks";
 
 /**
  * this component will display basic info about a post category, used for the category list page

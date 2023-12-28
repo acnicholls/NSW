@@ -1,4 +1,4 @@
-﻿using BFF.Internal;
+using BFF.Internal;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
@@ -48,8 +48,6 @@ namespace NSW.Bff
 					builder => builder.WithOrigins(
 						"http://localhost",
 						"https://localhost",
-						"http://bff:5004",
-						"https://bff:5005",
 						"http://api:5002",
 						"https://api:5003",
 						"http://idp:5006",
@@ -211,7 +209,9 @@ namespace NSW.Bff
             {
                 api.RunProxy(async context =>
                 {
-                    var forwardContext = context.ForwardTo(_configuration.GetValue<string>("Api:ForwardTo"));
+					var apiUrl = _configuration.GetValue<string>("Api:ForwardTo");
+
+					var forwardContext = context.ForwardTo(apiUrl);
 
                     var token = await context.GetUserAccessTokenAsync();
                     forwardContext.UpstreamRequest.SetBearerToken(token);

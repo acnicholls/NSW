@@ -14,7 +14,7 @@ import routes from "./constants/RouteConstants";
 import About from "./components/About";
 import Index from "./components/Index";
 import Denied from "./components/Denied";
-import Posts from "./components/Post/Posts";
+import PostListComponent from "./components/Post/PostListComponent";
 import Search from "./components/Search";
 import UserDetails from "./components/UserDetails";
 import LoggedIn from "./components/authentication/LoggedIn";
@@ -36,6 +36,7 @@ import ExternalRedirect from "./components/navigation/ExternalRedirect";
 import RequireAuth from "./components/authentication/RequireAuth";
 import RequireRole from "./components/authentication/RequireRole";
 import { RoleEnum } from "./constants/RoleEnum";
+import { PostPageVariantEnum } from "./constants/PostPageVariantEnum";
 
 const queryClient = new QueryClient();
 
@@ -57,12 +58,17 @@ export default function App() {
                 <Route path={routes.frontend.index} element={<Index />} />
                 <Route path={routes.frontend.about} element={<About />} />
                 <Route path={routes.frontend.search} element={<Search />} />
-                <Route path={routes.frontend.posts} element={<Posts />} />
+                <Route
+                  path={routes.frontend.posts}
+                  element={
+                    <PostListComponent variant={PostPageVariantEnum.Main} />
+                  }
+                />
                 <Route
                   path={routes.frontend.myPosts}
                   element={
                     <RequireAuth>
-                      <Posts variant={"My"} />
+                      <PostListComponent variant={PostPageVariantEnum.My} />
                     </RequireAuth>
                   }
                 />

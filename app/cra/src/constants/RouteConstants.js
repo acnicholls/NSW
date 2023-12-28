@@ -6,6 +6,7 @@ const routes = Object.freeze({
     userInfo: `${process.env.REACT_APP_BFF_URL}/bff/user/info`,
     post: `${process.env.REACT_APP_BFF_URL}/api/Post`,
     labelText: `${process.env.REACT_APP_BFF_URL}/api/LabelText`,
+    labelTextGroup: `${process.env.REACT_APP_BFF_URL}/api/LabelText/group`,
     postalCode: `${process.env.REACT_APP_BFF_URL}/api/PostalCode`,
     postCategory: `${process.env.REACT_APP_BFF_URL}/api/PostCategory`,
     user: `${process.env.REACT_APP_BFF_URL}/api/User`,

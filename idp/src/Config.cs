@@ -5,6 +5,7 @@
 using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
+using NSW.Data;
 
 namespace NSW.Idp
 {
@@ -15,7 +16,9 @@ namespace NSW.Idp
             new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
-                new IdentityResources.Profile(),
+				new IdentityResources.Email(),
+				new IdentityResources.Phone(),
+				new IdentityResources.Profile(),
                 // new IdentityResource("Starter.Api", "The starter api project's scope", new[] { "Starter.Api" }),
             };
 
@@ -24,6 +27,14 @@ namespace NSW.Idp
             new List<ApiScope>
             {
                 new ApiScope("NSW.ApiScope", "The NSW project's API scope")
+				{
+					UserClaims = { 
+						IdentityServerConstants.StandardScopes.Email,
+						IdentityServerConstants.StandardScopes.Phone,
+						IdentityServerConstants.StandardScopes.Profile,
+						CustomClaimType.PostalCode.ToString(), 
+						CustomClaimType.LanguagePreference.ToString()}
+				}
             };
 
         public static IEnumerable<ApiResource> ApiResources =>
@@ -37,6 +48,10 @@ namespace NSW.Idp
                         new Secret("apisecret".Sha256()),  // TODO: change for production
                     },
                     Scopes = {
+						//IdentityServerConstants.StandardScopes.OpenId,
+						//IdentityServerConstants.StandardScopes.Email,
+						//IdentityServerConstants.StandardScopes.Phone,
+						//IdentityServerConstants.StandardScopes.Profile,
 						"NSW.ApiScope",
                     }
                 },
@@ -82,7 +97,9 @@ namespace NSW.Idp
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
+						IdentityServerConstants.StandardScopes.Email,
+						IdentityServerConstants.StandardScopes.Phone,
+						IdentityServerConstants.StandardScopes.Profile,
 						"NSW.ApiScope"
 					},
                     AllowOfflineAccess = true,

@@ -51,12 +51,14 @@ namespace NSW.Idp
                             throw new Exception(result.Errors.First().Description);
                         }
 
-                        result = userMgr.AddClaimsAsync(alice, new Claim[]{
-                            new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                            new Claim(JwtClaimTypes.GivenName, "Alice"),
-                            new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                            new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
-                        }).Result;
+						result = userMgr.AddClaimsAsync(alice, new Claim[]{
+							new Claim(JwtClaimTypes.Name, "Alice Smith"),
+							new Claim(JwtClaimTypes.GivenName, "Alice"),
+							new Claim(JwtClaimTypes.FamilyName, "Smith"),
+							new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
+							new Claim(NSW.CustomClaimType.LanguagePreference.ToString(), "1"),
+							new Claim(NSW.CustomClaimType.PostalCode.ToString(), "380-0945")
+						}).Result;
                         if (!result.Succeeded)
                         {
                             throw new Exception(result.Errors.First().Description);
@@ -88,8 +90,9 @@ namespace NSW.Idp
                             new Claim(JwtClaimTypes.GivenName, "Bob"),
                             new Claim(JwtClaimTypes.FamilyName, "Smith"),
                             new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
-                            new Claim("location", "somewhere")
-                        }).Result;
+							new Claim(NSW.CustomClaimType.LanguagePreference.ToString(), "2"),
+							new Claim(NSW.CustomClaimType.PostalCode.ToString(), "380-0945")
+						}).Result;
                         if (!result.Succeeded)
                         {
                             throw new Exception(result.Errors.First().Description);

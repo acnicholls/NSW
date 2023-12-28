@@ -4,6 +4,8 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSW_IDP", "src\NSW_IDP.csproj", "{8ED474AA-9678-45B3-9781-4BB926115CBD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSW_Data", "..\api\src\NSW_DataClasses\NSW_Data.csproj", "{14051D5B-5FAF-4FBD-AAAF-66427430AEFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,6 +16,10 @@ Global
 		{8ED474AA-9678-45B3-9781-4BB926115CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8ED474AA-9678-45B3-9781-4BB926115CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8ED474AA-9678-45B3-9781-4BB926115CBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14051D5B-5FAF-4FBD-AAAF-66427430AEFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14051D5B-5FAF-4FBD-AAAF-66427430AEFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14051D5B-5FAF-4FBD-AAAF-66427430AEFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14051D5B-5FAF-4FBD-AAAF-66427430AEFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

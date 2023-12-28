@@ -1,15 +1,12 @@
 import { useQuery } from "react-query";
 import { postalCodeQueryKeys } from "../queryKeys/postalCodeQueryKeys";
 
-import {
-  getPostalCodes,
-  getPostalCodeById,
-} from "../services/PostalCodeService";
+import service from "../services/PostalCodeService";
 
 const usePostalCodeList = (isDisabled, onSuccess, onError) => {
   return useQuery(
     postalCodeQueryKeys.getPostalCodes,
-    async () => await getPostalCodes(),
+    async () => await service.getPostalCodes(),
     {
       staleTime: Infinity,
       isDisabled: isDisabled,
@@ -22,7 +19,7 @@ const usePostalCodeList = (isDisabled, onSuccess, onError) => {
 const usePostalCodeById = (postalCodeId, isDisabled, onSuccess, onError) => {
   return useQuery(
     postalCodeQueryKeys.getPostalCodeById(postalCodeId),
-    async (postalCodeId) => await getPostalCodeById(postalCodeId),
+    async (postalCodeId) => await service.getPostalCodeById(postalCodeId),
     {
       staleTime: Infinity,
       enabled: postalCodeId > 0,

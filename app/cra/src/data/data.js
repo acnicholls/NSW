@@ -55,7 +55,8 @@ export const anonymousUser = {
   firstName: "Anonymous",
   lastName: "User",
   username: "Anon",
+  postalCode: "Empty",
   role: "Empty",
-  languagePreference: -1,
+  languagePreference: 1,
   isAuthenticated: false,
 };

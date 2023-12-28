@@ -1,6 +1,7 @@
 
 using Microsoft.IdentityModel.Tokens;
 using NSW.Api;
+using NSW.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,7 @@ builder.Services.AddAuthentication("Bearer")
 	{
 		// TODO: make these configuration options, so they can change per env
 		options.Authority = "https://localhost";
-		options.MetadataAddress = "http://idp:5006/.well-known/openid-configuration";
+		options.MetadataAddress = "http://localhost:5006/.well-known/openid-configuration";
 		options.RequireHttpsMetadata = false;
 
 		options.TokenValidationParameters = new TokenValidationParameters
@@ -26,6 +27,27 @@ builder.Services.AddAuthentication("Bearer")
 			ValidateAudience = false  // for development
 		};
 	});
+
+
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("CorsPolicy",
+		builder => builder.WithOrigins(
+			"http://localhost",
+			"https://localhost",
+			"http://bff:5004",
+			"https://bff:5005",
+			"http://idp:5006",
+			"https://idp:5007",
+			"http://localhost:3000",
+			"https://localhost:3000",
+			"http://localhost:5004",
+			"https://localhost:5005"
+			)
+		.AllowAnyMethod()
+		.AllowAnyHeader()
+		.AllowCredentials());
+});
 
 
 // Add services to the container.
@@ -60,6 +82,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();

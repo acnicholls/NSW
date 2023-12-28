@@ -42,7 +42,11 @@ namespace NSW.Info
             }
             else
             {
-				returnValue = _configuration.GetSection(settingName).Value;
+				var configSection = _configuration.GetSection(settingName);
+				if (configSection.Value != null)
+				{
+					returnValue = configSection.Value;
+				}
 			}
             return returnValue;
         }

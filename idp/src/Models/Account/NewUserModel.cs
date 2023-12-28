@@ -23,5 +23,8 @@ namespace NSW.Idp.Models.Account
 
 		public string ReturnUrl { get; set; }
 
+		public string Role { get; } = "MEMBER";
+
+		public string PostalCode { get; set; }
     }
 }

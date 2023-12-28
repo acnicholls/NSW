@@ -9,7 +9,7 @@ using System.Net.Mail;
 namespace NSW.Services
 {
 	public class PostService : IPostService
-    {
+	{
 		private readonly IPostRepository _repository;
 		private readonly ILabelTextRepository _labelTextRepository;
 		private readonly IEmailService _emailService;
@@ -19,7 +19,7 @@ namespace NSW.Services
 
 		public PostService(
 			ILog log,
-			IPostRepository repository, 
+			IPostRepository repository,
 			ILabelTextRepository labelTextRepository,
 			IEmailService emailService,
 			IProjectInfo projectInfo,
@@ -55,7 +55,7 @@ namespace NSW.Services
 				var emailDetails = _labelTextRepository.GetListOfGroupedLabels("ExpiryEmail");
 				var email = new MailMessage();
 				IUser thisUser = _userService.GetById(post.UserID);
-				if(thisUser != null)
+				if (thisUser != null)
 				{
 					email.To.Add(thisUser?.Email);
 					email.Subject = emailDetails[".Subject"];
@@ -80,5 +80,6 @@ namespace NSW.Services
 		}
 
 		public IList<Post> GetByCategoryId(int categoryId) => this._repository.GetByCategoryId(categoryId);
+		public IList<Post> GetByUserId(int userId) => this._repository.GetByUserId(userId);
 	}
 }
