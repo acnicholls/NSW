@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { usePostList } from "../../hooks/postHooks";
 import PostListPostComponent from "./PostListPostComponent";
+import { PostPageVariantEnum } from "../../constants/PostPageVariantEnum";
 
 const PostListComponentMainVariant = ({}) => {
   const [isQueryDisabled, setIsQueryDisabled] = useState(false);
@@ -30,7 +31,11 @@ const PostListComponentMainVariant = ({}) => {
   }
   console.log("posts List", data);
   const returnValue = data.data.map((x) => (
-    <PostListPostComponent key={x.id} currentPost={x} />
+    <PostListPostComponent
+      key={x.id}
+      currentPost={x}
+      variant={PostPageVariantEnum.Main}
+    />
   ));
 
   return returnValue;

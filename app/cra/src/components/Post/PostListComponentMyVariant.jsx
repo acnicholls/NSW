@@ -3,6 +3,7 @@ import { useUserPostList } from "../../hooks/postHooks";
 import { useUserContext } from "../../contexts/UserContext";
 import PostListPostComponent from "./PostListPostComponent";
 import { Row, Col } from "react-bootstrap";
+import { PostPageVariantEnum } from "../../constants/PostPageVariantEnum";
 
 const PostListComponentMyVariant = ({}) => {
   const [isQueryDisabled, setIsQueryDisabled] = useState(false);
@@ -47,7 +48,11 @@ const PostListComponentMyVariant = ({}) => {
   const returnValue =
     data.data && data.data.length > 0
       ? data.data.map((x) => (
-          <PostListPostComponent key={x.id} currentPost={x} />
+          <PostListPostComponent
+            key={x.id}
+            currentPost={x}
+            variant={PostPageVariantEnum.My}
+          />
         ))
       : noDataFound;
 
