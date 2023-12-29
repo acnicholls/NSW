@@ -26,9 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="NSWDAT">
-      <HintPath>..\..\api\src\NSW_DataClasses\bin\Debug\NSWDAT.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\api\src\NSW_DataClasses\NSW_Data.csproj" />
   </ItemGroup>
 
 </Project>

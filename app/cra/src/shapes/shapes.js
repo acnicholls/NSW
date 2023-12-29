@@ -38,7 +38,7 @@ const postShape = PropTypes.shape({
   title: PropTypes.string,
   description: PropTypes.string,
   price: PropTypes.number,
-  expiry: PropTypes.date,
+  expiry: PropTypes.string,
   userId: PropTypes.number,
   status: PropTypes.string,
   deleteFlag: PropTypes.bool,

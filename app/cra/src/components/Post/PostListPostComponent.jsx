@@ -6,6 +6,7 @@ import { PostPageVariantEnum } from "../../constants/PostPageVariantEnum";
 import { postShape } from "../../shapes/shapes";
 
 const PostListPostComponent = ({ variant, currentPost }) => {
+  const [displayPost, setDisplayPost] = useState(currentPost);
   const postbuttons =
     variant === PostPageVariantEnum.Main ? (
       <></>
@@ -18,7 +19,7 @@ const PostListPostComponent = ({ variant, currentPost }) => {
     <>
       <Row>
         <Col>post image</Col>
-        <Col>{currentPost.title}</Col>
+        <Col>{displayPost.title}</Col>
         <Col>{postbuttons}</Col>
       </Row>
     </>

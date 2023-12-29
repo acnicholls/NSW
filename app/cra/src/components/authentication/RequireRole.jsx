@@ -1,17 +1,15 @@
-import { useLocation, useNavigate } from "react-router";
-import { useUserInfo } from "../../hooks/userHooks";
+import { useLocation, redirect } from "react-router";
+import { useUserContext } from "../../contexts/UserContext";
 import routes from "../../constants/RouteConstants";
 
 function RequireRole({ children, selectedRole }) {
   let location = useLocation();
-  let { user } = useUserInfo();
-  let navigate = useNavigate();
+  let { user } = useUserContext();
 
-  if (user && !user.isAuthenticated && user.role !== selectedRole) {
-    return navigate(routes.frontend.denied, { from: location });
+  if (user && user.isAuthenticated && user.role === selectedRole) {
+    return children;
   }
-
-  return children;
+  return redirect(routes.frontend.denied, { from: location });
 }
 
 export default RequireRole;

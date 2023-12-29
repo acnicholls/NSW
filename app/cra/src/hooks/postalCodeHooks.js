@@ -19,7 +19,7 @@ const usePostalCodeList = (isDisabled, onSuccess, onError) => {
 const usePostalCodeById = (postalCodeId, isDisabled, onSuccess, onError) => {
   return useQuery(
     postalCodeQueryKeys.getPostalCodeById(postalCodeId),
-    async (postalCodeId) => await service.getPostalCodeById(postalCodeId),
+    async () => await service.getPostalCodeById(postalCodeId),
     {
       staleTime: Infinity,
       enabled: postalCodeId > 0,

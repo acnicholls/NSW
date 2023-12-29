@@ -14,12 +14,24 @@ const NswNavBar = () => {
         <Navbar.Brand href={routes.frontend.slash}>NSW</Navbar.Brand>
         <Navbar.Collapse id="main-nav">
           <Nav>
-            <NavLink to={routes.frontend.index}>Index</NavLink>
-            <NavLink to={routes.frontend.about}>About</NavLink>
-            <NavLink to={routes.frontend.search}>Search</NavLink>
-            <NavLink to={routes.frontend.posts}>Posts</NavLink>
-            <NavLink to={routes.frontend.register}>Register</NavLink>
-            <NavLink to={routes.frontend.login}>Login</NavLink>
+            <NavLink className="nav-link" to={routes.frontend.index}>
+              Index
+            </NavLink>
+            <NavLink className="nav-link" to={routes.frontend.about}>
+              About
+            </NavLink>
+            <NavLink className="nav-link" to={routes.frontend.search}>
+              Search
+            </NavLink>
+            <NavLink className="nav-link" to={routes.frontend.posts}>
+              Posts
+            </NavLink>
+            <NavLink className="nav-link" to={routes.frontend.register}>
+              Register
+            </NavLink>
+            <NavLink className="nav-link" to={routes.frontend.login}>
+              Login
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -30,15 +42,19 @@ const NswNavBar = () => {
     user.role === RoleEnum.Admin ? (
       <>
         <NavDropdown.Item>
-          <NavLink to={routes.frontend.admin.labelText}>Label Text</NavLink>
+          <NavLink className="nav-link" to={routes.frontend.admin.labelText}>
+            Label Text
+          </NavLink>
         </NavDropdown.Item>
         <NavDropdown.Item>
-          <NavLink to={routes.frontend.admin.postCategory}>
+          <NavLink className="nav-link" to={routes.frontend.admin.postCategory}>
             Post Categories
           </NavLink>
         </NavDropdown.Item>
         <NavDropdown.Item>
-          <NavLink to={routes.frontend.admin.users}>Users</NavLink>
+          <NavLink className="nav-link" to={routes.frontend.admin.users}>
+            Users
+          </NavLink>
         </NavDropdown.Item>
       </>
     ) : (
@@ -51,19 +67,33 @@ const NswNavBar = () => {
         <Navbar.Brand to={routes.frontend.slash}>NSW</Navbar.Brand>
         <Navbar.Collapse id="main-nav">
           <Nav>
-            <NavLink to={routes.frontend.index}>Index</NavLink>
-            <NavLink to={routes.frontend.about}>About</NavLink>
-            <NavLink to={routes.frontend.search}>Search</NavLink>
-            <NavLink to={routes.frontend.posts}>Posts</NavLink>
-            <NavLink to={routes.frontend.myPosts}>My Posts</NavLink>
+            <NavLink className="nav-link" to={routes.frontend.index}>
+              Index
+            </NavLink>
+            <NavLink className="nav-link" to={routes.frontend.about}>
+              About
+            </NavLink>
+            <NavLink className="nav-link" to={routes.frontend.search}>
+              Search
+            </NavLink>
+            <NavLink className="nav-link" to={routes.frontend.posts}>
+              Posts
+            </NavLink>
+            <NavLink className="nav-link" to={routes.frontend.myPosts}>
+              My Posts
+            </NavLink>
             <NavDropdown title="Members" id="account-dropdown">
               <NavDropdown.Item>
-                <NavLink to={routes.frontend.userDetails}>Profile</NavLink>
+                <NavLink className="nav-link" to={routes.frontend.userDetails}>
+                  Profile
+                </NavLink>
               </NavDropdown.Item>
               {adminMenuItems}
               <NavDropdown.Divider />
               <NavDropdown.Item>
-                <NavLink to={routes.frontend.logout}>Log out</NavLink>
+                <NavLink className="nav-link" to={routes.frontend.logout}>
+                  Log out
+                </NavLink>
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

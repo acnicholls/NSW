@@ -1,10 +1,11 @@
 import routes from "../constants/RouteConstants";
 import * as api from "./api";
-const baseRoute = `${routes.backend.post}`;
+const bffRoute = `${routes.backend.publicPost}`;
+const baseRoute = `${routes.backend.privatePost}`;
 
 const getPosts = async () => {
   try {
-    var response = await api.apiGet(baseRoute);
+    var response = await api.apiGet(bffRoute);
     console.log("getPosts:response:", response);
     return response;
   } catch (error) {
@@ -17,6 +18,17 @@ const getPostsByCategoryId = async (categoryId) => {
   try {
     var response = await api.apiGet(`${baseRoute}/category/${categoryId}`);
     console.log("getPostsByCategoryId:response:", response);
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error.response;
+  }
+};
+
+const getPostsByUserId = async (userId) => {
+  try {
+    var response = await api.apiGet(`${baseRoute}/user/${userId}`);
+    console.log("getPostsByUserId:response:", response);
     return response;
   } catch (error) {
     console.log(error);
@@ -75,6 +87,7 @@ var service = {
   getPostById,
   getPosts,
   getPostsByCategoryId,
+  getPostsByUserId,
 };
 
 export default service;

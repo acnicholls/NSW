@@ -13,6 +13,8 @@ using ProxyKit;
 using NSW.Bff.Internal;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
+using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NSW.Bff
 {
@@ -41,6 +43,7 @@ namespace NSW.Bff
 			// capture the settings.
 			OidcOptions oidcOptions = new OidcOptions();
 			_configuration.Bind("Authentication", oidcOptions);
+			services.AddSingleton<OidcOptions>(oidcOptions);
 
 			services.AddCors(options =>
 			{
@@ -191,7 +194,16 @@ namespace NSW.Bff
             // challenge any unauthenticated user
             app.Use(async (context, next) =>
             {
-                if (!context.User.Identity.IsAuthenticated)
+				var query = context.Request.Path;
+				var skipChallenge = false;
+				//var endpoint = context.GetEndpoint();
+				//var anonAttrib = endpoint?.Metadata?.GetMetadata<AllowAnonymousAttribute>();
+				if(query == "/bff/Post")
+				{
+					skipChallenge = true;
+				}
+				// if the user is NOT authenticated and trying to access an endpoint that requires authentication, challenge them.
+                if (!context.User.Identity.IsAuthenticated && !skipChallenge)
                 {
                     await context.ChallengeAsync(new AuthenticationProperties { RedirectUri = _configuration.GetValue<string>("Authentication:LoggedInRedirect") });
                     return;
@@ -200,25 +212,6 @@ namespace NSW.Bff
                 await next();
             });
 
-            // app.UseForwardedHeaders(new ForwardedHeadersOptions
-            // {
-            //     ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost
-            // });
-            // if the request is for the "api" subfolder, attach an access token and proxy the request to the api
-            app.Map("/api", api =>
-            {
-                api.RunProxy(async context =>
-                {
-					var apiUrl = _configuration.GetValue<string>("Api:ForwardTo");
-
-					var forwardContext = context.ForwardTo(apiUrl);
-
-                    var token = await context.GetUserAccessTokenAsync();
-                    forwardContext.UpstreamRequest.SetBearerToken(token);
-
-                    return await forwardContext.Send();
-                });
-            });
 
             // any UI components should come from the files on the server
             app.UseDefaultFiles();
@@ -233,8 +226,22 @@ namespace NSW.Bff
 			app.UseAuthentication();
             app.UseAuthorization();
 
-            // create route endpoints from all the ApiController/Controller classes registered
-            app.UseEndpoints(endpoints =>
+			app.Map("/api", api =>
+			{
+				api.RunProxy(async context =>
+				{
+					var apiUrl = $"{_configuration.GetValue<string>("Api:ForwardTo")}/api" ;
+
+					var forwardContext = context.ForwardTo(apiUrl);
+
+					var token = await context.GetUserAccessTokenAsync();
+					forwardContext.UpstreamRequest.SetBearerToken(token);
+
+					return await forwardContext.Send();
+				});
+			});
+			// create route endpoints from all the ApiController/Controller classes registered
+			app.UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers()
                         .RequireAuthorization();

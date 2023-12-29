@@ -19,7 +19,7 @@ const useLabelTextList = (isDisabled, onSuccess, onError) => {
 const useLabelTextById = (labelTextId, isDisabled, onSuccess, onError) => {
   return useQuery(
     labelTextQueryKeys.getLabelTextById,
-    async (labelTextId) => await service.getLabelTextById(labelTextId),
+    async () => await service.getLabelTextById(labelTextId),
     {
       staleTime: Infinity,
       enabled: labelTextId !== "" || labelTextId !== 0,

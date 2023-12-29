@@ -16,6 +16,19 @@ const usePostList = (isDisabled, onSuccess, onError) => {
   );
 };
 
+const useUserPostList = (userId, isDisabled, onSuccess, onError) => {
+  return useQuery(
+    postQueryKeys.getUserPosts(userId),
+    async () => await service.getPostsByUserId(userId),
+    {
+      staleTime: Infinity,
+      isDisabled: isDisabled,
+      onSuccess: (data) => onSuccess && onSuccess(data),
+      onError: (error) => onError && onError(error),
+    }
+  );
+};
+
 const usePostInfo = (postId, isDisabled, onSuccess, onError) => {
   return useQuery(
     postQueryKeys.getById(postId),
@@ -30,4 +43,4 @@ const usePostInfo = (postId, isDisabled, onSuccess, onError) => {
   );
 };
 
-export { usePostInfo, usePostList };
+export { usePostInfo, usePostList, useUserPostList };

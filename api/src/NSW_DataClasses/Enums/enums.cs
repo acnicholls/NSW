@@ -22,6 +22,12 @@
 		PostalCode,
 		LanguagePreference
 	}
+
+	public enum ApiAccessType
+	{
+		Client,
+		User
+	}
 }
 
 

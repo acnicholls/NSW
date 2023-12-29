@@ -1,41 +1,32 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using System.Threading.Tasks;
+﻿using BFF.Internal;
 using IdentityModel.Client;
-using System.Net.Http;
-using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Linq;
+using System.Net.Http;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
 
 namespace NSW.Bff.Controllers
 {
 	[ApiController]
 	[Route("bff/[controller]")]
 	[Authorize]
-	public class UserController : ControllerBase
+	public class UserController : NswControllerBase
 	{
-
-		private readonly ILogger<UserController> _logger;
-
-		private readonly IDiscoveryCache _discoveryCache;
-
-		private readonly IHttpContextAccessor _httpContextAccessor;
 
 		public UserController(
 			IHttpContextAccessor httpContextAccessor,
 			IDiscoveryCache discoveryCache,
-			ILogger<UserController> logger
-		)
-		{
-			_logger = logger;
-			_discoveryCache = discoveryCache;
-			_httpContextAccessor = httpContextAccessor;
-		}
+			ILogger<UserController> logger,
+			IConfiguration configuration,
+	OidcOptions oidcOptions
+		) : base(httpContextAccessor, discoveryCache, logger, configuration, oidcOptions) { }
+		
 
 
 		[HttpGet("info")]
@@ -43,65 +34,9 @@ namespace NSW.Bff.Controllers
 		{
 			try
 			{
-				DiscoveryDocumentResponse disco = await _discoveryCache.GetAsync();
+				var disco = await base.GetIdpDiscoveryDocumentAsync();
+				var token = await base.GetUserTokenAsync();
 
-				_logger.LogDebug("DisocveryDocumentResponse.IsError {0}", disco.IsError);
-				_logger.LogDebug("DisocveryDocumentResponse.Error {0}", disco.Error);
-				_logger.LogDebug("DisocveryDocumentResponse.ErrorType {0}", disco.ErrorType);
-				_logger.LogDebug("DisocveryDocumentResponse.Exception {0}", disco.Exception);
-
-				_logger.LogDebug("DisocveryDocumentResponse.HttpErrorReason {0}", disco.HttpErrorReason);
-				_logger.LogDebug("DisocveryDocumentResponse.HttpStatusCode {0}", disco.HttpStatusCode);
-
-				if (disco == null)
-				{
-					_logger.LogInformation("disco is null");
-				}
-
-				if (disco.IsError)
-				{
-					_logger.LogError(disco.Exception, "UserController.GetUserAsync Discovery");
-					return this.StatusCode(500, "error in user controller");
-				}
-
-				_logger.LogDebug("DisocveryDocumentResponse {0}", disco.TokenEndpoint);
-				_logger.LogDebug("DisocveryDocumentResponse {0}", disco.UserInfoEndpoint);
-
-				var token = await _httpContextAccessor.HttpContext.GetUserAccessTokenAsync();
-
-				if (token == null)
-				{
-					//_logger.LogError(tokenResponse.Exception, "UserController.GetUserAsync Token");
-					return this.StatusCode(500, "error in user controller");
-				}
-
-				//var tokenEndpoint = disco.TokenEndpoint;
-
-				var client = new HttpClient();
-				//var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-				//{
-				//    Address = disco.TokenEndpoint,
-				//    ClientId = "NSW.Bff",
-				//    ClientSecret = "secret",
-				//    Scope = "profile"
-				//});
-				//_logger.LogDebug("TokenResponse.IsError {0}", tokenResponse.IsError);
-				//_logger.LogDebug("TokenResponse.Error {0}", tokenResponse.Error);
-				//_logger.LogDebug("TokenResponse.ErrorType {0}", tokenResponse.ErrorType);
-				//_logger.LogDebug("TokenResponse.Exception {0}", tokenResponse.Exception);
-
-				//_logger.LogDebug("TokenResponse.HttpErrorReason {0}", tokenResponse.HttpErrorReason);
-				//_logger.LogDebug("TokenResponse.HttpStatusCode {0}", tokenResponse.HttpStatusCode);
-
-				//if(tokenResponse.IsError)
-				//{
-				//    _logger.LogError(tokenResponse.Exception, "UserController.GetUserAsync Token");
-				//    return this.StatusCode(500, "error in user controller");
-				//}
-
-				//_logger.LogDebug("TokenResponse.IdentityToken {0}", tokenResponse.IdentityToken);
-				//_logger.LogDebug("TokenResponse.AccessToken {0}", tokenResponse.AccessToken);
-				//_logger.LogDebug("TokenResponse.AccessToken {0}", tokenResponse.RefreshToken);
 
 				var idpTask = GetUserInfoFromIDPAsync(token, disco.UserInfoEndpoint);
 
@@ -118,7 +53,7 @@ namespace NSW.Bff.Controllers
 				var user = new
 				{
 					cookiename = User.Identity.Name,
-					Id = idpResponse.Claims.FirstOrDefault(x => x.Type == "sub")?.Value,
+					Id = Convert.ToInt32(idpResponse.Claims.FirstOrDefault(x => x.Type == "sub")?.Value),
 					Name = idpResponse.Claims.FirstOrDefault(x => x.Type == "name")?.Value ?? "",
 					Email = idpResponse.Claims.FirstOrDefault(x => x.Type == "email")?.Value ?? "",
 					FirstName = idpResponse.Claims.FirstOrDefault(x => x.Type == "given_name")?.Value ?? "",
@@ -137,6 +72,7 @@ namespace NSW.Bff.Controllers
 				return this.StatusCode(500, "error in user controller");
 			}
 		}
+
 
 		private async Task<UserInfoResponse> GetUserInfoFromIDPAsync(string token, string userInfoEndpoint)
 		{
@@ -183,6 +119,8 @@ namespace NSW.Bff.Controllers
 			}
 			return AnonymousUser;
 		}
+
+
 
 		private NSW.Data.User AnonymousUser
 		{
