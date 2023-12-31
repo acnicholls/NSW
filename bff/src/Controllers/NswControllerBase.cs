@@ -108,6 +108,7 @@ namespace NSW.Bff.Controllers
 			var returnValue = default(T);
 			try
 			{
+				// TODO: use HttpClientFactory here, it's safer
 				var client = new HttpClient();
 				var token = accessType == ApiAccessType.User ? await this.GetUserTokenAsync() : await this.GetClientTokenAsync();
 				string authHeaderValue = $"Bearer {token}";
@@ -129,6 +130,7 @@ namespace NSW.Bff.Controllers
 			catch (Exception ex)
 			{
 				_logger.LogError(ex, "NswControllerBase.GetDataFromApiAsync");
+				throw;
 			}
 			return returnValue;
 		}
