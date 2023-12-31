@@ -32,7 +32,10 @@ namespace NSW.Idp.Configuration
                     "http://localhost:5002",
                     "http://localhost:5004",
                     "http://localhost:5006",
-                };
+					"https://localhost:5003",
+					"https://localhost:5005",
+					"https://localhost:5007",
+				};
 
             if (allowedOrigins.Contains(origin))
             {
