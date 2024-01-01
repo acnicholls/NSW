@@ -23,6 +23,12 @@
 		LanguagePreference
 	}
 
+	public enum DataTransferVaraintEnum
+	{
+		Tools,
+		NoTools
+	}
+
 	public enum ApiAccessType
 	{
 		Client,

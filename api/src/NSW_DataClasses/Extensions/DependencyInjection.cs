@@ -2,11 +2,13 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NSW.Data.Interfaces;
-using NSW.Data.Internal;
+using NSW.Data.Internal.Services;
 using NSW.Data.Internal.Interfaces;
 using NSW.Data.Internal.Models;
 using IdentityServer4;
 using System.Runtime.CompilerServices;
+using NSW.Data.Validation.Interfaces;
+using NSW.Data.Validation;
 
 namespace NSW.Data.Extensions
 {
@@ -31,7 +33,13 @@ namespace NSW.Data.Extensions
 			return oidcOptions;
 		}
 
-		public static OidcOptions RegisterServices(IServiceCollection services, IConfiguration configuration)
+		public static void RegisterPostalTask(IServiceCollection services)
+		{
+			// custom task that uses the IDTS
+			services.AddTransient<IPostalCodeTask, PostalCodeTask>();
+		}
+
+		public static OidcOptions RegisterServices(IServiceCollection services, IConfiguration configuration, DataTransferVaraintEnum variant)
 		{
 			// validate parameters
 			if(configuration is null)
@@ -51,13 +59,44 @@ namespace NSW.Data.Extensions
 					ValidateIssuerName = false
 				});
 			services.AddSingleton<IDiscoveryCache>(cache);
-			services.AddTransient<IdentityServer4.IdentityServerTools>();
+
 			// InternalDataTransferService -- for getting info from API to BFF/IDP
-			services.AddTransient<IInternalDataTransferService, InternalDataTransferService>();
+			switch(variant)
+			{
+				case DataTransferVaraintEnum.Tools:
+					{
+						RegisterDataTransferServiceWithTools(services);
+						break;
+					}
+				case DataTransferVaraintEnum.NoTools:
+					{
+						RegisterDataTransferServiceWithNoTools(services);
+						break;
+					}
+				default:
+					{
+						RegisterDataTransferServiceWithNoTools(services);
+						break;
+					}
+			}
+
 
 			RegisterTestUser(services);
 
+
+
 			return oidcOptions;
+		}
+
+		private static void RegisterDataTransferServiceWithTools(IServiceCollection services)
+		{
+			services.AddTransient<IdentityServer4.IdentityServerTools>();
+			services.AddTransient<IInternalDataTransferService, InternalDataTransferService>();
+		}
+
+		private static void RegisterDataTransferServiceWithNoTools(IServiceCollection services)
+		{
+			services.AddTransient<IInternalDataTransferService, InternalDataTransferServiceNoTools>();
 		}
 	}
 }

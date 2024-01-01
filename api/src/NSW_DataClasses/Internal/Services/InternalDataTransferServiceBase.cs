@@ -1,5 +1,4 @@
-﻿using IdentityModel.AspNetCore.AccessTokenManagement;
-using IdentityModel.Client;
+﻿using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -7,25 +6,21 @@ using Microsoft.Extensions.Logging;
 using NSW.Data.Internal.Interfaces;
 using NSW.Data.Internal.Models;
 using System.Text.Json;
-using IdentityServer4;
-using System.Security.Claims;
 
 
-namespace NSW.Data.Internal
+namespace NSW.Data.Internal.Services
 {
-	public class InternalDataTransferService : IInternalDataTransferService
+	public class InternalDataTransferServiceBase : IInternalDataTransferService
 	{
-		private readonly IdentityServerTools _tools;
-		private readonly ILogger<InternalDataTransferService> _logger;
+		protected readonly ILogger<InternalDataTransferService> _logger;
 
-		private readonly IDiscoveryCache _discoveryCache;
+		protected readonly IDiscoveryCache _discoveryCache;
 
-		private readonly IHttpContextAccessor _httpContextAccessor;
-		private readonly IConfiguration _configuration;
-		private readonly OidcOptions _oidcOptions;
+		protected readonly IHttpContextAccessor _httpContextAccessor;
+		protected readonly IConfiguration _configuration;
+		protected readonly OidcOptions _oidcOptions;
 
-		public InternalDataTransferService(
-			IdentityServerTools tools,
+		public InternalDataTransferServiceBase(
 			IHttpContextAccessor httpContextAccessor,
 			IDiscoveryCache discoveryCache,
 			ILogger<InternalDataTransferService> logger,
@@ -38,11 +33,10 @@ namespace NSW.Data.Internal
 			_httpContextAccessor = httpContextAccessor;
 			_configuration = configuration;
 			_oidcOptions = oidcOptions;
-			_tools = tools;
 		}
-		private DiscoveryDocumentResponse _discoveryDocument;
+		protected DiscoveryDocumentResponse _discoveryDocument;
 
-		public async Task<DiscoveryDocumentResponse> GetIdpDiscoveryDocumentAsync()
+		public virtual async Task<DiscoveryDocumentResponse> GetIdpDiscoveryDocumentAsync()
 		{
 			if (_discoveryDocument != null)
 			{
@@ -75,7 +69,7 @@ namespace NSW.Data.Internal
 			return _discoveryDocument;
 		}
 
-		public async Task<string> GetUserTokenAsync()
+		public virtual async Task<string> GetUserTokenAsync()
 		{
 			var returnValue = string.Empty;
 			try
@@ -90,12 +84,12 @@ namespace NSW.Data.Internal
 			return returnValue;
 		}
 
-		public async Task<string> GetClientTokenAsync(string clientId = "default")
+		public virtual async Task<string> GetClientTokenAsync(string clientId = "default")
 		{
 			var returnValue = string.Empty;
 			try
 			{
-				returnValue = await _httpContextAccessor.HttpContext.GetClientAccessTokenAsync(clientId);
+				returnValue = await _httpContextAccessor.HttpContext.GetClientAccessTokenAsync();
 			}
 			catch (Exception ex)
 			{
@@ -105,33 +99,27 @@ namespace NSW.Data.Internal
 			return returnValue;
 		}
 
-		private async Task<string> GetTokenStringAsync(ApiAccessType accessType)
+		protected virtual async Task<string> GetTokenStringAsync(ApiAccessType accessType)
 		{
 			var tokenString = string.Empty;
 			try
 			{
 				switch(accessType)
 				{
-					case ApiAccessType.Client:
+					case ApiAccessType.User:
 						{
 							tokenString = await this.GetUserTokenAsync();
 							break;
 						}
-					case ApiAccessType.User:
+					case ApiAccessType.Client:
 						{
 							tokenString = await this.GetClientTokenAsync(_oidcOptions.ClientId);
 							break;
 						}
 					case ApiAccessType.Idp:
-						{
-							// tokenString = await _tools.IssueClientJwtAsync("NSW.Bff", 600, new[] { "NSW.ApiScope", "openid", "profile" }, new[] { "NSW.Api" });
-							tokenString = await _tools.IssueJwtAsync(600, _oidcOptions.Authority, new List<Claim>
-							{
-								new Claim("sub", "-1"),
-								new Claim("role", "MEMBER"),
-							});
-							break;
-						}
+					{
+						throw new NotImplementedException("Not valid for this implementation.");
+					}
 					default:
 						{
 							break;
@@ -146,7 +134,7 @@ namespace NSW.Data.Internal
 			return tokenString;
 		}
 
-		public async Task<T> GetDataFromApiAsync<T>(string apiEndpointPartialUrl, ApiAccessType accessType)
+		public virtual async Task<T> GetDataFromApiAsync<T>(string apiEndpointPartialUrl, ApiAccessType accessType)
 		{
 			var returnValue = default(T);
 			try
