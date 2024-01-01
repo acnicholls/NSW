@@ -4,7 +4,13 @@ namespace NSW.Idp.Models.Account
 {
     public class NewUserModel
     {
-        [Required]
+		[MaxLength(255)]
+		public string FirstName { get; set; }
+		
+		[MaxLength(255)]
+		public string LastName { get; set; }
+        
+		[Required]
         [MaxLength(100, ErrorMessage = "Your username cannot be longer than 100 characters, sorry.")]
         public string UserName { get; set; }
 
@@ -23,8 +29,14 @@ namespace NSW.Idp.Models.Account
 
 		public string ReturnUrl { get; set; }
 
-		public string Role { get; } = "MEMBER";
-
+		[Required]
+		[MaxLength(8, ErrorMessage ="The Postal Code cannot exceed 8 characters.")]
 		public string PostalCode { get; set; }
+
+		[Required]
+		public LanguagePreference LanguagePreference { get; set; }
+
+		[MaxLength(15, ErrorMessage ="The Phone Number cannot exceed 15 characters.")]
+		public string PhoneNumber { get; set; }
     }
 }

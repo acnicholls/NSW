@@ -63,6 +63,7 @@ services:
             - nsw
         depends_on:
             - db
+            - api
     api:
         image: mcr.microsoft.com/dotnet/sdk:7.0
         working_dir: /app

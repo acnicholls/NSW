@@ -1,4 +1,4 @@
-﻿namespace BFF.Internal
+﻿namespace NSW.Data.Internal.Models
 {
 	public class OidcOptions
 	{

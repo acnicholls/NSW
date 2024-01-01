@@ -1,4 +1,3 @@
-using BFF.Internal;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
@@ -9,16 +8,16 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
-using ProxyKit;
 using NSW.Bff.Internal;
+using NSW.Data.Internal;
+using NSW.Data.Internal.Interfaces;
+using NSW.Data.Internal.Models;
+using ProxyKit;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http;
-using System.Linq;
-using Microsoft.AspNetCore.Authorization;
 
 namespace NSW.Bff
 {
-    public class Startup
+	public class Startup
     {
         private readonly ILogger<Startup> _logger;
 		private readonly IConfiguration _configuration;
@@ -41,9 +40,7 @@ namespace NSW.Bff
         public void ConfigureServices(IServiceCollection services)
         {
 			// capture the settings.
-			OidcOptions oidcOptions = new OidcOptions();
-			_configuration.Bind("Authentication", oidcOptions);
-			services.AddSingleton<OidcOptions>(oidcOptions);
+			var oidcOptions = NSW.Data.Extensions.DependencyInjection.RegisterServices(services, _configuration);
 
 			services.AddCors(options =>
 			{
@@ -149,14 +146,15 @@ namespace NSW.Bff
             //        });
             //});
 
-            var cache = new DiscoveryCache(
-				oidcOptions.Authority,
-                new DiscoveryPolicy
-                {
-                    RequireHttps = false,
-                    ValidateIssuerName = false
-                });
-            services.AddSingleton<IDiscoveryCache>(cache);
+    //        var cache = new DiscoveryCache(
+				//oidcOptions.Authority,
+    //            new DiscoveryPolicy
+    //            {
+    //                RequireHttps = false,
+    //                ValidateIssuerName = false
+    //            });
+    //        services.AddSingleton<IDiscoveryCache>(cache);
+
 
             services.Configure<ForwardedHeadersOptions>(options =>
             {
@@ -230,7 +228,7 @@ namespace NSW.Bff
 			{
 				api.RunProxy(async context =>
 				{
-					var apiUrl = $"{_configuration.GetValue<string>("Api:ForwardTo")}/api" ;
+					var apiUrl = $"{_configuration.GetValue<string>("Api:BaseUrl")}/api" ;
 
 					var forwardContext = context.ForwardTo(apiUrl);
 

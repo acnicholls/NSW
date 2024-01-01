@@ -1,7 +1,5 @@
-
 using Microsoft.IdentityModel.Tokens;
 using NSW.Api;
-using NSW.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,14 +11,25 @@ builder.Configuration.AddEnvironmentVariables("NSW_");
 // configure local reverse proxy application 
 builder.ConfigureNswKestrel();
 
+// Add services to the container.
+builder.Services.AddHttpContextAccessor();
+NSW.Info.Extensions.DependencyInjection.RegisterServices(builder.Services);
+NSW.Data.Extensions.DependencyInjection.RegisterTestUser(builder.Services);
+var oidcOptions = NSW.Data.Extensions.DependencyInjection.RegisterOidcOptions(builder.Services, builder.Configuration);
+NSW.Repositories.Extensions.DependencyInjection.RegisterServices(builder.Services);
+NSW.Services.Extensions.DependencyInjection.RegisterServices(builder.Services);
+
+
+
+
 // add authentication
 builder.Services.AddAuthentication("Bearer")
 	.AddJwtBearer("Bearer", options =>
 	{
 		// TODO: make these configuration options, so they can change per env
-		options.Authority = "https://localhost";
-		options.MetadataAddress = "http://localhost:5006/.well-known/openid-configuration";
-		options.RequireHttpsMetadata = false;
+		options.Authority = oidcOptions.Authority;
+		options.MetadataAddress = oidcOptions.MetadataAddress;
+		options.RequireHttpsMetadata = oidcOptions.RequireHttpsMetadata;
 
 		options.TokenValidationParameters = new TokenValidationParameters
 		{
@@ -48,14 +57,6 @@ builder.Services.AddCors(options =>
 		.AllowAnyHeader()
 		.AllowCredentials());
 });
-
-
-// Add services to the container.
-builder.Services.AddHttpContextAccessor();
-NSW.Info.Extensions.DependencyInjection.RegisterServices(builder.Services);
-NSW.Data.Extensions.DependencyInjecction.RegisterServices(builder.Services);
-NSW.Repositories.Extensions.DependencyInjection.RegisterServices(builder.Services);
-NSW.Services.Extensions.DependencyInjection.RegisterServices(builder.Services);
 
 builder.Services.AddControllers();
 

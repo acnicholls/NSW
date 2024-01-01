@@ -1,10 +1,13 @@
-﻿using BFF.Internal;
-using IdentityModel.Client;
+﻿using IdentityModel.Client;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using NSW.Data.DTO.Response;
+using NSW.Data.Internal;
+using NSW.Data.Internal.Interfaces;
+using NSW.Data.Internal.Models;
 using System;
 using System.Linq;
 using System.Net.Http;
@@ -16,17 +19,21 @@ namespace NSW.Bff.Controllers
 	[ApiController]
 	[Route("bff/[controller]")]
 	[Authorize]
-	public class UserController : NswControllerBase
+	public class UserController : ControllerBase
 	{
 
+		private readonly IInternalDataTransferService _service;
+		private readonly ILogger<UserController> _logger;
+
 		public UserController(
-			IHttpContextAccessor httpContextAccessor,
-			IDiscoveryCache discoveryCache,
-			ILogger<UserController> logger,
-			IConfiguration configuration,
-	OidcOptions oidcOptions
-		) : base(httpContextAccessor, discoveryCache, logger, configuration, oidcOptions) { }
-		
+			IInternalDataTransferService service,
+			ILogger<UserController> logger
+			)
+		{
+			_service = service;
+			_logger = logger;
+		}
+
 
 
 		[HttpGet("info")]
@@ -34,14 +41,9 @@ namespace NSW.Bff.Controllers
 		{
 			try
 			{
-				var disco = await base.GetIdpDiscoveryDocumentAsync();
-				var token = await base.GetUserTokenAsync();
-
-
-				var idpTask = GetUserInfoFromIDPAsync(token, disco.UserInfoEndpoint);
-
+				var idpTask = GetUserInfoFromIDPAsync();
 				var userId = int.Parse(User.Claims.FirstOrDefault(x => x.Type == "sub").Value);
-				var apiTask = GetUserInfoFromApi(userId, token);
+				var apiTask = _service.GetDataFromApiAsync<NSW.Data.User>($"/api/User/{userId}", ApiAccessType.User);
 
 				Task.WaitAll(idpTask, apiTask);
 
@@ -50,17 +52,21 @@ namespace NSW.Bff.Controllers
 				var idpResponse = idpTask.Result;
 				var apiResponse = apiTask.Result;
 
-				var user = new
+				var postalCodeResponse = apiResponse.PostalCode;
+
+				var user = new UserResponse
 				{
-					cookiename = User.Identity.Name,
 					Id = Convert.ToInt32(idpResponse.Claims.FirstOrDefault(x => x.Type == "sub")?.Value),
-					Name = idpResponse.Claims.FirstOrDefault(x => x.Type == "name")?.Value ?? "",
+					IdpId = Convert.ToInt32(idpResponse.Claims.FirstOrDefault(x => x.Type == "sub")?.Value),
 					Email = idpResponse.Claims.FirstOrDefault(x => x.Type == "email")?.Value ?? "",
-					FirstName = idpResponse.Claims.FirstOrDefault(x => x.Type == "given_name")?.Value ?? "",
-					LastName = idpResponse.Claims.FirstOrDefault(x => x.Type == "family_name")?.Value ?? "",
-					Username = idpResponse.Claims.FirstOrDefault(x => x.Type == "preferred_username")?.Value ?? "",
-					Role = apiResponse.Role ?? "Empty",
-					LanguagePreference = apiResponse.LanguagePreference,
+					Phone = idpResponse.Claims.FirstOrDefault(x => x.Type == "phone")?.Value ?? "",
+					PostalCode = new PostalCodeResponse
+					{
+						Code = idpResponse.Claims.FirstOrDefault(x => x.Type == "postal-code")?.Value ?? "",
+					},
+					UserName = idpResponse.Claims.FirstOrDefault(x => x.Type == "preferred_username")?.Value ?? "",
+					Role = idpResponse.Claims.FirstOrDefault(x => x.Type == "role")?.Value ?? "",
+					LanguagePreference = (int)apiResponse.DisplayLanguage,
 					IsAuthenticated = true,
 				};
 
@@ -74,13 +80,15 @@ namespace NSW.Bff.Controllers
 		}
 
 
-		private async Task<UserInfoResponse> GetUserInfoFromIDPAsync(string token, string userInfoEndpoint)
+		private async Task<UserInfoResponse> GetUserInfoFromIDPAsync()
 		{
+			var disco = await _service.GetIdpDiscoveryDocumentAsync();
+			var token = await _service.GetUserTokenAsync();
 			var client = new HttpClient();
 			var idpResponse = await client.GetUserInfoAsync(
 				new UserInfoRequest
 				{
-					Address = userInfoEndpoint,
+					Address = disco.UserInfoEndpoint,
 					Token = token  // tokenResponse.AccessToken
 				});
 			if (idpResponse.IsError)
@@ -102,40 +110,6 @@ namespace NSW.Bff.Controllers
 			return idpResponse;
 		}
 
-		private async Task<NSW.Data.User> GetUserInfoFromApi(int userId, string token)
-		{
-			var client = new HttpClient();
-			string authHeaderValue = $"Bearer {token}";
-			client.DefaultRequestHeaders.Add("Authorization", authHeaderValue);
-			client.BaseAddress = new Uri("https://localhost:5003");
-			var response = await client.GetAsync($"/api/User/{userId}");
-			_logger.LogDebug("GetUserInfoFromApi.response {0}", response);
-			if (response.IsSuccessStatusCode)
-			{
-				var userData = await response.Content.ReadAsStringAsync();
-				_logger.LogDebug("GetUserInfoFromApi.userData {0}", userData);
-				var userInfo = JsonSerializer.Deserialize<NSW.Data.User>(userData);
-				return userInfo;
-			}
-			return AnonymousUser;
-		}
-
-
-
-		private NSW.Data.User AnonymousUser
-		{
-			get
-			{
-				return new NSW.Data.User
-				{
-					ID = -1,
-					Name = "Anonymous User",
-					Email = "Anonymous@anonym.ous",
-					Role = "Empty",
-					LanguagePreference = -1,
-				};
-			}
-		}
 
 		[Route("logout")]
 		public IActionResult Logout()

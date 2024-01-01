@@ -20,7 +20,27 @@ namespace NSW.Repositories
 
 		public IList<PostalCode> GetAll()
 		{
-			throw new NotImplementedException();
+			List<PostalCode> postalCodes = new List<PostalCode>();
+			try
+			{
+				DataSet ds = base.GetDataFromSqlString("Select * from tblPostalCodes");
+				if (ds.Tables[0].Rows.Count > 1)
+				{
+					foreach (DataRow dr in ds.Tables[0].Rows)
+					{
+						var newCode = new PostalCode();
+						newCode.Code = dr["fldPostal_Code"].ToString();
+						newCode.Longitude = Convert.ToDecimal(dr["fldPostal_Longitude"]);
+						newCode.Latitude = Convert.ToDecimal(dr["fldPostal_Latitude"]);
+						postalCodes.Add(newCode);
+					}
+				}
+			}
+			catch (Exception x)
+			{
+				_log.WriteToLog(_projectInfo.ProjectLogType, "PostalCode.ByCode", x, LogEnum.Critical);
+			}
+			return postalCodes;		
 		}
 
 		public PostalCode? GetById(int id)

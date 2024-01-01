@@ -5,18 +5,24 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NSW.Data;
+using NSW.Data.Validation.Interfaces;
+using NSW.Data.Internal.Interfaces;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+
 
 namespace NSW.Idp
 {
     public class Program
     {
-        public static int Main(string[] args)
+        public async static Task<int> Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
                .MinimumLevel.Debug()
@@ -50,9 +56,11 @@ namespace NSW.Idp
                 }
 
                 var host = CreateHostBuilder(args).Build();
-                // host.Services.AddTransient<ILogger, Log>();
 
-                if (seed)
+				var postalCodeTask = host.Services.GetRequiredService<IPostalCodeTask>();
+				postalCodeTask.StartBackgroundPostalCodeWorker(ApiAccessType.Idp);
+
+				if (seed)
                 {
                     Log.Information("Seeding database...");
                     var config = host.Services.GetRequiredService<IConfiguration>();
@@ -63,7 +71,7 @@ namespace NSW.Idp
                 }
 
                 Log.Information("Starting host...");
-                host.Run();
+                await host.RunAsync();
                 return 0;
             }
             catch (Exception ex)
@@ -77,7 +85,9 @@ namespace NSW.Idp
             }
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+
+
+		public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseSerilog()
                 .ConfigureHostConfiguration(configHost =>

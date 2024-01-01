@@ -1,46 +1,54 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NSW.Data.Validation.Interfaces;
 using Serilog;
 using Serilog.Events;
 using System;
 
 namespace NSW.Bff
 {
-    public class Program
-    {
-        public static int Main(string[] args)
-        {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                .Enrich.FromLogContext()
-                .WriteTo.Console()
-                .WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
-                .CreateLogger();
+	public class Program
+	{
+		public static int Main(string[] args)
+		{
+			Log.Logger = new LoggerConfiguration()
+				.MinimumLevel.Debug()
+				.MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+				.Enrich.FromLogContext()
+				.WriteTo.Console()
+				.WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
+				.CreateLogger();
 
-            try{
-                Log.Information("Starting NSW.Bff");
-                CreateHostBuilder(args).Build().Run();
-                return 0;
-            }
-            catch(Exception x)
-            {
-                Log.Fatal(x, "Host terminated Unexpectedly...:(");
-                return 1;
-            }
-            finally
-            {
-                Log.CloseAndFlush();
-            }
-        }
+			try
+			{
+				Log.Information("Starting NSW.Bff");
+				var host = CreateHostBuilder(args).Build();
+				var postalCodeTask = host.Services.GetRequiredService<IPostalCodeTask>();
+				postalCodeTask.StartBackgroundPostalCodeWorker(ApiAccessType.Client);
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .UseSerilog()
-                .ConfigureWebHostDefaults(WebHostBuilder => {
-                    WebHostBuilder.UseStartup<Startup>();
-                    //next portion put into release build for docker.  
-                    // but could likely be removed and env used for config.
+				host.Run();
+				return 0;
+			}
+			catch (Exception x)
+			{
+				Log.Fatal(x, "Host terminated Unexpectedly...:(");
+				return 1;
+			}
+			finally
+			{
+				Log.CloseAndFlush();
+			}
+		}
+
+		public static IHostBuilder CreateHostBuilder(string[] args) =>
+			Host.CreateDefaultBuilder(args)
+				.UseSerilog()
+				.ConfigureWebHostDefaults(WebHostBuilder =>
+				{
+					WebHostBuilder.UseStartup<Startup>();
+					// next portion put into release build for docker.  
+					// but could likely be removed and env used for config.
 #if !DEBUG
                     WebHostBuilder.UseKestrel(opts =>
                     {
@@ -53,7 +61,7 @@ namespace NSW.Bff
                         ));
                     });
 #endif
-                });
-                
-    }
+				});
+
+	}
 }

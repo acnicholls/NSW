@@ -26,7 +26,8 @@
 	public enum ApiAccessType
 	{
 		Client,
-		User
+		User,
+		Idp
 	}
 }
 
