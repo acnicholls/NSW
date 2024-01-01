@@ -1,7 +1,17 @@
 using Microsoft.IdentityModel.Tokens;
 using NSW.Api;
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+	.Enrich.FromLogContext()
+	.WriteTo.Console()
+	.WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
+	.CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
+
+// configure the logging
+builder.Host.UseSerilog();
 
 // load the configuration
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
@@ -91,4 +101,16 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+try
+{
+	app.Run();
+	Log.Information("Host terminated gracefully.");
+}
+catch (Exception ex)
+{
+	Log.Fatal(ex, "host terminated unexpectedly...");
+}
+finally
+{
+	Log.CloseAndFlush();
+}

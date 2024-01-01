@@ -1,34 +1,30 @@
-﻿using NLog;
-using System;
-using System.Data;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
-using System.IO;
-using ILogger = NLog.ILogger;
-using NSW.Info.Interfaces;
+using Microsoft.Extensions.Logging;
 using NSW.Info;
+using NSW.Info.Interfaces;
+using System.Data;
 using System.Net.Mail;
-using Microsoft.AspNetCore.Http;
-using System.Runtime.CompilerServices;
 
 namespace NSW
-{	
-    //////	Debug = 0,
-    //////	Message = 1,
-    //////	Important = 2,
-    //////	Access = 3,
-    //////	Warning = 4,
-    //////	Error = 5,
-    //////	Critical = 6
+{
+	//////	Debug = 0,
+	//////	Message = 1,
+	//////	Important = 2,
+	//////	Access = 3,
+	//////	Warning = 4,
+	//////	Error = 5,
+	//////	Critical = 6
 
-    /// <summary>
-    /// contains methods for writing to log
-    ///</summary>
-    public class Log : ILog
+	/// <summary>
+	/// contains methods for writing to log
+	///</summary>
+	public class Log : ILog
     {
         private static SqlConnection conACN;
         private static SqlCommand comACN;
 
-        private static ILogger logLogger;
+        private static ILogger<Log> _logger;
 		private readonly IProjectInfo _projectInfo;
 		private readonly IConnectionInfo _connectionInfo;
 		private readonly IAppSettings _appSettings;
@@ -40,12 +36,14 @@ namespace NSW
 
 
         public Log(
+			ILogger<Log> logger,
 			IProjectInfo projectInfo,
 			IConnectionInfo connection,
 			IAppSettings appSettings,
 			IHttpContextAccessor contextAccessor
 			)
         { 
+			_logger = logger;
 			_projectInfo = projectInfo;
 			_connectionInfo = connection;
 			_appSettings = appSettings;
@@ -214,7 +212,6 @@ namespace NSW
         {
             try
             {
-                logLogger = NLog.LogManager.GetLogger("NSW");
 
                 string logMessage = caller + System.Environment.NewLine + message;
 
@@ -222,37 +219,37 @@ namespace NSW
                 {
                     case LogEnum.Critical:
                         {
-                            logLogger.Error(logMessage);
+                            _logger.LogError(logMessage);
                             break;
                         }
                     case LogEnum.Error:
                         {
-                            logLogger.Error(logMessage);
+                            _logger.LogError(logMessage);
                             break;
                         }
                     case LogEnum.Message:
                         {
-                            logLogger.Info(logMessage);
+                            _logger.LogInformation(logMessage);
                             break;
                         }
                     case LogEnum.Warning:
                         {
-                            logLogger.Warn(logMessage);
+                            _logger.LogWarning(logMessage);
                             break;
                         }
                     case LogEnum.Important:
                         {
-                            logLogger.Info(logMessage);
+                            _logger.LogInformation(logMessage);
                             break;
                         }
                     case LogEnum.Debug:
                         {
-                            logLogger.Debug(logMessage);
+                            _logger.LogDebug(logMessage);
                             break;
                         }
                     case LogEnum.Access:
                         {
-                            logLogger.Info(logMessage);
+                            _logger.LogInformation(logMessage);
                             break;
                         }
                 }
@@ -280,7 +277,6 @@ namespace NSW
         {
             try
             {
-                logLogger = NLog.LogManager.GetLogger("NSW");
 
                 string logMessage = caller + System.Environment.NewLine + ex.Message;
 
@@ -288,37 +284,37 @@ namespace NSW
                 {
                     case LogEnum.Critical:
                         {
-                            logLogger.Error(ex, logMessage);
+                            _logger.LogError(ex, logMessage);
                             break;
                         }
                     case LogEnum.Error:
                         {
-                            logLogger.Error(ex, logMessage);
+                            _logger.LogError(ex, logMessage);
                             break;
                         }
                     case LogEnum.Message:
                         {
-                            logLogger.Info(ex, logMessage);
+                            _logger.LogInformation(ex, logMessage);
                             break;
                         }
                     case LogEnum.Warning:
                         {
-                            logLogger.Warn(ex, logMessage);
+                            _logger.LogWarning(ex, logMessage);
                             break;
                         }
                     case LogEnum.Important:
                         {
-                            logLogger.Info(ex, logMessage);
+                            _logger.LogInformation(ex, logMessage);
                             break;
                         }
                     case LogEnum.Debug:
                         {
-                            logLogger.Debug(ex, logMessage);
+                            _logger.LogDebug(ex, logMessage);
                             break;
                         }
                     case LogEnum.Access:
                         {
-                            logLogger.Info(ex, logMessage);
+                            _logger.LogInformation(ex, logMessage);
                             break;
                         }
                 }
