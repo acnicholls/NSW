@@ -24,8 +24,7 @@ namespace NSW.Bff
 			{
 				Log.Information("Starting NSW.Bff");
 				var host = CreateHostBuilder(args).Build();
-				var postalCodeTask = host.Services.GetRequiredService<IPostalCodeTask>();
-				postalCodeTask.StartBackgroundPostalCodeWorker(ApiAccessType.Client);
+
 
 				host.Run();
 				return 0;

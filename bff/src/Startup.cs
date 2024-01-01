@@ -9,11 +9,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using NSW.Bff.Internal;
-using NSW.Data.Internal;
-using NSW.Data.Internal.Interfaces;
-using NSW.Data.Internal.Models;
+using NSW.Data.Validation.Interfaces;
 using ProxyKit;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 
 namespace NSW.Bff
 {
@@ -40,7 +39,8 @@ namespace NSW.Bff
         public void ConfigureServices(IServiceCollection services)
         {
 			// capture the settings.
-			var oidcOptions = NSW.Data.Extensions.DependencyInjection.RegisterServices(services, _configuration);
+			var oidcOptions = NSW.Data.Extensions.DependencyInjection.RegisterServices(services, _configuration, DataTransferVaraintEnum.NoTools);
+			NSW.Data.Extensions.DependencyInjection.RegisterPostalTask(services);
 
 			services.AddCors(options =>
 			{
@@ -167,6 +167,19 @@ namespace NSW.Bff
         public void Configure(IApplicationBuilder app)
         {
             app.UseDeveloperExceptionPage();
+			app.Use(async (context, next) =>
+			{
+				if (context is not null)
+				{
+					if (!NSW.Data.Validation.ValidPostalCodes.NaganoPostalCodes.Any())
+					{
+						var postalCodeTask = app.ApplicationServices.GetRequiredService<IPostalCodeTask>();
+						postalCodeTask.StartBackgroundPostalCodeWorker(context, ApiAccessType.Client);
+					}
+				}
+				await next();
+			});
+
 
             app.UseMiddleware<StrictSameSiteExternalAuthenticationMiddleware>();
             app.UseAuthentication();

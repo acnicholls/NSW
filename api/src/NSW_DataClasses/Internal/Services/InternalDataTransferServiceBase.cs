@@ -36,6 +36,16 @@ namespace NSW.Data.Internal.Services
 		}
 		protected DiscoveryDocumentResponse _discoveryDocument;
 
+		private HttpContext GetContextFromAccessor()
+		{
+			var context = _httpContextAccessor.HttpContext;
+			if (context is null)
+			{
+				throw new ArgumentNullException(nameof(_httpContextAccessor.HttpContext));
+			}
+			return context;
+		}
+
 		public virtual async Task<DiscoveryDocumentResponse> GetIdpDiscoveryDocumentAsync()
 		{
 			if (_discoveryDocument != null)
@@ -71,10 +81,17 @@ namespace NSW.Data.Internal.Services
 
 		public virtual async Task<string> GetUserTokenAsync()
 		{
+			// grab the DI'd context
+			var context = GetContextFromAccessor();
+			// pass it to the local method.
+			return await this.GetUserTokenAsync(context);
+		}
+		public virtual async Task<string> GetUserTokenAsync(HttpContext context)
+		{
 			var returnValue = string.Empty;
 			try
 			{
-				returnValue = await _httpContextAccessor.HttpContext.GetUserAccessTokenAsync();
+				returnValue = await context.GetUserAccessTokenAsync();
 			}
 			catch (Exception ex)
 			{
@@ -83,13 +100,20 @@ namespace NSW.Data.Internal.Services
 
 			return returnValue;
 		}
-
 		public virtual async Task<string> GetClientTokenAsync(string clientId = "default")
+		{
+			// grab the DI'd context
+			var context = GetContextFromAccessor();
+			// pass it to the local method.
+			return await this.GetClientTokenAsync(context);
+		}
+
+		public virtual async Task<string> GetClientTokenAsync(HttpContext context, string clientId = "default")
 		{
 			var returnValue = string.Empty;
 			try
 			{
-				returnValue = await _httpContextAccessor.HttpContext.GetClientAccessTokenAsync();
+				returnValue = await context.GetClientAccessTokenAsync();
 			}
 			catch (Exception ex)
 			{
@@ -101,47 +125,57 @@ namespace NSW.Data.Internal.Services
 
 		protected virtual async Task<string> GetTokenStringAsync(ApiAccessType accessType)
 		{
+			var context = GetContextFromAccessor();
+			return await GetTokenStringAsync(context, accessType);
+		}
+		protected virtual async Task<string> GetTokenStringAsync(HttpContext context, ApiAccessType accessType)
+		{
 			var tokenString = string.Empty;
 			try
 			{
-				switch(accessType)
+				switch (accessType)
 				{
 					case ApiAccessType.User:
 						{
-							tokenString = await this.GetUserTokenAsync();
+							tokenString = await this.GetUserTokenAsync(context);
 							break;
 						}
 					case ApiAccessType.Client:
 						{
-							tokenString = await this.GetClientTokenAsync(_oidcOptions.ClientId);
+							tokenString = await this.GetClientTokenAsync(context, _oidcOptions.ClientId);
 							break;
 						}
 					case ApiAccessType.Idp:
-					{
-						throw new NotImplementedException("Not valid for this implementation.");
-					}
+						{
+							throw new NotImplementedException("Not valid for this implementation.");
+						}
 					default:
 						{
 							break;
 						}
 				}
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-
+				_logger.LogError(ex, "InternalDataTransferService.GetTokenStringAsync");
 				throw;
 			}
 			return tokenString;
 		}
-
 		public virtual async Task<T> GetDataFromApiAsync<T>(string apiEndpointPartialUrl, ApiAccessType accessType)
+		{
+			var context = GetContextFromAccessor();
+			return await GetDataFromApiAsync<T>(context, apiEndpointPartialUrl, accessType);
+		}
+
+		public virtual async Task<T> GetDataFromApiAsync<T>(HttpContext context, string apiEndpointPartialUrl, ApiAccessType accessType)
 		{
 			var returnValue = default(T);
 			try
 			{
 				// TODO: use HttpClientFactory here, it's safer
 				var client = new HttpClient();
-				var token = await GetTokenStringAsync(accessType);
+				var token = await GetTokenStringAsync(context, accessType);
 				string authHeaderValue = $"Bearer {token}";
 				client.DefaultRequestHeaders.Add("Authorization", authHeaderValue);
 				client.BaseAddress = new Uri(_configuration.GetValue<string>("Api:BaseUrl"));

@@ -34,8 +34,8 @@ namespace NSW.Idp
 
 		public void ConfigureServices(IServiceCollection services)
 		{
-			var oidcOptions = NSW.Data.Extensions.DependencyInjection.RegisterServices(services, Configuration);
-
+			var oidcOptions = NSW.Data.Extensions.DependencyInjection.RegisterServices(services, Configuration, DataTransferVaraintEnum.Tools);
+			NSW.Data.Extensions.DependencyInjection.RegisterPostalTask(services);
 			IdentityModelEventSource.ShowPII = true;
 			services.AddControllersWithViews();
 
@@ -46,23 +46,25 @@ namespace NSW.Idp
 				.AddEntityFrameworkStores<ApplicationDbContext>()
 				.AddDefaultTokenProviders();
 
-			//services.AddCors(options =>
-			//{
-			//    options.AddPolicy("CorsPolicy",
-			//        builder => builder.WithOrigins(
-			//            "http://localhost",
-			//            "https://localhost",
-			//            "http://bff:5004",
-			//            "https://bff:5005",
-			//            "http://api:5002",
-			//            "https://api:5003",
-			//            "http://idp:5006",
-			//            "https://idp:5007"
-			//            )
-			//        .AllowAnyMethod()
-			//        .AllowAnyHeader()
-			//        .AllowCredentials());
-			//});
+			services.AddCors(options =>
+			{
+				options.AddPolicy("CorsPolicy",
+					builder => builder.WithOrigins(
+						"http://localhost",
+						"https://localhost",
+						"http://bff:5004",
+						"https://bff:5005",
+						"http://api:5002",
+						"https://api:5003",
+						"http://idp:5006",
+						"https://idp:5007",
+						"https://localhost:3000",
+						"http://localhost:3000"
+						)
+					.AllowAnyMethod()
+					.AllowAnyHeader()
+					.AllowCredentials());
+			});
 
 			services.AddTransient<IdentityServer4.Services.ICorsPolicyService, CorsPolicyService>();
 
@@ -111,8 +113,7 @@ namespace NSW.Idp
 				options.KnownProxies.Clear();
 			});
 
-			// add custom services here
-			services.AddTransient<IPostalCodeTask, PostalCodeTask>();
+	
 		}
 
 		public void Configure(IApplicationBuilder app)
