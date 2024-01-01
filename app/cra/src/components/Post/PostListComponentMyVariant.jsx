@@ -31,18 +31,30 @@ const PostListComponentMyVariant = ({}) => {
     console.log(error);
   }
   const { data, error, isLoading, isError } = useUserPostList(
-    user.id,
+    user.idpId,
     isQueryDisabled,
     onSuccess,
     onError
   );
 
   if (isLoading) {
-    return <>Loading...</>;
+    return (
+      <>
+        <Row>
+          <Col>Loading...</Col>
+        </Row>
+      </>
+    );
   }
 
   if (isError || data.status !== 200) {
-    return <>{error.message}</>;
+    return (
+      <>
+        <Row>
+          <Col>{error.message}</Col>
+        </Row>
+      </>
+    );
   }
   console.log("user posts List", data);
   const returnValue =

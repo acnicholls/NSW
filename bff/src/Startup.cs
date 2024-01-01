@@ -174,7 +174,7 @@ namespace NSW.Bff
 					if (!NSW.Data.Validation.ValidPostalCodes.NaganoPostalCodes.Any())
 					{
 						var postalCodeTask = app.ApplicationServices.GetRequiredService<IPostalCodeTask>();
-						postalCodeTask.StartBackgroundPostalCodeWorker(context, ApiAccessType.Client);
+						postalCodeTask.StartBackgroundPostalCodeWorker(ApiAccessType.Client);
 					}
 				}
 				await next();

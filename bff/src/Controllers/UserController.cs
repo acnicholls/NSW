@@ -56,7 +56,7 @@ namespace NSW.Bff.Controllers
 
 				var user = new UserResponse
 				{
-					Id = Convert.ToInt32(idpResponse.Claims.FirstOrDefault(x => x.Type == "sub")?.Value),
+					// Id = Convert.ToInt32(idpResponse.Claims.FirstOrDefault(x => x.Type == "sub")?.Value),
 					IdpId = Convert.ToInt32(idpResponse.Claims.FirstOrDefault(x => x.Type == "sub")?.Value),
 					Email = idpResponse.Claims.FirstOrDefault(x => x.Type == "email")?.Value ?? "",
 					Phone = idpResponse.Claims.FirstOrDefault(x => x.Type == "phone")?.Value ?? "",
@@ -75,9 +75,29 @@ namespace NSW.Bff.Controllers
 			catch (Exception x)
 			{
 				_logger.LogError(x, "UserController.GetUserAsync");
-				return this.StatusCode(500, "error in user controller");
+				return new JsonResult(GetAnonymousUser);
 			}
 		}
+
+		private UserResponse GetAnonymousUser
+		{
+			get
+			{
+				var user = new UserResponse
+				{
+					IdpId = -1,
+					Email = "Anon@centra.serv",
+					Phone = "99999999",
+					PostalCode = new PostalCodeResponse(),
+					UserName = "Anonymous User",
+					Role = "Empty",
+					LanguagePreference = 1,
+					IsAuthenticated = false,
+				};
+				return user;
+			}
+		}
+
 
 
 		private async Task<UserInfoResponse> GetUserInfoFromIDPAsync()

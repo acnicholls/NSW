@@ -5,9 +5,9 @@ const Index = () => {
   return (
     <>
       <Row>
-        <Col></Col>
+        <Col class="col-sm"></Col>
         <Col>{"This is the index page."}</Col>
-        <Col></Col>
+        <Col class="col-sm"></Col>
       </Row>
     </>
   );

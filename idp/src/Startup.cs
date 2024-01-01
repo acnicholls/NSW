@@ -59,7 +59,9 @@ namespace NSW.Idp
 						"http://idp:5006",
 						"https://idp:5007",
 						"https://localhost:3000",
-						"http://localhost:3000"
+						"http://localhost:3000",
+						"http://localhost:5004",
+						"https://localhost:5005"
 						)
 					.AllowAnyMethod()
 					.AllowAnyHeader()

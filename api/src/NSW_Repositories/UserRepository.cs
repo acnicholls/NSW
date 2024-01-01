@@ -33,14 +33,10 @@ namespace NSW.Repositories
                 // first find the user row in the database
                 // assign values
                 DataRow dr = ds.Tables[0].Rows[0];
-				user.ID = id;
-				user.Name = dr["fldUser_Name"].ToString();
-				user.Password = dr["fldUser_Password"].ToString();
+				user.Id = id;
 				user.Phone = dr["fldUser_Phone"].ToString();
 				user.PostalCode = dr["fldUser_PostalCode"].ToString();
 				user.Email = dr["fldUser_Email"].ToString();
-				user.Role = dr["fldUser_Role"].ToString();
-				user.LanguagePreference = Convert.ToInt32(dr["fldUser_langPref"]);
             }
             catch (Exception x)
             {
@@ -65,17 +61,13 @@ namespace NSW.Repositories
                 {
                     // assign values
                     DataRow dr = ds.Tables[0].Rows[0];
-					user.ID = Convert.ToInt32(dr["fldUser_id"]);
-					user.Name = dr["fldUser_Name"].ToString();
-					user.Password = dr["fldUser_Password"].ToString();
+					user.Id = Convert.ToInt32(dr["fldUser_id"]);
 					user.Phone = dr["fldUser_Phone"].ToString();
 					user.PostalCode = dr["fldUser_PostalCode"].ToString();
 					user.Email = dr["fldUser_Email"].ToString();
-					user.Role = dr["fldUser_Role"].ToString();
-					user.LanguagePreference = Convert.ToInt32(dr["fldUser_langPref"]);
                 }
                 else
-					user.ID = 0;
+					user.Id = 0;
             }
             catch (Exception x)
             {
@@ -99,17 +91,13 @@ namespace NSW.Repositories
                 {
                     // assign values
                     DataRow dr = ds.Tables[0].Rows[0];
-					user.ID = Convert.ToInt32(dr["fldUser_id"]);
-					user.Name = dr["fldUser_Name"].ToString();
-					user.Password = dr["fldUser_Password"].ToString();
+					user.Id = Convert.ToInt32(dr["fldUser_id"]);
 					user.Phone = dr["fldUser_Phone"].ToString();
 					user.PostalCode = dr["fldUser_PostalCode"].ToString();
 					user.Email = dr["fldUser_Email"].ToString();
-					user.Role = dr["fldUser_Role"].ToString();
-					user.LanguagePreference = Convert.ToInt32(dr["fldUser_langPref"]);
                 }
                 else
-					user.ID = 0;
+					user.Id = 0;
             }
             catch (Exception x)
             {
@@ -155,7 +143,7 @@ namespace NSW.Repositories
                 // set all the parameters
                 SqlParameter param = new SqlParameter();
                 // assign values
-                param = new SqlParameter("@ID", user.ID);
+                param = new SqlParameter("@ID", user.Id);
                 parameters.Add(param);
                 param = new SqlParameter("@newPass", newPassword);
                 parameters.Add(param);
@@ -183,24 +171,24 @@ namespace NSW.Repositories
 		{
 			try
 			{
-				var parameters = new List<SqlParameter>();
-				// set all the parameters
-				SqlParameter param = new SqlParameter();
-				// assign values
-				param = new SqlParameter("@name", entity.Name);
-				parameters.Add(param);
-				param = new SqlParameter("@pass", entity.Password);
-				parameters.Add(param);
-				param = new SqlParameter("@email", entity.Email);
-				parameters.Add(param);
-				param = new SqlParameter("@phone", entity.Phone);
-				parameters.Add(param);
-				param = new SqlParameter("@postalcode", entity.PostalCode);
-				parameters.Add(param);
-				param = new SqlParameter("@langPref", entity.LanguagePreference);
-				parameters.Add(param);
-				// execute the command
-				var result = base.ExecuteStoreProcedure("insertUser", parameters);
+				//var parameters = new List<SqlParameter>();
+				//// set all the parameters
+				//SqlParameter param = new SqlParameter();
+				//// assign values
+				//param = new SqlParameter("@name", entity.Name);
+				//parameters.Add(param);
+				//param = new SqlParameter("@pass", entity.Password);
+				//parameters.Add(param);
+				//param = new SqlParameter("@email", entity.Email);
+				//parameters.Add(param);
+				//param = new SqlParameter("@phone", entity.Phone);
+				//parameters.Add(param);
+				//param = new SqlParameter("@postalcode", entity.PostalCode);
+				//parameters.Add(param);
+				//param = new SqlParameter("@langPref", entity.LanguagePreference);
+				//parameters.Add(param);
+				//// execute the command
+				//var result = base.ExecuteStoreProcedure("insertUser", parameters);
 			}
 			catch (Exception x)
 			{
@@ -213,26 +201,26 @@ namespace NSW.Repositories
 		{
 			try
 			{
-				var parameters = new List<SqlParameter>();
-				// set all the parameters
-				SqlParameter param = new SqlParameter();
-				// assign values
-				param = new SqlParameter("@ID", entity.ID);
-				parameters.Add(param);
-				param = new SqlParameter("@name", entity.Name);
-				parameters.Add(param);
-				param = new SqlParameter("@pass", entity.Password);
-				parameters.Add(param);
-				param = new SqlParameter("@email", entity.Email);
-				parameters.Add(param);
-				param = new SqlParameter("@phone", entity.Phone);
-				parameters.Add(param);
-				param = new SqlParameter("@postalcode", entity.PostalCode);
-				parameters.Add(param);
-				param = new SqlParameter("@langPref", entity.LanguagePreference);
-				parameters.Add(param);
-				// execute the command
-				var result = base.ExecuteStoreProcedure("modifyUser", parameters);
+				//var parameters = new List<SqlParameter>();
+				//// set all the parameters
+				//SqlParameter param = new SqlParameter();
+				//// assign values
+				//param = new SqlParameter("@ID", entity.ID);
+				//parameters.Add(param);
+				//param = new SqlParameter("@name", entity.Name);
+				//parameters.Add(param);
+				//param = new SqlParameter("@pass", entity.Password);
+				//parameters.Add(param);
+				//param = new SqlParameter("@email", entity.Email);
+				//parameters.Add(param);
+				//param = new SqlParameter("@phone", entity.Phone);
+				//parameters.Add(param);
+				//param = new SqlParameter("@postalcode", entity.PostalCode);
+				//parameters.Add(param);
+				//param = new SqlParameter("@langPref", entity.LanguagePreference);
+				//parameters.Add(param);
+				//// execute the command
+				//var result = base.ExecuteStoreProcedure("modifyUser", parameters);
 			}
 			catch (Exception x)
 			{
@@ -249,7 +237,7 @@ namespace NSW.Repositories
 				// set all the parameters
 				SqlParameter param = new SqlParameter();
 				// assign values
-				param = new SqlParameter("@ID", entity.ID);
+				param = new SqlParameter("@ID", entity.Id);
 				parameters.Add(param);
 				// execute the command
 				var result = base.ExecuteStoreProcedure("deleteUser", parameters);

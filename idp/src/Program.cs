@@ -25,10 +25,8 @@ namespace NSW.Idp
         public async static Task<int> Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-               .MinimumLevel.Debug()
-               .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-               .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
-               .MinimumLevel.Override("System", LogEventLevel.Debug)
+			   .MinimumLevel.Override("NSW", Serilog.Events.LogEventLevel.Verbose)
+			   .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
                .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Debug)
                // #if DEBUG                
                //                 .MinimumLevel.Override("NSW.Idp", LogEventLevel.)

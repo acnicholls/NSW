@@ -3,6 +3,7 @@ using NSW.Api;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
+	.MinimumLevel.Override("NSW", Serilog.Events.LogEventLevel.Verbose)
 	.Enrich.FromLogContext()
 	.WriteTo.Console()
 	.WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
@@ -43,6 +44,7 @@ builder.Services.AddAuthentication("Bearer")
 
 		options.TokenValidationParameters = new TokenValidationParameters
 		{
+			ValidateIssuer = false, // for development
 			ValidateAudience = false  // for development
 		};
 	});

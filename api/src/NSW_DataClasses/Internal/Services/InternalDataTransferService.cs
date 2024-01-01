@@ -27,7 +27,7 @@ namespace NSW.Data.Internal.Services
 		}
 
 
-		protected override async Task<string> GetTokenStringAsync(ApiAccessType accessType)
+		public override async Task<string> GetTokenStringAsync(ApiAccessType accessType)
 		{
 			var tokenString = string.Empty;
 			try
@@ -36,12 +36,14 @@ namespace NSW.Data.Internal.Services
 				{
 					case ApiAccessType.Client:
 						{
-							tokenString = await this.GetUserTokenAsync();
+							var context = GetContextFromAccessor();
+							tokenString = await this.GetUserTokenAsync(context);
 							break;
 						}
 					case ApiAccessType.User:
 						{
-							tokenString = await this.GetClientTokenAsync(_oidcOptions.ClientId);
+							var context = GetContextFromAccessor();
+							tokenString = await this.GetClientTokenAsync(context, _oidcOptions.ClientId);
 							break;
 						}
 					case ApiAccessType.Idp:

@@ -1,15 +1,12 @@
 export const defaultLabelText = {
   id: "Empty",
-  english: "Emtpy",
-  japanese: "Empty",
+  text: "Emtpy",
 };
 
 export const defaultPostCategory = {
   id: -1,
-  englishTitle: "Empty",
-  japaneseTitle: "Empty",
-  englishDescription: "Empty",
-  japaneseDescription: "Empty",
+  title: "Empty",
+  description: "Empty",
 };
 
 export const defatulPostalCode = {
@@ -28,7 +25,7 @@ export const defaultPost = {
   userId: -1,
   status: "Empty",
   deleteFlag: false,
-  postUser: null,
+  postUser: {},
 };
 
 /*
@@ -49,14 +46,12 @@ export const defaultPost = {
 // };
 
 export const anonymousUser = {
-  cookiename: "Anonymous User",
-  id: -1,
-  name: "Anonymous User",
-  firstName: "Anonymous",
-  lastName: "User",
-  username: "Anon",
-  postalCode: "Empty",
+  idpId: -1,
+  userName: "Anonymous User",
+  email: "Anon@central.serv",
+  phone: "99999999",
   role: "Empty",
+  postalCode: {},
   languagePreference: 1,
   isAuthenticated: false,
 };
