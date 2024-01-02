@@ -10,7 +10,9 @@ using NSW.Data;
 namespace NSW.Idp
 {
 	using NSW.Idp.Models;
-	public static class Config
+    using System.Linq;
+
+    public static class Config
     {
         public static IEnumerable<IdentityResource> IdentityResources =>
             new List<IdentityResource>
@@ -29,9 +31,10 @@ namespace NSW.Idp
                 new ApiScope("NSW.ApiScope", "The NSW project's API scope")
 				{
 					UserClaims = { 
-						IdentityServerConstants.StandardScopes.Email,
-						IdentityServerConstants.StandardScopes.Phone,
-						IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityModel.JwtClaimTypes.Email,
+                        IdentityModel.JwtClaimTypes.Role,
+                        IdentityModel.JwtClaimTypes.PhoneNumber,
 						CustomClaimType.PostalCode.ToString(), 
 						CustomClaimType.LanguagePreference.ToString()}
 				}
@@ -85,7 +88,8 @@ namespace NSW.Idp
                     ClientSecrets = {
                         new Secret("secret".Sha256()), 
                     },
-                    AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
+                    //AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
+                    AllowedGrantTypes = { "authorization_code", "refresh_token", "client_credentials" },
                     RequirePkce = true,
                     // where to redirect to after login
                     RedirectUris = { "https://localhost/signin-oidc", "https://bff:5005/signin-oidc", "https://localhost/loggedin", "https://localhost:5005/signin-oidc" },
@@ -98,11 +102,13 @@ namespace NSW.Idp
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
 						IdentityServerConstants.StandardScopes.Email,
-						IdentityServerConstants.StandardScopes.Phone,
 						IdentityServerConstants.StandardScopes.Profile,
 						"NSW.ApiScope"
 					},
                     AllowOfflineAccess = true,
+                    RefreshTokenUsage = TokenUsage.ReUse,
+                    RefreshTokenExpiration = TokenExpiration.Sliding,
+                    UpdateAccessTokenClaimsOnRefresh = true,
                     AllowedCorsOrigins = { // TODO: change for production
                         "http://localhost",
 						"https://localhost",

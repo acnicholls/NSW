@@ -19,12 +19,12 @@
         @if (!string.IsNullOrWhiteSpace(name))
         {
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@name <b class="caret"></b></a>
-                    
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" asp-action="Logout" asp-controller="Account">Logout</a>
-                    </div>
+                <li class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" id="userDropdown" type"button" data-bs-toggle="dropdown" aria-expanded="false">@name <b class="caret"></b></button>
+
+                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                        <li><button class="dropdown-item" type="button" asp-action="Logout" asp-controller="Account">Logout</button></li>
+                    </ul>
               </li>
             </ul>
         }

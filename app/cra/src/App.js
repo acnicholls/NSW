@@ -113,7 +113,7 @@ export default function App() {
                     element={
                       <ExternalRedirect
                         path={routes.frontend.register}
-                        link={routes.backend.register}
+                        link={`${routes.backend.register}?returnUrl=${routes.public}${routes.frontend.loggedIn}`}
                       />
                     }
                   />

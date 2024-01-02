@@ -33,6 +33,9 @@ namespace NSW.Idp.Controllers
                 // also an example if you need client images to be displayed from twitter
                 // csp += "img-src 'self' https://pbs.twimg.com;";
 
+                // ***** Add in custom allowed
+                csp += "style-src 'self' https://cdn.jsdelivr.net;";
+
                 // once for standards compliant browsers
                 if (!context.HttpContext.Response.Headers.ContainsKey("Content-Security-Policy"))
                 {

@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var cdnCssUrl = "https://cdn.jsdelivr.net/npm/@coreui/coreui@4.3.2/dist/css/coreui.min.css";
+    var cdnJsUrl = "https://cdn.jsdelivr.net/npm/@coreui/coreui@4.3.2/dist/js/coreui.bundle.min.js";
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,16 +15,23 @@
     <link rel="icon" type="image/x-icon" href="~/idp/favicon.ico" />
     <link rel="shortcut icon" type="image/x-icon" href="~/idp/favicon.ico" />
     
+
     <link rel="stylesheet" href="~/idp/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/idp/css/site.css" />
+    <link href="@cdnCssUrl"
+          rel="stylesheet"
+          integrity="sha384-H8oVKJOQVGGCdfFNM+9gLKN0xagtq9oiNLirmijheEuqD3kItTbTvoOGgxVKqNiB"
+          crossorigin="anonymous" />
 </head>
 <body>
     <partial name="_Nav" />
-   
+  
     <div class="container body-container">
         @RenderBody()
     </div>
-
+    <script src="@cdnJsUrl"
+            integrity="sha384-yaqfDd6oGMfSWamMxEH/evLG9NWG7Q5GHtcIfz8Zg1mVyx2JJ/IRPrA28UOLwAhi"
+            crossorigin="anonymous"></script>
     <script src="~/idp/lib/jquery/dist/jquery.slim.min.js"></script>
     <script src="~/idp/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 

@@ -27,6 +27,7 @@ namespace NSW.Idp.Models.Account
         [Compare(nameof(Password), ErrorMessage = "The Password and Confirmation Password do not match.")]
         public string ConfirmPassword { get; set; }
 
+        [Required]
 		public string ReturnUrl { get; set; }
 
 		[Required]

@@ -1,4 +1,5 @@
-﻿using IdentityModel.Client;
+﻿using IdentityModel.AspNetCore.AccessTokenManagement;
+using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -102,7 +103,11 @@ namespace NSW.Data.Internal.Services
 			var returnValue = string.Empty;
 			try
 			{
-				returnValue = await context.GetUserAccessTokenAsync();
+                UserAccessTokenParameters parameters = new UserAccessTokenParameters
+                {
+                    Resource = "openid",
+                };
+				returnValue = await context.GetUserAccessTokenAsync(parameters);
 				var messageValue = true ? returnValue : "***REDACTED***";  // TODO: find environment value, set to false for prod
 				_logger.LogTrace("Got token value {messageValue}, returning...", messageValue);
 			}

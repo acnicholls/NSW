@@ -91,35 +91,6 @@ namespace NSW.Bff
 				options.GetClaimsFromUserInfoEndpoint = oidcOptions.GetClaimsFromUserInfoEndpoint; 
                 options.SaveTokens = oidcOptions.SaveTokens;
 
-				// options.Events = new OpenIdConnectEvents
-				// {
-				//     OnRedirectToIdentityProvider = async context =>
-				//     {
-				//         context.ProtocolMessage.State = context.HttpContext.Request.Path.Value.ToString();
-				//     },
-				//     OnTokenValidated = ctx =>
-				//     {
-				//         var url = ctx.ProtocolMessage.GetParameter("state");
-				//         var claims = new List<Claim>
-				//         {
-				//             new Claim("returnUrl ", url)
-				//         };
-				//         var appIdentity = new ClaimsIdentity(claims);
-
-				//         //add url to claims
-				//         ctx.Principal.AddIdentity(appIdentity);
-
-				//         return Task.CompletedTask;
-				//     },
-				//     OnTicketReceived = ctx =>
-				//     {
-				//         var url = ctx.Principal.FindFirst("returnUrl").Value;
-				//         ctx.ReturnUri = url;
-				//         return Task.CompletedTask;
-				//     }
-
-				// };
-
 				options.Scope.Clear();
                 options.Scope.Add("openid");
                 options.Scope.Add("profile");
@@ -133,28 +104,6 @@ namespace NSW.Bff
                 };
 
             });
-
-            //services.AddSingleton<IDiscoveryCache>(r =>
-            //{
-            //    var factory = r.GetRequiredService<IHttpClientFactory>();
-            //    return new DiscoveryCache(
-            //        "http://idp:5006", 
-            //        () => factory.CreateClient(), 
-            //        new DiscoveryPolicy
-            //        { 
-            //            RequireHttps = false,
-            //        });
-            //});
-
-    //        var cache = new DiscoveryCache(
-				//oidcOptions.Authority,
-    //            new DiscoveryPolicy
-    //            {
-    //                RequireHttps = false,
-    //                ValidateIssuerName = false
-    //            });
-    //        services.AddSingleton<IDiscoveryCache>(cache);
-
 
             services.Configure<ForwardedHeadersOptions>(options =>
             {

@@ -1,36 +1,109 @@
 ﻿@model NewUserModel
 
+@{
+    var selectItems = NSW.Data.Validation.ValidPostalCodes.NaganoPostalCodes.Select(x => new SelectListItem { Value = x.Code, Text = x.Code });
+    var languagePrefItems = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "1", Text = "Japanese 日本語"},
+        new SelectListItem { Value = "2", Text = "English 英語"},
+    };
+}
 
 <h2>Register</h2>
-
+<partial name="_ValidationSummary" />
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 col-lg-8">
         <section>
             <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label asp-for"UserName" class="col-md-2 control-label">UserName</label>
-                    <div class="col-md-10">
-                        <input asp-for"UserName" type="text" name="username" autofocus />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for"Email" class="col-md-2 control-label">Email</label>
-                    <div class="col-md-10">
-                        <input asp-for"Email" type="text" name="email" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for"Password" class="col-md-2 control-label">Password</label>
-                    <div class="col-md-10">
-                        <input asp-for"Password" type="password" name="password" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for"ConfirmPassword" class="col-md-2 control-label">Confirm Password</label>
-                    <div class="col-md-10">
-                        <input asp-for"ConfirmPassword" type="password" name="password" />
-                    </div>
-                </div>
+                <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                <table class="container d-flex justify-content-center">
+                    <tbody class="row flex-fill">
+                        <tr class="row flex-fill">
+                            <td class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for"FirstName" class="col-md-4 control-label">First Name</label>
+                                    <div class="col-md-10">
+                                        <input asp-for"FirstName" type="text" name="firstName" />
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for"LastName" class="col-md-4 control-label">Last Name</label>
+                                    <div class="col-md-10">
+                                        <input asp-for"LastName" type="text" name="lastName" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for"PhoneNumber" class="col-md-4 control-label">Phone Number</label>
+                                    <div class="col-md-10">
+                                        <input asp-for"PhoneNumber" type="text" name="phoneNumber" />
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for"Email" class="col-md-4 control-label">Email</label>
+                                    <div class="col-md-10">
+                                        <input asp-for"Email" type="text" name="email" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for"PostalCode" class="col-md-4 control-label">Postal Code</label>
+                                    <div class="col-md-10">
+                                        <select asp-for"PostalCode" name="postalCode" asp-items="@selectItems">
+                                        </select>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for"LanguagePreference" class="col-md-6 control-label">Language Preference</label>
+                                    <div class="col-md-10">
+                                        <select asp-for"LanguagePreference" name="languagePreference" asp-items="@languagePrefItems">
+                                        </select>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="row">
+                            <td colspan="2">
+                                <div class="form-group">
+                                    <label asp-for"UserName" class="col-md-4 control-label">UserName</label>
+                                    <div class="col-md-10">
+                                        <input asp-for"UserName" type="text" name="username" autofocus />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="row">
+                            <td class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for"Password" class="col-md-4 control-label">Password</label>
+                                    <div class="col-md-10">
+                                        <input asp-for"Password" type="password" name="password" />
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for"ConfirmPassword" class="col-md-4 control-label">Confirm Password</label>
+                                    <div class="col-md-10">
+                                        <input asp-for"ConfirmPassword" type="password" name="confirmPassword" />
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <button type="submit" class="btn btn-primary">Register</button>

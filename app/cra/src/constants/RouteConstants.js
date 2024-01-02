@@ -1,4 +1,5 @@
 const routes = Object.freeze({
+  public: `${process.env.REACT_APP_PUBLIC_URL}`,
   backend: {
     weatherForecast: `${process.env.REACT_APP_BFF_URL}/api/WeatherForecast`,
     login: `${process.env.REACT_APP_BFF_URL}/bff`,

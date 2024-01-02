@@ -13,13 +13,17 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+
 using System;
+using System.Security.Claims;
 using System.Linq;
 using System.Threading.Tasks;
 
 using NSW.Idp.Models;
 using NSW.Idp.Models.Account;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 
 namespace NSW.Idp.Controllers.Account
 {
@@ -33,6 +37,7 @@ namespace NSW.Idp.Controllers.Account
         private readonly IClientStore _clientStore;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IEventService _events;
+        private readonly IConfiguration _configuration;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -40,7 +45,8 @@ namespace NSW.Idp.Controllers.Account
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
-            IEventService events)
+            IEventService events,
+            IConfiguration configuration)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -48,6 +54,7 @@ namespace NSW.Idp.Controllers.Account
             _clientStore = clientStore;
             _schemeProvider = schemeProvider;
             _events = events;
+            _configuration = configuration;
         }
 
         /// <summary>
@@ -152,9 +159,14 @@ namespace NSW.Idp.Controllers.Account
         }
 
 		[HttpGet]
-		public async Task<IActionResult> Register()
+		public async Task<IActionResult> Register([FromQuery] string returnUrl)
 		{
-			return View();
+            if (returnUrl is null)
+            {
+                returnUrl = _configuration.GetValue<string>("Authentication:LoggedInRedirect");
+            }
+            var model = new NewUserModel { ReturnUrl= returnUrl };
+			return View(model);
 		}
 
 		//[HttpGet]
@@ -175,14 +187,38 @@ namespace NSW.Idp.Controllers.Account
 			var user = new ApplicationUser();
 			user.Email = model.Email;
 			user.UserName = model.UserName;
-			var result = this._userManager.CreateAsync(user, model.Password);
-			if(result.IsCompletedSuccessfully)
+            user.PhoneNumber = model.PhoneNumber;
+			var result = await this._userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                var userClaims = new List<Claim>();
+                if (model.FirstName != string.Empty && model.LastName != string.Empty)
+                {
+                    userClaims.Add(new Claim(JwtClaimTypes.Name, string.Concat(model.FirstName, " ", model.LastName)));
+                }
+                if (model.FirstName != string.Empty)
+                {
+                    userClaims.Add(new Claim(JwtClaimTypes.GivenName, model.FirstName));
+                }
+                if (model.LastName != string.Empty)
+                {
+                    userClaims.Add(new Claim(JwtClaimTypes.FamilyName, model.LastName));
+                }
+                userClaims.Add(new Claim(NSW.CustomClaimType.LanguagePreference.ToString(), ((int)model.LanguagePreference).ToString()));
+                userClaims.Add(new Claim(NSW.CustomClaimType.PostalCode.ToString(), model.PostalCode));
+                result = await this._userManager.AddClaimsAsync(user, userClaims);
+            }
+			if(result.Succeeded)
 			{
-				return Redirect(model.ReturnUrl);
+                var signInResult = await this._signInManager.PasswordSignInAsync(user, model.Password, false, false);
+                if(signInResult.Succeeded)
+                {
+				    return Redirect(model.ReturnUrl);
+                }
 			}
-			if (!result.Result.Succeeded)
+			else
 			{
-				foreach (var error in result.Result.Errors)
+				foreach (var error in result.Errors)
 				{
 					ModelState.AddModelError(error.Code, error.Description);
 				}
