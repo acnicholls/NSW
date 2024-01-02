@@ -14,7 +14,6 @@ namespace NSW.Services.Extensions
 			services.AddScoped<IService<LabelText>, LabelTextService>();
 			services.AddScoped<IService<Post>, PostService>();
 			services.AddScoped<IService<PostalCode>, PostalCodeService>();
-			services.AddScoped<IService<User>, UserService>();
 			services.AddScoped<IService<PostCategory>, PostCategoryService>();
 
 			// custom interfaces

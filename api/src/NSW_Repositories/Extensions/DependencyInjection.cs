@@ -12,7 +12,6 @@ namespace NSW.Repositories.Extensions
 			services.AddScoped<IRepository<LabelText>, LabelTextRepository>();
 			services.AddScoped<IRepository<Post>, PostRepository>();
 			services.AddScoped<IRepository<PostalCode>, PostalCodeRepository>();
-			services.AddScoped<IRepository<User>, UserRepository>();
 			services.AddScoped<IRepository<PostCategory>, PostCategoryRepository>();
 
 			// custom interfaces

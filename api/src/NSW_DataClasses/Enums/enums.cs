@@ -5,8 +5,8 @@
 	/// </summary>
 	public enum LanguagePreference
 	{
+		Japanese = 1,
 		English = 2,
-		Japanese = 1
 	}
 	/// <summary>
 	/// user role enums

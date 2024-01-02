@@ -9,8 +9,8 @@ namespace NSW.Api.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class PostalCodeController : ControllerBase, IController<PostalCode>
-	{
+	public class PostalCodeController : ControllerBase, IPostalCodeController
+    {
 		private readonly IService<PostalCode> _service;
 		public PostalCodeController(IService<PostalCode> service)
 		{
@@ -52,24 +52,6 @@ namespace NSW.Api.Controllers
 
 		[HttpGet]
 		public async Task<ActionResult<IList<PostalCode>>> GetAllAsync() => await Task.Run(() => this._getAll());
-
-
-		private ActionResult<PostalCode?> _getById(int id)
-		{
-			try
-			{
-				var returnValue = _service.GetById(id);
-				return new OkObjectResult(returnValue);
-			}
-			catch (Exception ex)
-			{
-				// add logging
-				return BadRequest(ex.Message);
-			}
-		}
-
-		[HttpGet("{id:int}")]
-		public async Task<ActionResult<PostalCode?>> GetByIdAsync([FromRoute] int id) => await Task.Run(() => this._getById(id));
 
 
 		private ActionResult<PostalCode?> _getByIdentifier(string identifier)

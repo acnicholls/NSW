@@ -12,7 +12,7 @@ namespace NSW.Repositories
     public class PostRepository : BaseRepository, IPostRepository
     {
 
-        private readonly IRepository<User> _userRepository;
+        private readonly IUserRepository _userRepository;
         private readonly ILabelTextRepository _labelTextRepository;
         private readonly IServiceProvider _serviceProvider;
 
@@ -22,7 +22,7 @@ namespace NSW.Repositories
             IUser user,
             IProjectInfo projectInfo,
             IConnectionInfo connectionInfo,
-            IRepository<User> userRepo,
+            IUserRepository userRepo,
             ILabelTextRepository labelTextRepository,
             IServiceProvider serviceProvider
             ) : base(log, user, projectInfo, connectionInfo)

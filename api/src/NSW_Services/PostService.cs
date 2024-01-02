@@ -54,7 +54,7 @@ namespace NSW.Services
 			{
 				var emailDetails = _labelTextRepository.GetListOfGroupedLabels("ExpiryEmail");
 				var email = new MailMessage();
-				IUser thisUser = _userService.GetById(post.UserID);
+				var thisUser = _userService.GetById(post.UserID);
 				if (thisUser != null)
 				{
 					email.To.Add(thisUser?.Email);

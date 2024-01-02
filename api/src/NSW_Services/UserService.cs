@@ -1,4 +1,6 @@
 ﻿using NSW.Data;
+using NSW.Data.DTO.Request;
+using NSW.Data.DTO.Response;
 using NSW.Data.Interfaces;
 using NSW.Repositories.Interfaces;
 using NSW.Services.Interfaces;
@@ -6,35 +8,103 @@ using NSW.Services.Interfaces;
 namespace NSW.Services
 {
 
-	public class UserService : IUserService
-	{
+    public class UserService : IUserService
+    {
+        private readonly IUserRepository _repository;
+        private readonly IRepository<PostalCode> _postalCodeRepository;
+
+        public UserService(
+            IUserRepository repository,
+            IRepository<PostalCode> postalCodeRepository
+            )
+        {
+            _postalCodeRepository = postalCodeRepository;
+            _repository = repository;
+        }
+
+        public void Delete(UserRequest entity)
+        {
+            var user = GetUserFromUserRequest(entity);
+            _repository.Delete(user);
+        }
+
+        public bool ExistsByEmail(string email) => _repository.ExistsByEmail(email);
+        public bool ExistsById(int id) => _repository.ExistsById(id);
+
+        public IList<UserResponse> GetAll()
+        {
+            var returnValue = new List<UserResponse>();
+            var users = _repository.GetAll();
+            foreach (var user in users)
+            {
+                returnValue.Add(GetUserResponseFromUser(user));
+            }
+            return returnValue;
+        }
+
+        public UserResponse GetByEmail(string email)
+        {
+            var user = _repository.GetByEmail(email);
+            return GetUserResponseFromUser(user);
+        }
+
+        public UserResponse? GetById(int id)
+        {
+            var user = _repository.GetById(id);
+            return GetUserResponseFromUser(user);
+        }
 
 
-		private readonly IUserRepository _repository;
+        public UserResponse Insert(UserRequest entity)
+        {
 
-		public UserService(IUserRepository repository)
-		{
-			_repository = repository;
-		}
+            var user = GetUserFromUserRequest(entity);
+            var result = _repository.Insert(user);
+            return GetUserResponseFromUser(result);
 
-		public void ChangePassword(IUser user, string newPassword) => _repository.ChangePassword(user, newPassword);
+        }
 
-		public void Delete(User entity) => _repository.Delete(entity);
+        public UserResponse Modify(UserRequest entity)
+        {
+            var user = GetUserFromUserRequest(entity);
+            var result = _repository.Modify(user);
+            return GetUserResponseFromUser(result);
+        }
 
-		public bool Exists(string email) => _repository.Exists(email);
+        private User GetUserFromUserRequest(UserRequest request)
+        {
+            var user = new User
+            {
+                LanguagePreference = request.LanguagePreference,
+                Email = request.Email,
+                Phone = request.Phone,
+                PostalCode = request.PostalCode,
+                UserName = request.UserName,
+                Id = request.Id,
+            };
+            return user;
+        }
 
-		public IList<User> GetAll() => _repository.GetAll();
+        private UserResponse GetUserResponseFromUser(User input)
+        {
+            var postalCode = _postalCodeRepository.GetByIdentifier(input.PostalCode);
+            var returnValue = new UserResponse
+            {
+                Id = input.Id,
+                Email = input.Email,
+                Phone = input.Phone,
+                LanguagePreference = input.LanguagePreference,
+                Role = input.Role,
+                UserName = input.UserName,
+                PostalCode = new PostalCodeResponse
+                {
+                    Code = postalCode.Code,
+                    Longitude = postalCode.Longitude,
+                    Latitude = postalCode.Latitude
+                }
+            };
+            return returnValue;
+        }
 
-		public User GetByEmail(string email) => _repository.GetByEmail(email);
-		public User GetByEmailAndPassword(string email, string password) => _repository.GetByEmailAndPassword(email, password);
-
-		public User? GetById(int id) => _repository.GetById(id);
-
-		public User? GetByIdentifier(string identifier) => _repository.GetByIdentifier(identifier);
-
-		public User Insert(User entity) => _repository.Insert(entity);
-
-		public User Modify(User entity) => _repository.Modify(entity);
-
-	}
+    }
 }

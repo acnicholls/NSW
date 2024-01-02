@@ -43,7 +43,7 @@ namespace NSW.Bff.Controllers
 			{
 				var idpTask = GetUserInfoFromIDPAsync();
 				var userId = int.Parse(User.Claims.FirstOrDefault(x => x.Type == "sub").Value);
-				var apiTask = _service.GetDataFromApiAsync<NSW.Data.User>($"/api/User/{userId}", ApiAccessType.User);
+				var apiTask = _service.GetDataFromApiAsync<UserResponse>($"/api/User/{userId}", ApiAccessType.User);
 
 				Task.WaitAll(idpTask, apiTask);
 
@@ -56,17 +56,16 @@ namespace NSW.Bff.Controllers
 
 				var user = new UserResponse
 				{
-					// Id = Convert.ToInt32(idpResponse.Claims.FirstOrDefault(x => x.Type == "sub")?.Value),
-					IdpId = Convert.ToInt32(idpResponse.Claims.FirstOrDefault(x => x.Type == "sub")?.Value),
+					Id = Convert.ToInt32(idpResponse.Claims.FirstOrDefault(x => x.Type == "sub")?.Value),
+					UserName = idpResponse.Claims.FirstOrDefault(x => x.Type == "preferred_username")?.Value ?? "",
 					Email = idpResponse.Claims.FirstOrDefault(x => x.Type == "email")?.Value ?? "",
-					Phone = idpResponse.Claims.FirstOrDefault(x => x.Type == "phone")?.Value ?? "",
+					Phone = idpResponse.Claims.FirstOrDefault(x => x.Type == "phone_number")?.Value ?? "",
 					PostalCode = new PostalCodeResponse
 					{
-						Code = idpResponse.Claims.FirstOrDefault(x => x.Type == "postal-code")?.Value ?? "",
+						Code = idpResponse.Claims.FirstOrDefault(x => x.Type == "postal_code")?.Value ?? "",
 					},
-					UserName = idpResponse.Claims.FirstOrDefault(x => x.Type == "preferred_username")?.Value ?? "",
 					Role = idpResponse.Claims.FirstOrDefault(x => x.Type == "role")?.Value ?? "",
-					LanguagePreference = (int)apiResponse.DisplayLanguage,
+					LanguagePreference = (int)apiResponse.LanguagePreference,
 					IsAuthenticated = true,
 				};
 
@@ -85,7 +84,7 @@ namespace NSW.Bff.Controllers
 			{
 				var user = new UserResponse
 				{
-					IdpId = -1,
+					Id = -1,
 					Email = "Anon@centra.serv",
 					Phone = "99999999",
 					PostalCode = new PostalCodeResponse(),

@@ -1,23 +1,23 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using NSW.Api.Controllers.Interfaces;
-using NSW.Data;
+using NSW.Data.DTO.Request;
+using NSW.Data.DTO.Response;
 using NSW.Services.Interfaces;
 
 namespace NSW.Api.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
-	public class UserController : ControllerBase, IController<User>
-	{
-		private readonly IService<User> _service;
-		public UserController(IService<User> service)
+	public class UserController : ControllerBase, IUserController
+    {
+		private readonly IUserService _service;
+		public UserController(IUserService service)
 		{
 			_service = service;
 		}
 
 
-		private ActionResult _delete(User entity)
+		private ActionResult _delete(UserRequest entity)
 		{
 			try
 			{
@@ -32,10 +32,10 @@ namespace NSW.Api.Controllers
 		}
 
 		[HttpDelete]
-		public async Task<ActionResult> DeleteAsync([FromBody] User entity) => await Task.Run(() => this._delete(entity));
+		public async Task<ActionResult> DeleteAsync([FromBody] UserRequest entity) => await Task.Run(() => this._delete(entity));
 
 
-		private ActionResult<IList<User>> _getAll()
+		private ActionResult<IList<UserResponse>> _getAll()
 		{
 			try
 			{
@@ -50,10 +50,10 @@ namespace NSW.Api.Controllers
 		}
 
 		[HttpGet]
-		public async Task<ActionResult<IList<User>>> GetAllAsync() => await Task.Run(() => this._getAll());
+		public async Task<ActionResult<IList<UserResponse>>> GetAllAsync() => await Task.Run(() => this._getAll());
 
 
-		private ActionResult<User?> _getById(int id)
+		private ActionResult<UserResponse?> _getById(int id)
 		{
 			try
 			{
@@ -68,27 +68,9 @@ namespace NSW.Api.Controllers
 		}
 
 		[HttpGet("{id:int}")]
-		public async Task<ActionResult<User?>> GetByIdAsync([FromRoute] int id) => await Task.Run(() => this._getById(id));
+		public async Task<ActionResult<UserResponse?>> GetByIdAsync([FromRoute] int id) => await Task.Run(() => this._getById(id));
 
-
-		private ActionResult<User?> _getByIdentifier(string identifier)
-		{
-			try
-			{
-				var returnValue = _service.GetByIdentifier(identifier);
-				return new OkObjectResult(returnValue);
-			}
-			catch (Exception ex)
-			{
-				// add logging
-				return BadRequest(ex.Message);
-			}
-		}
-
-		[HttpGet("{identifier}")]
-		public async Task<ActionResult<User?>> GetByIdentifierAsync([FromRoute] string identifier) => await Task.Run(() => this._getByIdentifier(identifier));
-
-		private ActionResult<User> _insert(User entity)
+        private ActionResult<UserResponse> _insert(UserRequest entity)
 		{
 			try
 			{
@@ -103,9 +85,9 @@ namespace NSW.Api.Controllers
 		}
 
 		[HttpPost]
-		public async Task<ActionResult<User>> InsertAsync([FromBody] User entity) => await Task.Run(() => this._insert(entity));
+		public async Task<ActionResult<UserResponse>> InsertAsync([FromBody] UserRequest entity) => await Task.Run(() => this._insert(entity));
 
-		private ActionResult<User> _modify([FromBody] User entity)
+		private ActionResult<UserResponse> _modify([FromBody] UserRequest entity)
 		{
 			try
 			{
@@ -120,6 +102,6 @@ namespace NSW.Api.Controllers
 		}
 
 		[HttpPut]
-		public async Task<ActionResult<User>> ModifyAsync([FromBody] User entity) => await Task.Run(() => this._modify(entity));
+		public async Task<ActionResult<UserResponse>> ModifyAsync([FromBody] UserRequest entity) => await Task.Run(() => this._modify(entity));
 	}
 }

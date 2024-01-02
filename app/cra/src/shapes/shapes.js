@@ -21,13 +21,12 @@ const postalCodeShape = PropTypes.shape({
 });
 
 const userShape = PropTypes.shape({
-  cookiename: PropTypes.string,
   id: PropTypes.number,
-  name: PropTypes.string,
-  firstName: PropTypes.string,
-  lastName: PropTypes.string,
   username: PropTypes.string,
+  email: PropTypes.string,
+  phone: PropTypes.string,
   role: PropTypes.string,
+  postalCode: postalCodeShape,
   languagePreference: PropTypes.number,
   isAuthenticated: PropTypes.bool,
 });

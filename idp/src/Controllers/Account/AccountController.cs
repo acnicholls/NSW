@@ -191,6 +191,10 @@ namespace NSW.Idp.Controllers.Account
 			var result = await this._userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
+                result = await this._userManager.AddToRoleAsync(user, NSW.Role.Member.ToString());
+            }
+            if (result.Succeeded)
+            {
                 var userClaims = new List<Claim>();
                 if (model.FirstName != string.Empty && model.LastName != string.Empty)
                 {

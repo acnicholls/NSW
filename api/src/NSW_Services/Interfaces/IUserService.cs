@@ -1,13 +1,17 @@
-﻿using NSW.Data;
-using NSW.Data.Interfaces;
+﻿using NSW.Data.DTO.Request;
+using NSW.Data.DTO.Response;
 
 namespace NSW.Services.Interfaces
 {
-	public interface IUserService :IService<User>
+    public interface IUserService 
 	{
-		User GetByEmailAndPassword(string email, string password);
-		User GetByEmail(string email);
-		bool Exists(string email);
-		void ChangePassword(IUser user, string newPassword);
-	}
+        IList<UserResponse> GetAll();
+        UserResponse? GetById(int id);
+        UserResponse GetByEmail(string email);
+
+		bool ExistsByEmail(string email);
+        UserResponse Insert(UserRequest request);
+        UserResponse Modify(UserRequest entity);
+        void Delete(UserRequest entity);
+    }
 }

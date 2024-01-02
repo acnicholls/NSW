@@ -46,7 +46,7 @@ export const defaultPost = {
 // };
 
 export const anonymousUser = {
-  idpId: -1,
+  id: -1,
   userName: "Anonymous User",
   email: "Anon@central.serv",
   phone: "99999999",

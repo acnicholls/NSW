@@ -1,13 +1,17 @@
 ﻿using NSW.Data;
-using NSW.Data.Interfaces;
 
 namespace NSW.Repositories.Interfaces
 {
-	public interface IUserRepository : IRepository<User>
+    public interface IUserRepository 
 	{
-		User GetByEmailAndPassword(string email, string password);
 		User GetByEmail(string email);
-		bool Exists(string email);
-		void ChangePassword(IUser user, string newPassword);
-	}
+		bool ExistsByEmail(string email);
+        bool ExistsById(int id);
+
+        IList<User> GetAll();
+        User? GetById(int id);
+        User Insert(User entity);
+        User Modify(User entity);
+        void Delete(User entity);
+    }
 }

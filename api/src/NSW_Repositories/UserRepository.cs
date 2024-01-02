@@ -33,10 +33,7 @@ namespace NSW.Repositories
                 // first find the user row in the database
                 // assign values
                 DataRow dr = ds.Tables[0].Rows[0];
-				user.Id = id;
-				user.Phone = dr["fldUser_Phone"].ToString();
-				user.PostalCode = dr["fldUser_PostalCode"].ToString();
-				user.Email = dr["fldUser_Email"].ToString();
+                user = ConvertDataRowToUser(dr);
             }
             catch (Exception x)
             {
@@ -45,36 +42,6 @@ namespace NSW.Repositories
 			return user;
         }
 
-        /// <summary>
-        /// builds a user object based on the email and password of the desired user
-        /// </summary>
-        /// <param name="email">email of user</param>
-        /// <param name="password">password of user</param>
-        public User GetByEmailAndPassword(string email, string password)
-        {
-			var user = new User();
-            try
-            {
-				DataSet ds = base.GetDataFromSqlString("Select * from tblUsers where fldUser_Email='" + email + "' and fldUser_Password='" + password + "'");
-                // first find the user row in the database
-                if (ds.Tables[0].Rows.Count == 1)
-                {
-                    // assign values
-                    DataRow dr = ds.Tables[0].Rows[0];
-					user.Id = Convert.ToInt32(dr["fldUser_id"]);
-					user.Phone = dr["fldUser_Phone"].ToString();
-					user.PostalCode = dr["fldUser_PostalCode"].ToString();
-					user.Email = dr["fldUser_Email"].ToString();
-                }
-                else
-					user.Id = 0;
-            }
-            catch (Exception x)
-            {
-                _log.WriteToLog(_projectInfo.ProjectLogType, "User.ByEmailAndPassword", x, LogEnum.Critical);
-            }
-			return user;
-        }
 
         /// <summary>
         /// builds user object based solely on user email
@@ -91,10 +58,7 @@ namespace NSW.Repositories
                 {
                     // assign values
                     DataRow dr = ds.Tables[0].Rows[0];
-					user.Id = Convert.ToInt32(dr["fldUser_id"]);
-					user.Phone = dr["fldUser_Phone"].ToString();
-					user.PostalCode = dr["fldUser_PostalCode"].ToString();
-					user.Email = dr["fldUser_Email"].ToString();
+					user = ConvertDataRowToUser(dr);
                 }
                 else
 					user.Id = 0;
@@ -111,85 +75,75 @@ namespace NSW.Repositories
         /// </summary>
         /// <param name="email">email to check for</param>
         /// <returns>true if found, false if not</returns>
-        public bool Exists(string email)	
+        public bool ExistsByEmail(string email)	
         {
+            bool returnValue = false;
             try
             {
 				// check for username or email.
 				DataSet ds = base.GetDataFromSqlString("Select * from tblUsers where fldUser_Email='" + email + "'");
                 // if any row then the username or email already exists
                 int result = ds.Tables[0].Rows.Count;
-                if (result > 0)
-                    return true;
-                else if (result == 0)
-                    return false;
+                if (result == 1)
+                    returnValue = true;
             }
             catch   (Exception x)
             {
-                _log.WriteToLog(_projectInfo.ProjectLogType, "User.Exists", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "User.ExistsByEmail", x, LogEnum.Critical);
             }
-            return false;
+            return returnValue;
         }
 
-        /// <summary>
-        /// changes user password to new value
-        /// </summary>
-        /// <param name="newPassword">new password to use</param>
-        public void ChangePassword(IUser user, string newPassword)
+        public bool ExistsById(int id)
         {
+            bool returnValue = false;
             try
             {
-				var parameters = new List<SqlParameter>();
-                // set all the parameters
-                SqlParameter param = new SqlParameter();
-                // assign values
-                param = new SqlParameter("@ID", user.Id);
-                parameters.Add(param);
-                param = new SqlParameter("@newPass", newPassword);
-                parameters.Add(param);
-                // execute the command
-				var result = base.ExecuteStoreProcedure("modifyUserPassword", parameters);
-				_log.WriteToLog(_projectInfo.ProjectLogType, "UserRepository.ChangePassword", "UserRepository modifyUserPassword result : " + result.ToString(), LogEnum.Debug);
-			}
+                // check for username or email.
+                DataSet ds = base.GetDataFromSqlString("Select * from tblUsers where fldUser_id=" + id.ToString());
+                // if any row then the username or email already exists
+                int result = ds.Tables[0].Rows.Count;
+                if (result == 1)
+                    returnValue = true;
+            }
             catch (Exception x)
             {
-                _log.WriteToLog(_projectInfo.ProjectLogType, "UserRepository.changePassword", x, LogEnum.Critical);
+                _log.WriteToLog(_projectInfo.ProjectLogType, "User.ExistsById", x, LogEnum.Critical);
             }
+            return returnValue;
         }
 
-		public IList<User> GetAll()
+
+        public IList<User> GetAll()
 		{
 			throw new NotImplementedException();
 		}
 
-		public User? GetByIdentifier(string identifier)
-		{
-			throw new NotImplementedException();
-		}
+
 
 		public User Insert(User entity)
 		{
 			try
 			{
-				//var parameters = new List<SqlParameter>();
-				//// set all the parameters
-				//SqlParameter param = new SqlParameter();
-				//// assign values
-				//param = new SqlParameter("@name", entity.Name);
-				//parameters.Add(param);
-				//param = new SqlParameter("@pass", entity.Password);
-				//parameters.Add(param);
-				//param = new SqlParameter("@email", entity.Email);
-				//parameters.Add(param);
-				//param = new SqlParameter("@phone", entity.Phone);
-				//parameters.Add(param);
-				//param = new SqlParameter("@postalcode", entity.PostalCode);
-				//parameters.Add(param);
-				//param = new SqlParameter("@langPref", entity.LanguagePreference);
-				//parameters.Add(param);
-				//// execute the command
-				//var result = base.ExecuteStoreProcedure("insertUser", parameters);
-			}
+                var parameters = new List<SqlParameter>();
+                // set all the parameters
+                SqlParameter param = new SqlParameter();
+                // assign values
+                param = new SqlParameter("@id", entity.Id);
+                parameters.Add(param);
+                param = new SqlParameter("@username", entity.UserName);
+                parameters.Add(param);
+                param = new SqlParameter("@email", entity.Email);
+                parameters.Add(param);
+                param = new SqlParameter("@phone", entity.Phone);
+                parameters.Add(param);
+                param = new SqlParameter("@postalcode", entity.PostalCode);
+                parameters.Add(param);
+                param = new SqlParameter("@langPref", entity.LanguagePreference);
+                parameters.Add(param);
+                // execute the command
+                var result = base.ExecuteStoreProcedure("insertUser", parameters);
+            }
 			catch (Exception x)
 			{
 				_log.WriteToLog(_projectInfo.ProjectLogType, "User.insertUser", x, LogEnum.Critical);
@@ -201,27 +155,25 @@ namespace NSW.Repositories
 		{
 			try
 			{
-				//var parameters = new List<SqlParameter>();
-				//// set all the parameters
-				//SqlParameter param = new SqlParameter();
-				//// assign values
-				//param = new SqlParameter("@ID", entity.ID);
-				//parameters.Add(param);
-				//param = new SqlParameter("@name", entity.Name);
-				//parameters.Add(param);
-				//param = new SqlParameter("@pass", entity.Password);
-				//parameters.Add(param);
-				//param = new SqlParameter("@email", entity.Email);
-				//parameters.Add(param);
-				//param = new SqlParameter("@phone", entity.Phone);
-				//parameters.Add(param);
-				//param = new SqlParameter("@postalcode", entity.PostalCode);
-				//parameters.Add(param);
-				//param = new SqlParameter("@langPref", entity.LanguagePreference);
-				//parameters.Add(param);
-				//// execute the command
-				//var result = base.ExecuteStoreProcedure("modifyUser", parameters);
-			}
+                var parameters = new List<SqlParameter>();
+                // set all the parameters
+                SqlParameter param = new SqlParameter();
+                // assign values
+                param = new SqlParameter("@id", entity.Id);
+                parameters.Add(param);
+                param = new SqlParameter("@username", entity.UserName);
+                parameters.Add(param);
+                param = new SqlParameter("@email", entity.Email);
+                parameters.Add(param);
+                param = new SqlParameter("@phone", entity.Phone);
+                parameters.Add(param);
+                param = new SqlParameter("@postalcode", entity.PostalCode);
+                parameters.Add(param);
+                param = new SqlParameter("@langPref", entity.LanguagePreference);
+                parameters.Add(param);
+                // execute the command
+                var result = base.ExecuteStoreProcedure("modifyUser", parameters);
+            }
 			catch (Exception x)
 			{
 				_log.WriteToLog(_projectInfo.ProjectLogType, "User.modifyUser", x, LogEnum.Critical);
@@ -247,5 +199,20 @@ namespace NSW.Repositories
 				_log.WriteToLog(_projectInfo.ProjectLogType, "User.deleteUser", x, LogEnum.Critical);
 			}
 		}
+
+        private User ConvertDataRowToUser(DataRow dr)
+        {
+            var user = new User
+            {
+                Id = Convert.ToInt32(dr["fldUser_id"]),
+                UserName = dr["fldUser_UserName"].ToString(),
+                Email = dr["fldUser_Email"].ToString(),
+                Phone = dr["fldUser_Phone"].ToString(),
+                PostalCode = dr["fldUser_PostalCode"].ToString(),
+                Role = dr["fldUser_Role"].ToString(),
+                LanguagePreference = Convert.ToInt32(dr["fldUser_langPref"]),
+            };
+            return user;
+        }
 	}
 }

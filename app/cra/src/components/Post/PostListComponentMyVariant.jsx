@@ -31,7 +31,7 @@ const PostListComponentMyVariant = ({}) => {
     console.log(error);
   }
   const { data, error, isLoading, isError } = useUserPostList(
-    user.idpId,
+    user.id,
     isQueryDisabled,
     onSuccess,
     onError
