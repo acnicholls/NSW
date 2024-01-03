@@ -1,9 +1,8 @@
 ﻿using IdentityModel.Client;
-using Microsoft.AspNetCore.Http;
 
 namespace NSW.Data.Internal.Interfaces
 {
-	public interface IInternalDataTransferService
+    public interface IInternalDataTransferService
 	{
 		Task<DiscoveryDocumentResponse> GetIdpDiscoveryDocumentAsync();
 		Task<string> GetUserTokenAsync();
@@ -12,5 +11,7 @@ namespace NSW.Data.Internal.Interfaces
 
 		Task<T> GetDataFromApiAsync<T>(string apiEndpointPartialUrl, ApiAccessType accessType);
 		Task<T> GetDataFromApiAsync<T>(string apiEndpointPartialUrl, string token);
-	}
+        Task<TOutput> PostDataToApiAsync<TInput, TOutput>(string apiEndpointPartialUrl, string token, TInput data);
+        Task<TOutput> PostDataToApiAsync<TInput, TOutput>(string apiEndpointPartialUrl, ApiAccessType accessType, TInput data);
+    }
 }

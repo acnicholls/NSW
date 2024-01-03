@@ -8,6 +8,10 @@ using NSW.Data.Internal.Models;
 
 namespace NSW.Data.Internal.Services
 {
+    /// <summary>
+    /// this is a pass-thru implementation, just so the one going into the DI isn't called "Base"
+    /// It is intended for use by the BFF to request specific routes from either the API or the IDP
+    /// </summary>
 	public class InternalDataTransferServiceNoTools : InternalDataTransferServiceBase, IInternalDataTransferService
 	{
 
@@ -16,8 +20,9 @@ namespace NSW.Data.Internal.Services
 			IDiscoveryCache discoveryCache,
 			ILogger<InternalDataTransferService> logger,
 			IConfiguration configuration,
-			OidcOptions oidcOptions
-		) : base(httpContextAccessor, discoveryCache, logger, configuration, oidcOptions)
+			OidcOptions oidcOptions,
+            IHttpClientFactory httpClientFactory
+        ) : base(httpContextAccessor, discoveryCache, logger, configuration, oidcOptions, httpClientFactory)
 		{
 		}
 	}

@@ -10,6 +10,10 @@ using System.Security.Claims;
 
 namespace NSW.Data.Internal.Services
 {
+    /// <summary>
+    /// this implmentation of the service is meant for the IDP, as it allows a special type of token only 
+    /// available through the IdentityServer4 NuGet, called IdentityServerTools.
+    /// </summary>
 	public class InternalDataTransferService : InternalDataTransferServiceBase, IInternalDataTransferService
 	{
 		private readonly IdentityServerTools _tools;
@@ -20,8 +24,9 @@ namespace NSW.Data.Internal.Services
 			IDiscoveryCache discoveryCache,
 			ILogger<InternalDataTransferService> logger,
 			IConfiguration configuration,
-			OidcOptions oidcOptions
-		) : base(httpContextAccessor, discoveryCache, logger, configuration, oidcOptions)
+			OidcOptions oidcOptions,
+            IHttpClientFactory httpClientFactory
+        ) : base(httpContextAccessor, discoveryCache, logger, configuration, oidcOptions, httpClientFactory)
 		{
 			_tools = tools;
 		}

@@ -6,27 +6,31 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NSW.Data.Internal.Interfaces;
 using NSW.Data.Internal.Models;
+using System.Net.Http.Json;
 using System.Text.Json;
 
 
 namespace NSW.Data.Internal.Services
 {
-	public class InternalDataTransferServiceBase : IInternalDataTransferService
+    /// <summary>
+    /// this is the base implementation of the service, all used derivitatives will inherit these methods.
+    /// </summary>
+    public class InternalDataTransferServiceBase : IInternalDataTransferService
 	{
 		protected readonly ILogger<InternalDataTransferService> _logger;
-
 		protected readonly IDiscoveryCache _discoveryCache;
-
 		protected readonly IHttpContextAccessor _httpContextAccessor;
 		protected readonly IConfiguration _configuration;
 		protected readonly OidcOptions _oidcOptions;
+        protected readonly IHttpClientFactory _httpClientFactory;
 
 		public InternalDataTransferServiceBase(
 			IHttpContextAccessor httpContextAccessor,
 			IDiscoveryCache discoveryCache,
 			ILogger<InternalDataTransferService> logger,
 			IConfiguration configuration,
-			OidcOptions oidcOptions
+			OidcOptions oidcOptions,
+            IHttpClientFactory httpClientFactory
 		)
 		{
 			_logger = logger;
@@ -34,8 +38,10 @@ namespace NSW.Data.Internal.Services
 			_httpContextAccessor = httpContextAccessor;
 			_configuration = configuration;
 			_oidcOptions = oidcOptions;
+            _httpClientFactory = httpClientFactory;
 		}
-		protected DiscoveryDocumentResponse _discoveryDocument;
+		
+        protected DiscoveryDocumentResponse _discoveryDocument;
 
 		protected HttpContext GetContextFromAccessor()
 		{
@@ -97,7 +103,8 @@ namespace NSW.Data.Internal.Services
 			_logger.LogTrace("Completing GetUserTokenAsync()");
 			return await this.GetUserTokenAsync(context);
 		}
-		protected async Task<string> GetUserTokenAsync(HttpContext context)
+		
+        protected async Task<string> GetUserTokenAsync(HttpContext context)
 		{
 			_logger.LogTrace("Starting GetUserTokenAsync(HttpContext)");
 			var returnValue = string.Empty;
@@ -105,7 +112,7 @@ namespace NSW.Data.Internal.Services
 			{
                 UserAccessTokenParameters parameters = new UserAccessTokenParameters
                 {
-                    Resource = "openid",
+                    Resource = "NSW.Api",
                 };
 				returnValue = await context.GetUserAccessTokenAsync(parameters);
 				var messageValue = true ? returnValue : "***REDACTED***";  // TODO: find environment value, set to false for prod
@@ -118,7 +125,8 @@ namespace NSW.Data.Internal.Services
 			_logger.LogTrace("Completing GetUserTokenAsync(HttpContext)");
 			return returnValue;
 		}
-		protected async Task<string> GetClientTokenAsync(string clientId = "default")
+		
+        protected async Task<string> GetClientTokenAsync(string clientId = "default")
 		{
 			_logger.LogTrace("Starting GetClientTokenAsync()");
 			// grab the DI'd context
@@ -146,7 +154,6 @@ namespace NSW.Data.Internal.Services
 			_logger.LogTrace("Completing GetClientTokenAsync(HttpContext)");
 			return returnValue;
 		}
-
 
 		public virtual async Task<string> GetTokenStringAsync(ApiAccessType accessType)
 		{
@@ -194,7 +201,6 @@ namespace NSW.Data.Internal.Services
 			var returnValue = default(T);
 			try
 			{
-				// TODO: use HttpClientFactory here, it's safer
 				var token = await GetTokenStringAsync(accessType);
 				returnValue = await this.GetDataFromApiAsync<T>(apiEndpointPartialUrl, token);
 			}
@@ -213,24 +219,10 @@ namespace NSW.Data.Internal.Services
 			var returnValue = default(T);
 			try
 			{
-				// TODO: use HttpClientFactory here, it's safer
-				var client = new HttpClient();
-				_logger.LogTrace("GetDataFromApiAsync: Got token string");
-				string authHeaderValue = $"Bearer {token}";
-				client.DefaultRequestHeaders.Add("Authorization", authHeaderValue);
-				client.BaseAddress = new Uri(_configuration.GetValue<string>("Api:BaseUrl"));
-				var response = await client.GetAsync($"{apiEndpointPartialUrl}");
+                var client = GetHttpClientForApiWithTokenAsync(token);
+                var response = await client.GetAsync($"{apiEndpointPartialUrl}");
 				_logger.LogDebug("GetDataFromApiAsync.response {0}", response);
-				if (response.IsSuccessStatusCode)
-				{
-					var responseData = await response.Content.ReadAsStringAsync();
-					_logger.LogDebug("GetDataFromApiAsync.responseData {0}", responseData);
-					returnValue = JsonSerializer.Deserialize<T>(responseData, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-				}
-				else
-				{
-					throw new Exception($"InternalDataTransferService.GetDataFromApiAsync failed due to: {response.ReasonPhrase}");
-				}
+                returnValue = await ConvertHttpResponseToResponseOfAsync<T>(response);
 			}
 			catch (Exception ex)
 			{
@@ -240,5 +232,73 @@ namespace NSW.Data.Internal.Services
 			_logger.LogTrace("Completing GetDataFromApiAsync(url, token)");
 			return returnValue;
 		}
+
+        private HttpClient GetHttpClientForApiWithTokenAsync(string token)
+        {
+            _logger.LogTrace("Starting GetHttpClientForApiWithTokenAsync...");
+            var client = this._httpClientFactory.CreateClient();
+            _logger.LogDebug("GetHttpClientForApiWithTokenAsync: using token: {token}", token);  // TODO: check for env, and put REDACTED in anthing not dev.
+            string authHeaderValue = $"Bearer {token}";
+            client.DefaultRequestHeaders.Add("Authorization", authHeaderValue);
+            client.BaseAddress = new Uri(_configuration.GetValue<string>("Api:BaseUrl"));
+            _logger.LogTrace("Completing GetHttpClientForApiWithTokenAsync...");
+            return client;
+        }
+
+        private async Task<T> ConvertHttpResponseToResponseOfAsync<T>(HttpResponseMessage response)
+        {
+            var returnValue = default(T);
+            if (response.IsSuccessStatusCode)
+            {
+                var responseData = await response.Content.ReadAsStringAsync();
+                _logger.LogDebug("ConvertHttpResponseToResponseOfAsync.responseData {0}", responseData);
+                returnValue = JsonSerializer.Deserialize<T>(responseData, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            }
+            else
+            {
+                throw new Exception($"InternalDataTransfer failed due to: {response.ReasonPhrase}");
+            }
+            return returnValue;
+        }
+
+        private HttpContent ConvertModelToHttpContentAsync<T>(T model)
+        {
+            var returnValue = JsonContent.Create(model, typeof(T));
+            return returnValue;
+        }
+
+        public async Task<TOutput> PostDataToApiAsync<TInput, TOutput>(string apiEndpointPartialUrl, ApiAccessType accessType, TInput data)
+        {
+            var returnValue = default(TOutput);
+            try
+            {
+                var token = await GetTokenStringAsync(accessType);
+                returnValue = await PostDataToApiAsync<TInput, TOutput>(apiEndpointPartialUrl, token, data);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "InternalDataTransferService.PostDataToApiAsync(url, accessType, data)");
+                throw;
+            }
+            return returnValue;
+        }
+
+        public async Task<TOutput> PostDataToApiAsync<TInput, TOutput>(string apiEndpointPartialUrl, string token, TInput data)
+        {
+            var returnValue = default(TOutput);
+            try
+            {
+                var client = GetHttpClientForApiWithTokenAsync(token);
+                var response = await client.PostAsync($"{apiEndpointPartialUrl}", ConvertModelToHttpContentAsync<TInput>(data));
+                _logger.LogDebug("PostDataToApiAsync.response {0}", response);
+                returnValue = await ConvertHttpResponseToResponseOfAsync<TOutput>(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "InternalDataTransferService.PostDataToApiAsync(url, token, data)");
+                throw;
+            }
+            return returnValue;
+        }
 	}
 }
