@@ -13,17 +13,19 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
-using System;
-using System.Security.Claims;
-using System.Linq;
-using System.Threading.Tasks;
-
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using NSW.Data.DTO.Request;
+using NSW.Data.DTO.Response;
+using NSW.Data.Internal.Interfaces;
 using NSW.Idp.Models;
 using NSW.Idp.Models.Account;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+
 
 namespace NSW.Idp.Controllers.Account
 {
@@ -38,6 +40,8 @@ namespace NSW.Idp.Controllers.Account
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IEventService _events;
         private readonly IConfiguration _configuration;
+        private readonly IInternalDataTransferService _internalDataTransferService;
+        private readonly ILogger<AccountController> _logger;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -46,7 +50,9 @@ namespace NSW.Idp.Controllers.Account
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
             IEventService events,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IInternalDataTransferService internalDataTransferService,
+            ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -55,6 +61,8 @@ namespace NSW.Idp.Controllers.Account
             _schemeProvider = schemeProvider;
             _events = events;
             _configuration = configuration;
+            _internalDataTransferService = internalDataTransferService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -159,7 +167,8 @@ namespace NSW.Idp.Controllers.Account
         }
 
 		[HttpGet]
-		public async Task<IActionResult> Register([FromQuery] string returnUrl)
+        [AllowAnonymous]
+        public async Task<IActionResult> Register([FromQuery] string returnUrl)
 		{
             if (returnUrl is null)
             {
@@ -169,26 +178,21 @@ namespace NSW.Idp.Controllers.Account
 			return View(model);
 		}
 
-		//[HttpGet]
-		//public async Task<IActionResult> Register([FromQuery]string returnUrl)
-		//{
-		//	var vm = new NewUserModel { ReturnUrl = returnUrl };
-		//	return View(vm);
-		//}
 
-		[HttpPost]
-		public async Task<IActionResult> Register(NewUserModel model)
-		{
-			if(!ModelState.IsValid)
-			{
-				return BadRequest();
-			}
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Register([FromForm]NewUserModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
 
-			var user = new ApplicationUser();
-			user.Email = model.Email;
-			user.UserName = model.UserName;
+            var user = new ApplicationUser();
+            user.Email = model.Email;
+            user.UserName = model.UserName;
             user.PhoneNumber = model.PhoneNumber;
-			var result = await this._userManager.CreateAsync(user, model.Password);
+            var result = await this._userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
                 result = await this._userManager.AddToRoleAsync(user, NSW.Role.Member.ToString());
@@ -211,6 +215,28 @@ namespace NSW.Idp.Controllers.Account
                 userClaims.Add(new Claim(NSW.CustomClaimType.LanguagePreference.ToString(), ((int)model.LanguagePreference).ToString()));
                 userClaims.Add(new Claim(NSW.CustomClaimType.PostalCode.ToString(), model.PostalCode));
                 result = await this._userManager.AddClaimsAsync(user, userClaims);
+            }
+            if (result.Succeeded)
+            {
+                // post a new user to the API
+                var apiUser = new NSW.Data.DTO.Request.UserRequest
+                {
+                    Id = user.Id,
+                    Email = user.Email,
+                    UserName = user.UserName,
+                    Phone = user.PhoneNumber,
+                    PostalCode = model.PostalCode,
+                    LanguagePreference = (int)model.LanguagePreference,
+                };
+                try
+                {
+                    var response = await _internalDataTransferService.PostDataToApiAsync<UserRequest, UserResponse>("/api/User", ApiAccessType.Idp, apiUser);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Error creating user in API>>>");
+                    ModelState.AddModelError("500", ex.Message);
+                }
             }
 			if(result.Succeeded)
 			{
