@@ -8,7 +8,8 @@ const routes = Object.freeze({
     publicPost: `${process.env.REACT_APP_BFF_URL}/bff/Post`,
     privatePost: `${process.env.REACT_APP_BFF_URL}/api/Post`,
     labelText: `${process.env.REACT_APP_BFF_URL}/api/LabelText`,
-    labelTextGroup: `${process.env.REACT_APP_BFF_URL}/api/LabelText/group`,
+    privateLabelTextGroup: `${process.env.REACT_APP_BFF_URL}/api/LabelText/group`,
+    publicLabelTextGroup: `${process.env.REACT_APP_BFF_URL}/bff/LabelText/group`,
     postalCode: `${process.env.REACT_APP_BFF_URL}/api/PostalCode`,
     postCategory: `${process.env.REACT_APP_BFF_URL}/api/PostCategory`,
     user: `${process.env.REACT_APP_BFF_URL}/api/User`,
@@ -16,6 +17,7 @@ const routes = Object.freeze({
   },
   frontend: {
     slash: "/",
+    splash: "/splash",
     index: "/index",
     about: "/about",
     denied: "/denied",

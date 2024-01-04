@@ -52,6 +52,6 @@ export const anonymousUser = {
   phone: "99999999",
   role: "Empty",
   postalCode: {},
-  languagePreference: 1,
+  languagePreference: 0,
   isAuthenticated: false,
 };

@@ -101,20 +101,28 @@ namespace NSW.Data.Internal.Services
 			_logger.LogTrace("Got HttpContext from Accessor");
 			// pass it to the local method.
 			_logger.LogTrace("Completing GetUserTokenAsync()");
-			return await this.GetUserTokenAsync(context);
+			return await this.GetUserTokenAsync(context, defaultTokenParameters);
 		}
-		
-        protected async Task<string> GetUserTokenAsync(HttpContext context)
+
+        public async Task<string> GetUserTokenAsync(UserAccessTokenParameters tokenParameters)
+        {
+            _logger.LogTrace("Starting GetUserTokenAsync()");
+            // grab the DI'd context
+            var context = GetContextFromAccessor();
+            _logger.LogTrace("Got HttpContext from Accessor");
+            // pass it to the local method.
+            _logger.LogTrace("Completing GetUserTokenAsync()");
+            return await this.GetUserTokenAsync(context, tokenParameters);
+        }
+
+        protected async Task<string> GetUserTokenAsync(HttpContext context, UserAccessTokenParameters tokenParameters)
 		{
 			_logger.LogTrace("Starting GetUserTokenAsync(HttpContext)");
 			var returnValue = string.Empty;
 			try
 			{
-                UserAccessTokenParameters parameters = new UserAccessTokenParameters
-                {
-                    Resource = "NSW.Api",
-                };
-				returnValue = await context.GetUserAccessTokenAsync(parameters);
+
+				returnValue = await context.GetUserAccessTokenAsync(tokenParameters);
 				var messageValue = true ? returnValue : "***REDACTED***";  // TODO: find environment value, set to false for prod
 				_logger.LogTrace("Got token value {messageValue}, returning...", messageValue);
 			}
@@ -162,17 +170,17 @@ namespace NSW.Data.Internal.Services
 			var tokenString = string.Empty;
 			try
 			{
-				switch (accessType)
+				var context = GetContextFromAccessor();
+
+                switch (accessType)
 				{
 					case ApiAccessType.User:
 						{
-							var context = GetContextFromAccessor();
-							tokenString = await this.GetUserTokenAsync(context);
+							tokenString = await this.GetUserTokenAsync(context, defaultTokenParameters);
 							break;
 						}
 					case ApiAccessType.Client:
 						{
-							var context = GetContextFromAccessor();
 							tokenString = await this.GetClientTokenAsync(context, _oidcOptions.ClientId);
 							break;
 						}
@@ -300,5 +308,10 @@ namespace NSW.Data.Internal.Services
             }
             return returnValue;
         }
-	}
+
+        protected UserAccessTokenParameters defaultTokenParameters = new()
+        {
+            Resource = "NSW.Api",
+        };
+    }
 }

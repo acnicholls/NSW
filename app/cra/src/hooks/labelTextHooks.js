@@ -18,11 +18,30 @@ const useLabelTextList = (isDisabled, onSuccess, onError) => {
 
 const useLabelTextById = (labelTextId, isDisabled, onSuccess, onError) => {
   return useQuery(
-    labelTextQueryKeys.getLabelTextById,
+    labelTextQueryKeys.getLabelTextById(labelTextId),
     async () => await service.getLabelTextById(labelTextId),
     {
       staleTime: Infinity,
       enabled: labelTextId !== "" || labelTextId !== 0,
+      isDisabled: isDisabled,
+      onSuccess: (data) => onSuccess && onSuccess(data),
+      onError: (error) => onError && onError(error),
+    }
+  );
+};
+
+const useLabelTextByIdentifier = (
+  labelTextIdentifier,
+  isDisabled,
+  onSuccess,
+  onError
+) => {
+  return useQuery(
+    labelTextQueryKeys.getByIdentifier(labelTextIdentifier),
+    async () => await service.getLabelTextByIdentifier(labelTextIdentifier),
+    {
+      staleTime: Infinity,
+      enabled: labelTextIdentifier !== "",
       isDisabled: isDisabled,
       onSuccess: (data) => onSuccess && onSuccess(data),
       onError: (error) => onError && onError(error),
@@ -37,9 +56,8 @@ const useLabelTextByGroupIdentifier = (
   onError
 ) => {
   return useQuery(
-    labelTextQueryKeys.getByGroupIdentifier,
-    async (groupIdentifier) =>
-      await service.getLabelTextByPageIdentifier(groupIdentifier),
+    labelTextQueryKeys.getByGroupIdentifier(groupIdentifier),
+    async () => await service.getAllLabelTextByPageIdentifier(groupIdentifier),
     {
       staleTime: Infinity,
       enabled: groupIdentifier !== "",
@@ -49,4 +67,9 @@ const useLabelTextByGroupIdentifier = (
     }
   );
 };
-export { useLabelTextById, useLabelTextList, useLabelTextByGroupIdentifier };
+export {
+  useLabelTextById,
+  useLabelTextByIdentifier,
+  useLabelTextList,
+  useLabelTextByGroupIdentifier,
+};

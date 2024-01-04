@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using NSW.Data;
+using NSW.Data.DTO.Response;
 using NSW.Data.Interfaces;
 using NSW.Info;
 using NSW.Info.Interfaces;
@@ -109,6 +110,33 @@ namespace NSW.Repositories
 			}
 			return returnValue;
 		}
+
+        public IDictionary<string, LabelTextDictionaryItemResponse> GetListOfGroupedLabelsAllLanguages(string groupIdentifier)
+        {
+            var returnValue = new Dictionary<string, LabelTextDictionaryItemResponse>();
+            try
+            {
+                DataSet ds = base.GetDataFromSqlString("Select * from tblLabelText where fldLabel_ID like '" + groupIdentifier + "%';");
+                DataTable dt = ds.Tables[0];
+                foreach (DataRow row in dt.Rows)
+                {
+                    var fullString = row["fldLabel_ID"].ToString();
+                    string key = fullString.Remove(0, groupIdentifier.Length);
+                    var value = new LabelTextDictionaryItemResponse
+                    {
+                        English = row["fldLabel_English"].ToString(),
+                        Japanese = row["fldLabel_Japanese"].ToString()
+                    };
+                    returnValue.Add(key, value);
+                }
+            }
+            catch (Exception x)
+            {
+                _log.WriteToLog(_projectInfo.ProjectLogType, "LabelTextRepository.GetListOfGroupedLabelsAllLanguages", x, LogEnum.Critical);
+                throw;
+            }
+            return returnValue;
+        }
 
         /// <summary>
         /// gets a text string in the preferred language of the input user

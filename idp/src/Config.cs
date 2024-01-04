@@ -56,6 +56,15 @@ namespace NSW.Idp
 						//IdentityServerConstants.StandardScopes.Phone,
 						//IdentityServerConstants.StandardScopes.Profile,
 						"NSW.ApiScope",
+                    },
+                    UserClaims =
+                    {
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityModel.JwtClaimTypes.Email,
+                        IdentityModel.JwtClaimTypes.Role,
+                        IdentityModel.JwtClaimTypes.PhoneNumber,
+                        CustomClaimType.PostalCode.ToString(),
+                        CustomClaimType.LanguagePreference.ToString()
                     }
                 },
             };
@@ -102,7 +111,8 @@ namespace NSW.Idp
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
 						IdentityServerConstants.StandardScopes.Email,
-						IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Phone,
+                        IdentityServerConstants.StandardScopes.Profile,
 						"NSW.ApiScope"
 					},
                     AllowOfflineAccess = true,

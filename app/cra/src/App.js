@@ -23,12 +23,14 @@ import LoggedOut from "./components/authentication/LoggedOut";
 import TitleBarComponent from "./components/TitleBarComponent";
 import LabelTextEditComponent from "./components/LabelText/LabelTextEditComponent";
 import NotFound from "./components/NotFound";
+import Splash from "./components/Splash";
 /*
   Hook Contexts
 */
 import { UserProvider } from "./contexts/UserContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { LanguageSelectionProvider } from "./contexts/LanguageSelectionContext";
 /*
   NavBar components
 */
@@ -49,109 +51,112 @@ export default function App() {
           <TitleBarComponent />
           <UserProvider>
             <Router>
-              <NswNavBar />
-              <div>
-                <Routes>
-                  <Route
-                    exact
-                    path={routes.frontend.slash}
-                    element={<Navigate to={routes.frontend.index} />}
-                  />
-                  <Route path={routes.frontend.index} element={<Index />} />
-                  <Route path={routes.frontend.about} element={<About />} />
-                  <Route path={routes.frontend.search} element={<Search />} />
-                  <Route
-                    path={routes.frontend.posts}
-                    element={
-                      <PostListComponent variant={PostPageVariantEnum.Main} />
-                    }
-                  />
-                  <Route
-                    path={routes.frontend.myPosts}
-                    element={
-                      <RequireAuth>
-                        <PostListComponent variant={PostPageVariantEnum.My} />
-                      </RequireAuth>
-                    }
-                  />
-                  <Route
-                    path={routes.frontend.userDetails}
-                    element={
-                      <RequireAuth>
-                        <UserDetails />
-                      </RequireAuth>
-                    }
-                  />
-                  <Route
-                    path={routes.frontend.admin.labelText}
-                    element={
-                      <RequireRole selectedRole={RoleEnum.Admin}>
-                        <LabelTextEditComponent />
-                      </RequireRole>
-                    }
-                  />
-                  <Route
-                    path={routes.frontend.admin.postCategory}
-                    requiredRole={"ADMIN"}
-                    element={
-                      <RequireRole selectedRole={RoleEnum.Admin}>
-                        <LabelTextEditComponent />
-                      </RequireRole>
-                    }
-                  />
-                  <Route
-                    path={routes.frontend.admin.users}
-                    requiredRole={"ADMIN"}
-                    element={
-                      <RequireRole selectedRole={RoleEnum.Admin}>
-                        <LabelTextEditComponent />
-                      </RequireRole>
-                    }
-                  />
-                  <Route
-                    path={routes.frontend.register}
-                    element={
-                      <ExternalRedirect
-                        path={routes.frontend.register}
-                        link={`${routes.backend.register}?returnUrl=${routes.public}${routes.frontend.loggedIn}`}
-                      />
-                    }
-                  />
-                  <Route
-                    path={routes.frontend.login}
-                    element={
-                      <ExternalRedirect
-                        path={routes.frontend.login}
-                        link={routes.backend.login}
-                        exact={true}
-                      />
-                    }
-                  />
-                  <Route
-                    path={routes.frontend.logout}
-                    element={
-                      <ExternalRedirect
-                        path={routes.frontend.logout}
-                        link={routes.backend.logout}
-                        isPrivate={true}
-                        exact={true}
-                      />
-                    }
-                  />
-                  <Route
-                    path={routes.frontend.loggedIn}
-                    element={<LoggedIn />}
-                  />
+              <LanguageSelectionProvider>
+                <NswNavBar />
+                <div>
+                  <Routes>
+                    <Route
+                      exact
+                      path={routes.frontend.slash}
+                      element={<Navigate to={routes.frontend.index} />}
+                    />
+                    <Route path={routes.frontend.index} element={<Index />} />
+                    <Route path={routes.frontend.about} element={<About />} />
+                    <Route path={routes.frontend.search} element={<Search />} />
+                    <Route path={routes.frontend.splash} element={<Splash />} />
+                    <Route
+                      path={routes.frontend.posts}
+                      element={
+                        <PostListComponent variant={PostPageVariantEnum.Main} />
+                      }
+                    />
+                    <Route
+                      path={routes.frontend.myPosts}
+                      element={
+                        <RequireAuth>
+                          <PostListComponent variant={PostPageVariantEnum.My} />
+                        </RequireAuth>
+                      }
+                    />
+                    <Route
+                      path={routes.frontend.userDetails}
+                      element={
+                        <RequireAuth>
+                          <UserDetails />
+                        </RequireAuth>
+                      }
+                    />
+                    <Route
+                      path={routes.frontend.admin.labelText}
+                      element={
+                        <RequireRole selectedRole={RoleEnum.Admin}>
+                          <LabelTextEditComponent />
+                        </RequireRole>
+                      }
+                    />
+                    <Route
+                      path={routes.frontend.admin.postCategory}
+                      requiredRole={"ADMIN"}
+                      element={
+                        <RequireRole selectedRole={RoleEnum.Admin}>
+                          <LabelTextEditComponent />
+                        </RequireRole>
+                      }
+                    />
+                    <Route
+                      path={routes.frontend.admin.users}
+                      requiredRole={"ADMIN"}
+                      element={
+                        <RequireRole selectedRole={RoleEnum.Admin}>
+                          <LabelTextEditComponent />
+                        </RequireRole>
+                      }
+                    />
+                    <Route
+                      path={routes.frontend.register}
+                      element={
+                        <ExternalRedirect
+                          path={routes.frontend.register}
+                          link={`${routes.backend.register}?returnUrl=${routes.public}${routes.frontend.loggedIn}`}
+                        />
+                      }
+                    />
+                    <Route
+                      path={routes.frontend.login}
+                      element={
+                        <ExternalRedirect
+                          path={routes.frontend.login}
+                          link={routes.backend.login}
+                          exact={true}
+                        />
+                      }
+                    />
+                    <Route
+                      path={routes.frontend.logout}
+                      element={
+                        <ExternalRedirect
+                          path={routes.frontend.logout}
+                          link={routes.backend.logout}
+                          isPrivate={true}
+                          exact={true}
+                        />
+                      }
+                    />
+                    <Route
+                      path={routes.frontend.loggedIn}
+                      element={<LoggedIn />}
+                    />
 
-                  <Route
-                    path={routes.frontend.loggedOut}
-                    element={<LoggedOut />}
-                  />
+                    <Route
+                      path={routes.frontend.loggedOut}
+                      element={<LoggedOut />}
+                    />
 
-                  <Route path={routes.frontend.denied} element={<Denied />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </div>
+                    <Route path={routes.frontend.denied} element={<Denied />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </div>
+              </LanguageSelectionProvider>
             </Router>
           </UserProvider>
           <ReactQueryDevtools initialIsOpen={false} />

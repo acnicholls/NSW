@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NSW.Api.Controllers.Interfaces;
 using NSW.Data;
+using NSW.Data.DTO.Response;
 using NSW.Services.Interfaces;
 
 namespace NSW.Api.Controllers
@@ -105,7 +106,7 @@ namespace NSW.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<LabelText>> InsertAsync([FromBody] LabelText entity) => await Task.Run(() => this._insert(entity));
 
-        private ActionResult<IList<LabelText>> _getByGroupIdentifier(string identifier)
+        private ActionResult<IDictionary<string, string>> _getByGroupIdentifier(string identifier)
         {
             try
             {
@@ -120,7 +121,24 @@ namespace NSW.Api.Controllers
         }
 
         [HttpGet("group/{identifier}")]
-        public async Task<ActionResult<IList<LabelText>>> GetbyGroupIdentifierAsync(string identifier) => await Task.Run(() => this._getByGroupIdentifier(identifier));
+        public async Task<ActionResult<IDictionary<string, string>>> GetbyGroupIdentifierAsync(string identifier) => await Task.Run(() => this._getByGroupIdentifier(identifier));
+
+        private ActionResult<IDictionary<string, LabelTextDictionaryItemResponse>> _getAllLanguagesByGroupIdentifier(string identifier)
+        {
+            try
+            {
+                var returnValue = _service.GetListOfGroupedLabelsAllLanguages(identifier);
+                return new OkObjectResult(returnValue);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("group/{identifier}/all")]
+        public async Task<ActionResult<IDictionary<string, LabelTextDictionaryItemResponse>>> GetAllLanguagesByGroupIdentifierAsync(string identifier) => await Task.Run(() => this._getAllLanguagesByGroupIdentifier(identifier));
 
         private ActionResult<LabelText> _modify([FromBody] LabelText entity)
         {

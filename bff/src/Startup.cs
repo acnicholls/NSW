@@ -16,10 +16,10 @@ using System.Linq;
 
 namespace NSW.Bff
 {
-	public class Startup
+    public class Startup
     {
         private readonly ILogger<Startup> _logger;
-		private readonly IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
 
 
         //public Startup()
@@ -28,41 +28,41 @@ namespace NSW.Bff
         //}
 
         public Startup(
-			//ILogger<Startup> logger, 
-			IConfiguration configuration)
+            //ILogger<Startup> logger, 
+            IConfiguration configuration)
         {
             //_logger = logger;
-			_configuration = configuration;
+            _configuration = configuration;
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-			// capture the settings.
-			var oidcOptions = NSW.Data.Extensions.DependencyInjection.RegisterServices(services, _configuration, DataTransferVaraintEnum.NoTools);
-			NSW.Data.Extensions.DependencyInjection.RegisterPostalTask(services);
+            // capture the settings.
+            var oidcOptions = NSW.Data.Extensions.DependencyInjection.RegisterServices(services, _configuration, DataTransferVaraintEnum.NoTools);
+            NSW.Data.Extensions.DependencyInjection.RegisterPostalTask(services);
 
-			services.AddCors(options =>
-			{
-				options.AddPolicy("CorsPolicy",
-					builder => builder.WithOrigins(
-						"http://localhost",
-						"https://localhost",
-						"http://api:5002",
-						"https://api:5003",
-						"http://idp:5006",
-						"https://idp:5007",
-						"http://localhost:3000",
-						"https://localhost:3000"
-						)
-					.AllowAnyMethod()
-					.AllowAnyHeader()
-					.AllowCredentials());
-			});
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.WithOrigins(
+                        "http://localhost",
+                        "https://localhost",
+                        "http://api:5002",
+                        "https://api:5003",
+                        "http://idp:5006",
+                        "https://idp:5007",
+                        "http://localhost:3000",
+                        "https://localhost:3000"
+                        )
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
 
-			IdentityModelEventSource.ShowPII = true;
+            IdentityModelEventSource.ShowPII = true;
             services.AddProxy();
-			services.AddLogging();
+            services.AddLogging();
             services.AddAccessTokenManagement();
 
             services.AddControllers();
@@ -80,18 +80,18 @@ namespace NSW.Bff
             })
             .AddOpenIdConnect("oidc", options =>
             {
-				options.Authority = oidcOptions.Authority;
+                options.Authority = oidcOptions.Authority;
                 options.ClientId = oidcOptions.ClientId;
-				options.ClientSecret = oidcOptions.ClientSecret;
-				options.MetadataAddress = oidcOptions.MetadataAddress;
-				options.RequireHttpsMetadata = oidcOptions.RequireHttpsMetadata;
-				// options.CallbackPath = oidcOptions.CallbackPath;
+                options.ClientSecret = oidcOptions.ClientSecret;
+                options.MetadataAddress = oidcOptions.MetadataAddress;
+                options.RequireHttpsMetadata = oidcOptions.RequireHttpsMetadata;
+                // options.CallbackPath = oidcOptions.CallbackPath;
 
-				options.ResponseType = oidcOptions.ResponseType;
-				options.GetClaimsFromUserInfoEndpoint = oidcOptions.GetClaimsFromUserInfoEndpoint; 
+                options.ResponseType = oidcOptions.ResponseType;
+                options.GetClaimsFromUserInfoEndpoint = oidcOptions.GetClaimsFromUserInfoEndpoint;
                 options.SaveTokens = oidcOptions.SaveTokens;
 
-				options.Scope.Clear();
+                options.Scope.Clear();
                 options.Scope.Add("openid");
                 options.Scope.Add("profile");
                 options.Scope.Add("NSW.ApiScope");  // this is the API from this solution
@@ -116,18 +116,18 @@ namespace NSW.Bff
         public void Configure(IApplicationBuilder app)
         {
             app.UseDeveloperExceptionPage();
-			app.Use(async (context, next) =>
-			{
-				if (context is not null)
-				{
-					if (!NSW.Data.Validation.ValidPostalCodes.NaganoPostalCodes.Any())
-					{
-						var postalCodeTask = app.ApplicationServices.GetRequiredService<IPostalCodeTask>();
-						postalCodeTask.StartBackgroundPostalCodeWorker(ApiAccessType.Client);
-					}
-				}
-				await next();
-			});
+            app.Use(async (context, next) =>
+            {
+                if (context is not null)
+                {
+                    if (!NSW.Data.Validation.ValidPostalCodes.NaganoPostalCodes.Any())
+                    {
+                        var postalCodeTask = app.ApplicationServices.GetRequiredService<IPostalCodeTask>();
+                        postalCodeTask.StartBackgroundPostalCodeWorker(ApiAccessType.Client);
+                    }
+                }
+                await next();
+            });
 
 
             app.UseMiddleware<StrictSameSiteExternalAuthenticationMiddleware>();
@@ -141,9 +141,9 @@ namespace NSW.Bff
                 await next();
                 if (httpcontext.Response.StatusCode == StatusCodes.Status302Found)
                 {
-					var oldPart = _configuration.GetValue<string>("Authentication:InternalAddressPart");
-					var newPart = _configuration.GetValue<string>("Authentication:ExternalAddressPart");
-					
+                    var oldPart = _configuration.GetValue<string>("Authentication:InternalAddressPart");
+                    var newPart = _configuration.GetValue<string>("Authentication:ExternalAddressPart");
+
                     string location = httpcontext.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Location];
                     httpcontext.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Location] =
                             location.Replace(oldPart, newPart);
@@ -154,15 +154,16 @@ namespace NSW.Bff
             // challenge any unauthenticated user
             app.Use(async (context, next) =>
             {
-				var query = context.Request.Path;
-				var skipChallenge = false;
-				//var endpoint = context.GetEndpoint();
-				//var anonAttrib = endpoint?.Metadata?.GetMetadata<AllowAnonymousAttribute>();
-				if(query == "/bff/Post")
-				{
-					skipChallenge = true;
-				}
-				// if the user is NOT authenticated and trying to access an endpoint that requires authentication, challenge them.
+                var query = context.Request.Path;
+                var skipChallenge = false;
+                //var endpoint = context.GetEndpoint();
+                //var anonAttrib = endpoint?.Metadata?.GetMetadata<AllowAnonymousAttribute>();
+                // TODO: make this a config item.  still building routes....
+                if (query == "/bff/Post" || query.ToString().StartsWith("/bff/LabelText"))
+                {
+                    skipChallenge = true;
+                }
+                // if the user is NOT authenticated and trying to access an endpoint that requires authentication, challenge them.
                 if (!context.User.Identity.IsAuthenticated && !skipChallenge)
                 {
                     await context.ChallengeAsync(new AuthenticationProperties { RedirectUri = _configuration.GetValue<string>("Authentication:LoggedInRedirect") });
@@ -180,28 +181,28 @@ namespace NSW.Bff
             // use the url to determine the files to use to process the request
             app.UseRouting();
 
-			app.UseCors("CorsPolicy");
+            app.UseCors("CorsPolicy");
 
-			// // process authentication and authorization of the response to the earlier challenge
-			app.UseAuthentication();
+            // // process authentication and authorization of the response to the earlier challenge
+            app.UseAuthentication();
             app.UseAuthorization();
 
-			app.Map("/api", api =>
-			{
-				api.RunProxy(async context =>
-				{
-					var apiUrl = $"{_configuration.GetValue<string>("Api:BaseUrl")}/api" ;
+            app.Map("/api", api =>
+            {
+                api.RunProxy(async context =>
+                {
+                    var apiUrl = $"{_configuration.GetValue<string>("Api:BaseUrl")}/api";
 
-					var forwardContext = context.ForwardTo(apiUrl);
+                    var forwardContext = context.ForwardTo(apiUrl);
 
-					var token = await context.GetUserAccessTokenAsync();
-					forwardContext.UpstreamRequest.SetBearerToken(token);
+                    var token = await context.GetUserAccessTokenAsync();
+                    forwardContext.UpstreamRequest.SetBearerToken(token);
 
-					return await forwardContext.Send();
-				});
-			});
-			// create route endpoints from all the ApiController/Controller classes registered
-			app.UseEndpoints(endpoints =>
+                    return await forwardContext.Send();
+                });
+            });
+            // create route endpoints from all the ApiController/Controller classes registered
+            app.UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers()
                         .RequireAuthorization();

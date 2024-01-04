@@ -1,4 +1,4 @@
-﻿using IdentityModel.Client;
+using IdentityModel.Client;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -41,19 +41,23 @@ namespace NSW.Bff.Controllers
 		{
 			try
 			{
-				var idpTask = GetUserInfoFromIDPAsync();
+                // get the user id
 				var userId = int.Parse(User.Claims.FirstOrDefault(x => x.Type == "sub").Value);
+                // setup tasks to get the user info from IDP and API
+				var idpTask = GetUserInfoFromIDPAsync();
 				var apiTask = _service.GetDataFromApiAsync<UserResponse>($"/api/User/{userId}", ApiAccessType.User);
-
+                // fire the tasks and wait
 				Task.WaitAll(idpTask, apiTask);
-
+                // log the current user
 				_logger.LogDebug("user : {0}", JsonSerializer.Serialize(User.Identity));
-
+                // get the task results
 				var idpResponse = idpTask.Result;
 				var apiResponse = apiTask.Result;
+                // placeholder to map the postal code from the user to a postal code with lat/long 
+                var postalCodeResponse = NSW.Data.Validation.ValidPostalCodes.NaganoPostalCodes.Find(x => x.Code == "<user postal code>");
+                // now map that to a postal code response (I should use AutoMapper)
 
-				var postalCodeResponse = apiResponse.PostalCode;
-
+                // create the user response
 				var user = new UserResponse
 				{
 					Id = Convert.ToInt32(idpResponse.Claims.FirstOrDefault(x => x.Type == "sub")?.Value),
@@ -69,12 +73,13 @@ namespace NSW.Bff.Controllers
 					IsAuthenticated = true,
 				};
 
+                // return to caller
 				return new JsonResult(user);
 			}
 			catch (Exception x)
 			{
 				_logger.LogError(x, "UserController.GetUserAsync");
-				return new JsonResult(GetAnonymousUser);
+                throw new Exception("Login error...");
 			}
 		}
 

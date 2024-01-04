@@ -1,6 +1,8 @@
 import routes from "../constants/RouteConstants";
 import * as api from "./api";
 const baseRoute = `${routes.backend.labelText}`;
+const bffGroupRoute = `${routes.backend.publicLabelTextGroup}`;
+const apiGroupRoute = `${routes.backend.privateLabelTextGroup}`;
 
 const getLabelTexts = async () => {
   try {
@@ -24,12 +26,34 @@ const getLabelTextById = async (id) => {
   }
 };
 
+const getLabelTextByIdentifier = async (identifier) => {
+  try {
+    var response = await api.apiGet(`${baseRoute}/${identifier}`);
+    console.log("getLabelTextByIdentifier:response:", response);
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error.response;
+  }
+};
+
 const getLabelTextByPageIdentifier = async (identifier) => {
   try {
     var response = await api.apiGet(
-      `${routes.backend.labelTextGroup}/${identifier}`
+      `${routes.backend.privateLabelTextGroup}/${identifier}`
     );
     console.log("getLabelTextByPageIdentifier:response:", response);
+    return response;
+  } catch (error) {
+    console.log(error);
+    return error.response;
+  }
+};
+
+const getAllLabelTextByPageIdentifier = async (identifier) => {
+  try {
+    var response = await api.apiGet(`${bffGroupRoute}/${identifier}/all`);
+    console.log("getAllLabelTextByPageIdentifier:response:", response);
     return response;
   } catch (error) {
     console.log(error);
@@ -75,7 +99,9 @@ const service = {
   updateLabelText,
   saveLabelText,
   getLabelTextById,
+  getLabelTextByIdentifier,
   getLabelTextByPageIdentifier,
+  getAllLabelTextByPageIdentifier,
   getLabelTexts,
 };
 

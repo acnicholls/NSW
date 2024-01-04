@@ -1,4 +1,5 @@
-﻿using IdentityModel.Client;
+﻿using IdentityModel.AspNetCore.AccessTokenManagement;
+using IdentityModel.Client;
 
 namespace NSW.Data.Internal.Interfaces
 {
@@ -6,8 +7,9 @@ namespace NSW.Data.Internal.Interfaces
 	{
 		Task<DiscoveryDocumentResponse> GetIdpDiscoveryDocumentAsync();
 		Task<string> GetUserTokenAsync();
+        Task<string> GetUserTokenAsync(UserAccessTokenParameters tokenParameters);
 
-		Task<string> GetTokenStringAsync(ApiAccessType accessType);
+        Task<string> GetTokenStringAsync(ApiAccessType accessType);
 
 		Task<T> GetDataFromApiAsync<T>(string apiEndpointPartialUrl, ApiAccessType accessType);
 		Task<T> GetDataFromApiAsync<T>(string apiEndpointPartialUrl, string token);

@@ -1,5 +1,6 @@
 const pagesWithLabels = Object.freeze({
   AddPost: {
+    Main: "AddPost.",
     "4MegMessage": "AddPost.4MegMessage",
     AddPostInstructions: "AddPost.AddPostInstructions",
     AddPostPageTitle: "AddPost.AddPostPageTitle",
@@ -23,6 +24,7 @@ const pagesWithLabels = Object.freeze({
     SuccessMessage: "AddPost.SuccessMessage",
   },
   Category: {
+    Main: "Category.",
     CategoryDescription: "Category.CategoryDescription",
     CategoryEnglishDescriptionLabel: "Category.CategoryEnglishDescriptionLabel",
     CategoryEnglishLabel: "Category.CategoryEnglishLabel",
@@ -39,6 +41,7 @@ const pagesWithLabels = Object.freeze({
     Title: "Category.Title",
   },
   ChangePass: {
+    Main: "ChangePass.",
     ChangePasswordPushButton: "ChangePass.ChangePasswordPushButton",
     ConfirmNewPasswordLabel: "ChangePass.ConfirmNewPasswordLabel",
     ConfirmNewPasswordRequired: "ChangePass.ConfirmNewPasswordRequired",
@@ -46,6 +49,7 @@ const pagesWithLabels = Object.freeze({
     CurrentPasswordRequired: "ChangePass.CurrentPasswordRequired",
     Instructions: "ChangePass.Instructions",
     Instructions2: {
+      Main: "ChangePass.Instructions2.",
       Part1: "ChangePass.Instructions2.Part1",
       Part2: "ChangePass.Instructions2.Part2",
     },
@@ -57,14 +61,17 @@ const pagesWithLabels = Object.freeze({
     Title: "ChangePass.Title",
   },
   ContactFailure: {
+    Main: "ContactFailure.",
     Message: "ContactFailure.Message",
     Title: "ContactFailure.Title",
   },
   ContactSuccess: {
+    Main: "ContactSuccess.",
     Success: "ContactSuccess.Success",
     Title: "ContactSuccess.Title",
   },
   ContactUs: {
+    Main: "ContactUs.",
     ContactBodyLabel: "ContactUs.ContactBodyLabel",
     ContactBodyRequired: "ContactUs.ContactBodyRequired",
     ContactCaptchaRequired: "ContactUs.ContactCaptchaRequired",
@@ -78,6 +85,7 @@ const pagesWithLabels = Object.freeze({
     Subject: "ContactUs.Subject",
   },
   ContactUser: {
+    Main: "ContactUser.",
     ContactBodyLabel: "ContactUser.ContactBodyLabel",
     ContactBodyRequired: "ContactUser.ContactBodyRequired",
     ContactCaptchaRequired: "ContactUser.ContactCaptchaRequired",
@@ -90,14 +98,17 @@ const pagesWithLabels = Object.freeze({
     Legend: "ContactUser.Legend",
   },
   ContactUsFailure: {
+    Main: "ContactUsFailure.",
     Message: "ContactUsFailure.Message",
     Title: "ContactUsFailure.Title",
   },
   ContactUsSuccess: {
+    Main: "ContactUsSuccess.",
     Message: "ContactUsSuccess.Message",
     Title: "ContactUsSuccess.Title",
   },
   EditPost: {
+    Main: "EditPost.",
     EditPostInstructions: "EditPost.EditPostInstructions",
     EditPostPageTitle: "EditPost.EditPostPageTitle",
     FinishButton: "EditPost.FinishButton",
@@ -112,6 +123,7 @@ const pagesWithLabels = Object.freeze({
     SuccessMessage: "EditPost.SuccessMessage",
   },
   Email: {
+    Main: "Email.",
     BodyString1: "Email.BodyString1",
     BodyString2: "Email.BodyString2",
     BodyString3: "Email.BodyString3",
@@ -123,6 +135,7 @@ const pagesWithLabels = Object.freeze({
     Subject: "Email.Subject",
   },
   ExpiryEmail: {
+    Main: "ExpiryEmail.",
     Line1: "ExpiryEmail.Line1",
     Line2: "ExpiryEmail.Line2",
     Line3: "ExpiryEmail.Line3",
@@ -130,6 +143,7 @@ const pagesWithLabels = Object.freeze({
     Subject: "ExpiryEmail.Subject",
   },
   ForgotPass: {
+    Main: "ForgotPass.",
     ForgotPasswordLabel: "ForgotPass.ForgotPasswordLabel",
     ForgotPasswordPushButton: "ForgotPass.ForgotPasswordPushButton",
     Instructions: "ForgotPass.Instructions",
@@ -141,10 +155,12 @@ const pagesWithLabels = Object.freeze({
     Title: "ForgotPass.Title",
   },
   ForgotPasswordEmailSent: {
+    Main: "ForgotPasswordEmailSent.",
     Message: "ForgotPasswordEmailSent.Message",
     Title: "ForgotPasswordEmailSent.Title",
   },
   LabelText: {
+    Main: "LabelText.",
     CancelButton: "LabelText.CancelButton",
     ddlLabelID: "LabelText.ddlLabelID",
     EnglishRequiredMessage: "LabelText.EnglishRequiredMessage",
@@ -159,6 +175,7 @@ const pagesWithLabels = Object.freeze({
     txtJapanese: "LabelText.txtJapanese",
   },
   Login: {
+    Main: "Login.",
     btnLogin: "Login.btnLogin",
     ForgotPassword: "Login.ForgotPassword",
     Legend: "Login.Legend",
@@ -174,9 +191,11 @@ const pagesWithLabels = Object.freeze({
     UserRequired: "Login.UserRequired",
   },
   Main: {
+    Main: "Main.",
     Instructions: "Main.Instructions",
   },
   Master: {
+    Main: "Master.",
     btnAdd: "Master.btnAdd",
     btnAdmin: "Master.btnAdmin",
     btnCategory: "Master.btnCategory",
@@ -201,6 +220,7 @@ const pagesWithLabels = Object.freeze({
     lnkSwitchMobile: "Master.lnkSwitchMobile",
   },
   PostList: {
+    Main: "PostList.",
     btnNext: "PostList.btnNext",
     btnPrev: "PostList.btnPrev",
     cheapToExp: "PostList.cheapToExp",
@@ -212,11 +232,13 @@ const pagesWithLabels = Object.freeze({
     SortOptionsLabel: "PostList.SortOptionsLabel",
   },
   PostStatus: {
+    Main: "PostStatus.",
     Active: "PostStatus.Active",
     Expired: "PostStatus.Expired",
     Sold: "PostStatus.Sold",
   },
   Profile: {
+    Main: "Profile.",
     EmailLabel: "Profile.EmailLabel",
     EmailRequired: "Profile.EmailRequired",
     EmailUsed: "Profile.EmailUsed",
@@ -236,6 +258,7 @@ const pagesWithLabels = Object.freeze({
     ValidPhone: "Profile.ValidPhone",
   },
   Register: {
+    Main: "Register.",
     ConfirmPasswordLabel: "Register.ConfirmPasswordLabel",
     ConfirmPasswordRequired: "Register.ConfirmPasswordRequired",
     EmailInUse: "Register.EmailInUse",
@@ -247,6 +270,7 @@ const pagesWithLabels = Object.freeze({
     LanguagePreferenceLabel: "Register.LanguagePreferenceLabel",
     PageInstructions1: "Register.PageInstructions1",
     PageInstructions2: {
+      Main: "Register.PageInstructions2.",
       Part1: "Register.PageInstructions2.Part1",
       Part2: "Register.PageInstructions2.Part2",
     },
@@ -268,10 +292,12 @@ const pagesWithLabels = Object.freeze({
     ValidPostal: "Register.ValidPostal",
   },
   RenewPost: {
+    Main: "RenewPost.",
     Failure: "RenewPost.Failure",
     Success: "RenewPost.Success",
   },
   Search: {
+    Main: "Search.",
     FinishButton: "Search.FinishButton",
     Legend: "Search.Legend",
     SearchCategoryPickerLabel: "Search.SearchCategoryPickerLabel",
@@ -283,13 +309,16 @@ const pagesWithLabels = Object.freeze({
     SearchTermLabel: "Search.SearchTermLabel",
   },
   Splash: {
+    Main: "Splash.",
     Instructions: "Splash.Instructions",
     Welcome: "Splash.Welcome",
   },
   TestMain: {
+    Main: "TestMain",
     Instructions: "TestMain.Instructions",
   },
   ViewPost: {
+    Main: "ViewPost.",
     vpUserContact: "ViewPost.vpUserContact",
     vpUserEdit: "ViewPost.vpUserEdit",
     vpUserItems: "ViewPost.vpUserItems",
