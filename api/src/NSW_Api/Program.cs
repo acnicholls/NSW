@@ -6,7 +6,7 @@ Log.Logger = new LoggerConfiguration()
 	.MinimumLevel.Override("NSW", Serilog.Events.LogEventLevel.Verbose)
 	.Enrich.FromLogContext()
 	.WriteTo.Console()
-	.WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
+	.WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}:: {Message:lj}{NewLine}{Exception}")
 	.CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);

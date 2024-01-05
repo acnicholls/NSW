@@ -95,7 +95,7 @@ namespace NSW.Bff.Controllers
 					PostalCode = new PostalCodeResponse(),
 					UserName = "Anonymous User",
 					Role = "Empty",
-					LanguagePreference = 1,
+					LanguagePreference = 0,
 					IsAuthenticated = false,
 				};
 				return user;

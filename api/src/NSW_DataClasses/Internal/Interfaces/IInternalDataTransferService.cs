@@ -7,7 +7,7 @@ namespace NSW.Data.Internal.Interfaces
 	{
 		Task<DiscoveryDocumentResponse> GetIdpDiscoveryDocumentAsync();
 		Task<string> GetUserTokenAsync();
-        Task<string> GetUserTokenAsync(UserAccessTokenParameters tokenParameters);
+        //Task<string> GetUserTokenAsync(UserAccessTokenParameters tokenParameters);
 
         Task<string> GetTokenStringAsync(ApiAccessType accessType);
 

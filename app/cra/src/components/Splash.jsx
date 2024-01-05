@@ -1,31 +1,36 @@
+/*
+ CSS
+*/
 import "../App.css";
+/*
+  React Stuff
+*/
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Modal,
-  ModalBody,
-  ModalHeader,
-} from "react-bootstrap";
-import { useUserContext } from "../contexts/UserContext";
-import TitleBarComponent from "./TitleBarComponent";
-import { useUserInfo } from "../hooks/userHooks";
-import { useNavigate } from "react-router-dom";
-import routes from "../constants/RouteConstants";
+/*
+  Layout
+*/
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { useNavigate } from "react-router";
+/*
+  Components
+*/
+import SpacerRow from "./SpacerRow";
+/*
+  Constants
+*/
 import LabelTextLocators from "../constants/LabelTextLocators";
+/*
+  Hooks
+*/
 import { useLabelTextByGroupIdentifier } from "../hooks/labelTextHooks";
-import { useLanguageSelectionContext } from "../contexts/LanguageSelectionContext";
+import { useUserContext } from "../contexts/UserContext";
+import routes from "../constants/RouteConstants";
 
 const Splash = (props) => {
-  //const { navigate } = useNavigate();
-  const { selectedLanguage, setSelectedLanguage } =
-    useLanguageSelectionContext();
-  //   //const { user, setUser } = useUserContext();
+  const { selectedLanguage, setSelectedLanguage } = useUserContext();
   const [labelText, setLabelText] = useState(null);
+  const navigate = useNavigate();
 
   var isLabelTextQueryDisabled = labelText !== null;
   const onLabelTextSuccess = (data) => {
@@ -43,35 +48,13 @@ const Splash = (props) => {
     onLabelTextError
   );
 
-  //   /*
-  //   Done handling label texts
-  // */
-
-  //   var isUserQueryDisabled = false;
-  //   const onSuccess = (data) => {
-  //     // set the current session user.
-  //     //setUser(data);
-  //     isUserQueryDisabled = true;
-  //     // if session exists, redirect to Loggedin
-  //     //navigate(routes.frontend.myPosts);
-  //   };
-  //   const onError = (error) => {
-  //     // log the problem, allow the splash page to show.
-  //     console.log("error in splash.jsx", error);
-  //   };
-  //   // check to see if user has a persistent session on the BFF
-  //   const { isLoading, isError } = useUserInfo(
-  //     isUserQueryDisabled,
-  //     onSuccess,
-  //     onError
-  //   );
-
   if (isLoading) {
     return <>Loading...</>;
   }
   // force the Anonymous user to select the language they want displayed
   const setAnonymousUserDisplayLanguage = (selectedLanguage) => {
     setSelectedLanguage(selectedLanguage);
+    navigate(routes.frontend.index);
   };
 
   var showModal = selectedLanguage === 0;
@@ -88,46 +71,59 @@ const Splash = (props) => {
   );
 
   var returnValue = defaultReturnValue;
-  //   const checkingReturnValue = <>{"Checking for current user session..."}</>;
 
-  //   if (isLoading) {
-  //     returnValue = checkingReturnValue;
-  //   }
-
-  //   if (isError) {
-  //     returnValue = defaultReturnValue;
-  //   }
   return (
     <>
       <Container className="splash" show={showModal} fullscreen={true}>
+        <SpacerRow />
         <Row>
           <Col>
             <Row>
-              <Col>{labelText && labelText.Welcome?.japanese}</Col>
+              <Col>
+                <h1>
+                  {labelText &&
+                    labelText[LabelTextLocators.Splash.Welcome]?.japanese}
+                </h1>
+              </Col>
             </Row>
             <Row>
-              <Col>{labelText && labelText["Welcome"]?.english}</Col>
+              <Col>
+                <h1>
+                  {labelText &&
+                    labelText[LabelTextLocators.Splash.Welcome]?.english}
+                </h1>
+              </Col>
             </Row>
           </Col>
         </Row>
+        <SpacerRow />
         <Row>
-          <Col>
+          <Col className="splashImage">
             <img
+              className="splashImage"
               src={`${process.env.PUBLIC_URL}/images/Splash.jpg`}
               alt={"SplashImage"}
             />
           </Col>
         </Row>
+        <SpacerRow />
         <Row>
           <Col>
             <Row>
-              <Col>{labelText && labelText["Instructions"].japanese}</Col>
+              <Col>
+                {labelText &&
+                  labelText[LabelTextLocators.Splash.Instructions].japanese}
+              </Col>
             </Row>
             <Row>
-              <Col>{labelText && labelText["Instructions"].english}</Col>
+              <Col>
+                {labelText &&
+                  labelText[LabelTextLocators.Splash.Instructions].english}
+              </Col>
             </Row>
           </Col>
         </Row>
+        <SpacerRow />
         <Row>
           <Col>{returnValue}</Col>
         </Row>

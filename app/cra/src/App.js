@@ -48,10 +48,9 @@ export default function App() {
     <>
       <Container>
         <QueryClientProvider client={queryClient}>
-          <TitleBarComponent />
-          <UserProvider>
-            <Router>
-              <LanguageSelectionProvider>
+          <Router>
+            <UserProvider>
+              <>
                 <NswNavBar />
                 <div>
                   <Routes>
@@ -156,9 +155,9 @@ export default function App() {
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </div>
-              </LanguageSelectionProvider>
-            </Router>
-          </UserProvider>
+              </>
+            </UserProvider>
+          </Router>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </Container>

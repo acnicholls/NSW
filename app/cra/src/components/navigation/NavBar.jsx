@@ -1,36 +1,98 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import { RoleEnum } from "../../constants/RoleEnum";
 import routes from "../../constants/RouteConstants";
+import { useLabelTextByGroupIdentifier } from "../../hooks/labelTextHooks";
+import LabelTextLocators from "../../constants/LabelTextLocators";
+import LabelTextViewComponent from "../LabelText/LabelTextViewComponent";
+import getDisplayFromLabelText from "../../functions/getDisplayFromLabelText";
 
 const NswNavBar = () => {
-  const { user } = useUserContext();
+  const { user, selectedLanguage } = useUserContext();
   console.log("user in NavBar", user);
+  const [labelText, setLabelText] = useState([]);
+  const [isQueryDisabled, setIsQueryDisabled] = useState(false);
+
+  console.log("NswNavBar.labelText", labelText);
+
+  console.log(
+    "NswNavBar.labelText item",
+    labelText[LabelTextLocators.Master.btnContact]
+  );
+
+  const onSuccess = (data) => {
+    console.log("success getting label text", data);
+    setLabelText(data.data);
+    setIsQueryDisabled(true);
+  };
+
+  const onError = (error) => {
+    console.log("error getting label text", error);
+  };
+
+  const { isLoading } = useLabelTextByGroupIdentifier(
+    LabelTextLocators.Master.Main,
+    isQueryDisabled,
+    onSuccess,
+    onError
+  );
+
+  if (isLoading) {
+    return <>Loading...</>;
+  }
+
+  const indexNavLink = (
+    <NavLink className="nav-link" to={routes.frontend.index}>
+      {getDisplayFromLabelText(
+        labelText[LabelTextLocators.Master.btnHome],
+        user,
+        selectedLanguage
+      )}
+    </NavLink>
+  );
+  const searchNavLink = (
+    <NavLink className="nav-link" to={routes.frontend.search}>
+      {getDisplayFromLabelText(
+        labelText[LabelTextLocators.Master.btnSearch],
+        user,
+        selectedLanguage
+      )}
+    </NavLink>
+  );
+  const postsNavLink = (
+    <NavLink className="nav-link" to={routes.frontend.posts}>
+      {getDisplayFromLabelText(
+        labelText[LabelTextLocators.Master.btnPosts],
+        user,
+        selectedLanguage
+      )}
+    </NavLink>
+  );
+
   const loggedOutView = (
     <Navbar>
       <Container>
         <Navbar.Brand href={routes.frontend.slash}>NSW</Navbar.Brand>
         <Navbar.Collapse id="main-nav">
           <Nav>
-            <NavLink className="nav-link" to={routes.frontend.index}>
-              Index
-            </NavLink>
-            <NavLink className="nav-link" to={routes.frontend.about}>
-              About
-            </NavLink>
-            <NavLink className="nav-link" to={routes.frontend.search}>
-              Search
-            </NavLink>
-            <NavLink className="nav-link" to={routes.frontend.posts}>
-              Posts
-            </NavLink>
+            {indexNavLink}
+            {searchNavLink}
+            {postsNavLink}
             <NavLink className="nav-link" to={routes.frontend.register}>
-              Register
+              {getDisplayFromLabelText(
+                labelText[LabelTextLocators.Master.btnRegister],
+                user,
+                selectedLanguage
+              )}
             </NavLink>
             <NavLink className="nav-link" to={routes.frontend.login}>
-              Login
+              {getDisplayFromLabelText(
+                labelText[LabelTextLocators.Master.lblLogin],
+                user,
+                selectedLanguage
+              )}
             </NavLink>
           </Nav>
         </Navbar.Collapse>
@@ -43,19 +105,29 @@ const NswNavBar = () => {
       <>
         <NavDropdown.Item>
           <NavLink className="nav-link" to={routes.frontend.admin.labelText}>
-            Label Text
+            {getDisplayFromLabelText(
+              labelText[LabelTextLocators.Master.btlLabel],
+              user,
+              selectedLanguage
+            )}
           </NavLink>
         </NavDropdown.Item>
         <NavDropdown.Item>
           <NavLink className="nav-link" to={routes.frontend.admin.postCategory}>
-            Post Categories
+            {getDisplayFromLabelText(
+              labelText[LabelTextLocators.Master.btnCategory],
+              user,
+              selectedLanguage
+            )}
           </NavLink>
         </NavDropdown.Item>
-        <NavDropdown.Item>
+        {/*         <NavDropdown.Item>
           <NavLink className="nav-link" to={routes.frontend.admin.users}>
-            Users
+            <LabelTextViewComponent
+              currentLabelText={labelText[LabelTextLocators.Master.btnCategory]}
+            />
           </NavLink>
-        </NavDropdown.Item>
+        </NavDropdown.Item> */}
       </>
     ) : (
       <></>
@@ -64,35 +136,45 @@ const NswNavBar = () => {
   const loggedInView = (
     <Navbar>
       <Container>
-        <Navbar.Brand to={routes.frontend.slash}>NSW</Navbar.Brand>
+        <Navbar.Brand to={routes.frontend.splash}>NSW</Navbar.Brand>
         <Navbar.Collapse id="main-nav">
           <Nav>
-            <NavLink className="nav-link" to={routes.frontend.index}>
-              Index
-            </NavLink>
-            <NavLink className="nav-link" to={routes.frontend.about}>
-              About
-            </NavLink>
-            <NavLink className="nav-link" to={routes.frontend.search}>
-              Search
-            </NavLink>
-            <NavLink className="nav-link" to={routes.frontend.posts}>
-              Posts
-            </NavLink>
+            {indexNavLink}
+            {searchNavLink}
+            {postsNavLink}
             <NavLink className="nav-link" to={routes.frontend.myPosts}>
-              My Posts
+              {getDisplayFromLabelText(
+                labelText[LabelTextLocators.Master.btnMy],
+                user,
+                selectedLanguage
+              )}
             </NavLink>
-            <NavDropdown title="Members" id="account-dropdown">
+            <NavDropdown
+              title={getDisplayFromLabelText(
+                labelText[LabelTextLocators.Master.btnMember],
+                user,
+                selectedLanguage
+              )}
+              id="account-dropdown"
+            >
               <NavDropdown.Item>
                 <NavLink className="nav-link" to={routes.frontend.userDetails}>
-                  Profile
+                  {getDisplayFromLabelText(
+                    labelText[LabelTextLocators.Master.btnProfile],
+                    user,
+                    selectedLanguage
+                  )}
                 </NavLink>
               </NavDropdown.Item>
               {adminMenuItems}
               <NavDropdown.Divider />
               <NavDropdown.Item>
                 <NavLink className="nav-link" to={routes.frontend.logout}>
-                  Log out
+                  {getDisplayFromLabelText(
+                    labelText[LabelTextLocators.Master.lblLogout],
+                    user,
+                    selectedLanguage
+                  )}
                 </NavLink>
               </NavDropdown.Item>
             </NavDropdown>
@@ -103,6 +185,7 @@ const NswNavBar = () => {
   );
 
   const userView = user && user.isAuthenticated ? loggedInView : loggedOutView;
+  console.log("finished calculating nav bar....");
   return <>{userView}</>;
 };
 

@@ -121,7 +121,7 @@ namespace NSW.Repositories
                 foreach (DataRow row in dt.Rows)
                 {
                     var fullString = row["fldLabel_ID"].ToString();
-                    string key = fullString.Remove(0, groupIdentifier.Length);
+                    string key = fullString; //.Remove(0, groupIdentifier.Length);
                     var value = new LabelTextDictionaryItemResponse
                     {
                         English = row["fldLabel_English"].ToString(),

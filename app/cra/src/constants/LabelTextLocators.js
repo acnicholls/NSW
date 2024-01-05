@@ -204,6 +204,8 @@ const pagesWithLabels = Object.freeze({
     btnLabel: "Master.btnLabel",
     btnMember: "Master.btnMember",
     btnMy: "Master.btnMy",
+    btnRegister: "Master.btnRegister",
+    btnPosts: "Master.btnPosts",
     btnNumbers: "Master.btnNumbers",
     btnPassword: "Master.btnPassword",
     btnProfile: "Master.btnProfile",

@@ -6,6 +6,11 @@ const labelTextShape = PropTypes.shape({
   japanese: PropTypes.string,
 });
 
+const labelTextViewShape = PropTypes.shape({
+  english: PropTypes.string,
+  japanese: PropTypes.string,
+});
+
 const postCategoryShape = PropTypes.shape({
   id: PropTypes.number,
   englishTitle: PropTypes.string,
@@ -50,4 +55,5 @@ export {
   postalCodeShape,
   postCategoryShape,
   labelTextShape,
+  labelTextViewShape,
 };

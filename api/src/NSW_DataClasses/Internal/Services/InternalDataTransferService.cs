@@ -37,12 +37,12 @@ namespace NSW.Data.Internal.Services
 			var tokenString = string.Empty;
 			try
 			{
-							var context = GetContextFromAccessor();
+				var context = GetContextFromAccessor();
 				switch(accessType)
 				{
 					case ApiAccessType.Client:
 						{
-							tokenString = await this.GetUserTokenAsync(context, defaultTokenParameters);
+							tokenString = await this.GetUserTokenAsync(context);
 							break;
 						}
 					case ApiAccessType.User:

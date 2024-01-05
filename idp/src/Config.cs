@@ -9,7 +9,9 @@ using NSW.Data;
 
 namespace NSW.Idp
 {
-	using NSW.Idp.Models;
+    using IdentityModel;
+    using Microsoft.AspNetCore.Identity;
+    using NSW.Idp.Models;
     using System.Linq;
 
     public static class Config
@@ -21,7 +23,9 @@ namespace NSW.Idp
 				new IdentityResources.Email(),
 				new IdentityResources.Phone(),
 				new IdentityResources.Profile(),
-                // new IdentityResource("Starter.Api", "The starter api project's scope", new[] { "Starter.Api" }),
+                new IdentityResource{Name = "roles", UserClaims={JwtClaimTypes.Role}},
+                new IdentityResource{Name = "postal_code", UserClaims={"PostalCode"}},
+                new IdentityResource{Name = "language_preference", UserClaims={"LanguagePreference"}}
             };
 
 
@@ -57,15 +61,7 @@ namespace NSW.Idp
 						//IdentityServerConstants.StandardScopes.Profile,
 						"NSW.ApiScope",
                     },
-                    UserClaims =
-                    {
-                        IdentityServerConstants.StandardScopes.Profile,
-                        IdentityModel.JwtClaimTypes.Email,
-                        IdentityModel.JwtClaimTypes.Role,
-                        IdentityModel.JwtClaimTypes.PhoneNumber,
-                        CustomClaimType.PostalCode.ToString(),
-                        CustomClaimType.LanguagePreference.ToString()
-                    }
+
                 },
             };
 
@@ -113,12 +109,14 @@ namespace NSW.Idp
 						IdentityServerConstants.StandardScopes.Email,
                         IdentityServerConstants.StandardScopes.Phone,
                         IdentityServerConstants.StandardScopes.Profile,
+                        "roles",
 						"NSW.ApiScope"
 					},
                     AllowOfflineAccess = true,
                     RefreshTokenUsage = TokenUsage.ReUse,
                     RefreshTokenExpiration = TokenExpiration.Sliding,
                     UpdateAccessTokenClaimsOnRefresh = true,
+                    AlwaysIncludeUserClaimsInIdToken = true,
                     AllowedCorsOrigins = { // TODO: change for production
                         "http://localhost",
 						"https://localhost",

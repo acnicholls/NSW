@@ -101,28 +101,28 @@ namespace NSW.Data.Internal.Services
 			_logger.LogTrace("Got HttpContext from Accessor");
 			// pass it to the local method.
 			_logger.LogTrace("Completing GetUserTokenAsync()");
-			return await this.GetUserTokenAsync(context, defaultTokenParameters);
+			return await this.GetUserTokenAsync(context);
 		}
 
-        public async Task<string> GetUserTokenAsync(UserAccessTokenParameters tokenParameters)
-        {
-            _logger.LogTrace("Starting GetUserTokenAsync()");
-            // grab the DI'd context
-            var context = GetContextFromAccessor();
-            _logger.LogTrace("Got HttpContext from Accessor");
-            // pass it to the local method.
-            _logger.LogTrace("Completing GetUserTokenAsync()");
-            return await this.GetUserTokenAsync(context, tokenParameters);
-        }
+        //public async Task<string> GetUserTokenAsync(UserAccessTokenParameters tokenParameters)
+        //{
+        //    _logger.LogTrace("Starting GetUserTokenAsync()");
+        //    // grab the DI'd context
+        //    var context = GetContextFromAccessor();
+        //    _logger.LogTrace("Got HttpContext from Accessor");
+        //    // pass it to the local method.
+        //    _logger.LogTrace("Completing GetUserTokenAsync()");
+        //    return await this.GetUserTokenAsync(context, tokenParameters);
+        //}
 
-        protected async Task<string> GetUserTokenAsync(HttpContext context, UserAccessTokenParameters tokenParameters)
+        protected async Task<string> GetUserTokenAsync(HttpContext context)
 		{
 			_logger.LogTrace("Starting GetUserTokenAsync(HttpContext)");
 			var returnValue = string.Empty;
 			try
 			{
 
-				returnValue = await context.GetUserAccessTokenAsync(tokenParameters);
+				returnValue = await context.GetUserAccessTokenAsync();
 				var messageValue = true ? returnValue : "***REDACTED***";  // TODO: find environment value, set to false for prod
 				_logger.LogTrace("Got token value {messageValue}, returning...", messageValue);
 			}
@@ -176,7 +176,7 @@ namespace NSW.Data.Internal.Services
 				{
 					case ApiAccessType.User:
 						{
-							tokenString = await this.GetUserTokenAsync(context, defaultTokenParameters);
+							tokenString = await this.GetUserTokenAsync(context);
 							break;
 						}
 					case ApiAccessType.Client:
@@ -200,6 +200,7 @@ namespace NSW.Data.Internal.Services
 				throw;
 			}
 			_logger.LogTrace("Completing GetTokenStringAsync(HttpContext)");
+            _logger.LogTrace($"returning {accessType} token : {tokenString}");
 			return tokenString;
 		}
 
@@ -312,6 +313,7 @@ namespace NSW.Data.Internal.Services
         protected UserAccessTokenParameters defaultTokenParameters = new()
         {
             Resource = "NSW.Api",
+            
         };
     }
 }

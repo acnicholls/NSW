@@ -94,6 +94,9 @@ namespace NSW.Bff
                 options.Scope.Clear();
                 options.Scope.Add("openid");
                 options.Scope.Add("profile");
+                //options.Scope.Add("roles");
+                //options.Scope.Add("email");
+                //options.Scope.Add("phone");
                 options.Scope.Add("NSW.ApiScope");  // this is the API from this solution
                 options.Scope.Add("offline_access");
 

@@ -1,28 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { useUserContext } from "../../contexts/UserContext";
 import { Row, Col } from "react-bootstrap";
-import { labelTextShape } from "../../shapes/shapes";
+import { labelTextViewShape } from "../../shapes/shapes";
+import { LanguagePreference } from "../../constants/LanguagePreference";
+import decideDisplayLanguage from "../../functions/decideDisplayLanguage";
+import getDisplayFromLabelText from "../../functions/getDisplayFromLabelText";
 
 const LabelTextViewComponent = ({ currentLabelText }) => {
-  const { user } = useUserContext();
+  const { user, selectedLanguage } = useUserContext();
 
-  const labelDisplay =
-    user.languagePreference === 2
-      ? currentLabelText.japanese
-      : currentLabelText.english;
+  console.log("LabelTextViewComponent.currentLabelText: ", currentLabelText);
 
-  const viewModeReturnValue = (
-    <>
-      <Row>
-        <Col>{labelDisplay}</Col>
-      </Row>
-    </>
+  const labelDisplay = getDisplayFromLabelText(
+    currentLabelText,
+    user,
+    selectedLanguage
   );
+
+  const [displayValue] = useState(labelDisplay);
+  const viewModeReturnValue = <>{displayValue}</>;
 
   return viewModeReturnValue;
 };
 export default LabelTextViewComponent;
 
 LabelTextViewComponent.propTypes = {
-  currentLabelText: labelTextShape,
+  currentLabelText: labelTextViewShape,
 };
