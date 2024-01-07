@@ -1,15 +1,30 @@
 import React, { useState } from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { NavLink, Navigate } from "react-router-dom";
-import { useUserContext } from "../../contexts/UserContext";
+import { NavLink } from "react-router-dom";
+/*
+Constants
+*/
 import { RoleEnum } from "../../constants/RoleEnum";
 import routes from "../../constants/RouteConstants";
-import { useLabelTextByGroupIdentifier } from "../../hooks/labelTextHooks";
 import LabelTextLocators from "../../constants/LabelTextLocators";
-import LabelTextViewComponent from "../LabelText/LabelTextViewComponent";
+/*
+Hooks
+*/
+import { useLocation } from "react-router";
+import { useLabelTextByGroupIdentifier } from "../../hooks/labelTextHooks";
+/*
+Contexts
+*/
+import { useUserContext } from "../../contexts/UserContext";
+/*
+Functions
+*/
 import getDisplayFromLabelText from "../../functions/getDisplayFromLabelText";
 
 const NswNavBar = () => {
+  // when we're on the splash page, display nothing
+  const location = useLocation;
+
   const { user, selectedLanguage } = useUserContext();
   console.log("user in NavBar", user);
   const [labelText, setLabelText] = useState([]);
@@ -43,6 +58,11 @@ const NswNavBar = () => {
     return <>Loading...</>;
   }
 
+  console.log("NAVBAR: current location", window.location.pathname);
+  if (window.location.pathname === "/splash") {
+    return null;
+  }
+
   const indexNavLink = (
     <NavLink className="nav-link" to={routes.frontend.index}>
       {getDisplayFromLabelText(
@@ -74,7 +94,7 @@ const NswNavBar = () => {
   const loggedOutView = (
     <Navbar>
       <Container>
-        <Navbar.Brand href={routes.frontend.slash}>NSW</Navbar.Brand>
+        <Navbar.Brand href={routes.frontend.splash}>NSW</Navbar.Brand>
         <Navbar.Collapse id="main-nav">
           <Nav>
             {indexNavLink}
@@ -121,13 +141,6 @@ const NswNavBar = () => {
             )}
           </NavLink>
         </NavDropdown.Item>
-        {/*         <NavDropdown.Item>
-          <NavLink className="nav-link" to={routes.frontend.admin.users}>
-            <LabelTextViewComponent
-              currentLabelText={labelText[LabelTextLocators.Master.btnCategory]}
-            />
-          </NavLink>
-        </NavDropdown.Item> */}
       </>
     ) : (
       <></>
