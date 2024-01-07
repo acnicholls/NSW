@@ -20,17 +20,18 @@ import Search from "./components/Search";
 import UserDetails from "./components/UserDetails";
 import LoggedIn from "./components/authentication/LoggedIn";
 import LoggedOut from "./components/authentication/LoggedOut";
-import TitleBarComponent from "./components/TitleBarComponent";
 import LabelTextEditComponent from "./components/LabelText/LabelTextEditComponent";
 import NotFound from "./components/NotFound";
 import Splash from "./components/Splash";
+import PostViewComponent from "./components/Post/PostViewComponent";
+import PostEditComponent from "./components/Post/PostViewComponent";
+import { PostPageVariantEnum } from "./constants/PostPageVariantEnum";
 /*
   Hook Contexts
 */
 import { UserProvider } from "./contexts/UserContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { LanguageSelectionProvider } from "./contexts/LanguageSelectionContext";
 /*
   NavBar components
 */
@@ -39,7 +40,6 @@ import ExternalRedirect from "./components/navigation/ExternalRedirect";
 import RequireAuth from "./components/authentication/RequireAuth";
 import RequireRole from "./components/authentication/RequireRole";
 import { RoleEnum } from "./constants/RoleEnum";
-import { PostPageVariantEnum } from "./constants/PostPageVariantEnum";
 
 const queryClient = new QueryClient();
 
@@ -68,6 +68,18 @@ export default function App() {
                       element={
                         <PostListComponent variant={PostPageVariantEnum.Main} />
                       }
+                    />
+                    <Route
+                      path={`${routes.frontend.posts}/:id`}
+                      element={({ params }) => (
+                        <PostViewComponent id={params.id} />
+                      )}
+                    />
+                    <Route
+                      path={`${routes.frontend.posts}/edit/:id`}
+                      element={({ params }) => (
+                        <PostEditComponent id={params.id} />
+                      )}
                     />
                     <Route
                       path={routes.frontend.myPosts}
