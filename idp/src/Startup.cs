@@ -133,7 +133,7 @@ namespace NSW.Idp
 
 			app.UseRouting();
 
-			app.UseCors();
+			app.UseCors("CorsPolicy");
 
 			app.UseIdentityServer();
 			app.UseAuthorization();
