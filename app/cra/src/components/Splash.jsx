@@ -74,7 +74,7 @@ const Splash = (props) => {
 
   return (
     <>
-      <Container className="splash" show={showModal} fullscreen={true}>
+      <Container className="splash">
         <SpacerRow />
         <Row>
           <Col>
