@@ -17,6 +17,7 @@ import { useUserContext } from "../../contexts/UserContext";
   Hooks
 */
 import { usePostInfo } from "../../hooks/postHooks";
+import { useParams } from "react-router";
 /* */
 /* */
 
@@ -24,7 +25,10 @@ import { usePostInfo } from "../../hooks/postHooks";
  - the post view component
  - allows the user to view a post
 */
-const PostViewComponent = ({ id }) => {
+const PostViewComponent = () => {
+  let params = useParams();
+  console.log("inside Post View");
+  console.log("params: ", JSON.stringify(params));
   const { user, selectedLanguage } = useUserContext();
   const [post, setPost] = useState(null);
 
@@ -42,7 +46,7 @@ const PostViewComponent = ({ id }) => {
 
   // get post details from react-query
   const { error, isLoading, isError } = usePostInfo(
-    id,
+    params?.id,
     queryIsDisabled,
     onSuccess,
     onError
