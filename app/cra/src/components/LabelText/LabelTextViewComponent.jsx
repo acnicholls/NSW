@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { useUserContext } from "../../contexts/UserContext";
-import { Row, Col } from "react-bootstrap";
 import { labelTextViewShape } from "../../shapes/shapes";
-import { LanguagePreference } from "../../constants/LanguagePreference";
-import decideDisplayLanguage from "../../functions/decideDisplayLanguage";
 import getDisplayFromLabelText from "../../functions/getDisplayFromLabelText";
 
 const LabelTextViewComponent = ({ currentLabelText }) => {
@@ -11,16 +8,11 @@ const LabelTextViewComponent = ({ currentLabelText }) => {
 
   console.log("LabelTextViewComponent.currentLabelText: ", currentLabelText);
 
-  const labelDisplay = getDisplayFromLabelText(
-    currentLabelText,
-    user,
-    selectedLanguage
+  const [displayValue] = useState(
+    getDisplayFromLabelText(currentLabelText, user, selectedLanguage)
   );
-
-  const [displayValue] = useState(labelDisplay);
-  const viewModeReturnValue = <>{displayValue}</>;
-
-  return viewModeReturnValue;
+  console.log("LabelTextViewComponent.displayValue: ", displayValue);
+  return <>{displayValue}</>;
 };
 export default LabelTextViewComponent;
 
