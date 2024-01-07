@@ -26,5 +26,12 @@ namespace NSW.Bff.Controllers
 			var returnValue = await _service.GetDataFromApiAsync<List<Post>>("/api/Post", ApiAccessType.Client);
 			return Ok(returnValue);
 		}
-	}
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetPostAsync(int id)
+        {
+            var returnValue = await _service.GetDataFromApiAsync<Post>($"/api/Post/{id}", ApiAccessType.Client);
+            return Ok(returnValue);
+        }
+    }
 }

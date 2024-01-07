@@ -162,7 +162,7 @@ namespace NSW.Bff
                 //var endpoint = context.GetEndpoint();
                 //var anonAttrib = endpoint?.Metadata?.GetMetadata<AllowAnonymousAttribute>();
                 // TODO: make this a config item.  still building routes....
-                if (query == "/bff/Post" || query.ToString().StartsWith("/bff/LabelText"))
+                if (query.ToString().StartsWith("/bff/Post") || query.ToString().StartsWith("/bff/LabelText"))
                 {
                     skipChallenge = true;
                 }
