@@ -10,7 +10,6 @@ import LabelTextLocators from "../../constants/LabelTextLocators";
 /*
 Hooks
 */
-import { useLocation } from "react-router";
 import { useLabelTextByGroupIdentifier } from "../../hooks/labelTextHooks";
 /*
 Contexts
@@ -22,9 +21,6 @@ Functions
 import getDisplayFromLabelText from "../../functions/getDisplayFromLabelText";
 
 const NswNavBar = () => {
-  // when we're on the splash page, display nothing
-  const location = useLocation;
-
   const { user, selectedLanguage } = useUserContext();
   console.log("user in NavBar", user);
   const [labelText, setLabelText] = useState([]);
@@ -58,6 +54,7 @@ const NswNavBar = () => {
     return <>Loading...</>;
   }
 
+  // when we're on the splash page, display nothing
   console.log("NAVBAR: current location", window.location.pathname);
   if (window.location.pathname === "/splash") {
     return null;
