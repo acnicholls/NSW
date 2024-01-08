@@ -1,0 +1,160 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using NSW.Api.Controllers.Interfaces;
+using NSW.Data;
+using NSW.Data.DTO.Response;
+using NSW.Services.Interfaces;
+
+namespace NSW.Api.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class LabelTextController : ControllerBase, IController<LabelText>
+    {
+        private readonly ILabelTextService _service;
+        public LabelTextController(ILabelTextService service)
+        {
+            _service = service;
+        }
+
+
+        private ActionResult _delete(LabelText entity)
+        {
+            try
+            {
+                _service.Delete(entity);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                // add logging
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteAsync([FromBody] LabelText entity) => await Task.Run(() => this._delete(entity));
+
+
+        private ActionResult<IList<LabelText>> _getAll()
+        {
+            try
+            {
+                var returnValue = _service.GetAll();
+                return new OkObjectResult(returnValue);
+            }
+            catch (Exception ex)
+            {
+                // add logging
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IList<LabelText>>> GetAllAsync() => await Task.Run(() => this._getAll());
+
+
+        private ActionResult<LabelText?> _getById(int id)
+        {
+            try
+            {
+                var returnValue = _service.GetById(id);
+                return new OkObjectResult(returnValue);
+            }
+            catch (Exception ex)
+            {
+                // add logging
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<LabelText?>> GetByIdAsync([FromRoute] int id) => await Task.Run(() => this._getById(id));
+
+
+        private ActionResult<LabelText?> _getByIdentifier(string identifier)
+        {
+            try
+            {
+                var returnValue = _service.GetByIdentifier(identifier);
+                return new OkObjectResult(returnValue);
+            }
+            catch (Exception ex)
+            {
+                // add logging
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("{identifier}")]
+        public async Task<ActionResult<LabelText?>> GetByIdentifierAsync([FromRoute] string identifier) => await Task.Run(() => this._getByIdentifier(identifier));
+
+        private ActionResult<LabelText> _insert(LabelText entity)
+        {
+            try
+            {
+                var returnValue = _service.Insert(entity);
+                return new OkObjectResult(returnValue);
+            }
+            catch (Exception ex)
+            {
+                // add logging
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<ActionResult<LabelText>> InsertAsync([FromBody] LabelText entity) => await Task.Run(() => this._insert(entity));
+
+        private ActionResult<IDictionary<string, string>> _getByGroupIdentifier(string identifier)
+        {
+            try
+            {
+                var returnValue = _service.GetListOfGroupedLabels(identifier);
+                return new OkObjectResult(returnValue);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("group/{identifier}")]
+        public async Task<ActionResult<IDictionary<string, string>>> GetbyGroupIdentifierAsync(string identifier) => await Task.Run(() => this._getByGroupIdentifier(identifier));
+
+        private ActionResult<IDictionary<string, LabelTextDictionaryItemResponse>> _getAllLanguagesByGroupIdentifier(string identifier)
+        {
+            try
+            {
+                var returnValue = _service.GetListOfGroupedLabelsAllLanguages(identifier);
+                return new OkObjectResult(returnValue);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("group/{identifier}/all")]
+        public async Task<ActionResult<IDictionary<string, LabelTextDictionaryItemResponse>>> GetAllLanguagesByGroupIdentifierAsync(string identifier) => await Task.Run(() => this._getAllLanguagesByGroupIdentifier(identifier));
+
+        private ActionResult<LabelText> _modify([FromBody] LabelText entity)
+        {
+            try
+            {
+                var returnValue = _service.Modify(entity);
+                return new OkObjectResult(returnValue);
+            }
+            catch (Exception ex)
+            {
+                // add logging
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<LabelText>> ModifyAsync([FromBody] LabelText entity) => await Task.Run(() => this._modify(entity));
+    }
+}

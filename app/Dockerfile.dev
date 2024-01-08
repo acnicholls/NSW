@@ -1,0 +1,12 @@
+FROM node as build-env
+
+WORKDIR /app
+
+COPY ./../ssl/* /ssl/
+COPY ./cra/* /app/
+
+RUN npm install
+
+EXPOSE 3000
+
+ENTRYPOINT ["npm", "start"]
