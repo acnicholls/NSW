@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using NSW.Bff.Internal;
 using NSW.Data.Validation.Interfaces;
 using ProxyKit;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 
@@ -114,6 +115,8 @@ namespace NSW.Bff
                 options.KnownNetworks.Clear();
                 options.KnownProxies.Clear();
             });
+
+            services.AddTransient<IMiddleware, NswIdpAccessDeniedMiddleware>();
         }
 
         public void Configure(IApplicationBuilder app)
@@ -129,7 +132,7 @@ namespace NSW.Bff
                         postalCodeTask.StartBackgroundPostalCodeWorker(ApiAccessType.Client);
                     }
                 }
-                await next();
+                await next(context);
             });
 
 
@@ -141,7 +144,7 @@ namespace NSW.Bff
             // // rewrite outgoing redirects to the Identity Provider, as though they were for an external address
             app.Use(async (httpcontext, next) =>
             {
-                await next();
+                await next(httpcontext);
                 if (httpcontext.Response.StatusCode == StatusCodes.Status302Found)
                 {
                     var oldPart = _configuration.GetValue<string>("Authentication:InternalAddressPart");
@@ -154,17 +157,24 @@ namespace NSW.Bff
 
             });
 
+            // this is just after the challenge has failed, and the pipeline is reversing back.  
+            // the exception should be caught and redirect the user to the denied page in the UI.
+            app.UseMiddleware<NswIdpAccessDeniedMiddleware>();
+
             // challenge any unauthenticated user
             app.Use(async (context, next) =>
             {
-                var query = context.Request.Path;
+                // allow some local BFF routes to be accessed by anonymous users
+                var query = context.Request.Path.ToString();
+                _logger.LogDebug($"Checking if authentication is required on {query}");
                 var skipChallenge = false;
-                //var endpoint = context.GetEndpoint();
-                //var anonAttrib = endpoint?.Metadata?.GetMetadata<AllowAnonymousAttribute>();
-                // TODO: make this a config item.  still building routes....
-                if (query.ToString().StartsWith("/bff/Post") || query.ToString().StartsWith("/bff/LabelText"))
+                var anonEndpoints = new List<string> { "/bff/Post", "/bff/LabelText", "/bff/PostCategory" };
+                foreach (var endpoint in anonEndpoints)
                 {
-                    skipChallenge = true;
+                    if (query.StartsWith(endpoint))
+                    {
+                        skipChallenge = true;
+                    }
                 }
                 // if the user is NOT authenticated and trying to access an endpoint that requires authentication, challenge them.
                 if (!context.User.Identity.IsAuthenticated && !skipChallenge)
@@ -173,8 +183,9 @@ namespace NSW.Bff
                     return;
                 }
 
-                await next();
+                await next(context);
             });
+
 
 
             // any UI components should come from the files on the server
@@ -204,6 +215,7 @@ namespace NSW.Bff
                     return await forwardContext.Send();
                 });
             });
+
             // create route endpoints from all the ApiController/Controller classes registered
             app.UseEndpoints(endpoints =>
                 {
