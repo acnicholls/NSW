@@ -60,7 +60,7 @@ the API and IDP projects each have a UserSecrets file that contains a `Connectio
 
 an example secrets.json file
 
-````
+```
 {
   "ConnectionStrings": {
     "DefaultConnection": "<connection string here>",
@@ -68,22 +68,21 @@ an example secrets.json file
     "DockerConnection": "<connection string here>",
     "NSW_Development": "<connection string here>"
   }
-}```
+}
+```
 
-`NSW_` connectionstrings are used for the API, the "*Connection" ones are for the IdentityServer4 IdentityModel tables.  the configuration tables have not been created yet.  development is using in-memory configuration.
+`NSW_` connectionstrings are used for the API, the "\*Connection" ones are for the IdentityServer4 IdentityModel tables. the configuration tables have not been created yet. development is using in-memory configuration.
 
 using a connectionstring
-in order to use them like this you can create a single entry in your appsetting.json file where you put the name of the connectionstring, for example, using the above secrets.json file "DevelopmentConnection".  like below
+in order to use them like this you can create a single entry in your appsetting.json file where you put the name of the connectionstring, for example, using the above secrets.json file "DevelopmentConnection". like below
 
 {
-    "ConnectionString": "DevelopmentConnection"
+"ConnectionString": "DevelopmentConnection"
 }
 
 in your application code, where you want to get the connectionstring you put
 
 `_configuration.GetConnectionString(_configuration.GetValue("ConnectionString").ToString());`
-
-
 
 ## the UI (User Interface)
 
@@ -193,4 +192,7 @@ each service has an overridden entrypoint to allow the devs to control how it st
 
 - proxy
   overwrites the default configuration of a NGINX container. no entrypoint modification
-````
+
+```
+
+```
