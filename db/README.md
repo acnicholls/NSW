@@ -14,6 +14,3 @@ this database is very basic. it could use a lot of work which could improve the 
 
 **/data**
 the database docker container is mounted to this folder and puts the SQL Server database files here. the master and other databases are in here as well as the IDP Database when running on a localhost docker-compose container.
-
-**/localData**
-the idp

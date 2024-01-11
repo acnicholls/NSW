@@ -184,7 +184,7 @@ each service has an overridden entrypoint to allow the devs to control how it st
   has entrypoint.sh which will create an SSL cert if it doesn't already exist and then start the project with `dotnet watch` so that changes cause recompile of the binaries.
 
 - idp
-  is the same as /bff, but doesn't create a cert, it uses the one from the BFF which is why the IDP is the last WebApi service to start. overrides the entrypoint with `dotnet watch`
+  is the same as /bff, but doesn't create a cert, it uses the one from the BFF. overrides the entrypoint with `dotnet watch`
 
 - api
   also has entrypoint.sh, which currently does not exist in this solution, because this is a different application's API. will need to be created. will need to override the entrypoint with `dotnet watch`
