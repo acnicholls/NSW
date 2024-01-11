@@ -8,7 +8,7 @@ namespace NSW.Bff.Internal
     /// <summary>
     /// captures access_denied and handles it gracefully.
     /// </summary>
-    public class NswIdpAccessDeniedMiddleware : IMiddleware
+    public class NswIdpAccessDeniedMiddleware 
     {
         private readonly ILogger<NswIdpAccessDeniedMiddleware> _logger;
         private readonly IConfiguration _configuration;
@@ -35,7 +35,7 @@ namespace NSW.Bff.Internal
         /// </summary>
         /// <param name="context">the httpContext.</param>
         /// <returns>nothing.</returns>
-        public async Task InvokeAsync(HttpContext context)
+        public async Task Invoke(HttpContext context)
         {
             try
             {

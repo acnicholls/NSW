@@ -14,12 +14,14 @@ using ProxyKit;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using Serilog;
+using ILogger = Serilog.ILogger;
 
 namespace NSW.Bff
 {
     public class Startup
     {
-        private readonly ILogger<Startup> _logger;
+        private readonly ILogger  _logger;
         private readonly IConfiguration _configuration;
 
 
@@ -29,12 +31,11 @@ namespace NSW.Bff
         //}
 
         public Startup(
-            //ILogger<Startup> logger, 
             IConfiguration configuration)
         {
-            //_logger = logger;
             _configuration = configuration;
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            _logger = Log.Logger;
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -115,8 +116,6 @@ namespace NSW.Bff
                 options.KnownNetworks.Clear();
                 options.KnownProxies.Clear();
             });
-
-            services.AddTransient<IMiddleware, NswIdpAccessDeniedMiddleware>();
         }
 
         public void Configure(IApplicationBuilder app)
@@ -166,7 +165,7 @@ namespace NSW.Bff
             {
                 // allow some local BFF routes to be accessed by anonymous users
                 var query = context.Request.Path.ToString();
-                _logger.LogDebug($"Checking if authentication is required on {query}");
+                _logger.Debug($"Checking if authentication is required on {query}");
                 var skipChallenge = false;
                 var anonEndpoints = new List<string> { "/bff/Post", "/bff/LabelText", "/bff/PostCategory" };
                 foreach (var endpoint in anonEndpoints)
