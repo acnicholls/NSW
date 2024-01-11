@@ -24,7 +24,7 @@ the user is sent to a page asking for info, specifically email, phone and nagano
 
 ### step 4 - registered browsing
 
-the user is able to add a post to the collection already displayed on the site, they are able to edit their profile details, and view a list of the posts that they have entered. they can also do what any anonymous user is able to do.
+the user is able to add a post to the collection already displayed on the site, they are able to edit their profile details, and view a list of the posts that they have entered and make edits to those posts. they can also do what any anonymous user is able to do.
 
 ### step 5 - administration
 
@@ -51,6 +51,26 @@ the app was written in 2015 originally so any version past that. the scripts are
 - go into Updates and rev1.1, run the scripts there to get the database created
 
 - the scripts in rev1.5 will update to the `develop` branch. if you want to run `master`, do not run these scripts. you need an extra database for the IdentityServer service.
+
+### Connection strings
+
+for development connectionstrings are stored in a collection and each service/environment has it's own named connection.
+
+the API and IDP projects each have a UserSecrets file that contains a `ConnectionStrings` key, and then several connection strings are added to that so that the solution can just have the name of the connectionstring in the configuration file that is checked into the Github repository.
+
+an example secrets.json file
+
+````
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "<connection string here>",
+    "DevelopmentConnection": "<connection string here>",
+    "DockerConnection": "<connection string here>",
+    "NSW_Development": "<connection string here>"
+  }
+}```
+
+`NSW_`
 
 ## the UI (User Interface)
 
@@ -106,7 +126,7 @@ more information can be found on the /idp/README.md file
 
 dotnetcore 7.0 WebApi with Controllers
 
-this is IdentityServer4's BFF implementation, with come modifications. It handles identity and access tokens for the UI.  
+this is IdentityServer4's BFF implementation, with come modifications. It handles identity and access tokens for the UI.
 there are public controllers which use a client token internally to get data from the database that should be publicly (anonymously) accessible.
 once the user has started an identity session on the BFF via the IDP Account/Login route (which give the browser Authentication Cookies to access the user's session with) all calls to API are routed from the proxy to the BFF to acquire an access token and then on to the actual private API service to collect the private data.
 
@@ -160,3 +180,4 @@ each service has an overridden entrypoint to allow the devs to control how it st
 
 - proxy
   overwrites the default configuration of a NGINX container. no entrypoint modification
+````
