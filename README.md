@@ -70,7 +70,20 @@ an example secrets.json file
   }
 }```
 
-`NSW_`
+`NSW_` connectionstrings are used for the API, the "*Connection" ones are for the IdentityServer4 IdentityModel tables.  the configuration tables have not been created yet.  development is using in-memory configuration.
+
+using a connectionstring
+in order to use them like this you can create a single entry in your appsetting.json file where you put the name of the connectionstring, for example, using the above secrets.json file "DevelopmentConnection".  like below
+
+{
+    "ConnectionString": "DevelopmentConnection"
+}
+
+in your application code, where you want to get the connectionstring you put
+
+`_configuration.GetConnectionString(_configuration.GetValue("ConnectionString").ToString());`
+
+
 
 ## the UI (User Interface)
 
