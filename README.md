@@ -6,7 +6,9 @@ this site was commissioned in return for two tickets to Japan for my son and I. 
 
 this was to be a "Used Victoria" clone for use in an exclusive area of Japan. Nagano Prefecture. I found a list online of Nagano Prefecture Postal Codes and away to show on a webpage a map of the area of a postal code as well as an image something that someone wanted to share/swap.
 
-the `master` branch is DotNet 4.0, but I have been exposed to React and I have seen the speed of modern dotnetcore applications with JS/TS UI apps written for modern browsers, and then gone to play with this and noticed how terribly slow and clunky it is. So I decided to test and portray my new found knowledge (thanks to my many past employers who allowed me to learn on the job!) and update this site. maybe even deploy it to Azure and regionalize it to Nagano and see if anyone uses it.
+the `master` branch is DotNet 4.0, but I have been exposed to React and I have seen the speed of modern dotnetcore applications with JS/TS UI apps written for modern browsers, and then gone to play with this and noticed how terribly slow and clunky it is. So I decided to test and portray my new found knowledge (thanks to my many past employers who allowed me to learn on the job!) and update this site. maybe even deploy it to Azure and regionalize it to Nagano and see if anyone uses it. It'll be good for my portfolio.
+
+the `develop` branch contains a docker-compose solution that is described below.
 
 ## user experience
 
@@ -142,7 +144,7 @@ dotnetcore 7.0 WebApi with Controllers
 
 this is IdentityServer4's BFF implementation, with come modifications. It handles identity and access tokens for the UI.
 there are public controllers which use a client token internally to get data from the database that should be publicly (anonymously) accessible.
-once the user has started an identity session on the BFF via the IDP Account/Login route (which give the browser Authentication Cookies to access the user's session with) all calls to API are routed from the proxy to the BFF to acquire an access token and then on to the actual private API service to collect the private data.
+once the user has started an identity session on the BFF via the IDP Account/Login route (which gives the browser Authentication Cookies to access the user's session with) all calls to `/api` are routed from the proxy to the BFF to acquire an access token and then on to the actual private API service to collect the private data.
 
 more information can be found on the /bff/README.md file
 
