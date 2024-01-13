@@ -36,9 +36,9 @@ const getPostsByUserId = async (userId) => {
   }
 };
 
-const getPostById = async (id) => {
+const getPostById = async (postId) => {
   try {
-    var response = await api.apiGet(`${bffRoute}/${id}`);
+    var response = await api.apiGet(`${bffRoute}/${postId}`);
     console.log("getPostById:response:", response);
     return response;
   } catch (error) {
