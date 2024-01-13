@@ -72,14 +72,6 @@ export default function App() {
                     <Route
                       exact
                       path={`${routes.frontend.posts}/:id`}
-                      // loader={({ params }) => {
-                      //   console.log("In loader");
-                      //   console.log("params", JSON.stringify(params));
-                      //   console.log("props", this.props);
-                      // }}
-                      // Component={({ params }) => {
-                      //   <PostViewComponent id={params.id} />;
-                      // }}
                       element={<PostViewComponent />}
                       render={(props) => (
                         <PostViewComponent {...props.match.params} />
