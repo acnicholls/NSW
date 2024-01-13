@@ -35,9 +35,12 @@ export function UserProvider({ children }) {
 
   // useUserInfo(userQueryIsDisabled, onSuccess, onError);
 
-  // if (selectedLanguage === 0) {
-  //   navigate(routes.frontend.splash);
-  // }
+  console.log("in UserContext, languagePreference=:", selectedLanguage);
+  useEffect(() => {
+    if (selectedLanguage === 0) {
+      navigate(routes.frontend.splash);
+    }
+  });
 
   return (
     <UserContext.Provider
