@@ -1,5 +1,5 @@
 using Microsoft.IdentityModel.Tokens;
-using NSW.Api;
+using NSW.Data.Extensions;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()

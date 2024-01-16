@@ -11,7 +11,7 @@ services:
             - SSL_KEY_FILE=/ssl/key.pem
         volumes:
             - ./app/cra:/app
-            - ./app/proxy/docker-prep.dev.sh:/tmp/docker-prep.dev.sh
+            - ./app/docker-prep.dev.sh:/tmp/docker-prep.dev.sh
             - ./ssl:/ssl
             # - ./app/proxy/conf:/etc/nginx/conf.d
         entrypoint: /bin/bash -x /tmp/docker-prep.dev.sh
@@ -28,14 +28,14 @@ services:
         image: mcr.microsoft.com/dotnet/sdk:7.0
         working_dir: /app
         volumes:
-            - ./bff/src:/app
+            - .:/app
             - ${HOME}/.nuget:${HOME}/.nuget
             - ./ssl:/ssl            
             # - ${HOME}/.dotnet/dotnet:/usr/bin/dotnet
             # - /usr/share/dotnet:/usr/share/dotnet
         environment:
             - HOME:/home/${USER}
-        entrypoint: /app/entrypoint.sh
+        entrypoint: /app/bff/src/entrypoint.sh
         ports:
             - 5004:5004
             - 5005:5005
@@ -48,14 +48,14 @@ services:
         image: mcr.microsoft.com/dotnet/sdk:7.0
         working_dir: /app
         volumes:
-            - ./idp/src:/app
+            - .:/app
             - ${HOME}/.nuget:${HOME}/.nuget            
             - ./ssl:/ssl
             # - ${HOME}/.dotnet/dotnet:/usr/bin/dotnet
             # - /usr/share/dotnet:/usr/share/dotnet
         environment:
             - HOME:/home/${USER}            
-        entrypoint: ["dotnet", "watch", "run", "--project", "/app/NSW_IDP.csproj"]
+        entrypoint: /app/idp/src/entrypoint.sh
         ports:
             - 5006:5006
             - 5007:5007 

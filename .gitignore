@@ -497,7 +497,6 @@ FodyWeavers.xsd
 
 # ssl files for solution
 /ssl
-docs/.$idsrv-dotnet-react_infraDesign.drawio.bkp
 
 .vscode/
 **/logs

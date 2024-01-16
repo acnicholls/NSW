@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NSW.Data;
+using NSW.Data.Extensions;
 using NSW.Data.Validation.Interfaces;
 using NSW.Data.Internal.Interfaces;
 using Serilog;
@@ -25,8 +26,8 @@ namespace NSW.Idp
         public async static Task<int> Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-			   .MinimumLevel.Override("NSW", Serilog.Events.LogEventLevel.Verbose)
-			   .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
+               .MinimumLevel.Override("NSW", Serilog.Events.LogEventLevel.Verbose)
+               .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
                .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Debug)
                // #if DEBUG                
                //                 .MinimumLevel.Override("NSW.Idp", LogEventLevel.)
@@ -55,10 +56,11 @@ namespace NSW.Idp
 
                 var host = CreateHostBuilder(args).Build();
 
-				var postalCodeTask = host.Services.GetRequiredService<IPostalCodeTask>();
-				postalCodeTask.StartBackgroundPostalCodeWorker(ApiAccessType.Idp);
 
-				if (seed)
+                var postalCodeTask = host.Services.GetRequiredService<IPostalCodeTask>();
+                postalCodeTask.StartBackgroundPostalCodeWorker(ApiAccessType.Idp);
+
+                if (seed)
                 {
                     Log.Information("Seeding database...");
                     var config = host.Services.GetRequiredService<IConfiguration>();
@@ -85,7 +87,7 @@ namespace NSW.Idp
 
 
 
-		public static IHostBuilder CreateHostBuilder(string[] args) =>
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseSerilog()
                 .ConfigureHostConfiguration(configHost =>
@@ -94,22 +96,12 @@ namespace NSW.Idp
                     // configHost.AddJsonFile("hostsettings.json", optional: true);  // this isn't needed, just to prove a point
                     configHost.AddUserSecrets("4ccf36a0-933c-463f-a8aa-8b252c45c6b6");
                     configHost.AddEnvironmentVariables("DOTNET_");
+                    
                 })
+            .ConfigureNswKestrel()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-#if !DEBUG
-                    webBuilder.UseKestrel(opts =>
-                    {
-                        var address = System.Net.IPAddress.Parse("0.0.0.0");
-                        opts.Listen(address, 5006);
-                        opts.Listen(address, 5007, opts =>
-                            opts.UseHttps(
-                                "/ssl/NSW_BFF.pfx",
-                                "123456"
-                            ));
-                    });
-#endif
                 });
     }
 }

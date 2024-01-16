@@ -24,6 +24,15 @@ namespace NSW.Data.Internal.Services
 		protected readonly OidcOptions _oidcOptions;
         protected readonly IHttpClientFactory _httpClientFactory;
 
+        /// <summary>
+        /// the ctor.
+        /// </summary>
+        /// <param name="httpContextAccessor">the context accessor.</param>
+        /// <param name="discoveryCache">the OIDC disocvery cache.</param>
+        /// <param name="logger">the logger.</param>
+        /// <param name="configuration">the app config.</param>
+        /// <param name="oidcOptions">the oidc options</param>
+        /// <param name="httpClientFactory">the http client factory.</param>
 		public InternalDataTransferServiceBase(
 			IHttpContextAccessor httpContextAccessor,
 			IDiscoveryCache discoveryCache,
@@ -39,6 +48,7 @@ namespace NSW.Data.Internal.Services
 			_configuration = configuration;
 			_oidcOptions = oidcOptions;
             _httpClientFactory = httpClientFactory;
+            _discoveryDocument = new DiscoveryDocumentResponse();
 		}
 		
         protected DiscoveryDocumentResponse _discoveryDocument;
@@ -75,17 +85,18 @@ namespace NSW.Data.Internal.Services
 			_logger.LogDebug("DisocveryDocumentResponse.HttpErrorReason {0}", _discoveryDocument.HttpErrorReason);
 			_logger.LogDebug("DisocveryDocumentResponse.HttpStatusCode {0}", _discoveryDocument.HttpStatusCode);
 
-			if (_discoveryDocument == null)
+			if (_discoveryDocument == null || _discoveryDocument.IsError)
 			{
-				_logger.LogInformation("_discoveryDocument is null");
-			}
-
-			if (_discoveryDocument.IsError)
-			{
-				_logger.LogError(_discoveryDocument.Exception, "InternalDataTransferService.GetIdpDiscoveryCacheAsync");
+                if (_discoveryDocument?.Exception != null)
+                {
+                    _logger.LogError(_discoveryDocument.Exception, "InternalDataTransferService.GetIdpDiscoveryDocumentAsync");
+                }
+                if (_discoveryDocument?.Error != null)
+                {
+                    _logger.LogError(_discoveryDocument.Error, "InternalDataTransferService.GetIdpDiscoveryDocumentAsync");
+                }
 				throw new System.Exception("error getting discovery cache.");
 			}
-
 
 			_logger.LogDebug("DisocveryDocumentResponse {0}", _discoveryDocument.TokenEndpoint);
 			_logger.LogDebug("DisocveryDocumentResponse {0}", _discoveryDocument.UserInfoEndpoint);

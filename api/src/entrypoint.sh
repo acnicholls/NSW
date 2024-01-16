@@ -7,7 +7,7 @@ echo "apt-get complete"
 
 
 
-if [ ! -f /ssl/api.crt ] 
+if [ ! -f /ssl/nsw.crt ] 
 then
     echo "creating ssl file"
     openssl req \
@@ -15,14 +15,14 @@ then
     -x509 -sha256 \
     -days 365 \
     -nodes \
-    -out /ssl/api.crt \
-    -keyout /ssl/api.key \
-    -subj="/C=CA/ST=Ontario/L=Waterloo/CN=api"
+    -out /ssl/nsw.crt \
+    -keyout /ssl/nsw.key \
+    -subj="/C=CA/ST=Ontario/L=Waterloo/CN=nsw"
 fi
 echo "ssl file complete"
 
 # need to install the local cert.
-cp /ssl/api.crt /usr/local/share/ca-certificates
+cp /ssl/nsw.crt /usr/local/share/ca-certificates
 update-ca-certificates
 echo "ca-certs updated"
 
