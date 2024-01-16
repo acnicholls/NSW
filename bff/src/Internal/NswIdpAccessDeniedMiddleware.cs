@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using System;
 
 namespace NSW.Bff.Internal
 {
@@ -41,13 +42,17 @@ namespace NSW.Bff.Internal
             {
                 await _next(context);
             }
-            catch (Microsoft.IdentityModel.Protocols.OpenIdConnect.OpenIdConnectProtocolException oidcException)
+            catch (Exception ex)
             {
-                // the user likely clicked cancel on the login page, and we'll get and error here if we don't handle it.
-                // redirect the user to the access denied UI page.
-                var uiUrl = _configuration.GetValue<string>("Frontend:BaseUrl");
-                _logger.LogDebug(oidcException, "User clicked cancel...");
-                context.Response.Redirect($"{uiUrl}/denied");
+                var newCopyOfExceptionForInspectionInDevelopment = ex;
+                if (ex.InnerException.GetType() == typeof(Microsoft.IdentityModel.Protocols.OpenIdConnect.OpenIdConnectProtocolException))
+                {
+                    // the user likely clicked cancel on the login page, and we'll get and error here if we don't handle it.
+                    // redirect the user to the access denied UI page.
+                    var uiUrl = _configuration.GetValue<string>("Frontend:BaseUrl");
+                    _logger.LogDebug(newCopyOfExceptionForInspectionInDevelopment, "User clicked cancel...");
+                    context.Response.Redirect($"{uiUrl}/denied");
+                }
             }
         }
     }

@@ -134,6 +134,8 @@ namespace NSW.Bff
                 await next(context);
             });
 
+            // the IDP has sent an "access_denied" authentication message, capture and handle it.
+            app.UseMiddleware<NswIdpAccessDeniedMiddleware>();
 
             app.UseMiddleware<StrictSameSiteExternalAuthenticationMiddleware>();
             app.UseAuthentication();
@@ -156,9 +158,6 @@ namespace NSW.Bff
 
             });
 
-            // this is just after the challenge has failed, and the pipeline is reversing back.  
-            // the exception should be caught and redirect the user to the denied page in the UI.
-            app.UseMiddleware<NswIdpAccessDeniedMiddleware>();
 
             // challenge any unauthenticated user
             app.Use(async (context, next) =>
