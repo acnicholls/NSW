@@ -20,16 +20,18 @@ import SpacerRow from "./SpacerRow";
   Constants
 */
 import LabelTextLocators from "../constants/LabelTextLocators";
+import routes from "../constants/RouteConstants";
 /*
   Hooks
 */
 import { useLabelTextByGroupIdentifier } from "../hooks/labelTextHooks";
 import { useUserContext } from "../contexts/UserContext";
-import routes from "../constants/RouteConstants";
+import { useCookies } from "react-cookie";
 
 const Splash = (props) => {
   const { selectedLanguage, setSelectedLanguage } = useUserContext();
   const [labelText, setLabelText] = useState(null);
+  const [setCookie] = useCookies(["nsw"]);
   const navigate = useNavigate();
 
   var isLabelTextQueryDisabled = labelText !== null;
@@ -54,6 +56,7 @@ const Splash = (props) => {
   // force the Anonymous user to select the language they want displayed
   const setAnonymousUserDisplayLanguage = (selectedLanguage) => {
     setSelectedLanguage(selectedLanguage);
+    setCookie("selectedLanguage", selectedLanguage);
     navigate(routes.frontend.index);
   };
 

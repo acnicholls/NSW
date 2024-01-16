@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { anonymousUser } from "../data/data";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import routes from "../constants/RouteConstants";
 import { useUserInfo } from "../hooks/userHooks";
+import { useCookies } from "react-cookie";
 
 const UserContext = createContext(null);
 
@@ -13,31 +14,20 @@ export function useUserContext() {
 
 export function UserProvider({ children }) {
   const [user, setUser] = useState(anonymousUser);
-  const [userQueryIsDisabled, setUserQueryIsDisabled] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(0);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     console.log("User Changed", user);
   }, [user]);
 
-  // const onSuccess = (data) => {
-  //   console.log("UserContext.onSuccess: ", data);
-  //   setUser(data.data);
-  //   setUserQueryIsDisabled(true);
-  // };
-
-  // const onError = (error) => {
-  //   console.log("UserContext.onError", error);
-  //   setUser(anonymousUser);
-  //   setUserQueryIsDisabled(true);
-  // };
-
-  // useUserInfo(userQueryIsDisabled, onSuccess, onError);
-
   console.log("in UserContext, languagePreference=:", selectedLanguage);
   useEffect(() => {
-    if (selectedLanguage === 0) {
+    if (
+      selectedLanguage === 0 &&
+      location.pathname !== routes.frontend.denied
+    ) {
       navigate(routes.frontend.splash);
     }
   });
