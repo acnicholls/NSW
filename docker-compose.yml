@@ -54,7 +54,8 @@ services:
             # - ${HOME}/.dotnet/dotnet:/usr/bin/dotnet
             # - /usr/share/dotnet:/usr/share/dotnet
         environment:
-            - HOME:/home/${USER}            
+            - HOME:/home/${USER}
+            - DOTNET_NSW_Development:"Server=db;Database=IdSrvConfig;User Id=nsw_idsrv;Password='testPa55w0rd!';"
         entrypoint: /app/idp/src/entrypoint.sh
         ports:
             - 5006:5006
@@ -74,7 +75,8 @@ services:
             # - ${HOME}/.dotnet/dotnet:/usr/bin/dotnet
             # - /usr/share/dotnet:/usr/share/dotnet
         environment:
-            - HOME:/home/${USER}                                              
+            - HOME:/home/${USER}
+            - DOTNET_NSW_Development:"Server=db;Database=nswData;User Id=nsw_data;Password='testPa55w0rd!';"                          
         entrypoint: /app/entrypoint.sh
         ports:
             - 5002:5002
@@ -91,6 +93,11 @@ services:
             - MSSQL_PID=Developer
         volumes:
             - ./db/data:/var/opt/mssql/data
+            - ./db/entrypoint.sh:/tmp/entrypoint.sh
+            - ./db/create_idpConfigDb.sql:/tmp/create_idpConfigDb.sql
+            - ./db/create_nswDataDb.sql:/tmp/create_nswDataDb.sql
+            - ./db/configure-db.sh:/tmp/configure-db.sh
+        entrypoint: /tmp/entrypoint.sh
         networks:
             - nsw
         ports:
