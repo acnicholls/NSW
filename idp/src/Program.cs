@@ -95,7 +95,7 @@ namespace NSW.Idp
                     configHost.SetBasePath(Directory.GetCurrentDirectory());
                     // configHost.AddJsonFile("hostsettings.json", optional: true);  // this isn't needed, just to prove a point
                     configHost.AddUserSecrets("4ccf36a0-933c-463f-a8aa-8b252c45c6b6");
-                    configHost.AddEnvironmentVariables("DOTNET_");
+                    configHost.AddEnvironmentVariables();
                     
                 })
             .ConfigureNswKestrel()
