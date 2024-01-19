@@ -79,8 +79,8 @@ if (builder.Environment.IsDevelopment() | builder.Environment.IsStaging())
 	builder.Services.AddEndpointsApiExplorer();
 	builder.Services.AddSwaggerGen((options) =>
 	{
-		var fileLocation = $"{Environment.CurrentDirectory}\\bin\\Debug\\net7.0\\NSW_Api.xml";
-		options.IncludeXmlComments(fileLocation);
+		//var fileLocation = $"{Environment.CurrentDirectory}\\NSW_Api.xml";
+		//options.IncludeXmlComments(fileLocation);
 	});
 }
 

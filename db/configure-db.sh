@@ -28,7 +28,7 @@ if [ $(($DBSTATUS)) -ne 0 ] || [ $ERRCODE -ne 0 ]; then
 	exit 1
 fi
 
-echo "checking and installing project databases"
+echo "checking for and maybe installing project databases"
 
 # check if the idp database exists.
 IDSRVCONFIG=$(/opt/mssql-tools/bin/sqlcmd -h -1 -U sa -P $MSSQL_SA_PASSWORD -d master -Q "SET NOCOUNT ON; select cast(count(name) as int) from sys.databases where name='idsrvconfig';")

@@ -71,6 +71,7 @@ namespace NSW.Idp
                 }
 
                 Log.Information("Starting host...");
+
                 await host.RunAsync();
                 return 0;
             }

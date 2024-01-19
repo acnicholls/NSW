@@ -23,3 +23,13 @@
 **/values.dev.yaml
 LICENSE
 README.md
+
+#custom folders
+# don't needs the tools in the docker container (yet)
+/tools
+# don't need docs
+/docs
+# don't need workflows or ticket templates (yet)
+./.github
+
+

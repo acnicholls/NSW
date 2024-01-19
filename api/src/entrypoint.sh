@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Environment Variables"
+printenv
+
 echo "booting up"
 # need to create the local cert.
 apt-get install -y ca-certificates openssl

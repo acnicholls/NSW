@@ -1,3 +1,7 @@
+#!/bin/bash
+
+echo "Environment Variables"
+printenv
 
 apt-get update 
 apt-get upgrade -y
