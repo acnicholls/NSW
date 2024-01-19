@@ -56,6 +56,8 @@ services:
         environment:
             - HOME:/home/${USER}
             - ConnectionStrings__NSW_Development:"Server=db;Database=IdSrvConfig;User Id=nsw_idsrv;Password='testPa55w0rd!';"
+            - ConnectionStrings__DockerConnection:"Server=db;Database=IdSrvConfig;User Id=nsw_idsrv;Password='testPa55w0rd!';"
+            - ConnectionStrings__DefaultConnection:"Server=db;Database=IdSrvConfig;User Id=nsw_idsrv;Password='testPa55w0rd!';"
         entrypoint: /app/idp/src/entrypoint.sh
         ports:
             - 5006:5006
