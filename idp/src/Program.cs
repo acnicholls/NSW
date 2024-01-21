@@ -19,6 +19,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
+
 namespace NSW.Idp
 {
     public class Program
@@ -26,8 +27,9 @@ namespace NSW.Idp
         public async static Task<int> Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-               .MinimumLevel.Override("NSW", Serilog.Events.LogEventLevel.Verbose)
-               .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
+                .MinimumLevel.Debug()
+               .MinimumLevel.Override("NSW.Idp", Serilog.Events.LogEventLevel.Verbose)
+               .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Debug)
                .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Debug)
                // #if DEBUG                
                //                 .MinimumLevel.Override("NSW.Idp", LogEventLevel.)
@@ -53,24 +55,29 @@ namespace NSW.Idp
                 {
                     args = args.Except(new[] { "/seed" }).ToArray();
                 }
+                Log.Debug("Building Host.");
 
                 var host = CreateHostBuilder(args).Build();
 
-
+                Log.Debug("Host Built.");
+                Log.Debug("Starting Postal Task.");
                 var postalCodeTask = host.Services.GetRequiredService<IPostalCodeTask>();
                 postalCodeTask.StartBackgroundPostalCodeWorker(ApiAccessType.Idp);
-
+                Log.Debug("Postal Task Started.");
                 if (seed)
                 {
-                    Log.Information("Seeding database...");
+                    Log.Debug("Seeding database...");
                     var config = host.Services.GetRequiredService<IConfiguration>();
-                    var connectionString = config.GetConnectionString(config.GetSection("ConnectionString").Value);
+                    var connString = config.GetSection("ConnectionString").Value;
+                    Log.Debug("ConnectionStringName: {connString}", connString);
+                    var connectionString = config.GetConnectionString(connString);
+                    Log.Debug("ConnectionString: {connectionString}", connectionString);
                     SeedData.EnsureSeedData(connectionString);
-                    Log.Information("Done seeding database.");
+                    Log.Debug("Done seeding database.");
                     return 0;
                 }
 
-                Log.Information("Starting host...");
+                Log.Debug("Starting host...");
 
                 await host.RunAsync();
                 return 0;
@@ -93,11 +100,20 @@ namespace NSW.Idp
                 .UseSerilog()
                 .ConfigureHostConfiguration(configHost =>
                 {
+                    Log.Debug("Loading from required configuration sources.");
+                    var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+                    Log.Debug($"Environment: {env}");
                     configHost.SetBasePath(Directory.GetCurrentDirectory());
                     // configHost.AddJsonFile("hostsettings.json", optional: true);  // this isn't needed, just to prove a point
+                    configHost.AddJsonFile("appsettings.json", false, true);
+                    Log.Debug($"appsettings loaded...");
+                    configHost.AddJsonFile($"appsettings.{env}.json", true, true);
+                    Log.Debug($"appsettings for environment loaded...");
                     configHost.AddUserSecrets("4ccf36a0-933c-463f-a8aa-8b252c45c6b6");
+                    Log.Debug($"user secretsloaded...");
                     configHost.AddEnvironmentVariables();
-                    
+                    Log.Debug($"environment variables loaded...");
+                    Log.Debug("All configuration sources loaded.");
                 })
             .ConfigureNswKestrel()
                 .ConfigureWebHostDefaults(webBuilder =>
