@@ -3,8 +3,8 @@
 echo "Environment Variables"
 printenv
 
-apt-get update 
-apt-get upgrade -y
+# apt-get update 
+# apt-get upgrade -y
 
 # prepare a certificate for the SSL port
 if [ ! -f /ssl/cert.pem ] 
