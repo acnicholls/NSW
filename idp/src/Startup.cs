@@ -13,49 +13,46 @@ using Serilog;
 namespace NSW.Idp
 {
 	using IdentityServer4.Configuration;
-    using Microsoft.Extensions.Logging;
-    using NSW.Data.Validation;
+	using Microsoft.Extensions.Logging;
+	using NSW.Data.Validation;
 	using NSW.Data.Validation.Interfaces;
 	using NSW.Idp.Configuration;
 	using NSW.Idp.Data;
 	using NSW.Idp.Models;
-    using System;
+	using System;
 
-    public class Startup
+	public class Startup
 	{
-        private IWebHostEnvironment Environment { get; }
-        private IConfiguration Configuration { get; }
+		private IWebHostEnvironment Environment { get; }
+		private IConfiguration Configuration { get; }
 
-        private string connectionString { get; }
+		private string connectionString { get; }
 
-        public Startup(
-            IWebHostEnvironment environment,
-            IConfiguration configuration
-            )
-        {
-            Environment = environment;
-            Configuration = configuration;
-            Log.Information($"Startup.Constructor environment: {environment.EnvironmentName}");
-            Log.Information($"Startup.Constructor ssl key location: {configuration.GetSection("Ssl:keyLocation").Value}");
-            Log.Information($"Startup.Constructor ssl cert location: {configuration.GetSection("Ssl:certLocation").Value}");
-            Log.Information($"Startup.Constructor AllowedHosts: {configuration.GetSection("AllowedHosts").Value}");
-            var connString = configuration.GetSection("ConnectionString").Value;
-            Log.Information($"Startup.Constructor connectionStringName: {connString}");
-            connectionString = configuration.GetConnectionString(connString);
-            Log.Information($"Startup.Constructor connectionString set!");
-        }
-        public void ConfigureServices(IServiceCollection services)
+		public Startup(
+			IWebHostEnvironment environment,
+			IConfiguration configuration
+			)
 		{
-            Log.Debug("Starting Startup.ConfigureServices");
-            if (services == null) throw new ArgumentNullException(nameof(services));
+			Environment = environment;
+			Configuration = configuration;
+			Log.Information($"Startup.Constructor environment: {environment.EnvironmentName}");
+			Log.Information($"Startup.Constructor ssl key location: {configuration.GetSection("Ssl:keyLocation").Value}");
+			Log.Information($"Startup.Constructor ssl cert location: {configuration.GetSection("Ssl:certLocation").Value}");
+			Log.Information($"Startup.Constructor AllowedHosts: {configuration.GetSection("AllowedHosts").Value}");
+		}
 
-            var oidcOptions = NSW.Data.Extensions.DependencyInjection.RegisterServices(services, Configuration, DataTransferVaraintEnum.Tools);
+		public void ConfigureServices(IServiceCollection services)
+		{
+			Log.Debug("Starting Startup.ConfigureServices");
+			if (services == null) throw new ArgumentNullException(nameof(services));
+
+			var oidcOptions = NSW.Data.Extensions.DependencyInjection.RegisterServices(services, Configuration, DataTransferVaraintEnum.Tools);
 			NSW.Data.Extensions.DependencyInjection.RegisterPostalTask(services);
 			IdentityModelEventSource.ShowPII = true;
 			services.AddControllersWithViews();
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-				options.UseSqlServer(this.connectionString));
+			services.AddDbContext<ApplicationDbContext>(options =>
+				options.UseSqlServer(Configuration.GetConnectionString(Configuration.GetSection("ConnectionString").Value)));
 
 			services.AddIdentity<ApplicationUser, ApplicationRole>()
 				.AddEntityFrameworkStores<ApplicationDbContext>()
@@ -129,16 +126,16 @@ namespace NSW.Idp
 				options.KnownNetworks.Clear();
 				options.KnownProxies.Clear();
 			});
-            Log.Debug("Completing Startup.ConfigureServices");
-        }
+			Log.Debug("Completing Startup.ConfigureServices");
+		}
 
-		public void Configure(IApplicationBuilder app)
+		public void Configure(IApplicationBuilder app, IConfiguration configuration)
 		{
-            Log.Debug("Starting Startup.Configure");
-            if(app == null) throw new ArgumentNullException(nameof(app));
+			Log.Debug("Starting Startup.Configure");
+			if (app == null) throw new ArgumentNullException(nameof(app));
 			if (Environment.EnvironmentName == "Development")
 			{
-                SeedData.EnsureSeedData(this.connectionString);
+				SeedData.EnsureSeedData(configuration.GetConnectionString(configuration.GetSection("ConnectionString").Value));
 			}
 			app.UseForwardedHeaders();
 			//Add our new middleware to the pipeline
@@ -159,7 +156,7 @@ namespace NSW.Idp
 			{
 				endpoints.MapDefaultControllerRoute();
 			});
-            Log.Debug("Completing Startup.Configure");
-        }
+			Log.Debug("Completing Startup.Configure");
+		}
 	}
 }
