@@ -88,7 +88,7 @@ services:
         depends_on:
             - db
     db:
-        image: mcr.microsoft.com/mssql/server:2019-latest
+        image: mcr.microsoft.com/mssql/server:2019-CU24-ubuntu-20.04
         environment:
             - MSSQL_SA_PASSWORD=s00p3rS3cvr#
             - ACCEPT_EULA=Y
