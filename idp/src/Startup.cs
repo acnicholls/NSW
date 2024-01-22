@@ -129,13 +129,35 @@ namespace NSW.Idp
 			Log.Debug("Completing Startup.ConfigureServices");
 		}
 
-		public void Configure(IApplicationBuilder app, IConfiguration configuration)
+		private bool EnvironmentRequiresSeedData(string environmentName)
+		{
+			switch (environmentName)
+			{
+				case "Localhost":
+				case "Development":
+				case "QA":
+				case "UAT":
+				case "Stage":
+				case "Staging":
+					return true;
+				default:
+					return false;
+			}
+		}
+
+		public void Configure(IApplicationBuilder app)
 		{
 			Log.Debug("Starting Startup.Configure");
 			if (app == null) throw new ArgumentNullException(nameof(app));
-			if (Environment.EnvironmentName == "Development")
+			if (EnvironmentRequiresSeedData(Environment.EnvironmentName))
 			{
-				SeedData.EnsureSeedData(configuration.GetConnectionString(configuration.GetSection("ConnectionString").Value));
+				var configuration = app.ApplicationServices.GetRequiredService<IConfiguration>();
+				if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+				var connStringName = configuration.GetSection("ConnectionString").Value;
+				Log.Debug("ConnectionString Name: {connStringName}", connStringName);
+				var connectionString = configuration.GetConnectionString(connStringName);
+				Log.Debug("ConnectionString: {connectionString}", connectionString);
+				SeedData.EnsureSeedData(connectionString);
 			}
 			app.UseForwardedHeaders();
 			//Add our new middleware to the pipeline
