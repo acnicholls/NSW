@@ -30,4 +30,4 @@ update-ca-certificates
 echo "ca-certs updated"
 
 # run the app
-dotnet watch run --project /app/NSW_Api/NSW_Api.csproj
+dotnet watch run --project /app/api/src/NSW_Api/NSW_Api.csproj
