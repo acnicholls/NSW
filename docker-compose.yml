@@ -78,7 +78,7 @@ services:
             # - /usr/share/dotnet:/usr/share/dotnet
         environment:
             - HOME:/home/${USER}
-            - ConnectionStrings__NSW_Development:"Server=db;Database=nswData;User Id=nsw_data;Password='testPa55w0rd!';"                          
+            - CUSTOMCONNSTR_NSW_Development=Server=db;Database=nswData;User Id=nsw_data;Password='testPa55w0rd!';Trust Server Certificate=True;                       
         entrypoint: /app/api/src/entrypoint.sh
         ports:
             - 5002:5002
