@@ -14,6 +14,11 @@
   </ItemGroup>
   
   <ItemGroup>
+    <Compile Remove="Program.cs" />
+    <Compile Remove="Startup.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <Content Remove="appsettings.Docker.json" />
   </ItemGroup>
   
