@@ -55,9 +55,7 @@ services:
             # - /usr/share/dotnet:/usr/share/dotnet
         environment:
             - HOME:/home/${USER}
-            - CUSTOMCONNSTR_NSW_Development=Server=db;Database=IdSrvConfig;User Id=nsw_idsrv;Password='testPa55w0rd!';Trust Server Certificate=True;
             - CUSTOMCONNSTR_DockerConnection=Server=db;Database=IdSrvConfig;User Id=nsw_idsrv;Password='testPa55w0rd!';Trust Server Certificate=True;
-            - CUSTOMCONNSTR_DefaultConnection=Server=db;Database=IdSrvConfig;User Id=nsw_idsrv;Password='testPa55w0rd!';Trust Server Certificate=True;
         entrypoint: /app/idp/src/entrypoint.sh
         ports:
             - 5006:5006
@@ -78,7 +76,7 @@ services:
             # - /usr/share/dotnet:/usr/share/dotnet
         environment:
             - HOME:/home/${USER}
-            - CUSTOMCONNSTR_NSW_Development=Server=db;Database=nswData;User Id=nsw_data;Password='testPa55w0rd!';Trust Server Certificate=True;                       
+            - CUSTOMCONNSTR_DockerConnection=Server=db;Database=nswData;User Id=nsw_data;Password='testPa55w0rd!';Trust Server Certificate=True;                       
         entrypoint: /app/api/src/entrypoint.sh
         ports:
             - 5002:5002

@@ -28,6 +28,7 @@ bool EnvironmentRequiresSeedData(string environmentName)
     switch (environmentName)
     {
         case "Localhost":
+        case "Docker":
         case "Development":
         case "QA":
         case "UAT":
@@ -67,7 +68,7 @@ builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 builder.Configuration.AddJsonFile("appsettings.json", false, true);
 builder.Configuration.AddJsonFile($"appsettings.{environmentName}.json", true, true);
 builder.Configuration.AddEnvironmentVariables();
-if(builder.Environment.EnvironmentName.Equals("localhost", StringComparison.InvariantCultureIgnoreCase))
+if (builder.Environment.EnvironmentName.Equals("localhost", StringComparison.InvariantCultureIgnoreCase))
 {
     builder.Configuration.AddUserSecrets("4ccf36a0-933c-463f-a8aa-8b252c45c6b6", true);
 }
