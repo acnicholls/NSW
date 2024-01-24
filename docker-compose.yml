@@ -9,6 +9,9 @@ services:
             - PORT=3000
             - SSL_CERT_FILE=/ssl/cert.pem
             - SSL_KEY_FILE=/ssl/key.pem
+            - REACT_APP_BFF_URL=https://localhost
+            - REACT_APP_IDP_URL=https://localhost
+            - REACT_APP_PUBLIC_URL=https://localhost
         volumes:
             - ./app/cra:/app
             - ./app/docker-prep.dev.sh:/tmp/docker-prep.dev.sh
