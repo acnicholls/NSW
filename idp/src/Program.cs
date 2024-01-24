@@ -23,9 +23,11 @@ using Serilog.Sinks.SystemConsole.Themes;
 using System;
 using System.IO;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 bool EnvironmentRequiresSeedData(string environmentName)
 {
+
     switch (environmentName)
     {
         case "Localhost":
@@ -54,33 +56,49 @@ Log.Logger = new LoggerConfiguration()
    .WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}:: {Message:lj}{NewLine}{Exception}")
 #endif
    .CreateLogger();
-
 Log.Debug("Logger built.");
+
+
+/// used in a couple places to list the configurations
+void ListConfiguration(IConfiguration configuration)
+{
+    Log.Debug("Listing Configuration...");
+    foreach (var item in configuration.AsEnumerable())
+    {
+        Log.Debug(JsonSerializer.Serialize(item));
+    }
+    Log.Debug("Configuration Listed...");
+}
 
 var builder = WebApplication.CreateBuilder(args);
 // configure the logging
 builder.Host.UseSerilog();
-
 Log.Debug("Logging added to services.");
-var environmentName = builder.Environment.EnvironmentName;
 
+var environmentName = builder.Environment.EnvironmentName;
 Log.Debug("EnvironmentName:{0}", environmentName);
 
 // load the configuration
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
-builder.Configuration.AddJsonFile("appsettings.json", false, true);
-builder.Configuration.AddJsonFile($"appsettings.{environmentName}.json", true, true);
+var filename = "appsettings.json";
+Log.Debug("Adding file {0} to configuration", filename);
+builder.Configuration.AddJsonFile(filename, false, true);
+filename = $"appsettings.{environmentName}.json";
+Log.Debug("Adding file {0} to configuration", filename);
+builder.Configuration.AddJsonFile(filename, true, true);
 #if DEBUG
     builder.Configuration.AddUserSecrets("4ccf36a0-933c-463f-a8aa-8b252c45c6b6", true);
 #endif
 // always load env vars last.  
 builder.Configuration.AddEnvironmentVariables();
-
 Log.Debug("configuration built");
+
+#if DEBUG
+ListConfiguration(builder.Configuration);
+#endif
 
 // load the kestrel config
 builder.ConfigureNswKestrel();
-
 Log.Debug("kestrel configured");
 
 Log.Debug("starting configuring services....");
@@ -180,15 +198,12 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
     options.KnownProxies.Clear();
 });
 Log.Debug("completing configuring services....");
-Log.Debug("building app");
 
+Log.Debug("building app");
 var app = builder.Build();
 
 #if DEBUG
-foreach(var item in app.Configuration.AsEnumerable())
-{
-    Log.Debug(JsonSerializer.Serialize(item));
-}
+ListConfiguration(app.Configuration);
 #endif
 
 Log.Debug("Starting Configuring Pipeline");
@@ -217,4 +232,18 @@ app.MapDefaultControllerRoute();
 
 Log.Debug("Completing Configuring Pipeline");
 
-await app.RunAsync();
+try
+{
+    await app.RunAsync();
+    return 0;
+}
+catch (Exception ex)
+{
+    Log.Error(ex, "Error in Main");
+    Console.WriteLine(ex.Message, ex.StackTrace);
+    return 1;
+}
+finally
+{
+    Log.CloseAndFlush();
+}
