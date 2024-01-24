@@ -18,4 +18,4 @@ then
 fi
 
 # run the app
-dotnet watch run --project /app/idp/src/NSW_IDP.csproj
+dotnet watch run --project /app/idp/src/NSW_IDP.csproj -- -e ENVIRONMENT=Docker

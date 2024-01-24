@@ -1,4 +1,5 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// IdentityServer4 NuGet Licence text below
+// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 using IdentityServer4;
@@ -63,15 +64,17 @@ builder.Host.UseSerilog();
 Log.Debug("Logging added to services.");
 var environmentName = builder.Environment.EnvironmentName;
 
+Log.Debug("EnvironmentName:{0}", environmentName);
+
 // load the configuration
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 builder.Configuration.AddJsonFile("appsettings.json", false, true);
 builder.Configuration.AddJsonFile($"appsettings.{environmentName}.json", true, true);
-builder.Configuration.AddEnvironmentVariables();
-if (builder.Environment.EnvironmentName.Equals("localhost", StringComparison.InvariantCultureIgnoreCase))
-{
+#if DEBUG
     builder.Configuration.AddUserSecrets("4ccf36a0-933c-463f-a8aa-8b252c45c6b6", true);
-}
+#endif
+// always load env vars last.  
+builder.Configuration.AddEnvironmentVariables();
 
 Log.Debug("configuration built");
 
@@ -213,3 +216,5 @@ app.UseAuthorization();
 app.MapDefaultControllerRoute();
 
 Log.Debug("Completing Configuring Pipeline");
+
+await app.RunAsync();

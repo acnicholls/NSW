@@ -56,6 +56,8 @@ services:
         environment:
             - HOME:/home/${USER}
             - CUSTOMCONNSTR_DockerConnection=Server=db;Database=IdSrvConfig;User Id=nsw_idsrv;Password='testPa55w0rd!';Trust Server Certificate=True;
+            - ASPNETCORE_ENVIRONMENT=Docker
+            - Authentication__ClientSecret=secret
         entrypoint: /app/idp/src/entrypoint.sh
         ports:
             - 5006:5006
