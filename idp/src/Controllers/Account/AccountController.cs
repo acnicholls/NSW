@@ -192,11 +192,14 @@ namespace NSW.Idp.Controllers.Account
             user.Email = model.Email;
             user.UserName = model.UserName;
             user.PhoneNumber = model.PhoneNumber;
+            // create the user.
             var result = await this._userManager.CreateAsync(user, model.Password);
+            // add them to the member role (you get admin by asking me. lulz)
             if (result.Succeeded)
             {
                 result = await this._userManager.AddToRoleAsync(user, NSW.Role.Member.ToString());
             }
+            // create and store the claims for this user.
             if (result.Succeeded)
             {
                 var userClaims = new List<Claim>();
@@ -216,6 +219,7 @@ namespace NSW.Idp.Controllers.Account
                 userClaims.Add(new Claim(NSW.CustomClaimType.PostalCode.ToString(), model.PostalCode));
                 result = await this._userManager.AddClaimsAsync(user, userClaims);
             }
+            // send the data to the API, so it knows this user exists.
             if (result.Succeeded)
             {
                 // post a new user to the API
@@ -238,6 +242,7 @@ namespace NSW.Idp.Controllers.Account
                     ModelState.AddModelError("500", ex.Message);
                 }
             }
+            // sign in this new user and redirect them to their requested destination.
 			if(result.Succeeded)
 			{
                 var signInResult = await this._signInManager.PasswordSignInAsync(user, model.Password, false, false);
