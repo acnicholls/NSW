@@ -1,0 +1,21 @@
+this project is started by myself
+
+it's a conversion of the original webforms project into a DotNetCore WebApi with a React frontend. 
+
+The user management has been passed to IdentityServer4, with Microsoft IdentityModel RazorPages UI.
+the User's Id will arrive to the API in a token and will be used to recoognize the user in the API code.
+Data from a specialized Authenticated User Endpoint on the BFF (Backend for frontend) will inform the React 
+application of the user's permissions and pertinent data.  Only the user themselves, after being authenticated
+with the IdentityServer will be able to query this endpoint for their data.
+
+The database is mostly untouched, the User table has modifications to remove the plain-text (that never should have been) password
+field, and update any relevent stored procedures.
+
+the front end is from scratch, starting with BootStrap4 and the Core UI theme for both the React application and the IdentityModel Razor Pages
+because the API is pre-built by the IdentityModel scaffolding process, the AspNet User management tables could have a React UI written over them either
+all at once or incrementally.  
+There might be a few modifications required to the Controller classes, the Models can stay as-is, and the Views can just be deleted.
+
+if the performance is much improved, it can be put onto an Azure VM in Japan, and some regional Google ads could be set up
+to drive people to the site.  ads displayed on the site would hopefully generate enough revenue to cover the costs of ads bringing
+users to the site.
