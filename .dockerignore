@@ -12,23 +12,30 @@
 **/*.dbmdl
 **/*.jfm
 **/azds.yaml
-**/bin
 **/charts
 **/docker-compose*
 **/Dockerfile*
 **/node_modules
 **/npm-debug.log
-**/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
 LICENSE
 README.md
+
+# default ASPNETCORE project folders
+**\[Bb]in
+**\[Oo]bj
+**\[Ll]ogs
 
 #custom folders
 # don't needs the tools in the docker container (yet)
 /tools
 # don't need docs
 /docs
+
+# this docker ignore is for the compose projects
+# we won't need these folders in a docker context
+/db
 # don't need workflows or ticket templates (yet)
 ./.github
 

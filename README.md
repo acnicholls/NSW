@@ -142,8 +142,9 @@ more information can be found on the /idp/README.md file
 
 dotnetcore 7.0 WebApi with Controllers
 
-this is IdentityServer4's BFF implementation, with come modifications. It handles identity and access tokens for the UI.
-there are public controllers which use a client token internally to get data from the database that should be publicly (anonymously) accessible.
+this is IdentityServer4's BFF implementation, with some modifications.
+It handles identity and access tokens for the UI.
+there are public controllers which use a client token internally to get data that should be publicly (anonymously) accessible from the database, such as posts, post categories, and label text.
 once the user has started an identity session on the BFF via the IDP Account/Login route (which gives the browser Authentication Cookies to access the user's session with) all calls to `/api` are routed from the proxy to the BFF to acquire an access token and then on to the actual private API service to collect the private data.
 
 more information can be found on the /bff/README.md file

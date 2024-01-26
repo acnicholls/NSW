@@ -8,8 +8,8 @@ echo "booting up"
 apt-get install -y ca-certificates openssl
 echo "apt-get complete"
 
-# prepare a certificate for the SSL port
-if [ ! -f /ssl/app.crt ] 
+# if the api cert file exists in the attached volume and not in the proper place
+if [ ! -f /ssl/bff.crt ] 
 then
     echo "creating ssl file"
     openssl req \
@@ -17,20 +17,16 @@ then
     -x509 -sha256 \
     -days 365 \
     -nodes \
-    -out /ssl/app.crt \
-    -keyout /ssl/app.key \
-    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=app"
+    -out /ssl/bff.crt \
+    -keyout /ssl/bff.key \
+    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=bff"
 fi
 echo "ssl file complete"
 
 # need to install the local cert.
-# putting this outside the if, since this might not be the 
-# same image!
-cp /ssl/app.crt /usr/local/share/ca-certificates/app.crt
+cp /ssl/bff.crt /usr/local/share/ca-certificates/bff.crt
 update-ca-certificates
 echo "ca-certs updated"
 
-cd /app
-npm install
-
-npm start
+# run the app
+dotnet watch run --project /app/bff/src/NSW_BFF.csproj -- --launch-profile DockerCompose

@@ -8,8 +8,8 @@ echo "booting up"
 apt-get install -y ca-certificates openssl
 echo "apt-get complete"
 
-# prepare a certificate for the SSL port
-if [ ! -f /ssl/app.crt ] 
+# create a cert for this container
+if [ ! -f /ssl/idp.crt ] 
 then
     echo "creating ssl file"
     openssl req \
@@ -17,20 +17,16 @@ then
     -x509 -sha256 \
     -days 365 \
     -nodes \
-    -out /ssl/app.crt \
-    -keyout /ssl/app.key \
-    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=app"
+    -out /ssl/idp.crt \
+    -keyout /ssl/idp.key \
+    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=idp"
 fi
 echo "ssl file complete"
 
 # need to install the local cert.
-# putting this outside the if, since this might not be the 
-# same image!
-cp /ssl/app.crt /usr/local/share/ca-certificates/app.crt
+cp /ssl/idp.crt /usr/local/share/ca-certificates/idp.crt
 update-ca-certificates
 echo "ca-certs updated"
 
-cd /app
-npm install
-
-npm start
+# run the app
+dotnet watch run --project /app/idp/src/NSW_IDP.csproj -- --launch-profile DockerCompose

@@ -114,7 +114,7 @@ if (EnvironmentRequiresSeedData(builder.Environment.EnvironmentName))
 }
 
 builder.Services.AddControllersWithViews();
-Log.Debug("controllers added");
+Log.Debug("controllers and views added");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString(builder.Configuration.GetSection("ConnectionString").Value)));
