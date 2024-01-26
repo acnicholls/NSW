@@ -1,0 +1,19 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0 as build-env
+
+COPY ./ssl/api.* /ssl/
+
+# set the application folder on the service
+WORKDIR /app
+# copy the aspnetcore debugger from the web
+
+# restore the project's nuget packages
+COPY . .
+RUN dotnet restore ./api/src/NSW_Api/NSW_Api.csproj
+# build the application
+RUN dotnet build -c Debug -o out ./api/src/NSW_Api/NSW_Api.csproj
+
+# expose the ports
+EXPOSE 5002 5003
+
+# run the project
+ENTRYPOINT  ["dotnet", "run", "--project", "/app/api/src/NSW_Api/NSW_Api.csproj"]
