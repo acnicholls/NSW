@@ -495,18 +495,15 @@ FodyWeavers.xsd
 ## Ignore custom files
 ## be sure to leave a comment as to why you are ignoring a file
 
-# database server signing certificates
-**/MS_AgentSigningCertificate*
-
-# ssl files for solution
+# ssl files for solution, user specific
 /ssl
 
 .vscode/
-**/logs
+**/[Ll]ogs
 
 **/secrets*.json
 
-# folders with non-application data
+# folders with non-application data, or user specific
 /tools
 /db/data
 /docs
