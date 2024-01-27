@@ -35,7 +35,7 @@ README.md
 
 # this docker ignore is for the compose projects
 # we won't need these folders in a docker context
-/db
+/db/data
 # don't need workflows or ticket templates (yet)
 ./.github
 
