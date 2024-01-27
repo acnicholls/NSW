@@ -505,3 +505,8 @@ FodyWeavers.xsd
 **/logs
 
 **/secrets*.json
+
+# folders with non-application data
+/tools
+/db
+/docs
