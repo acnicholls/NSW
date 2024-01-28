@@ -505,5 +505,5 @@ FodyWeavers.xsd
 
 # folders with non-application data, or user specific
 /tools
-/db/data
+/db/data/
 /docs

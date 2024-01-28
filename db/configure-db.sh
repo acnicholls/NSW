@@ -7,6 +7,8 @@
 
 # borrowed from here: https://github.com/microsoft/mssql-docker/blob/master/linux/preview/examples/mssql-customize/configure-db.sh
 
+echo "starting database check and create script";
+
 DBSTATUS=1
 ERRCODE=1
 i=0
