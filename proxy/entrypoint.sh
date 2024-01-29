@@ -25,7 +25,7 @@ fi
 echo "ssl file complete"
 
 # need to install the local cert.
-cp /ssl/proxy.crt /usr/local/share/ca-certificates/proxy.crt
+cp /ssl/*.crt /usr/local/share/ca-certificates/
 update-ca-certificates
 echo "ca-certs updated"
 

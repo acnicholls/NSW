@@ -1,4 +1,5 @@
 #!/bin/bash
+echo off
 
 echo "Environment Variables"
 printenv
@@ -26,7 +27,7 @@ echo "ssl file complete"
 # need to install the local cert.
 # putting this outside the if, since this might not be the 
 # same image!
-cp /ssl/app.crt /usr/local/share/ca-certificates/app.crt
+cp /ssl/*.crt /usr/local/share/ca-certificates/
 update-ca-certificates
 echo "ca-certs updated"
 

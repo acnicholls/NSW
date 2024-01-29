@@ -23,7 +23,7 @@ fi
 echo "ssl file complete"
 
 # need to install the local cert.
-cp /ssl/api.crt /usr/local/share/ca-certificates/api.crt
+cp /ssl/*.crt /usr/local/share/ca-certificates/
 update-ca-certificates
 echo "ca-certs updated"
 

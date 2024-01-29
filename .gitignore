@@ -496,7 +496,7 @@ FodyWeavers.xsd
 ## be sure to leave a comment as to why you are ignoring a file
 
 # ssl files for solution, user specific
-/ssl
+/ssl/
 
 .vscode/
 **/[Ll]ogs
@@ -504,6 +504,6 @@ FodyWeavers.xsd
 **/secrets*.json
 
 # folders with non-application data, or user specific
-/tools
+/tools/
 /db/data/
-/docs
+/docs/

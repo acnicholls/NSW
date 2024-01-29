@@ -29,14 +29,14 @@ README.md
 
 #custom folders
 # don't needs the tools in the docker container (yet)
-/tools
+/tools/
 # don't need docs
-/docs
+/docs/
 
 # this docker ignore is for the compose projects
 # we won't need these folders in a docker context
-/db/data
+/db/data/
 # don't need workflows or ticket templates (yet)
-./.github
+./.github/
 
 
