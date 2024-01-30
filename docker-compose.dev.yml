@@ -12,9 +12,9 @@ services:
             - PORT=3000
             - SSL_CERT_FILE=/ssl/app.crt
             - SSL_KEY_FILE=/ssl/app.key
-            - REACT_APP_BFF_URL=https://localhost
-            - REACT_APP_IDP_URL=https://localhost
-            - REACT_APP_PUBLIC_URL=https://localhost
+            - REACT_APP_BFF_URL=https://localhost/
+            - REACT_APP_IDP_URL=https://localhost/
+            - REACT_APP_PUBLIC_URL=https://localhost/
             - LOCATION=${COMPOSE_LOCATION}
             - STATE=${COMPOSE_STATE}
             - COUNTRYCODE=${COMPOSE_COUNTRYCODE}
