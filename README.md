@@ -80,7 +80,7 @@ in order to use them like this you can create a single entry in your appsetting.
 
 ```
 {
-"ConnectionString": "DevelopmentConnection"
+  "ConnectionString": "DevelopmentConnection"
 }
 ```
 
