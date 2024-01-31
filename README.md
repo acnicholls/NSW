@@ -4,11 +4,33 @@ this site was commissioned in return for two tickets to Japan for my son and I. 
 
 ## the purpose
 
-this was to be a "Used Victoria" clone for use in an exclusive area of Japan. Nagano Prefecture. I found a list online of Nagano Prefecture Postal Codes and away to show on a webpage a map of the area of a postal code as well as an image something that someone wanted to share/swap.
+this was to be a "Used Victoria" clone for use in an exclusive area of Japan. Nagano Prefecture. I found a list online of Nagano Prefecture Postal Codes and a way to show a map of the area of a postal code on a webpage as well as an image of something that someone wanted to share/swap.
 
 the `master` branch is DotNet 4.0, but I have been exposed to React and I have seen the speed of modern dotnetcore applications with JS/TS UI apps written for modern browsers, and then gone to play with this and noticed how terribly slow and clunky it is. So I decided to test and portray my new found knowledge (thanks to my many past employers who allowed me to learn on the job!) and update this site. maybe even deploy it to Azure and regionalize it to Nagano and see if anyone uses it. It'll be good for my portfolio.
 
 the `develop` branch contains a docker-compose solution that is described below.
+
+## the docker-compose
+
+in order to get a new dev up and running quickly at one of the companies i worked at, one of the dev-ops gyus would create a docker-compose file for the solution that would just mount the monolith repo folders to proper places on proper docker images and configure services to have everything running smoothly. this is my attempt to do that and it works in other solutions
+
+each service has an overridden entrypoint to allow the devs to control how it starts.
+
+- app
+  has the docker-prep.dev.sh file which will run container updates prepare certs and run `npm install` before starting the container.
+
+- api
+- bff
+- idp
+  all have entrypoint.sh which will create an SSL cert if it doesn't already exist and then start the project with `dotnet watch` so that changes cause recompile of the binaries. they all use the same cert, so they can talk to each other without complication.
+
+- db
+  starts 2 processes at the same time, the configure script and the SQL server application. sometimes crashes after the initial configure is complete, commenting out the configure script in the entrypoint.sh file helps.
+
+- proxy
+  overwrites the entrypoint to create a `localhost` SSL cert for use in the docker container, as the production design would have only ports 80/443 exposed and pointed to the this service. this service's configuration is described more below.
+
+**NOTE:** the `dotnet` services in this docker-compose solution all read from the same project (DataClasses in the API solution) and folder on the filesystem by mounting the same folder (project root) to their /app mountpoint, but using project files in different sub-folders, this is due to the dependency of each on the domain models in the DataClasses project. This can cause sudden restarts or crashes of the service within the container. A simple restart of the affected service (or waiting for the restart if it is caught by the compose restart in the override file and does so automatically) will solve the problem. This is a known problem and will be worked on in time.
 
 ## user experience
 
@@ -173,29 +195,3 @@ routed to the UI (could be served from the proxy)
 /\*
 
 more information can be found on the /proxy/README.md file
-
-## the docker-compose
-
-in order to get a new dev up and running quickly at one of the companies i worked at, one of the dev-ops gyus would create a docker-compose file for the solution that would just mount the monolith repo folders to proper places on proper docker images and configure services to have everything running smoothly. this is my attempt to do that and it works in other solutions
-
-each service has an overridden entrypoint to allow the devs to control how it starts.
-
-- app
-  has the docker-prep.dev.sh file which will run container updates prepare certs and run `npm install` before starting the container.
-
-- bff
-  has entrypoint.sh which will create an SSL cert if it doesn't already exist and then start the project with `dotnet watch` so that changes cause recompile of the binaries.
-
-- idp
-  is the same as /bff, but doesn't create a cert, it uses the one from the BFF. overrides the entrypoint with `dotnet watch`
-
-- api
-  also has entrypoint.sh, which currently does not exist in this solution, because this is a different application's API. will need to be created. will need to override the entrypoint with `dotnet watch`
-
-- db
-  doesn't actually override the entrypoint, will require manual creation of the databases and users for connectionstrings at this point, this needs to be automated.
-
-- proxy
-  overwrites the default configuration of a NGINX container. no entrypoint modification
-
-**NOTE:** the `dotnet` services in this docker-compose solution all read from the same project (DataClasses in the API solution) and folder on the filesystem by mounting the same folder (project root) to their /app mountpoint, but using project files in different sub-folders, this is due to the dependency of each on the domain models in the DataClasses project. This can cause sudden restarts or crashes of the service within the container. A simple restart of the affected service (or waiting for the restart if it is caught by the compose restart in the override file and does so automatically) will solve the problem. This is a known problem and will be worked on in time.
