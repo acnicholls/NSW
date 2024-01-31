@@ -17,7 +17,7 @@ in order to get a new dev up and running quickly at one of the companies i worke
 each service has an overridden entrypoint to allow the devs to control how it starts.
 
 - app
-  has the docker-prep.dev.sh file which will run container updates prepare certs and run `npm install` before starting the container.
+  has the docker-prep.dev.sh file which will prepare a cert for React's SSL and run `npm install` before starting the NPM dev server.
 
 - api
 - bff
