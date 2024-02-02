@@ -24,6 +24,8 @@ namespace NSW.Data.Internal.Services
 		protected readonly OidcOptions _oidcOptions;
 		protected readonly IHttpClientFactory _httpClientFactory;
 
+		private bool disoveryDocumentCached = false;
+
 		/// <summary>
 		/// the ctor.
 		/// </summary>
@@ -69,7 +71,7 @@ namespace NSW.Data.Internal.Services
 		public async Task<DiscoveryDocumentResponse> GetIdpDiscoveryDocumentAsync()
 		{
 			_logger.LogTrace("Starting GetIdpDiscoveryDocumentAsync()");
-			if (_discoveryDocument != null)
+			if (disoveryDocumentCached)
 			{
 				_logger.LogTrace("Disocvery Document already cached, returning cached copy...");
 				return _discoveryDocument;
@@ -101,6 +103,7 @@ namespace NSW.Data.Internal.Services
 			_logger.LogDebug("DisocveryDocumentResponse {0}", _discoveryDocument.TokenEndpoint);
 			_logger.LogDebug("DisocveryDocumentResponse {0}", _discoveryDocument.UserInfoEndpoint);
 			_logger.LogTrace("Completing GetIdpDiscoveryDocumentAsync()");
+			disoveryDocumentCached = true;
 			return _discoveryDocument;
 		}
 
