@@ -8,9 +8,8 @@ echo "booting up"
 apt-get install -y ca-certificates openssl
 echo "apt-get complete"
 
-
-
-if [ ! -f /ssl/nsw.crt ] 
+# if the api cert file exists in the attached volume and not in the proper place
+if [ ! -f /ssl/api.crt ] 
 then
     echo "creating ssl file"
     openssl req \
@@ -18,16 +17,16 @@ then
     -x509 -sha256 \
     -days 365 \
     -nodes \
-    -out /ssl/nsw.crt \
-    -keyout /ssl/nsw.key \
-    -subj="/C=CA/ST=Ontario/L=Waterloo/CN=nsw"
+    -out /ssl/api.crt \
+    -keyout /ssl/api.key \
+    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=api"
 fi
 echo "ssl file complete"
 
 # need to install the local cert.
-cp /ssl/nsw.crt /usr/local/share/ca-certificates
+cp /ssl/*.crt /usr/local/share/ca-certificates/
 update-ca-certificates
 echo "ca-certs updated"
 
 # run the app
-dotnet watch run --project /app/api/src/NSW_Api/NSW_Api.csproj -- --launch-profile Docker
+dotnet watch run --project /app/bff/src/NSW_BFF.csproj -- --launch-profile DockerCompose

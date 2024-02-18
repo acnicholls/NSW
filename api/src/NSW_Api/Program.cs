@@ -1,5 +1,5 @@
 using Microsoft.IdentityModel.Tokens;
-using NSW.Api;
+using NSW.Data.Extensions;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -16,8 +16,8 @@ builder.Host.UseSerilog();
 
 // load the configuration
 builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
-builder.Configuration.AddUserSecrets("d7df2e78-b68f-405a-821c-48eac048a5a8", true);
-builder.Configuration.AddEnvironmentVariables("NSW_");
+//builder.Configuration.AddUserSecrets("d7df2e78-b68f-405a-821c-48eac048a5a8", true);
+builder.Configuration.AddEnvironmentVariables();
 
 // configure local reverse proxy application 
 builder.ConfigureNswKestrel();
@@ -29,9 +29,6 @@ NSW.Data.Extensions.DependencyInjection.RegisterTestUser(builder.Services);
 var oidcOptions = NSW.Data.Extensions.DependencyInjection.RegisterOidcOptions(builder.Services, builder.Configuration);
 NSW.Repositories.Extensions.DependencyInjection.RegisterServices(builder.Services);
 NSW.Services.Extensions.DependencyInjection.RegisterServices(builder.Services);
-
-
-
 
 // add authentication
 builder.Services.AddAuthentication("Bearer")
@@ -48,7 +45,6 @@ builder.Services.AddAuthentication("Bearer")
 			ValidateAudience = false  // for development
 		};
 	});
-
 
 builder.Services.AddCors(options =>
 {
@@ -79,8 +75,8 @@ if (builder.Environment.IsDevelopment() | builder.Environment.IsStaging())
 	builder.Services.AddEndpointsApiExplorer();
 	builder.Services.AddSwaggerGen((options) =>
 	{
-		var fileLocation = $"{Environment.CurrentDirectory}\\bin\\Debug\\net7.0\\NSW_Api.xml";
-		options.IncludeXmlComments(fileLocation);
+		//var fileLocation = $"{Environment.CurrentDirectory}\\NSW_Api.xml";
+		//options.IncludeXmlComments(fileLocation);
 	});
 }
 

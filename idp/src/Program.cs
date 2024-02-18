@@ -1,115 +1,249 @@
+// IdentityServer4 NuGet Licence text below
 // Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-using Microsoft.AspNetCore.Hosting;
+using IdentityServer4;
+using IdentityServer4.Configuration;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using NSW.Data;
-using NSW.Data.Validation.Interfaces;
-using NSW.Data.Internal.Interfaces;
+using Microsoft.IdentityModel.Logging;
+using NSW;
+using NSW.Data.Extensions;
+using NSW.Idp;
+using NSW.Idp.Configuration;
+using NSW.Idp.Data;
+using NSW.Idp.Models;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
-
-namespace NSW.Idp
+bool EnvironmentRequiresSeedData(string environmentName)
 {
-    public class Program
+
+    switch (environmentName)
     {
-        public async static Task<int> Main(string[] args)
-        {
-            Log.Logger = new LoggerConfiguration()
-			   .MinimumLevel.Override("NSW", Serilog.Events.LogEventLevel.Verbose)
-			   .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
-               .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Debug)
-               // #if DEBUG                
-               //                 .MinimumLevel.Override("NSW.Idp", LogEventLevel.)
-               // #else
-               //                 .MinimumLevel.Override("NSW.Idp", LogEventLevel.Warning)
-               // #endif                
-               .Enrich.FromLogContext()
-               // uncomment to write to Azure diagnostics stream
-               //.WriteTo.File(
-               //    @"D:\home\LogFiles\Application\identityserver.txt",
-               //    fileSizeLimitBytes: 1_000_000,
-               //    rollOnFileSizeLimit: true,
-               //    shared: true,
-               //    flushToDiskInterval: TimeSpan.FromSeconds(1))
-               .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext} {Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
-               .WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}:: {Message:lj}{NewLine}{Exception}")
-               .CreateLogger();
-
-            try
-            {
-                var seed = args.Contains("/seed");
-                if (seed)
-                {
-                    args = args.Except(new[] { "/seed" }).ToArray();
-                }
-
-                var host = CreateHostBuilder(args).Build();
-
-				var postalCodeTask = host.Services.GetRequiredService<IPostalCodeTask>();
-				postalCodeTask.StartBackgroundPostalCodeWorker(ApiAccessType.Idp);
-
-				if (seed)
-                {
-                    Log.Information("Seeding database...");
-                    var config = host.Services.GetRequiredService<IConfiguration>();
-                    var connectionString = config.GetConnectionString(config.GetSection("ConnectionString").Value);
-                    SeedData.EnsureSeedData(connectionString);
-                    Log.Information("Done seeding database.");
-                    return 0;
-                }
-
-                Log.Information("Starting host...");
-                await host.RunAsync();
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "Host terminated unexpectedly.");
-                return 1;
-            }
-            finally
-            {
-                Log.CloseAndFlush();
-            }
-        }
-
-
-
-		public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .UseSerilog()
-                .ConfigureHostConfiguration(configHost =>
-                {
-                    configHost.SetBasePath(Directory.GetCurrentDirectory());
-                    // configHost.AddJsonFile("hostsettings.json", optional: true);  // this isn't needed, just to prove a point
-                    configHost.AddUserSecrets("4ccf36a0-933c-463f-a8aa-8b252c45c6b6");
-                    configHost.AddEnvironmentVariables("DOTNET_");
-                })
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-#if !DEBUG
-                    webBuilder.UseKestrel(opts =>
-                    {
-                        var address = System.Net.IPAddress.Parse("0.0.0.0");
-                        opts.Listen(address, 5006);
-                        opts.Listen(address, 5007, opts =>
-                            opts.UseHttps(
-                                "/ssl/NSW_BFF.pfx",
-                                "123456"
-                            ));
-                    });
-#endif
-                });
+        case "Localhost":
+        case "Docker":
+        case "Development":
+        case "QA":
+        case "UAT":
+        case "Stage":
+        case "Staging":
+            return true;
+        default:
+            return false;
     }
+}
+
+Log.Logger = new LoggerConfiguration()
+#if DEBUG
+    .MinimumLevel.Debug()
+#endif
+   .MinimumLevel.Override("NSW.Idp", Serilog.Events.LogEventLevel.Verbose)
+   .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Debug)
+   .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Debug)
+   .Enrich.FromLogContext()
+   .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext} {Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
+#if DEBUG
+   .WriteTo.File("./logs/log-.txt", rollingInterval: RollingInterval.Day, outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}:: {Message:lj}{NewLine}{Exception}")
+#endif
+   .CreateLogger();
+Log.Debug("Logger built.");
+
+
+/// used in a couple places to list the configurations
+void ListConfiguration(IConfiguration configuration)
+{
+    Log.Debug("Listing Configuration...");
+    foreach (var item in configuration.AsEnumerable())
+    {
+        Log.Debug(JsonSerializer.Serialize(item));
+    }
+    Log.Debug("Configuration Listed...");
+}
+
+var builder = WebApplication.CreateBuilder(args);
+// configure the logging
+builder.Host.UseSerilog();
+Log.Debug("Logging added to services.");
+
+var environmentName = builder.Environment.EnvironmentName;
+Log.Debug("EnvironmentName:{0}", environmentName);
+
+// load the configuration
+builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
+var filename = "appsettings.json";
+Log.Debug("Adding file {0} to configuration", filename);
+builder.Configuration.AddJsonFile(filename, false, true);
+filename = $"appsettings.{environmentName}.json";
+Log.Debug("Adding file {0} to configuration", filename);
+builder.Configuration.AddJsonFile(filename, true, true);
+#if DEBUG
+    builder.Configuration.AddUserSecrets("4ccf36a0-933c-463f-a8aa-8b252c45c6b6", true);
+#endif
+// always load env vars last.  
+builder.Configuration.AddEnvironmentVariables();
+Log.Debug("configuration built");
+
+#if DEBUG
+ListConfiguration(builder.Configuration);
+#endif
+
+// load the kestrel config
+builder.ConfigureNswKestrel();
+Log.Debug("kestrel configured");
+
+Log.Debug("starting configuring services....");
+
+var oidcOptions = NSW.Data.Extensions.DependencyInjection.RegisterServices(builder.Services, builder.Configuration, DataTransferVaraintEnum.Tools);
+NSW.Data.Extensions.DependencyInjection.RegisterPostalTask(builder.Services);
+Log.Debug("NSW services added");
+
+if (EnvironmentRequiresSeedData(builder.Environment.EnvironmentName))
+{
+    IdentityModelEventSource.ShowPII = true;
+    Log.Debug("personally identifiable information allowed in logs");
+}
+
+builder.Services.AddControllersWithViews();
+Log.Debug("controllers and views added");
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString(builder.Configuration.GetSection("ConnectionString").Value)));
+Log.Debug("database context added");
+
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+Log.Debug("identity added");
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder.WithOrigins(
+            "http://localhost",
+            "https://localhost",
+            "http://bff:5004",
+            "https://bff:5005",
+            "http://api:5002",
+            "https://api:5003",
+            "http://idp:5006",
+            "https://idp:5007",
+            "https://localhost:3000",
+            "http://localhost:3000",
+            "http://localhost:5004",
+            "https://localhost:5005"
+            )
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
+});
+Log.Debug("cors service added");
+
+builder.Services.AddTransient<IdentityServer4.Services.ICorsPolicyService, CorsPolicyService>();
+Log.Debug("identity server cors service added");
+
+var options = new IdentityServerOptions
+{
+    IssuerUri = oidcOptions.Authority,
+    Events = new EventsOptions
+    {
+        RaiseErrorEvents = true,
+        RaiseInformationEvents = true,
+        RaiseFailureEvents = true,
+        RaiseSuccessEvents = true,
+    },
+    EmitStaticAudienceClaim = true,
+};
+builder.Services.AddSingleton<IdentityServerOptions>(options);
+Log.Debug("identity server options added");
+
+var idSrvBuilder = builder.Services.AddIdentityServer(options => { })
+     .AddInMemoryIdentityResources(Config.IdentityResources)
+     .AddInMemoryApiScopes(Config.ApiScopes)
+     .AddInMemoryClients(Config.Clients)
+     .AddInMemoryApiResources(Config.ApiResources)
+     .AddAspNetIdentity<ApplicationUser>();
+Log.Debug("identity server added");
+
+// not recommended for production - you need to store your key material somewhere secure
+idSrvBuilder.AddDeveloperSigningCredential();
+Log.Debug("signing creds added");
+
+builder.Services.AddAuthentication()
+    .AddGoogle(options =>
+    {
+        options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+
+        // register your IdentityServer with Google at https://console.developers.google.com
+        // enable the Google+ API
+        // set the redirect URI to https://localhost:5001/signin-google
+        options.ClientId = "copy client ID from Google here";
+        options.ClientSecret = "copy client secret from Google here";
+    });
+Log.Debug("authentication added");
+
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost;
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear();
+});
+Log.Debug("completing configuring services....");
+
+Log.Debug("building app");
+var app = builder.Build();
+
+#if DEBUG
+ListConfiguration(app.Configuration);
+#endif
+
+Log.Debug("Starting Configuring Pipeline");
+if (app == null) throw new ArgumentNullException(nameof(app));
+if (EnvironmentRequiresSeedData(environmentName))
+{
+    var connStringName = app.Configuration.GetSection("ConnectionString").Value;
+    Log.Debug("ConnectionString Name: {connStringName}", connStringName);
+    var connectionString = app.Configuration.GetConnectionString(connStringName);
+    Log.Debug("ConnectionString: {connectionString}", connectionString);
+    SeedData.EnsureSeedData(connectionString);
+}
+app.UseForwardedHeaders();
+
+app.UseDeveloperExceptionPage();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseCors("CorsPolicy");
+
+app.UseIdentityServer();
+app.UseAuthorization();
+
+app.MapDefaultControllerRoute();
+
+Log.Debug("Completing Configuring Pipeline");
+
+try
+{
+    await app.RunAsync();
+    return 0;
+}
+catch (Exception ex)
+{
+    Log.Error(ex, "Error in Main");
+    Console.WriteLine(ex.Message, ex.StackTrace);
+    return 1;
+}
+finally
+{
+    Log.CloseAndFlush();
 }

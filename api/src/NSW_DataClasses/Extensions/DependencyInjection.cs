@@ -56,7 +56,7 @@ namespace NSW.Data.Extensions
 				new DiscoveryPolicy
 				{
 					RequireHttps = false,
-					ValidateIssuerName = false
+					ValidateIssuerName = false  // TODO: this is development settings
 				});
 			services.AddSingleton<IDiscoveryCache>(cache);
 

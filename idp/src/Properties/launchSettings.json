@@ -26,9 +26,22 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "publishAllPorts": true,
-      "useSSL": true
+      "useSSL": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Docker"
+      }
+    },
+    "DockerCompose": {
+      "commandName": "Project",
+      "workingDirectory": "/app/idp/src",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "launchBrowser": true,
+      "publishAllPorts": true,
+      "useSSL": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Docker"
+      }
     }
   }
 }

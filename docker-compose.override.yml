@@ -2,26 +2,32 @@ version: "3.3"
 
 services:
     app:
+        restart: unless-stopped
         networks:
             - acn_bridge
   
     bff:
+        restart: unless-stopped    
         networks:
             - acn_bridge
 
     idp:
+        restart: unless-stopped    
         networks:
             - acn_bridge
 
     api:
+        restart: unless-stopped    
         networks:
             - acn_bridge
 
     db:
+        restart: unless-stopped    
         networks:
             - acn_bridge
           
     proxy:
+        restart: unless-stopped    
         networks:
             - acn_bridge
 
