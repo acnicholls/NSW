@@ -3,9 +3,14 @@
 echo "Environment Variables"
 printenv
 
-echo "starting db service config"
-# this will start a script and sql server at the same time
-/tmp/configure-db.sh &
+apt-get update
 
+apt-get install -y sudo
+
+echo "starting db service config"
+# this will start the script in a background process
+sudo -n -b /tmp/configure-db.sh
+
+echo "starting db server..."
 # start the sql server
 /opt/mssql/bin/sqlservr
