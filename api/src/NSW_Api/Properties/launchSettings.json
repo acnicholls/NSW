@@ -33,10 +33,22 @@
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "environmentVariables": {
-        "ASPNETCORE_URLS": "https://+:443;http://+:80"
+        "ASPNETCORE_URLS": "https://+:443;http://+:80",
+        "ASPNETCORE_ENVIRONMENT": "Docker"
       },
       "publishAllPorts": true,
       "useSSL": true
+    },
+    "DockerCompose": {
+      "commandName": "Project",
+      "workingDirectory": "/app/bff/src",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "launchBrowser": true,
+      "publishAllPorts": true,
+      "useSSL": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Docker"
+      }
     }
   },
   "$schema": "https://json.schemastore.org/launchsettings.json",

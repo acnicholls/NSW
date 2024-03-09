@@ -1,4 +1,4 @@
-﻿using IdentityModel.AspNetCore.AccessTokenManagement;
+using IdentityModel.AspNetCore.AccessTokenManagement;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
@@ -12,25 +12,36 @@ using System.Text.Json;
 
 namespace NSW.Data.Internal.Services
 {
-    /// <summary>
-    /// this is the base implementation of the service, all used derivitatives will inherit these methods.
-    /// </summary>
-    public class InternalDataTransferServiceBase : IInternalDataTransferService
+	/// <summary>
+	/// this is the base implementation of the service, all used derivitatives will inherit these methods.
+	/// </summary>
+	public class InternalDataTransferServiceBase : IInternalDataTransferService
 	{
 		protected readonly ILogger<InternalDataTransferService> _logger;
 		protected readonly IDiscoveryCache _discoveryCache;
 		protected readonly IHttpContextAccessor _httpContextAccessor;
 		protected readonly IConfiguration _configuration;
 		protected readonly OidcOptions _oidcOptions;
-        protected readonly IHttpClientFactory _httpClientFactory;
+		protected readonly IHttpClientFactory _httpClientFactory;
 
+		private bool disoveryDocumentCached = false;
+
+		/// <summary>
+		/// the ctor.
+		/// </summary>
+		/// <param name="httpContextAccessor">the context accessor.</param>
+		/// <param name="discoveryCache">the OIDC disocvery cache.</param>
+		/// <param name="logger">the logger.</param>
+		/// <param name="configuration">the app config.</param>
+		/// <param name="oidcOptions">the oidc options</param>
+		/// <param name="httpClientFactory">the http client factory.</param>
 		public InternalDataTransferServiceBase(
 			IHttpContextAccessor httpContextAccessor,
 			IDiscoveryCache discoveryCache,
 			ILogger<InternalDataTransferService> logger,
 			IConfiguration configuration,
 			OidcOptions oidcOptions,
-            IHttpClientFactory httpClientFactory
+			IHttpClientFactory httpClientFactory
 		)
 		{
 			_logger = logger;
@@ -38,10 +49,11 @@ namespace NSW.Data.Internal.Services
 			_httpContextAccessor = httpContextAccessor;
 			_configuration = configuration;
 			_oidcOptions = oidcOptions;
-            _httpClientFactory = httpClientFactory;
+			_httpClientFactory = httpClientFactory;
+			_discoveryDocument = new DiscoveryDocumentResponse();
 		}
-		
-        protected DiscoveryDocumentResponse _discoveryDocument;
+
+		protected DiscoveryDocumentResponse _discoveryDocument;
 
 		protected HttpContext GetContextFromAccessor()
 		{
@@ -59,7 +71,7 @@ namespace NSW.Data.Internal.Services
 		public async Task<DiscoveryDocumentResponse> GetIdpDiscoveryDocumentAsync()
 		{
 			_logger.LogTrace("Starting GetIdpDiscoveryDocumentAsync()");
-			if (_discoveryDocument != null)
+			if (disoveryDocumentCached)
 			{
 				_logger.LogTrace("Disocvery Document already cached, returning cached copy...");
 				return _discoveryDocument;
@@ -75,21 +87,23 @@ namespace NSW.Data.Internal.Services
 			_logger.LogDebug("DisocveryDocumentResponse.HttpErrorReason {0}", _discoveryDocument.HttpErrorReason);
 			_logger.LogDebug("DisocveryDocumentResponse.HttpStatusCode {0}", _discoveryDocument.HttpStatusCode);
 
-			if (_discoveryDocument == null)
+			if (_discoveryDocument == null || _discoveryDocument.IsError)
 			{
-				_logger.LogInformation("_discoveryDocument is null");
-			}
-
-			if (_discoveryDocument.IsError)
-			{
-				_logger.LogError(_discoveryDocument.Exception, "InternalDataTransferService.GetIdpDiscoveryCacheAsync");
+				if (_discoveryDocument?.Exception != null)
+				{
+					_logger.LogError(_discoveryDocument.Exception, "InternalDataTransferService.GetIdpDiscoveryDocumentAsync");
+				}
+				if (_discoveryDocument?.Error != null)
+				{
+					_logger.LogError(_discoveryDocument.Error, "InternalDataTransferService.GetIdpDiscoveryDocumentAsync");
+				}
 				throw new System.Exception("error getting discovery cache.");
 			}
-
 
 			_logger.LogDebug("DisocveryDocumentResponse {0}", _discoveryDocument.TokenEndpoint);
 			_logger.LogDebug("DisocveryDocumentResponse {0}", _discoveryDocument.UserInfoEndpoint);
 			_logger.LogTrace("Completing GetIdpDiscoveryDocumentAsync()");
+			disoveryDocumentCached = true;
 			return _discoveryDocument;
 		}
 
@@ -104,18 +118,18 @@ namespace NSW.Data.Internal.Services
 			return await this.GetUserTokenAsync(context);
 		}
 
-        //public async Task<string> GetUserTokenAsync(UserAccessTokenParameters tokenParameters)
-        //{
-        //    _logger.LogTrace("Starting GetUserTokenAsync()");
-        //    // grab the DI'd context
-        //    var context = GetContextFromAccessor();
-        //    _logger.LogTrace("Got HttpContext from Accessor");
-        //    // pass it to the local method.
-        //    _logger.LogTrace("Completing GetUserTokenAsync()");
-        //    return await this.GetUserTokenAsync(context, tokenParameters);
-        //}
+		//public async Task<string> GetUserTokenAsync(UserAccessTokenParameters tokenParameters)
+		//{
+		//    _logger.LogTrace("Starting GetUserTokenAsync()");
+		//    // grab the DI'd context
+		//    var context = GetContextFromAccessor();
+		//    _logger.LogTrace("Got HttpContext from Accessor");
+		//    // pass it to the local method.
+		//    _logger.LogTrace("Completing GetUserTokenAsync()");
+		//    return await this.GetUserTokenAsync(context, tokenParameters);
+		//}
 
-        protected async Task<string> GetUserTokenAsync(HttpContext context)
+		protected async Task<string> GetUserTokenAsync(HttpContext context)
 		{
 			_logger.LogTrace("Starting GetUserTokenAsync(HttpContext)");
 			var returnValue = string.Empty;
@@ -133,8 +147,8 @@ namespace NSW.Data.Internal.Services
 			_logger.LogTrace("Completing GetUserTokenAsync(HttpContext)");
 			return returnValue;
 		}
-		
-        protected async Task<string> GetClientTokenAsync(string clientId = "default")
+
+		protected async Task<string> GetClientTokenAsync(string clientId = "default")
 		{
 			_logger.LogTrace("Starting GetClientTokenAsync()");
 			// grab the DI'd context
@@ -142,7 +156,7 @@ namespace NSW.Data.Internal.Services
 			_logger.LogTrace("Got HttpContext from Accessor");
 			// pass it to the local method.
 			_logger.LogTrace("Completing GetClientTokenAsync()");
-			return await this.GetClientTokenAsync(context);
+			return await this.GetClientTokenAsync(context, clientId);
 		}
 
 		protected async Task<string> GetClientTokenAsync(HttpContext context, string clientId = "default")
@@ -165,14 +179,14 @@ namespace NSW.Data.Internal.Services
 
 		public virtual async Task<string> GetTokenStringAsync(ApiAccessType accessType)
 		{
-			_logger.LogTrace("Starting GetTokenStringAsync(HttpContext)");
-			_logger.LogTrace("GetTokenStringAsync(HttpContext) : AccessType {0}", accessType.ToString());
+			_logger.LogTrace("Starting GetTokenStringAsync(ApiAccessType accessType)");
+			_logger.LogTrace("GetTokenStringAsync(ApiAccessType accessType) : AccessType {0}", accessType.ToString());
 			var tokenString = string.Empty;
 			try
 			{
 				var context = GetContextFromAccessor();
 
-                switch (accessType)
+				switch (accessType)
 				{
 					case ApiAccessType.User:
 						{
@@ -200,7 +214,7 @@ namespace NSW.Data.Internal.Services
 				throw;
 			}
 			_logger.LogTrace("Completing GetTokenStringAsync(HttpContext)");
-            _logger.LogTrace($"returning {accessType} token : {tokenString}");
+			_logger.LogTrace($"returning {accessType} token : {tokenString}");
 			return tokenString;
 		}
 
@@ -228,10 +242,10 @@ namespace NSW.Data.Internal.Services
 			var returnValue = default(T);
 			try
 			{
-                var client = GetHttpClientForApiWithTokenAsync(token);
-                var response = await client.GetAsync($"{apiEndpointPartialUrl}");
+				var client = GetHttpClientForApiWithTokenAsync(token);
+				var response = await client.GetAsync($"{apiEndpointPartialUrl}");
 				_logger.LogDebug("GetDataFromApiAsync.response {0}", response);
-                returnValue = await ConvertHttpResponseToResponseOfAsync<T>(response);
+				returnValue = await ConvertHttpResponseToResponseOfAsync<T>(response);
 			}
 			catch (Exception ex)
 			{
@@ -242,78 +256,78 @@ namespace NSW.Data.Internal.Services
 			return returnValue;
 		}
 
-        private HttpClient GetHttpClientForApiWithTokenAsync(string token)
-        {
-            _logger.LogTrace("Starting GetHttpClientForApiWithTokenAsync...");
-            var client = this._httpClientFactory.CreateClient();
-            _logger.LogDebug("GetHttpClientForApiWithTokenAsync: using token: {token}", token);  // TODO: check for env, and put REDACTED in anthing not dev.
-            string authHeaderValue = $"Bearer {token}";
-            client.DefaultRequestHeaders.Add("Authorization", authHeaderValue);
-            client.BaseAddress = new Uri(_configuration.GetValue<string>("Api:BaseUrl"));
-            _logger.LogTrace("Completing GetHttpClientForApiWithTokenAsync...");
-            return client;
-        }
+		private HttpClient GetHttpClientForApiWithTokenAsync(string token)
+		{
+			_logger.LogTrace("Starting GetHttpClientForApiWithTokenAsync...");
+			var client = this._httpClientFactory.CreateClient();
+			_logger.LogDebug("GetHttpClientForApiWithTokenAsync: using token: {token}", token);  // TODO: check for env, and put REDACTED in anthing not dev.
+			string authHeaderValue = $"Bearer {token}";
+			client.DefaultRequestHeaders.Add("Authorization", authHeaderValue);
+			client.BaseAddress = new Uri(_configuration.GetValue<string>("Api:BaseUrl"));
+			_logger.LogTrace("Completing GetHttpClientForApiWithTokenAsync...");
+			return client;
+		}
 
-        private async Task<T> ConvertHttpResponseToResponseOfAsync<T>(HttpResponseMessage response)
-        {
-            var returnValue = default(T);
-            if (response.IsSuccessStatusCode)
-            {
-                var responseData = await response.Content.ReadAsStringAsync();
-                _logger.LogDebug("ConvertHttpResponseToResponseOfAsync.responseData {0}", responseData);
-                returnValue = JsonSerializer.Deserialize<T>(responseData, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            }
-            else
-            {
-                throw new Exception($"InternalDataTransfer failed due to: {response.ReasonPhrase}");
-            }
-            return returnValue;
-        }
+		private async Task<T> ConvertHttpResponseToResponseOfAsync<T>(HttpResponseMessage response)
+		{
+			var returnValue = default(T);
+			if (response.IsSuccessStatusCode)
+			{
+				var responseData = await response.Content.ReadAsStringAsync();
+				_logger.LogDebug("ConvertHttpResponseToResponseOfAsync.responseData {0}", responseData);
+				returnValue = JsonSerializer.Deserialize<T>(responseData, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+			}
+			else
+			{
+				throw new Exception($"InternalDataTransfer failed due to: {response.ReasonPhrase}");
+			}
+			return returnValue;
+		}
 
-        private HttpContent ConvertModelToHttpContentAsync<T>(T model)
-        {
-            var returnValue = JsonContent.Create(model, typeof(T));
-            return returnValue;
-        }
+		private HttpContent ConvertModelToHttpContentAsync<T>(T model)
+		{
+			var returnValue = JsonContent.Create(model, typeof(T));
+			return returnValue;
+		}
 
-        public async Task<TOutput> PostDataToApiAsync<TInput, TOutput>(string apiEndpointPartialUrl, ApiAccessType accessType, TInput data)
-        {
-            var returnValue = default(TOutput);
-            try
-            {
-                var token = await GetTokenStringAsync(accessType);
-                returnValue = await PostDataToApiAsync<TInput, TOutput>(apiEndpointPartialUrl, token, data);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "InternalDataTransferService.PostDataToApiAsync(url, accessType, data)");
-                throw;
-            }
-            return returnValue;
-        }
+		public async Task<TOutput> PostDataToApiAsync<TInput, TOutput>(string apiEndpointPartialUrl, ApiAccessType accessType, TInput data)
+		{
+			var returnValue = default(TOutput);
+			try
+			{
+				var token = await GetTokenStringAsync(accessType);
+				returnValue = await PostDataToApiAsync<TInput, TOutput>(apiEndpointPartialUrl, token, data);
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "InternalDataTransferService.PostDataToApiAsync(url, accessType, data)");
+				throw;
+			}
+			return returnValue;
+		}
 
-        public async Task<TOutput> PostDataToApiAsync<TInput, TOutput>(string apiEndpointPartialUrl, string token, TInput data)
-        {
-            var returnValue = default(TOutput);
-            try
-            {
-                var client = GetHttpClientForApiWithTokenAsync(token);
-                var response = await client.PostAsync($"{apiEndpointPartialUrl}", ConvertModelToHttpContentAsync<TInput>(data));
-                _logger.LogDebug("PostDataToApiAsync.response {0}", response);
-                returnValue = await ConvertHttpResponseToResponseOfAsync<TOutput>(response);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "InternalDataTransferService.PostDataToApiAsync(url, token, data)");
-                throw;
-            }
-            return returnValue;
-        }
+		public async Task<TOutput> PostDataToApiAsync<TInput, TOutput>(string apiEndpointPartialUrl, string token, TInput data)
+		{
+			var returnValue = default(TOutput);
+			try
+			{
+				var client = GetHttpClientForApiWithTokenAsync(token);
+				var response = await client.PostAsync($"{apiEndpointPartialUrl}", ConvertModelToHttpContentAsync<TInput>(data));
+				_logger.LogDebug("PostDataToApiAsync.response {0}", response);
+				returnValue = await ConvertHttpResponseToResponseOfAsync<TOutput>(response);
+			}
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "InternalDataTransferService.PostDataToApiAsync(url, token, data)");
+				throw;
+			}
+			return returnValue;
+		}
 
-        protected UserAccessTokenParameters defaultTokenParameters = new()
-        {
-            Resource = "NSW.Api",
-            
-        };
-    }
+		protected UserAccessTokenParameters defaultTokenParameters = new()
+		{
+			Resource = "NSW.Api",
+
+		};
+	}
 }

@@ -1,4 +1,5 @@
 #!/bin/bash
+echo off
 
 echo "Environment Variables"
 printenv
@@ -8,9 +9,8 @@ echo "booting up"
 apt-get install -y ca-certificates openssl
 echo "apt-get complete"
 
-
-
-if [ ! -f /ssl/nsw.crt ] 
+# prepare a certificate for the SSL port
+if [ ! -f /ssl/app.crt ] 
 then
     echo "creating ssl file"
     openssl req \
@@ -18,16 +18,20 @@ then
     -x509 -sha256 \
     -days 365 \
     -nodes \
-    -out /ssl/nsw.crt \
-    -keyout /ssl/nsw.key \
-    -subj="/C=CA/ST=Ontario/L=Waterloo/CN=nsw"
+    -out /ssl/app.crt \
+    -keyout /ssl/app.key \
+    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=app"
 fi
 echo "ssl file complete"
 
 # need to install the local cert.
-cp /ssl/nsw.crt /usr/local/share/ca-certificates
+# putting this outside the if, since this might not be the 
+# same image!
+cp /ssl/*.crt /usr/local/share/ca-certificates/
 update-ca-certificates
 echo "ca-certs updated"
 
-# run the app
-dotnet watch run --project /app/api/src/NSW_Api/NSW_Api.csproj -- --launch-profile Docker
+cd /app
+npm install
+
+npm start

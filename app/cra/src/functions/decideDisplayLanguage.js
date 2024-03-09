@@ -3,7 +3,7 @@ import { LanguagePreference } from "../constants/LanguagePreference";
 
 function decideDisplayLanguage(user, selectedLanguage) {
   // figure out which language to display
-  var displayLanguage = LanguagePreference.default;
+  var displayLanguage = 0;
   // if the user is null, and selectedLanguage is zero, set to default
   // if there is a user, use the user's set pref
   if (user.id > 0) {

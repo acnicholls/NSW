@@ -57,8 +57,6 @@ const Splash = (props) => {
     navigate(routes.frontend.index);
   };
 
-  var showModal = selectedLanguage === 0;
-
   const defaultReturnValue = (
     <>
       <Button onClick={() => setAnonymousUserDisplayLanguage(2)}>

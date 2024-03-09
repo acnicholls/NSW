@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BFF", "src\BFF.csproj", "{E9F9A152-401E-4FA1-81B9-1D92470BB9BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BFF", "src\NSW_BFF.csproj", "{E9F9A152-401E-4FA1-81B9-1D92470BB9BB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSW_Data", "..\api\src\NSW_DataClasses\NSW_Data.csproj", "{C3D79FCF-46C7-45CD-9D33-81BA086C5EC6}"
 EndProject

@@ -18,4 +18,4 @@ then
 fi
 
 # run the app
-dotnet watch run --project /app/bff/src/NSW_BFF.csproj -- --launch-profile Docker
+dotnet watch run --project /app/idp/src/NSW_IDP.csproj -- --launch-profile Docker
