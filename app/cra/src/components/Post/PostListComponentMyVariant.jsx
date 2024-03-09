@@ -4,6 +4,7 @@ import { useUserContext } from "../../contexts/UserContext";
 import PostListPostComponent from "./PostListPostComponent";
 import { Row, Col } from "react-bootstrap";
 import { PostPageVariantEnum } from "../../constants/PostPageVariantEnum";
+import { useIsLoading, useIsError } from "../../hooks/queryResponseHooks";
 
 const PostListComponentMyVariant = ({}) => {
   const [isQueryDisabled, setIsQueryDisabled] = useState(false);
@@ -27,9 +28,11 @@ const PostListComponentMyVariant = ({}) => {
       setIsQueryDisabled(true);
     }
   }
+
   function onError(error) {
     console.log(error);
   }
+
   const { data, error, isLoading, isError } = useUserPostList(
     user.id,
     isQueryDisabled,
@@ -37,25 +40,10 @@ const PostListComponentMyVariant = ({}) => {
     onError
   );
 
-  if (isLoading) {
-    return (
-      <>
-        <Row>
-          <Col>Loading...</Col>
-        </Row>
-      </>
-    );
-  }
+  useIsLoading(isLoading);
 
-  if (isError || data.status !== 200) {
-    return (
-      <>
-        <Row>
-          <Col>{error.message}</Col>
-        </Row>
-      </>
-    );
-  }
+  useIsError(isError || data.status !== 200, error);
+
   console.log("user posts List", data);
   const returnValue =
     data.data && data.data.length > 0
