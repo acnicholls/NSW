@@ -8,6 +8,7 @@ services:
         image: node:latest
         environment:
             - CHOKIDAR_USEPOLLING=1
+            - WATCHPACK_POLLING=true
             - HTTPS=true
             - PORT=3000
             - SSL_CERT_FILE=/ssl/app.crt
@@ -111,6 +112,7 @@ services:
             - db
     db:
         image: mcr.microsoft.com/mssql/server:2019-CU24-ubuntu-20.04
+        user: root
         environment:
             - MSSQL_SA_PASSWORD=s00p3rS3cvr#
             - ACCEPT_EULA=Y
