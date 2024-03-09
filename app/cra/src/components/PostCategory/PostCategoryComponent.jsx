@@ -1,27 +1,49 @@
 import React from "react";
 import { PropTypes } from "prop-types";
 import { useUserContext } from "../../contexts/UserContext";
-import { useParams } from "react-router";
-import { Row, Col, FormCheck, Button } from "react-bootstrap";
+
+import { Row, Col, FormCheck, Button, Container } from "react-bootstrap";
 import FormCheckInput from "react-bootstrap/esm/FormCheckInput";
 import FormCheckLabel from "react-bootstrap/esm/FormCheckLabel";
 import { ViewModes } from "../../constants/ViewModes";
 import { postCategoryShape } from "../../shapes/shapes";
-
+import { usePostCategoryList } from "../../hooks/postCategoryHooks";
+import PostCategoryPillComponent from "./PostCategoryPillComponent";
+/**
+ *
+ * @param {number} id - the id of the category
+ * @param {[postCategoryShape]} postList - a category object
+ * @param {string} viewMode - which mode to view, list or edit
+ * @param {function} onSave - callback for save
+ * @param {function} onCancel - callback for cancel
+ * @returns
+ */
 const PostCategoryComponent = ({
   id,
-  currentPostCategory,
+  postList,
   viewMode,
   onCancel,
   onSave,
 }) => {
   const { user } = useUserContext();
-  const { categoryId } = useParams();
 
   const listMode = viewMode === ViewModes.view && id !== null;
-  // if list mode, get the list
-
-  const viewModeListReturnValue = <></>;
+  const viewModeListReturnValue = (
+    <>
+      <Container>
+        <Row>
+          <Col>
+            {postList.map((postCategory) => (
+              <PostCategoryPillComponent
+                key={postCategory.id}
+                categoryInfo={postCategory}
+              />
+            ))}
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
   const viewModeSingleReturnValue = <></>;
 
   const viewModeReturnValue = listMode
