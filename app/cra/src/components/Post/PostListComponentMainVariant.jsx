@@ -27,6 +27,7 @@ const PostListComponentMainVariant = ({}) => {
   }
 
   if (isError || data.status !== 200) {
+    console.log(error);
     return <>{error.message}</>;
   }
   console.log("posts List", data);
