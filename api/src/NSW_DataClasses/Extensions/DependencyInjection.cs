@@ -25,6 +25,11 @@ namespace NSW.Data.Extensions
 
 		}
 
+		public static void RegisterCurrentUser(IServiceCollection services)
+		{
+			services.AddScoped<IUser, CurrentUser>();
+		}
+
 		public static OidcOptions RegisterOidcOptions(IServiceCollection services, IConfiguration configuration)
 		{
 			var oidcOptions = new OidcOptions();
@@ -42,12 +47,12 @@ namespace NSW.Data.Extensions
 		public static OidcOptions RegisterServices(IServiceCollection services, IConfiguration configuration, DataTransferVaraintEnum variant)
 		{
 			// validate parameters
-			if(configuration is null)
+			if (configuration is null)
 			{
 				throw new ArgumentNullException(nameof(configuration));
 			}
 
-			var oidcOptions = RegisterOidcOptions(services, configuration);	
+			var oidcOptions = RegisterOidcOptions(services, configuration);
 
 
 			// TODO: register the services 
@@ -61,7 +66,7 @@ namespace NSW.Data.Extensions
 			services.AddSingleton<IDiscoveryCache>(cache);
 
 			// InternalDataTransferService -- for getting info from API to BFF/IDP
-			switch(variant)
+			switch (variant)
 			{
 				case DataTransferVaraintEnum.Tools:
 					{

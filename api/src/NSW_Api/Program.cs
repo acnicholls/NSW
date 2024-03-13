@@ -1,4 +1,5 @@
 using Microsoft.IdentityModel.Tokens;
+using NSW.Api.Middlewares;
 using NSW.Data.Extensions;
 using Serilog;
 
@@ -25,10 +26,13 @@ builder.ConfigureNswKestrel();
 // Add services to the container.
 builder.Services.AddHttpContextAccessor();
 NSW.Info.Extensions.DependencyInjection.RegisterServices(builder.Services);
-NSW.Data.Extensions.DependencyInjection.RegisterTestUser(builder.Services);
+NSW.Data.Extensions.DependencyInjection.RegisterCurrentUser(builder.Services);
 var oidcOptions = NSW.Data.Extensions.DependencyInjection.RegisterOidcOptions(builder.Services, builder.Configuration);
 NSW.Repositories.Extensions.DependencyInjection.RegisterServices(builder.Services);
 NSW.Services.Extensions.DependencyInjection.RegisterServices(builder.Services);
+
+// add local service
+builder.Services.AddScoped<GetUserDataMiddleWare>();
 
 // add authentication
 builder.Services.AddAuthentication("Bearer")
@@ -96,6 +100,9 @@ app.UseCors("CorsPolicy");
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+// add custom middleware
+app.UseMiddleware<GetUserDataMiddleWare>();
 
 app.MapControllers();
 
