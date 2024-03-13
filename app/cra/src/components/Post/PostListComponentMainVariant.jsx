@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { usePostList } from "../../hooks/postHooks";
 import PostListPostComponent from "./PostListPostComponent";
 import { PostPageVariantEnum } from "../../constants/PostPageVariantEnum";
+import { useIsLoading, useIsError } from "../../hooks/queryResponseHooks";
 
 const PostListComponentMainVariant = ({}) => {
   const [isQueryDisabled, setIsQueryDisabled] = useState(false);
@@ -22,14 +23,10 @@ const PostListComponentMainVariant = ({}) => {
     onError
   );
 
-  if (isLoading) {
-    return <>Loading...</>;
-  }
+  // handle query response
+  useIsLoading(isLoading);
+  useIsError(isError || data.status !== 200, error);
 
-  if (isError || data.status !== 200) {
-    console.log(error);
-    return <>{error.message}</>;
-  }
   console.log("posts List", data);
   const returnValue = data.data.map((x) => (
     <PostListPostComponent

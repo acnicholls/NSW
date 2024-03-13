@@ -5,7 +5,7 @@ const baseRoute = `${routes.backend.privatePostCategory}`;
 
 const getPostCategories = async () => {
   try {
-    var response = await api.apiGet(baseRoute);
+    var response = await api.apiGet(bffRoute);
     console.log("getPostCategory:response:", response);
     return response;
   } catch (error) {
@@ -27,7 +27,7 @@ const getPostCategoryById = async (id) => {
 
 const savePostCategory = async (postCategory) => {
   try {
-    var response = await api.apiPostCategory(baseRoute, postCategory);
+    var response = await api.apiPost(baseRoute, postCategory);
     console.log("savePostCategory:response:", response);
     return response;
   } catch (error) {

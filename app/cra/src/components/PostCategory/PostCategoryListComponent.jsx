@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row, Button, Container } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { postCategoryShape } from "../../shapes/shapes";
@@ -9,7 +9,8 @@ import routes from "../../constants/RouteConstants";
 import { LanguagePreference } from "../../constants/LanguagePreference";
 import { useLabelTextByGroupIdentifier } from "../../hooks/labelTextHooks";
 import { usePostCategoryList } from "../../hooks/postCategoryHooks";
-import PostCategoryComponent from "./PostCategoryComponent";
+import PostCategoryPillComponent from "./PostCategoryPillComponent";
+import { useIsLoading, useIsError } from "../../hooks/queryResponseHooks";
 
 /**
  * this component will display the list of post categories
@@ -17,28 +18,45 @@ import PostCategoryComponent from "./PostCategoryComponent";
  * @returns PostCategoryListComponent
  */
 const PostCategoryListComponent = () => {
+  console.log("starting post category list component");
   const { categoryId } = useParams();
   const navigate = useNavigate();
   const [postList, setPostList] = useState([]);
 
   const onCategoryButtonClick = () => {};
-  // get list from API
 
-  const { isLoading, isError, data, error } = usePostCategoryList();
-
-  if (isLoading) {
-    return <>Loading...</>;
-  }
-
-  if (isError && data.status !== 200) {
-    console.log(error);
-    return <>{error.message}</>;
-  }
-
-  if (data.status === 200) {
+  const onSuccess = (data) => {
+    console.log("returned data:", data);
+    //if (data.status === 200) {
     setPostList(data.data);
-  }
+    //}
+  };
 
+  const onError = (error) => {
+    console.log(error);
+  };
+
+  // get list from API
+  const { isLoading, isError, data, error } = usePostCategoryList(
+    postList.length > 0,
+    onSuccess,
+    onError
+  );
+
+  console.log("isLoading:", isLoading);
+  console.log("isError:", isError);
+
+  // handle query response
+  useIsLoading(isLoading);
+  useIsError(isError, error);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setPostList(data.data);
+    }
+  }, [data, isLoading]);
+
+  console.log("completing post category list component", postList);
   /**
    * the return
    */
@@ -47,7 +65,12 @@ const PostCategoryListComponent = () => {
       <Container>
         <Row>
           <Col>
-            <PostCategoryComponent />
+            {postList.map((postCategory) => (
+              <PostCategoryPillComponent
+                key={postCategory.id}
+                categoryInfo={postCategory}
+              />
+            ))}
           </Col>
         </Row>
       </Container>

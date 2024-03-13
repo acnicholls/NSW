@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
-import { postCategoryShape } from "../../shapes/shapes";
+import { postCategoryPillShape } from "../../shapes/shapes";
 import { useUserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router";
 import routes from "../../constants/RouteConstants";
@@ -27,7 +27,7 @@ const PostCategoryPillComponent = ({ categoryInfo }) => {
           <Col>{categoryInfo.countOfPosts}</Col>
         </Row>
         <Row>
-          <Col colspan={2}>{categoryInfo.description}</Col>
+          <Col>{categoryInfo.description}</Col>
         </Row>
       </Button>
     </>
@@ -37,5 +37,5 @@ const PostCategoryPillComponent = ({ categoryInfo }) => {
 export default PostCategoryPillComponent;
 
 PostCategoryPillComponent.propTypes = {
-  categoryInfo: postCategoryShape,
+  categoryInfo: postCategoryPillShape,
 };

@@ -20,35 +20,26 @@ import PostCategoryPillComponent from "./PostCategoryPillComponent";
  */
 const PostCategoryComponent = ({
   id,
-  postList,
+  currentPostCategory,
   viewMode,
   onCancel,
   onSave,
 }) => {
   const { user } = useUserContext();
 
-  const listMode = viewMode === ViewModes.view && id !== null;
-  const viewModeListReturnValue = (
+  const viewModeReturnValue = (
     <>
-      <Container>
-        <Row>
-          <Col>
-            {postList.map((postCategory) => (
-              <PostCategoryPillComponent
-                key={postCategory.id}
-                categoryInfo={postCategory}
-              />
-            ))}
-          </Col>
-        </Row>
-      </Container>
+      <Row>
+        <Col>{currentPostCategory.englishTitle}</Col>
+        <Col>{currentPostCategory.japaneseTitle}</Col>
+      </Row>
+      <Row>
+        <Col>{currentPostCategory.englishDescription}</Col>
+        <Col>{currentPostCategory.japaneseDescription}</Col>
+      </Row>
     </>
   );
-  const viewModeSingleReturnValue = <></>;
 
-  const viewModeReturnValue = listMode
-    ? viewModeListReturnValue
-    : viewModeSingleReturnValue;
   const editModeReturnValue = <></>;
 
   switch (viewMode) {
@@ -67,7 +58,7 @@ export default PostCategoryComponent;
 PostCategoryComponent.propTypes = {
   id: PropTypes.number,
   currentPostCategory: postCategoryShape,
-  viewMode: PropTypes.string,
+  viewMode: PropTypes.oneOf(ViewModes),
   onSave: PropTypes.func,
   onCancel: PropTypes.func,
 };

@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using NSW;
 using NSW.Data;
+using NSW.Data.DTO.Response;
 using NSW.Data.Internal.Interfaces;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BFF.Controllers
@@ -21,7 +23,7 @@ namespace BFF.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPostCategoryAsync()
         {
-            var returnValue = await _service.GetDataFromApiAsync<PostCategory>($"/api/PostCategory", ApiAccessType.Client);
+            var returnValue = await _service.GetDataFromApiAsync<List<PostCategoryPillResponse>>($"/api/PostCategory/display-list", ApiAccessType.Client);
             return Ok(returnValue);
         }
 

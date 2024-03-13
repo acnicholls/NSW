@@ -40,8 +40,8 @@ const PostListComponentMyVariant = ({}) => {
     onError
   );
 
+  // handle query response
   useIsLoading(isLoading);
-
   useIsError(isError || data.status !== 200, error);
 
   console.log("user posts List", data);

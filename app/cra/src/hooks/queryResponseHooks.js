@@ -35,4 +35,4 @@ const useNoDataFound = () => {
   );
 };
 
-export default { useIsLoading, useIsError, useNoDataFound };
+export { useIsLoading, useIsError, useNoDataFound };
