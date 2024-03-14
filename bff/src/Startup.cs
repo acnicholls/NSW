@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using NSW.Bff.Internal;
@@ -13,6 +14,7 @@ using NSW.Data.Validation.Interfaces;
 using ProxyKit;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System;
 
 namespace NSW.Bff
 {
@@ -20,6 +22,7 @@ namespace NSW.Bff
     {
         private readonly ILogger<Startup> _logger;
         private readonly IConfiguration _configuration;
+        private readonly IHostEnvironment _hostEnvironment;
 
 
         //public Startup()
@@ -29,11 +32,12 @@ namespace NSW.Bff
 
         public Startup(
             //ILogger<Startup> logger, 
-            IConfiguration configuration)
+            IConfiguration configuration, IHostEnvironment environment)
         {
             //_logger = logger;
             _configuration = configuration;
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            _hostEnvironment = environment;
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -114,11 +118,38 @@ namespace NSW.Bff
                 options.KnownNetworks.Clear();
                 options.KnownProxies.Clear();
             });
+
+            // only show a swagger page if we're in a development or staging environment.
+            if (showSwagger)
+            {
+                // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+                services.AddEndpointsApiExplorer();
+                services.AddSwaggerGen((options) =>
+                {
+                    //var fileLocation = $"{Environment.CurrentDirectory}\\NSW_Api.xml";
+                    //options.IncludeXmlComments(fileLocation);
+                });
+            }
+
+        }
+
+        private bool showSwagger
+        {
+            get
+            {
+                return this._hostEnvironment.IsDevelopment() | this._hostEnvironment.IsStaging();
+            }
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UseDeveloperExceptionPage();
+            // Configure the HTTP request pipeline.
+            if (showSwagger)
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
             app.Use(async (context, next) =>
             {
                 if (context is not null)
