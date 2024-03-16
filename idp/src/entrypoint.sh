@@ -5,17 +5,28 @@ printenv
 
 echo "booting up"
 # need to create the local cert.
-apt-get install -y ca-certificates
+apt-get install -y ca-certificates openssl
 echo "apt-get complete"
 
-# if the api cert file exists in the attached volume and not in the proper place
-if [ -f /ssl/nsw.crt ] && [ ! -f /usr/local/share/ca-certificates/nsw.crt ]
+# create a cert for this container
+if [ ! -f /ssl/idp.crt ] 
 then
-    # need to install the local cert.
-    cp /ssl/nsw.crt /usr/local/share/ca-certificates
-    update-ca-certificates
-    echo "ca-certs updated"
+    echo "creating ssl file"
+    openssl req \
+    -newkey rsa:4096 \
+    -x509 -sha256 \
+    -days 365 \
+    -nodes \
+    -out /ssl/idp.crt \
+    -keyout /ssl/idp.key \
+    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=idp"
 fi
+echo "ssl file complete"
+
+# need to install the local cert.
+cp /ssl/idp.crt /usr/local/share/ca-certificates/idp.crt
+update-ca-certificates
+echo "ca-certs updated"
 
 # run the app
 dotnet watch run --project /app/idp/src/NSW_IDP.csproj -- --launch-profile Docker
