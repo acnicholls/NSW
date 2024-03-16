@@ -29,4 +29,4 @@ update-ca-certificates
 echo "ca-certs updated"
 
 # run the app
-dotnet watch run --project /app/idp/src/NSW_IDP.csproj -- --launch-profile Docker
+dotnet run --project /app/idp/src/NSW_IDP.csproj -- --launch-profile Docker

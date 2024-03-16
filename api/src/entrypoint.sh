@@ -28,4 +28,4 @@ update-ca-certificates
 echo "ca-certs updated"
 
 # run the app
-dotnet watch run --project /app/api/src/NSW_Api/NSW_Api.csproj -- --launch-profile Docker
+dotnet run --project /app/api/src/NSW_Api/NSW_Api.csproj -- --launch-profile Docker
