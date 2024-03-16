@@ -21,4 +21,4 @@ if [ -z "./db/data/nswData.mdf" ]; then
 fi
 
 
-docker-compose -f docker-compose.local.yml up -d --build 
+docker-compose -f docker-compose.local.yml up --build 

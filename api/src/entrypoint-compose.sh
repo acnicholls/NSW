@@ -8,7 +8,7 @@ echo "booting up"
 apt-get install -y ca-certificates openssl
 echo "apt-get complete"
 
-if [ ! -f /ssl/api.crt ] 
+if [ ! -f /ssl/nsw.crt ] 
 then
     echo "creating ssl file"
     openssl req \
@@ -16,9 +16,9 @@ then
     -x509 -sha256 \
     -days 365 \
     -nodes \
-    -out /ssl/api.crt \
-    -keyout /ssl/api.key \
-    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=api"
+    -out /ssl/nsw.crt \
+    -keyout /ssl/nsw.key \
+    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=nsw"
 fi
 echo "ssl file complete"
 
