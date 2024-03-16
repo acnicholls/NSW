@@ -9,7 +9,7 @@ apt-get install -y ca-certificates openssl
 echo "apt-get complete"
 
 # if the api cert file exists in the attached volume and not in the proper place
-if [ ! -f /ssl/bff.crt ] 
+if [ ! -f /ssl/nsw.crt ] 
 then
     echo "creating ssl file"
     openssl req \
@@ -17,14 +17,14 @@ then
     -x509 -sha256 \
     -days 365 \
     -nodes \
-    -out /ssl/bff.crt \
-    -keyout /ssl/bff.key \
-    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=bff"
+    -out /ssl/nsw.crt \
+    -keyout /ssl/nsw.key \
+    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=nsw"
 fi
 echo "ssl file complete"
 
 # need to install the local cert.
-cp /ssl/bff.crt /usr/local/share/ca-certificates/bff.crt
+cp /ssl/*.crt /usr/local/share/ca-certificates/
 update-ca-certificates
 echo "ca-certs updated"
 
