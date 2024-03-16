@@ -9,9 +9,9 @@ namespace NSW.Bff.Internal
     /// <summary>
     /// captures access_denied and handles it gracefully.
     /// </summary>
-    public class NswIdpAccessDeniedMiddleware 
+    public class NswBffExceptionMiddleware
     {
-        private readonly ILogger<NswIdpAccessDeniedMiddleware> _logger;
+        private readonly ILogger<NswBffExceptionMiddleware> _logger;
         private readonly IConfiguration _configuration;
         private readonly RequestDelegate _next;
 
@@ -21,9 +21,9 @@ namespace NSW.Bff.Internal
         /// <param name="next">the delegate.</param>
         /// <param name="logger">the logger.</param>
         /// <param name="configuration">the appsettings.</param>
-        public NswIdpAccessDeniedMiddleware(
+        public NswBffExceptionMiddleware(
             RequestDelegate next,
-            ILogger<NswIdpAccessDeniedMiddleware> logger,
+            ILogger<NswBffExceptionMiddleware> logger,
             IConfiguration configuration)
         {
             _next = next;

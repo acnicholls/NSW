@@ -21,7 +21,7 @@ namespace NSW.Bff
 {
     public class Startup
     {
-        private readonly ILogger  _logger;
+        private readonly ILogger _logger;
         private readonly IConfiguration _configuration;
 
 
@@ -135,7 +135,7 @@ namespace NSW.Bff
             });
 
             // the IDP has sent an "access_denied" authentication message, capture and handle it.
-            app.UseMiddleware<NswIdpAccessDeniedMiddleware>();
+            app.UseMiddleware<NswBffExceptionMiddleware>();
 
             app.UseMiddleware<StrictSameSiteExternalAuthenticationMiddleware>();
             app.UseAuthentication();
