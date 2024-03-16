@@ -35,7 +35,7 @@ const usePostInfo = (postId, isDisabled, onSuccess, onError) => {
     async () => await service.getPostById(postId),
     {
       staleTime: Infinity,
-      enabled: postId !== 0,
+      enabled: postId !== "" || postId !== 0,
       isDisabled: isDisabled,
       onSuccess: (data) => onSuccess && onSuccess(data),
       onError: (error) => onError && onError(error),
