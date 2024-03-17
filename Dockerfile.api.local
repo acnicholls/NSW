@@ -1,7 +1,5 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 as build-env
 
-COPY ./ssl/nsw.* /ssl/
-
 # set the application folder on the service
 WORKDIR /app
 # copy the aspnetcore debugger from the web

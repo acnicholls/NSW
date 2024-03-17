@@ -13,6 +13,8 @@ services:
             - REACT_APP_BFF_URL=https://localhost
             - REACT_APP_IDP_URL=https://localhost
             - REACT_APP_PUBLIC_URL=https://localhost
+        volumes:
+            - ./ssl:/ssl            
         networks:
             - nsw
     bff:
@@ -22,6 +24,8 @@ services:
         environment:
             - ASPNETCORE_ENVIRONMENT=Docker
             - Authentication__ClientSecret=secret
+        volumes:
+            - ./ssl:/ssl            
         networks:
             - nsw
     idp:
@@ -32,6 +36,8 @@ services:
             - CUSTOMCONNSTR_DockerConnection=Server=db;Database=IdSrvConfig;User Id=nsw_idsrv;Password='testPa55w0rd!';Trust Server Certificate=True;
             - ASPNETCORE_ENVIRONMENT=Docker
             - Authentication__ClientSecret=secret            
+        volumes:
+            - ./ssl:/ssl            
         networks:
             - nsw
     api:
@@ -41,6 +47,8 @@ services:
         environment:
             - CUSTOMCONNSTR_DockerConnection=Server=db;Database=nswData;User Id=nsw_data;Password='testPa55w0rd!';Trust Server Certificate=True;
             - ASPNETCORE_ENVIRONMENT=Docker         
+        volumes:
+            - ./ssl:/ssl            
         networks:
             - nsw
     db:
@@ -50,14 +58,15 @@ services:
             - ACCEPT_EULA=Y
             - MSSQL_PID=Developer
         volumes:
+            - ./ssl:/ssl
             - ./db/data:/var/opt/mssql/data
         networks:
             - nsw
     proxy:
         image: nginx:latest
         volumes:
-            - ./proxy/conf:/etc/nginx/conf.d
             - ./ssl:/ssl
+            - ./proxy/conf:/etc/nginx/conf.d
         networks:
             - nsw
         ports:
