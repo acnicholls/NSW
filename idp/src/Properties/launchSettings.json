@@ -25,6 +25,7 @@
     },
     "Docker": {
       "commandName": "Project",
+      "workingDirectory": "/app/idp/src",
       "launchBrowser": false,
       "publishAllPorts": true,
       "useSSL": true,

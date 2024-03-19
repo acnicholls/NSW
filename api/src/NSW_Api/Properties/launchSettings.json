@@ -30,6 +30,7 @@
     },
     "Docker": {
       "commandName": "Project",
+      "workingDirectory": "/app/api/src",
       "launchBrowser": false,
       "publishAllPorts": true,
       "useSSL": true,
@@ -39,7 +40,7 @@
     },
     "DockerCompose": {
       "commandName": "Project",
-      "workingDirectory": "/app/bff/src",
+      "workingDirectory": "/app/api/src",
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "launchBrowser": true,
       "publishAllPorts": true,

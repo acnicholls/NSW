@@ -17,6 +17,7 @@
     },
     "Docker": {
       "commandName": "Project",
+      "workingDirectory": "/app/bff/src",
       "launchBrowser": false,
       "publishAllPorts": true,
       "useSSL": true,
