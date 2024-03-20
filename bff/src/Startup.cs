@@ -18,6 +18,7 @@ using System.Linq;
 using System;
 using Serilog;
 using ILogger = Serilog.ILogger;
+using NSW.Data.Extensions;
 
 
 namespace NSW.Bff
@@ -34,15 +35,14 @@ namespace NSW.Bff
         //    JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
         //}
 
-        public Startup(
-
-            IConfiguration configuration, IHostEnvironment environment)
+        public Startup(IConfiguration configuration, IHostEnvironment environment)
         {
-            _configuration = configuration;
+            configuration.ListConfiguration();
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            // assign local variables
+            _configuration = configuration;
             _hostEnvironment = environment;
             _logger = Log.Logger;
-
         }
 
         public void ConfigureServices(IServiceCollection services)

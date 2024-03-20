@@ -9,7 +9,7 @@ apt-get install -y ca-certificates openssl
 echo "apt-get complete"
 
 # if the api cert file exists in the attached volume and not in the proper place
-if [ ! -f /ssl/nsw.crt ] 
+if [ ! -f /ssl/bff.crt ] 
 then
     echo "creating ssl file"
     openssl req \
@@ -17,9 +17,9 @@ then
     -x509 -sha256 \
     -days 365 \
     -nodes \
-    -out /ssl/nsw.crt \
-    -keyout /ssl/nsw.key \
-    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=nsw"
+    -out /ssl/bff.crt \
+    -keyout /ssl/bff.key \
+    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=bff"
 fi
 echo "ssl file complete"
 
@@ -29,4 +29,4 @@ update-ca-certificates
 echo "ca-certs updated"
 
 # run the app
-dotnet run --project /app/bff/src/NSW_BFF.csproj -- --launch-profile Docker
+dotnet run --project /app/bff/src/NSW_BFF.csproj --launch-profile Docker

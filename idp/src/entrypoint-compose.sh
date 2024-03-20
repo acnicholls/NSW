@@ -9,7 +9,7 @@ apt-get install -y ca-certificates openssl
 echo "apt-get complete"
 
 # create a cert for this container
-if [ ! -f /ssl/nsw.crt ] 
+if [ ! -f /ssl/idp.crt ] 
 then
     echo "creating ssl file"
     openssl req \
@@ -17,9 +17,9 @@ then
     -x509 -sha256 \
     -days 365 \
     -nodes \
-    -out /ssl/nsw.crt \
-    -keyout /ssl/nsw.key \
-    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=nsw"
+    -out /ssl/idp.crt \
+    -keyout /ssl/idp.key \
+    -subj="/C=${COUNTRYCODE}/ST=${STATE}/L=${LOCATION}/CN=idp"
 fi
 echo "ssl file complete"
 

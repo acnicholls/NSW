@@ -58,43 +58,31 @@ Log.Logger = new LoggerConfiguration()
    .CreateLogger();
 Log.Debug("Logger built.");
 
-
-/// used in a couple places to list the configurations
-void ListConfiguration(IConfiguration configuration)
-{
-    Log.Debug("Listing Configuration...");
-    foreach (var item in configuration.AsEnumerable())
-    {
-        Log.Debug(JsonSerializer.Serialize(item));
-    }
-    Log.Debug("Configuration Listed...");
-}
-
 var builder = WebApplication.CreateBuilder(args);
 // configure the logging
 builder.Host.UseSerilog();
 Log.Debug("Logging added to services.");
 
 var environmentName = builder.Environment.EnvironmentName;
-Log.Debug("EnvironmentName:{0}", environmentName);
+Log.Debug("AspNetCore EnvironmentName:{0}", environmentName);
 
 // load the configuration
-builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
-var filename = "appsettings.json";
-Log.Debug("Adding file {0} to configuration", filename);
-builder.Configuration.AddJsonFile(filename, false, true);
-filename = $"appsettings.{environmentName}.json";
-Log.Debug("Adding file {0} to configuration", filename);
-builder.Configuration.AddJsonFile(filename, true, true);
+//builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
+//var filename = "appsettings.json";
+//Log.Debug("Adding file {0} to configuration", filename);
+//builder.Configuration.AddJsonFile(filename, false, true);
+//filename = $"appsettings.{environmentName}.json";
+//Log.Debug("Adding file {0} to configuration", filename);
+//builder.Configuration.AddJsonFile(filename, true, true);
 #if DEBUG
-    builder.Configuration.AddUserSecrets("4ccf36a0-933c-463f-a8aa-8b252c45c6b6", true);
+builder.Configuration.AddUserSecrets("4ccf36a0-933c-463f-a8aa-8b252c45c6b6", true);
 #endif
 // always load env vars last.  
 builder.Configuration.AddEnvironmentVariables();
 Log.Debug("configuration built");
 
 #if DEBUG
-ListConfiguration(builder.Configuration);
+builder.Configuration.ListConfiguration();
 #endif
 
 // load the kestrel config
@@ -203,7 +191,7 @@ Log.Debug("building app");
 var app = builder.Build();
 
 #if DEBUG
-ListConfiguration(app.Configuration);
+app.Configuration.ListConfiguration();
 #endif
 
 Log.Debug("Starting Configuring Pipeline");

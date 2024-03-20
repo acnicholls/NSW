@@ -18,7 +18,8 @@
     "Docker": {
       "commandName": "Project",
       "workingDirectory": "/app/bff/src",
-      "launchBrowser": false,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "launchBrowser": true,
       "publishAllPorts": true,
       "useSSL": true,
       "environmentVariables": {
