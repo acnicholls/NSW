@@ -19,6 +19,10 @@ builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 //builder.Configuration.AddUserSecrets("d7df2e78-b68f-405a-821c-48eac048a5a8", true);
 builder.Configuration.AddEnvironmentVariables();
 
+#if DEBUG
+builder.Configuration.ListConfiguration();
+#endif
+
 // configure local reverse proxy application 
 builder.ConfigureNswKestrel();
 

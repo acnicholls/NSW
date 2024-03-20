@@ -24,8 +24,6 @@ namespace NSW.Bff
 			{
 				Log.Information("Starting NSW.Bff");
 				var host = CreateHostBuilder(args).Build();
-
-
 				host.Run();
 				return 0;
 			}
@@ -40,10 +38,10 @@ namespace NSW.Bff
 			}
 		}
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .UseSerilog()
-            .ConfigureNswKestrel()
+		public static IHostBuilder CreateHostBuilder(string[] args) =>
+			Host.CreateDefaultBuilder(args)
+				.UseSerilog()
+			.ConfigureNswKestrel()
 				.ConfigureWebHostDefaults(hostBuilder =>
 				{
 					hostBuilder.UseStartup<Startup>();

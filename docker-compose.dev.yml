@@ -22,7 +22,6 @@ services:
             - ./app/cra:/app
             - ./app/docker-prep.dev.sh:/tmp/docker-prep.dev.sh
             - ./ssl:/ssl
-            # - ./app/proxy/conf:/etc/nginx/conf.d
         entrypoint: /bin/bash -x /tmp/docker-prep.dev.sh
         ports:
             - 3000:3000
@@ -38,12 +37,8 @@ services:
         working_dir: /app
         volumes:
             - .:/app
-            - ${HOME}/.nuget:${HOME}/.nuget
             - ./ssl:/ssl            
-            # - ${HOME}/.dotnet/dotnet:/usr/bin/dotnet
-            # - /usr/share/dotnet:/usr/share/dotnet
         environment:
-            - HOME:/home/${USER}
             - ASPNETCORE_ENVIRONMENT=Docker
             - Authentication__ClientSecret=secret
             - LOCATION=${COMPOSE_LOCATION}
@@ -63,12 +58,8 @@ services:
         working_dir: /app
         volumes:
             - .:/app
-            - ${HOME}/.nuget:${HOME}/.nuget            
             - ./ssl:/ssl
-            # - ${HOME}/.dotnet/dotnet:/usr/bin/dotnet
-            # - /usr/share/dotnet:/usr/share/dotnet
         environment:
-            - HOME:/home/${USER}
             - CUSTOMCONNSTR_DockerConnection=Server=db;Database=IdSrvConfig;User Id=nsw_idsrv;Password='testPa55w0rd!';Trust Server Certificate=True;
             - ASPNETCORE_ENVIRONMENT=Docker
             - Authentication__ClientSecret=secret
@@ -90,11 +81,7 @@ services:
         volumes:
             - .:/app
             - ./ssl:/ssl            
-            - ${HOME}/.nuget:${HOME}/.nuget  
-            # - ${HOME}/.dotnet/dotnet:/usr/bin/dotnet
-            # - /usr/share/dotnet:/usr/share/dotnet
         environment:
-            - HOME:/home/${USER}
             - CUSTOMCONNSTR_DockerConnection=Server=db;Database=nswData;User Id=nsw_data;Password='testPa55w0rd!';Trust Server Certificate=True;
             - ASPNETCORE_ENVIRONMENT=Docker
             - Authentication__ClientSecret=secret

@@ -39,4 +39,5 @@ README.md
 # don't need workflows or ticket templates (yet)
 ./.github/
 
-
+# local startup scripts
+./compose-*.sh

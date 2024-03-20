@@ -1,7 +1,5 @@
 FROM node as build-env
 
-COPY ./ssl/app.* /ssl/
-
 WORKDIR /app
 
 COPY ./app/cra /app
