@@ -117,7 +117,21 @@ namespace NSW.Repositories
 			return returnValue;
 		}
 		#endregion NonQuery
-
+		protected string GetLabelTextFromDataRow(DataRow row)
+		{
+			switch ((LanguagePreference)_currentUser.LanguagePreference)
+			{
+				case LanguagePreference.English:
+					{
+						return row["fldLabel_English"].ToString();
+					}
+				case LanguagePreference.Japanese:
+				default:
+					{
+						return row["fldLabel_Japanese"].ToString();
+					}
+			}
+		}
 
 	}
 }
