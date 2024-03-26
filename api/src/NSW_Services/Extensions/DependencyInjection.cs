@@ -21,6 +21,7 @@ namespace NSW.Services.Extensions
 			services.AddScoped<IUserService, UserService>();
 			services.AddScoped<IPostService, PostService>();
 			services.AddTransient<IEmailService, EmailService>();
+			services.AddScoped<IPostCategoryService, PostCategoryService>();
 		}
 	}
 }

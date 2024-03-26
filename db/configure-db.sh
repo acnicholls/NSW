@@ -17,7 +17,7 @@ NSWDATA=0
 
 while (([[ $ERRCODE -eq 1 ]] && [[ $(($DBSTATUS)) -eq 1 ]]) || ([[ -z "$DBSTATUS" ]] && [[ $(($ERRCODE)) -ne 0 ]]) || ([[ $ERRCODE -eq 0 ]] && [[ $(($DBSTATUS)) -ne 0 ]])) && [[ $i -lt 60 ]]; do
 	i=$i+1
-	DBSTATUS=$(/opt/mssql-tools/bin/sqlcmd -d master -h -1 -t 1 -U sa -P $MSSQL_SA_PASSWORD -Q "SET NOCOUNT ON; Select cast(SUM(state) as int) from sys.databases")
+	DBSTATUS=$(/opt/mssql-tools/bin/sqlcmd -d master -h -1 -t 1 -U sa -P $MSSQL_SA_PASSWORD -Q "SET NOCOUNT ON; Select cast(SUM(state) as int) from sys.databases;")
 	ERRCODE=$?
 
     echo 'dbstatus: '"$DBSTATUS"

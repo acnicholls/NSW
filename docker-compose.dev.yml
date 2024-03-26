@@ -8,13 +8,14 @@ services:
         image: node:latest
         environment:
             - CHOKIDAR_USEPOLLING=1
+            - WATCHPACK_POLLING=true
             - HTTPS=true
             - PORT=3000
             - SSL_CERT_FILE=/ssl/app.crt
             - SSL_KEY_FILE=/ssl/app.key
-            - REACT_APP_BFF_URL=https://localhost/
-            - REACT_APP_IDP_URL=https://localhost/
-            - REACT_APP_PUBLIC_URL=https://localhost/
+            - REACT_APP_BFF_URL=https://localhost
+            - REACT_APP_IDP_URL=https://localhost
+            - REACT_APP_PUBLIC_URL=https://localhost
             - LOCATION=${COMPOSE_LOCATION}
             - STATE=${COMPOSE_STATE}
             - COUNTRYCODE=${COMPOSE_COUNTRYCODE}
@@ -98,6 +99,7 @@ services:
             - db
     db:
         image: mcr.microsoft.com/mssql/server:2019-CU24-ubuntu-20.04
+        user: root
         environment:
             - MSSQL_SA_PASSWORD=s00p3rS3cvr#
             - ACCEPT_EULA=Y
