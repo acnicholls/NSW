@@ -16,9 +16,10 @@
       "applicationUrl": "http://localhost:5000"
     },
     "Docker": {
-      "commandName": "Docker",
+      "commandName": "Project",
+      "workingDirectory": "/app/bff/src",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "publishAllPorts": true,
       "useSSL": true,
       "environmentVariables": {

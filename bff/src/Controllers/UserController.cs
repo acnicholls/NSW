@@ -1,9 +1,13 @@
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NSW.Data.DTO.Response;
+using NSW.Data.Internal;
 using NSW.Data.Internal.Interfaces;
+using NSW.Data.Internal.Models;
 using System;
 using System.Linq;
 using System.Net.Http;
@@ -12,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace NSW.Bff.Controllers
 {
-    [ApiController]
+	[ApiController]
 	[Route("bff/[controller]")]
 	[Authorize]
 	public class UserController : ControllerBase
@@ -131,7 +135,7 @@ namespace NSW.Bff.Controllers
 		}
 
 
-		[Route("logout")]
+		[HttpGet("logout")]
 		public IActionResult Logout()
 		{
 			return SignOut("cookies", "oidc");
