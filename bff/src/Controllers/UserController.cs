@@ -135,7 +135,7 @@ namespace NSW.Bff.Controllers
 		}
 
 
-		[Route("logout")]
+		[HttpGet("logout")]
 		public IActionResult Logout()
 		{
 			return SignOut("cookies", "oidc");

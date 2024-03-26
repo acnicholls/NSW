@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NSW.Data.Extensions;
 using NSW.Data.Validation.Interfaces;
 using Serilog;
 using Serilog.Events;
@@ -23,8 +24,6 @@ namespace NSW.Bff
 			{
 				Log.Information("Starting NSW.Bff");
 				var host = CreateHostBuilder(args).Build();
-
-
 				host.Run();
 				return 0;
 			}
@@ -42,23 +41,10 @@ namespace NSW.Bff
 		public static IHostBuilder CreateHostBuilder(string[] args) =>
 			Host.CreateDefaultBuilder(args)
 				.UseSerilog()
-				.ConfigureWebHostDefaults(WebHostBuilder =>
+			.ConfigureNswKestrel()
+				.ConfigureWebHostDefaults(hostBuilder =>
 				{
-					WebHostBuilder.UseStartup<Startup>();
-					// next portion put into release build for docker.  
-					// but could likely be removed and env used for config.
-#if !DEBUG
-                    WebHostBuilder.UseKestrel(opts =>
-                    {
-                        var address = System.Net.IPAddress.Parse("0.0.0.0");
-                        opts.Listen(address, 5004);
-                        opts.Listen(address, 5005, opts => 
-                            opts.UseHttps(
-                                "/ssl/NSW_BFF.pfx",
-                                "123456"
-                        ));
-                    });
-#endif
+					hostBuilder.UseStartup<Startup>();
 				});
 
 	}

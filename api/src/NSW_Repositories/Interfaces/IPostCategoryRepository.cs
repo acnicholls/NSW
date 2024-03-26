@@ -1,5 +1,5 @@
 ﻿using NSW.Data;
-using NSW.Repositories.Interfaces;
+using NSW.Data.DTO.Response;
 
 namespace NSW.Repositories.Interfaces
 {
@@ -7,6 +7,7 @@ namespace NSW.Repositories.Interfaces
 	{
 		string GetTitleById(int ID);
 		string GetDescriptionById(int ID);
+		IList<PostCategoryPillResponse> GetPillList();
 
 	}
 }

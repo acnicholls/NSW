@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NSW.Api.Controllers.Interfaces;
 using NSW.Data;
+using NSW.Data.DTO.Response;
 using NSW.Services.Interfaces;
 
 namespace NSW.Api.Controllers
@@ -9,8 +10,8 @@ namespace NSW.Api.Controllers
 	[ApiController]
 	public class PostCategoryController : ControllerBase, IController<PostCategory>
 	{
-		private readonly IService<PostCategory> _service;
-		public PostCategoryController(IService<PostCategory> service)
+		private readonly IPostCategoryService _service;
+		public PostCategoryController(IPostCategoryService service)
 		{
 			_service = service;
 		}
@@ -44,7 +45,7 @@ namespace NSW.Api.Controllers
 			catch (Exception ex)
 			{
 				// add logging
-				return BadRequest(ex.Message);
+				return Problem(ex.Message);
 			}
 		}
 
@@ -62,7 +63,7 @@ namespace NSW.Api.Controllers
 			catch (Exception ex)
 			{
 				// add logging
-				return BadRequest(ex.Message);
+				return Problem(ex.Message);
 			}
 		}
 
@@ -80,7 +81,7 @@ namespace NSW.Api.Controllers
 			catch (Exception ex)
 			{
 				// add logging
-				return BadRequest(ex.Message);
+				return Problem(ex.Message);
 			}
 		}
 
@@ -97,7 +98,7 @@ namespace NSW.Api.Controllers
 			catch (Exception ex)
 			{
 				// add logging
-				return BadRequest(ex.Message);
+				return Problem(ex.Message);
 			}
 		}
 
@@ -114,11 +115,29 @@ namespace NSW.Api.Controllers
 			catch (Exception ex)
 			{
 				// add logging
-				return BadRequest(ex.Message);
+				return Problem(ex.Message);
 			}
 		}
 
 		[HttpPut]
 		public async Task<ActionResult<PostCategory>> ModifyAsync([FromBody] PostCategory entity) => await Task.Run(() => this._modify(entity));
+
+		private ActionResult<List<PostCategoryPillResponse>> _pillList()
+		{
+			try
+			{
+				var currentUser = this.HttpContext.User;
+				var returnValue = _service.GetPillList();
+				return new OkObjectResult(returnValue);
+			}
+			catch (Exception ex)
+			{
+				// add logging
+				return Problem(ex.Message);
+			}
+		}
+
+		[HttpGet("display-list")]
+		public async Task<ActionResult<List<PostCategoryPillResponse>>> GetPostCategoryPillListAsync() => await Task.Run(() => this._pillList());
 	}
 }

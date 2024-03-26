@@ -1,0 +1,142 @@
+version: "3.3"
+
+# this compose file is for development purposes
+# it allows a user to make changes to the application
+# files and see the changes in the application on demand
+services:
+    app:
+        image: node:latest
+        environment:
+            - CHOKIDAR_USEPOLLING=1
+            - WATCHPACK_POLLING=true
+            - HTTPS=true
+            - PORT=3000
+            - SSL_CERT_FILE=/ssl/app.crt
+            - SSL_KEY_FILE=/ssl/app.key
+            - REACT_APP_BFF_URL=https://localhost
+            - REACT_APP_IDP_URL=https://localhost
+            - REACT_APP_PUBLIC_URL=https://localhost
+            - LOCATION=${COMPOSE_LOCATION}
+            - STATE=${COMPOSE_STATE}
+            - COUNTRYCODE=${COMPOSE_COUNTRYCODE}
+        volumes:
+            - ./app/cra:/app
+            - ./app/docker-prep.dev.sh:/tmp/docker-prep.dev.sh
+            - ./ssl:/ssl
+        entrypoint: /bin/bash -x /tmp/docker-prep.dev.sh
+        ports:
+            - 3000:3000
+        networks:
+            - nsw
+        depends_on:
+            - api
+            - bff
+            - idp
+            - db
+    bff:
+        image: mcr.microsoft.com/dotnet/sdk:7.0
+        working_dir: /app
+        volumes:
+            - .:/app
+            - ./ssl:/ssl            
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Docker
+            - Authentication__ClientSecret=secret
+            - LOCATION=${COMPOSE_LOCATION}
+            - STATE=${COMPOSE_STATE}
+            - COUNTRYCODE=${COMPOSE_COUNTRYCODE}
+        entrypoint: /app/bff/src/entrypoint-compose.sh
+        ports:
+            - 5004:5004
+            - 5005:5005
+        networks:
+            - nsw
+        depends_on:
+            - api
+            - idp
+    idp:
+        image: mcr.microsoft.com/dotnet/sdk:7.0
+        working_dir: /app
+        volumes:
+            - .:/app
+            - ./ssl:/ssl
+        environment:
+            - CUSTOMCONNSTR_DockerConnection=Server=db;Database=IdSrvConfig;User Id=nsw_idsrv;Password='testPa55w0rd!';Trust Server Certificate=True;
+            - ASPNETCORE_ENVIRONMENT=Docker
+            - Authentication__ClientSecret=secret
+            - LOCATION=${COMPOSE_LOCATION}
+            - STATE=${COMPOSE_STATE}
+            - COUNTRYCODE=${COMPOSE_COUNTRYCODE}
+        entrypoint: /app/idp/src/entrypoint-compose.sh
+        ports:
+            - 5006:5006
+            - 5007:5007 
+        networks:
+            - nsw
+        depends_on:
+            - db
+            - api
+    api:
+        image: mcr.microsoft.com/dotnet/sdk:7.0
+        working_dir: /app
+        volumes:
+            - .:/app
+            - ./ssl:/ssl            
+        environment:
+            - CUSTOMCONNSTR_DockerConnection=Server=db;Database=nswData;User Id=nsw_data;Password='testPa55w0rd!';Trust Server Certificate=True;
+            - ASPNETCORE_ENVIRONMENT=Docker
+            - Authentication__ClientSecret=secret
+            - LOCATION=${COMPOSE_LOCATION}
+            - STATE=${COMPOSE_STATE}
+            - COUNTRYCODE=${COMPOSE_COUNTRYCODE}
+        entrypoint: /app/api/src/entrypoint-compose.sh
+        ports:
+            - 5002:5002
+            - 5003:5003
+        networks:
+            - nsw
+        depends_on:
+            - db
+    db:
+        image: mcr.microsoft.com/mssql/server:2019-CU24-ubuntu-20.04
+        user: root
+        environment:
+            - MSSQL_SA_PASSWORD=s00p3rS3cvr#
+            - ACCEPT_EULA=Y
+            - MSSQL_PID=Developer
+        volumes:
+            - ./db/data:/var/opt/mssql/data
+            - ./db/entrypoint.sh:/tmp/entrypoint.sh
+            - ./db/create_idpConfigDb.sql:/tmp/create_idpConfigDb.sql
+            - ./db/create_nswDataDb.sql:/tmp/create_nswDataDb.sql
+            - ./db/configure-db.sh:/tmp/configure-db.sh
+        entrypoint: /tmp/entrypoint.sh
+        networks:
+            - nsw 
+        # ports:
+        #     - 1533:1433
+        #     - 1534:1434            
+    proxy:
+        image: nginx:latest
+        volumes:
+            - ./proxy/entrypoint.sh:/tmp/entrypoint.sh
+            - ./proxy/conf:/etc/nginx/conf.d
+            - ./ssl:/ssl
+        environment:
+            - LOCATION=${COMPOSE_LOCATION}
+            - STATE=${COMPOSE_STATE}
+            - COUNTRYCODE=${COMPOSE_COUNTRYCODE} 
+        depends_on:
+            - app
+            - idp
+            - bff
+            - api
+        networks:
+            - nsw
+        entrypoint: /tmp/entrypoint.sh
+        ports:
+            - 80:80
+            - 443:443
+
+networks:
+    nsw:

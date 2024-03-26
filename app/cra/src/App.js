@@ -40,6 +40,7 @@ import ExternalRedirect from "./components/navigation/ExternalRedirect";
 import RequireAuth from "./components/authentication/RequireAuth";
 import RequireRole from "./components/authentication/RequireRole";
 import { RoleEnum } from "./constants/RoleEnum";
+import PostCategoryListComponent from "./components/PostCategory/PostCategoryListComponent";
 
 const queryClient = new QueryClient();
 
@@ -59,7 +60,10 @@ export default function App() {
                       path={routes.frontend.slash}
                       element={<Navigate to={routes.frontend.index} />}
                     />
-                    <Route path={routes.frontend.index} element={<Index />} />
+                    <Route
+                      path={routes.frontend.index}
+                      element={<PostCategoryListComponent />}
+                    />
                     <Route path={routes.frontend.about} element={<About />} />
                     <Route path={routes.frontend.search} element={<Search />} />
                     <Route path={routes.frontend.splash} element={<Splash />} />
