@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NSW.Data.Internal.Interfaces;
-using NSW.Data;
 using NSW;
+using NSW.Data.DTO.Response;
+using NSW.Data.Internal.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using NSW.Data.DTO.Response;
 
 namespace BFF.Controllers
 {

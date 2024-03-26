@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NSW.Api.Controllers.Interfaces;
 using NSW.Data.DTO.Request;
 using NSW.Data.DTO.Response;
@@ -6,10 +8,10 @@ using NSW.Services.Interfaces;
 
 namespace NSW.Api.Controllers
 {
-    [Route("api/[controller]")]
+	[Route("api/[controller]")]
 	[ApiController]
 	public class UserController : ControllerBase, IUserController
-    {
+	{
 		private readonly IUserService _service;
 		public UserController(IUserService service)
 		{
@@ -70,7 +72,7 @@ namespace NSW.Api.Controllers
 		[HttpGet("{id:int}")]
 		public async Task<ActionResult<UserResponse?>> GetByIdAsync([FromRoute] int id) => await Task.Run(() => this._getById(id));
 
-        private ActionResult<UserResponse> _insert(UserRequest entity)
+		private ActionResult<UserResponse> _insert(UserRequest entity)
 		{
 			try
 			{
@@ -103,5 +105,16 @@ namespace NSW.Api.Controllers
 
 		[HttpPut]
 		public async Task<ActionResult<UserResponse>> ModifyAsync([FromBody] UserRequest entity) => await Task.Run(() => this._modify(entity));
+
+
+#if DEBUG
+		[HttpGet("token")]
+		[Authorize]
+		public async Task<IActionResult> GetMyUserTokenAsync()
+		{
+			return Ok(await this.HttpContext.GetUserAccessTokenAsync());
+		}
+#endif
+
 	}
 }

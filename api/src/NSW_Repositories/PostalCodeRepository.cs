@@ -8,7 +8,7 @@ using System.Data;
 namespace NSW.Repositories
 {
 	public class PostalCodeRepository : BaseRepository, IRepository<PostalCode>
-    {
+	{
 		public PostalCodeRepository(
 			ILog log,
 			IUser user,
@@ -40,7 +40,7 @@ namespace NSW.Repositories
 			{
 				_log.WriteToLog(_projectInfo.ProjectLogType, "PostalCode.ByCode", x, LogEnum.Critical);
 			}
-			return postalCodes;		
+			return postalCodes;
 		}
 
 		public PostalCode? GetById(int id)

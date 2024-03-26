@@ -19,6 +19,13 @@ const postCategoryShape = PropTypes.shape({
   japaneseDescription: PropTypes.string,
 });
 
+const postCategoryPillShape = PropTypes.shape({
+  id: PropTypes.number,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  countOfPosts: PropTypes.number,
+});
+
 const postalCodeShape = PropTypes.shape({
   code: PropTypes.string,
   longitude: PropTypes.number,
@@ -54,6 +61,7 @@ export {
   postShape,
   postalCodeShape,
   postCategoryShape,
+  postCategoryPillShape,
   labelTextShape,
   labelTextViewShape,
 };
