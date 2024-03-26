@@ -47,18 +47,35 @@ namespace NSW.Data.Extensions
 				throw new ArgumentNullException(nameof(configuration));
 			}
 
-			var oidcOptions = RegisterOidcOptions(services, configuration);	
+			var oidcOptions = RegisterOidcOptions(services, configuration);
 
 
-			// TODO: register the services 
-			var cache = new DiscoveryCache(
-				oidcOptions.Authority,
-				new DiscoveryPolicy
-				{
-					RequireHttps = false,
-					ValidateIssuerName = false  // TODO: this is development settings
-				});
-			services.AddSingleton<IDiscoveryCache>(cache);
+            // Internal discovery document cache.
+            services.AddSingleton<IDiscoveryCache>(r =>
+            {
+                var factory = r.GetRequiredService<IHttpClientFactory>();
+                return new DiscoveryCache(
+                    string.Concat(
+                        oidcOptions.RequireHttpsMetadata ? "https" : "http",
+                        oidcOptions.InternalAddressPart), 
+                    () => factory.CreateClient(),
+                    new DiscoveryPolicy
+                    {
+                        RequireHttps = false,
+                        ValidateIssuerName = false  // TODO: this is development settings
+                    }
+                );
+            });
+   //         var cache = new DiscoveryCache(
+   //             string.Concat(
+   //             oidcOptions.RequireHttpsMetadata ? "https" : "http",
+   //             oidcOptions.InternalAddressPart),
+			//	new DiscoveryPolicy
+			//	{
+			//		RequireHttps = false,
+			//		ValidateIssuerName = false  // TODO: this is development settings
+			//	});
+			//services.AddSingleton<IDiscoveryCache>(cache);
 
 			// InternalDataTransferService -- for getting info from API to BFF/IDP
 			switch(variant)
