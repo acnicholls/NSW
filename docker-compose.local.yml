@@ -1,0 +1,96 @@
+version: "3.3"
+
+services:
+    app:
+        build:
+            context: ./
+            dockerfile: ./Dockerfile.app.local
+        environment:
+            - HTTPS=true
+            - PORT=3000
+            - SSL_CERT_FILE=/ssl/app.crt
+            - SSL_KEY_FILE=/ssl/app.key
+            - REACT_APP_BFF_URL=https://localhost/
+            - REACT_APP_IDP_URL=https://localhost/
+            - REACT_APP_PUBLIC_URL=https://localhost/
+            - LOCATION=${COMPOSE_LOCATION}
+            - STATE=${COMPOSE_STATE}
+            - COUNTRYCODE=${COMPOSE_COUNTRYCODE}     
+        volumes:
+            - ./ssl:/ssl            
+        networks:
+            - nsw
+    bff:
+        build:
+            context: ./
+            dockerfile: ./Dockerfile.bff.local
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Docker
+            - Authentication__ClientSecret=secret
+            - LOCATION=${COMPOSE_LOCATION}
+            - STATE=${COMPOSE_STATE}
+            - COUNTRYCODE=${COMPOSE_COUNTRYCODE}          
+        entrypoint: /app/bff/src/entrypoint.sh              
+        volumes:
+            - ./ssl:/ssl            
+        networks:
+            - nsw
+    idp:
+        build:
+            context: ./
+            dockerfile: ./Dockerfile.idp.local
+        environment:
+            - CUSTOMCONNSTR_DockerConnection=Server=db;Database=IdSrvConfig;User Id=nsw_idsrv;Password='testPa55w0rd!';Trust Server Certificate=True;
+            - ASPNETCORE_ENVIRONMENT=Docker
+            - Authentication__ClientSecret=secret
+            - LOCATION=${COMPOSE_LOCATION}
+            - STATE=${COMPOSE_STATE}
+            - COUNTRYCODE=${COMPOSE_COUNTRYCODE}
+        entrypoint: /app/idp/src/entrypoint.sh            
+        volumes:
+            - ./ssl:/ssl            
+        networks:
+            - nsw
+    api:
+        build:
+            context: ./
+            dockerfile: ./Dockerfile.api.local
+        environment:
+            - CUSTOMCONNSTR_DockerConnection=Server=db;Database=nswData;User Id=nsw_data;Password='testPa55w0rd!';Trust Server Certificate=True;
+            - ASPNETCORE_ENVIRONMENT=Docker
+            - LOCATION=${COMPOSE_LOCATION}
+            - STATE=${COMPOSE_STATE}
+            - COUNTRYCODE=${COMPOSE_COUNTRYCODE}     
+        entrypoint: /app/api/src/entrypoint.sh              
+        volumes:
+            - ./ssl:/ssl            
+        networks:
+            - nsw
+    db:
+        image: mcr.microsoft.com/mssql/server:2019-CU24-ubuntu-20.04
+        environment:
+            - MSSQL_SA_PASSWORD=s00p3rS3cvr#
+            - ACCEPT_EULA=Y
+            - MSSQL_PID=Developer
+        volumes:
+            - ./ssl:/ssl
+            - ./db/data:/var/opt/mssql/data
+        networks:
+            - nsw
+    proxy:
+        image: nginx:latest
+        volumes:
+            - ./ssl:/ssl
+            - ./proxy/conf:/etc/nginx/conf.d
+        environment:
+            - LOCATION=${COMPOSE_LOCATION}
+            - STATE=${COMPOSE_STATE}
+            - COUNTRYCODE=${COMPOSE_COUNTRYCODE}
+        networks:
+            - nsw
+        ports:
+            - 80:80
+            - 443:443
+
+networks:
+    nsw:

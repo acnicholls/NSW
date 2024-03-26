@@ -1,0 +1,17 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0 as build-env
+
+# set the application folder on the service
+WORKDIR /app
+# copy the aspnetcore debugger from the web
+
+# restore the project's nuget packages
+COPY . .
+RUN dotnet restore ./idp/src/NSW_IDP.csproj
+# build the application
+RUN dotnet build -c Debug -o out ./idp/src/NSW_IDP.csproj
+
+# expose the ports
+EXPOSE 5006 5007
+
+# run the project
+ENTRYPOINT  ["/app/idp/src/entrypoint.sh"]

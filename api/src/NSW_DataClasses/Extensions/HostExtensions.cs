@@ -20,10 +20,10 @@ namespace NSW.Data.Extensions
         }
 
         public static IHostBuilder ConfigureNswKestrel(this IHostBuilder builder)
-        {                   
+        {
             builder.ConfigureWebHost(hostBuilder =>
             {
-                hostBuilder.ConfigureKestrel(serverOptions=> ConfigureNswKestrel(serverOptions));
+                hostBuilder.ConfigureKestrel(serverOptions => ConfigureNswKestrel(serverOptions));
             });
 
             return builder;
@@ -48,10 +48,10 @@ namespace NSW.Data.Extensions
                 using (var privateKey = RSA.Create())
                 {
                     // load our key value
-                    string keyLocation = config.GetValue<string>("Ssl:keyLocation") ?? "/ssl/api.key";
+                    string keyLocation = config.GetValue<string>("Ssl:keyLocation") ?? "/ssl/nsw.key";
                     privateKey.ImportPkcs8PrivateKey(PemBytes(keyLocation), out var bytesRead);
                     // read our certificate file
-                    string certLocation = config.GetValue<string>("Ssl:certLocation") ?? "/ssl/api.crt";
+                    string certLocation = config.GetValue<string>("Ssl:certLocation") ?? "/ssl/nsw.crt";
                     X509Certificate2 certFile = new(certLocation);
                     // combine the certificate and key into a ServerCertificate
                     listenOptions.ServerCertificate = certFile.CopyWithPrivateKey(privateKey);

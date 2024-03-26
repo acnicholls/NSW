@@ -12,17 +12,19 @@ the `develop` branch contains a docker-compose solution that is described below.
 
 ## the docker-compose
 
+### development
+
 in order to get a new dev up and running quickly at one of the companies i worked at, one of the dev-ops gyus would create a docker-compose file for the solution that would just mount the monolith repo folders to proper places on proper docker images and configure services to have everything running smoothly. this is my attempt to do that and it works in other solutions
 
 each service has an overridden entrypoint to allow the devs to control how it starts.
 
 - app
-  has the docker-prep.dev.sh file which will prepare a cert for React's SSL and run `npm install` before starting the NPM dev server.
+  has the `docker-prep.dev.sh` file which will prepare a cert for React's SSL and run `npm install` before starting the NPM dev server.
 
 - api
 - bff
 - idp
-  all have entrypoint.sh which will create an SSL cert if it doesn't already exist and then start the project with `dotnet watch` so that changes cause recompile of the binaries. they all use the same cert, so they can talk to each other without complication.
+  all have `entrypoint-compoe.sh` which will create an SSL cert if it doesn't already exist and then start the project with `dotnet watch` so that changes cause recompile of the binaries. they all use the same cert, so they can talk to each other without complication.
 
 - db
   starts 2 processes at the same time, the configure script and the SQL server application. sometimes crashes after the initial configure is complete, commenting out the configure script in the entrypoint.sh file helps.
@@ -31,6 +33,22 @@ each service has an overridden entrypoint to allow the devs to control how it st
   overwrites the entrypoint to create a `localhost` SSL cert for use in the docker container, as the production design would have only ports 80/443 exposed and pointed to the this service. this service's configuration is described more below.
 
 **NOTE:** the `dotnet` services in this docker-compose solution all read from the same project (DataClasses in the API solution) and folder on the filesystem by mounting the same folder (project root) to their /app mountpoint, but using project files in different sub-folders, this is due to the dependency of each on the domain models in the DataClasses project. This can cause sudden restarts or crashes of the service within the container. A simple restart of the affected service (or waiting for the restart if it is caught by the compose restart in the override file and does so automatically) will solve the problem. This is a known problem and will be worked on in time.
+
+there are commandline short cuts for linux or wsl.
+
+- use `compose-start.sh` to build the images and start the container
+- use `compose-stop.sh` to destroy the container.
+
+### local instance
+
+you can run a local debug instance using Docker Desktop's repository. the `docker-compose.local.yml` file will build images for each project and then start a disconnected running instance of each in a local compose, similar to the development version above. It doesn't watch file system changes, it will just run the code as copied onto it's container, so always run with the `--build` param to force a new copy of the dotnet and react project files and running of `dotnet build` and `npm install` layers for the images.
+
+**NOTE:** these images use a different entrypoint file than the dev setup. this is to allow for variation such as running apt-get or not...depending on developer preference
+
+there are commandline short cuts for linux or wsl.
+
+- use `compose-local-start.sh` to build the images and start the container
+- use `compose-local-stop.sh` to destroy the container.
 
 ## user experience
 
